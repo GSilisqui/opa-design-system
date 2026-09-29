@@ -1,4 +1,5 @@
 import type { FlatToken } from "./flatten";
+import { NAME_SEGMENT } from "./names";
 
 export type Decl = [name: string, value: string];
 
@@ -18,7 +19,7 @@ export interface ResolvedColors {
 
 const REF = /^\{([^{}]+)\}$/;
 const COLOR = /^(#([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})|(rgba?|hsla?|oklch|oklab)\([^();{}]*\))$/i;
-const SEGMENT = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
 const RESERVED = new Set(["white", "black", "transparent", "current"]);
 
 function cssName(token: FlatToken, file: string): string {
@@ -28,7 +29,7 @@ function cssName(token: FlatToken, file: string): string {
   }
   if (token.type !== "color") throw new Error(`${file}: "${id}" precisa ter $type "color"`);
   for (const segment of token.path.slice(1)) {
-    if (!SEGMENT.test(segment)) {
+    if (!NAME_SEGMENT.test(segment)) {
       throw new Error(
         `${file}: "${id}" tem um segmento inválido "${segment}" (use minúsculas, números e hífens)`,
       );

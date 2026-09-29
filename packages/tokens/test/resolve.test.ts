@@ -167,7 +167,7 @@ describe("resolveColors: colisões e nomes inválidos", () => {
   });
 
   it("rejeita cor com ; ou chaves", () => {
-    const p = [tok("color.x.1", "rgb(0 0 0); } body { x: y")];
+    const p = [tok("color.x.1", "rgb(0;}body{color:red)")];
     expect(() => resolveColors({ primitives: p, ...empty })).toThrow("precisa ser uma cor literal");
   });
 });

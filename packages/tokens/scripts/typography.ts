@@ -1,4 +1,5 @@
 import type { FlatToken } from "./flatten";
+import { NAME_SEGMENT } from "./names";
 import type { Decl } from "./resolve";
 
 export interface Typography {
@@ -23,10 +24,10 @@ const GENERIC_FAMILIES = new Set([
   "math",
 ]);
 
-const SEGMENT = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
 
 function assertName(name: string, id: string): void {
-  if (!SEGMENT.test(name)) {
+  if (!NAME_SEGMENT.test(name)) {
     throw new Error(
       `typography.json: "${id}" tem um segmento inválido "${name}" (use minúsculas, números e hífens)`,
     );
