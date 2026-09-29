@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Icon } from "./icon";
 import { iconNames, icons } from "./icon-registry";
 
@@ -28,6 +28,15 @@ describe("Icon", () => {
     );
     const [regular, solid] = container.querySelectorAll("path");
     expect(regular.getAttribute("d")).not.toBe(solid.getAttribute("d"));
+  });
+
+  it("nome desconhecido não desenha nada e avisa em desenvolvimento", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    // @ts-expect-error nome fora do registro, como pode chegar de JS ou de dados.
+    const { container } = render(<Icon name="nao-existe" />);
+    expect(container).toBeEmptyDOMElement();
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining("nao-existe"));
+    warn.mockRestore();
   });
 
   it("size aplica a classe de tamanho", () => {

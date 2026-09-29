@@ -68,9 +68,10 @@ function InputField({
     readOnly,
     disabled,
     "aria-invalid": status === "error" ? true : undefined,
-    "aria-describedby": descriptionId,
     "data-status": status,
     ...props,
+    // Depois do ...props: soma a descrição ao aria-describedby do consumidor em vez de ser sobrescrito por ele.
+    "aria-describedby": [descriptionId, props["aria-describedby"]].filter(Boolean).join(" ") || undefined,
   };
 
   const readOnlyClass = "rounded-none border-0 border-b border-b-border bg-transparent px-0";

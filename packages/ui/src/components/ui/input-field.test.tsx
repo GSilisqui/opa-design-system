@@ -37,6 +37,26 @@ describe("InputField", () => {
     expect(screen.getByLabelText("E-mail")).toHaveAccessibleDescription("Usado para login");
   });
 
+  it("mescla o aria-describedby do consumidor com a descrição", () => {
+    render(
+      <>
+        <p id="dica">Dica extra</p>
+        <InputField label="E-mail" description="Usado para login" aria-describedby="dica" />
+      </>,
+    );
+    expect(screen.getByLabelText("E-mail")).toHaveAccessibleDescription("Usado para login Dica extra");
+  });
+
+  it("sem descrição usa só o aria-describedby do consumidor", () => {
+    render(
+      <>
+        <p id="dica">Dica extra</p>
+        <InputField label="E-mail" aria-describedby="dica" />
+      </>,
+    );
+    expect(screen.getByLabelText("E-mail")).toHaveAttribute("aria-describedby", "dica");
+  });
+
   it("status error marca aria-invalid e pinta label e descrição", () => {
     render(<InputField label="E-mail" status="error" description="Informe um e-mail válido" />);
     const input = screen.getByLabelText("E-mail");

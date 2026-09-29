@@ -20,8 +20,24 @@ type IconProps = Omit<React.ComponentProps<"svg">, "children"> & {
   label?: string;
 };
 
+// Sem import.meta.env: nem todo consumidor usa Vite. Os bundlers (Vite, Next, webpack) trocam o texto
+// process.env.NODE_ENV pelo modo do app; sem bundler e sem process, fica quieto.
+declare const process: { env: { NODE_ENV?: string } };
+function isDev() {
+  try {
+    return process.env.NODE_ENV !== "production";
+  } catch {
+    return false;
+  }
+}
+
 function Icon({ name, variant = "regular", size, label, className, ...props }: IconProps) {
-  const [width, height, , , path] = icons[variant][name].icon;
+  const definition = icons[variant]?.[name];
+  if (!definition) {
+    if (isDev()) console.warn(`[@opa/ui] Icon: "${name}" (${variant}) não está no registro de ícones (icon-registry.ts).`);
+    return null;
+  }
+  const [width, height, , , path] = definition.icon;
   const paths = Array.isArray(path) ? path : [path];
 
   return (

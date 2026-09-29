@@ -7,7 +7,7 @@ import { cn } from "cn";
 import { Icon } from "@/components/ui/icon";
 
 const tagVariants = cva(
-  "inline-flex w-fit shrink-0 items-center gap-1 border px-2 text-base font-normal whitespace-nowrap [&>svg]:pointer-events-none",
+  "inline-flex w-fit shrink-0 items-center gap-1 border px-2 text-base font-normal whitespace-nowrap [&_svg]:pointer-events-none",
   {
     variants: {
       variant: {
@@ -20,8 +20,8 @@ const tagVariants = cva(
         highlight: "border-highlight-subtle bg-highlight-subtle text-highlight-subtle-foreground",
       },
       size: {
-        default: "h-5 rounded-md [&>svg]:size-3",
-        md: "h-6 rounded-lg [&>svg]:size-3.5",
+        default: "h-5 rounded-md [&_svg]:size-3",
+        md: "h-6 rounded-lg [&_svg]:size-3.5",
       },
     },
     defaultVariants: {
@@ -35,17 +35,31 @@ type TagProps = React.ComponentProps<"span"> &
   VariantProps<typeof tagVariants> & {
     /** Mostra o botão ✕ e chama esta função ao clicar. */
     onRemove?: () => void;
+    /** Verbo do botão ✕; o nome acessível junta o texto da tag (ex.: "Remover VIP"). */
     removeLabel?: string;
   };
 
 function Tag({ className, variant = "neutral", size = "default", onRemove, removeLabel = "Remover", children, ...props }: TagProps) {
+  const id = React.useId();
+  const textId = `tag-${id}-text`;
+  const buttonId = `tag-${id}-remove`;
+
   return (
     <span data-slot="tag" data-variant={variant} className={cn(tagVariants({ variant, size }), className)} {...props}>
-      {children}
+      {onRemove ? (
+        // O texto ganha id para compor o nome do botão: "Remover VIP", distinto em cada tag.
+        <span id={textId} data-slot="tag-text" className="inline-flex items-center gap-1">
+          {children}
+        </span>
+      ) : (
+        children
+      )}
       {onRemove ? (
         <button
           type="button"
+          id={buttonId}
           aria-label={removeLabel}
+          aria-labelledby={`${buttonId} ${textId}`}
           onClick={onRemove}
           className="-mr-1 ml-1 inline-grid size-4 place-items-center rounded-sm outline-none hover:bg-current/10 focus-visible:focus-ring"
         >

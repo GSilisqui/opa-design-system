@@ -41,16 +41,27 @@ describe("Tag", () => {
   it("onRemove mostra o botão Remover e chama a função", async () => {
     const onRemove = vi.fn();
     render(<Tag onRemove={onRemove}>VIP</Tag>);
-    await userEvent.click(screen.getByRole("button", { name: "Remover" }));
+    await userEvent.click(screen.getByRole("button", { name: "Remover VIP" }));
     expect(onRemove).toHaveBeenCalledTimes(1);
   });
 
   it("aceita outro texto para o botão", () => {
     render(
-      <Tag onRemove={() => {}} removeLabel="Remover VIP">
+      <Tag onRemove={() => {}} removeLabel="Excluir">
         VIP
       </Tag>,
     );
+    expect(screen.getByRole("button", { name: "Excluir VIP" })).toBeInTheDocument();
+  });
+
+  it("cada tag tem um botão de remover com nome próprio", () => {
+    render(
+      <>
+        <Tag onRemove={() => {}}>VIP</Tag>
+        <Tag onRemove={() => {}}>Atrasado</Tag>
+      </>,
+    );
     expect(screen.getByRole("button", { name: "Remover VIP" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Remover Atrasado" })).toBeInTheDocument();
   });
 });

@@ -56,7 +56,7 @@ export const ComIconeERemover: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
       {variants.map((variant) => (
-        <Tag key={variant} variant={variant} onRemove={() => {}} removeLabel={`Remover ${labels[variant]}`}>
+        <Tag key={variant} variant={variant} onRemove={() => {}}>
           <Icon name="circle-info" />
           {labels[variant]}
         </Tag>
