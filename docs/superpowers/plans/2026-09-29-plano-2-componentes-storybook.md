@@ -2243,6 +2243,7 @@ function Combobox({
               <span className="grid min-w-0 gap-1">
                 <span
                   id={labelId}
+                  data-slot="combobox-label"
                   data-status={status}
                   className={cn(
                     "text-foreground-secondary transition-all",
@@ -2261,7 +2262,7 @@ function Combobox({
               </span>
             ) : (
               <span className="flex min-w-0 items-center gap-2 text-sm">
-                <span id={labelId} data-status={status} className={cn("text-foreground-secondary", status && statusText[status])}>
+                <span id={labelId} data-slot="combobox-label" data-status={status} className={cn("text-foreground-secondary", status && statusText[status])}>
                   {label}
                   {marker}
                 </span>
@@ -2305,7 +2306,12 @@ function Combobox({
       </Popover>
       {name ? <input type="hidden" name={name} value={value ?? ""} /> : null}
       {description ? (
-        <p id={descriptionId} data-status={status} className={cn("text-xs leading-3 text-muted-foreground", status && statusText[status])}>
+        <p
+          id={descriptionId}
+          data-slot="combobox-description"
+          data-status={status}
+          className={cn("text-xs leading-3 text-muted-foreground", status && statusText[status])}
+        >
           {description}
         </p>
       ) : null}
@@ -2729,11 +2735,11 @@ import "../src/styles.css";
 // Exceções de contraste aprovadas pelo dono em 2026-09-29 (ver tabela de decisões do Plano 2):
 // Tag info/highlight e textos de campo com status success/warning mantêm as cores do Figma.
 // O contraste continua sendo verificado em todos os outros elementos.
+const STATUS_TEXT_SLOTS = ["label", "input-field-description", "combobox-label", "combobox-description"];
 const CONTRAST_EXCEPTIONS = [
   '[data-slot="tag"][data-variant="info"]',
   '[data-slot="tag"][data-variant="highlight"]',
-  '[data-status="success"]',
-  '[data-status="warning"]',
+  ...STATUS_TEXT_SLOTS.flatMap((slot) => ["success", "warning"].map((status) => `[data-slot="${slot}"][data-status="${status}"]`)),
 ];
 
 const preview: Preview = {
