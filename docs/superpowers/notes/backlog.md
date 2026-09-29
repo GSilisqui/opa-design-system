@@ -23,3 +23,7 @@ Itens menores levantados nas revisões. Nenhum bloqueia o uso atual. Marque com 
 - [ ] Nomes de radius no padrão Tailwind v4 (2px `rounded-xs`, 4px `rounded-sm`).
 - [ ] Renomear `Default/lg/Regular28` → `Default/lg/Regular` (ação do dono).
 - [ ] Estados de hover/active/disabled seguindo a abordagem do código (mistura com foreground, opacidade 40%).
+
+## Figma (construção da biblioteca, 2026-09-29)
+
+- [ ] **Combobox Option:** no Light, `selected` (muted `#e7e9ed`) e `hover` (accent 10% sobre popover ≈ `#e9eaee`) ficam quase iguais. Mesmo resultado no código. Avaliar um token de seleção mais forte ou um check sutil.

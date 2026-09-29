@@ -3,8 +3,8 @@
   "fileKey": "UW4As1KdSaPboQ3sNMAbCi",
   "fileUrl": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi",
   "referenceFileKey": "7FS6JptRPLnco6VSAEAOAH",
-  "phase": "phase2",
-  "step": "P2.a",
+  "phase": "done",
+  "step": "library-complete",
   "entities": {
     "collections": {
       "Primitives": "VariableCollectionId:4:2",
@@ -34,8 +34,64 @@
         "focus/halo-warning": "S:aac5b5762ade431e721d76758db8e2b2e1512d98,"
       }
     },
-    "pages": {},
-    "components": {},
+    "pages": {
+      "Capa": "0:1",
+      "Comece aqui": "7:52",
+      "Cores": "7:54",
+      "Tipografia": "7:55",
+      "Espaçamento e raio": "7:56",
+      "Efeitos": "7:57",
+      "Ícones": "7:58",
+      "Button": "7:60",
+      "Input": "7:61",
+      "Tag": "7:62",
+      "Dialog": "7:63",
+      "Combobox": "7:64",
+      "Changelog": "7:66"
+    },
+    "components": {
+      "icons": {
+        "regular/angle-down": "9:4",
+        "regular/angle-up": "9:7",
+        "regular/check": "9:10",
+        "regular/circle-check": "9:13",
+        "regular/circle-exclamation": "9:16",
+        "regular/circle-info": "9:19",
+        "regular/copy": "9:22",
+        "regular/ellipsis": "9:25",
+        "regular/face-smile": "9:28",
+        "regular/magnifying-glass": "9:31",
+        "regular/pen": "9:34",
+        "regular/plus": "9:37",
+        "regular/trash": "9:40",
+        "regular/triangle-exclamation": "9:43",
+        "regular/xmark": "9:46",
+        "solid/angle-down": "9:49",
+        "solid/angle-up": "9:52",
+        "solid/check": "9:55",
+        "solid/circle-check": "9:58",
+        "solid/circle-exclamation": "9:61",
+        "solid/circle-info": "9:64",
+        "solid/copy": "9:67",
+        "solid/ellipsis": "9:70",
+        "solid/face-smile": "9:73",
+        "solid/magnifying-glass": "9:76",
+        "solid/pen": "9:79",
+        "solid/plus": "9:82",
+        "solid/trash": "9:85",
+        "solid/triangle-exclamation": "9:88",
+        "solid/xmark": "9:91"
+      },
+      "Button": "10:1010",
+      "InputField": "11:138",
+      "Input": "11:154",
+      "Tag": "11:253",
+      "Dialog": "11:357",
+      "_Dialog/Body": "11:355",
+      "Combobox": "12:127",
+      "Combobox Option": "12:136",
+      "Combobox Popover": "12:137"
+    },
     "modes": {
       "Primitives/Value": "4:0",
       "Semantic/Light": "4:1",
@@ -43,6 +99,23 @@
       "Component/Value": "4:3",
       "Spacing/Value": "4:4",
       "Radius/Value": "4:5"
+    },
+    "docFrames": {
+      "Capa": "7:67",
+      "Comece aqui": "7:79",
+      "Cores": "7:115",
+      "Tipografia": "7:977",
+      "Espaçamento e raio": "8:2",
+      "Efeitos": "8:132",
+      "Ícones": "9:92",
+      "Button": "10:1046",
+      "Input": "13:2",
+      "Tag": "13:66",
+      "Dialog": "14:8",
+      "Dialog example": "14:35",
+      "Combobox": "14:106",
+      "Combobox example": "14:148",
+      "Changelog": "14:326"
     }
   },
   "decisions": [
@@ -66,6 +139,27 @@
     "P1.e",
     "P1.f",
     "P1.g",
-    "P1.h"
+    "P1.h",
+    "P2.a",
+    "P2.b",
+    "P2.c",
+    "P2.d",
+    "P3.a",
+    "P3.b",
+    "P3.c",
+    "P3.d",
+    "P3.e",
+    "P3.f",
+    "P3.docs",
+    "P4.a",
+    "P4.b",
+    "P4.c",
+    "P4.d",
+    "P4.e"
+  ],
+  "notes": [
+    "figma.createAutoLayout frames get a default white fill: always set fills=[] on inner layout frames",
+    "resize() resets primaryAxisSizingMode to FIXED: set AUTO after resize for hug components",
+    "Default variant = top-left variant on canvas (not child order)"
   ]
 }
