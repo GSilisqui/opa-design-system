@@ -19,7 +19,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Figma (Modal): https://www.figma.com/design/7FS6JptRPLnco6VSAEAOAH/?node-id=6377-1529 · Sem X por padrão; `showCloseButton` para ativar. Footer: Neutral (cancelar) + Primary.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=11-357 · Sem X por padrão; `showCloseButton` para ativar. Footer: Neutral (cancelar) + Primary.",
       },
     },
   },

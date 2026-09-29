@@ -16,7 +16,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Figma: https://www.figma.com/design/7FS6JptRPLnco6VSAEAOAH/?node-id=36-2938 · Red Quiet = `destructive-quiet`, Green Quiet = `success-quiet`. Botão só com ícone precisa de `aria-label`.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=10-1010 · Red Quiet = `destructive-quiet`, Green Quiet = `success-quiet`. Botão só com ícone precisa de `aria-label`.",
       },
     },
   },

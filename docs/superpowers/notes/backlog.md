@@ -26,6 +26,6 @@ Itens menores levantados nas revisões. Nenhum bloqueia o uso atual. Marque com 
 
 ## Figma (construção da biblioteca, 2026-09-29)
 
-- [ ] **Links do Figma antigo no código:** as stories (`parameters.docs.description.component`) e a tabela de `packages/ui/README.md` ainda apontam para o "Component Library" (`7FS6JptRPLnco6VSAEAOAH`). Trocar pelos nós do arquivo novo (`manifest/components.json → figma.url`).
+- [x] **Links do Figma antigo no código:** (resolvido: stories e README apontam para o arquivo novo) as stories (`parameters.docs.description.component`) e a tabela de `packages/ui/README.md` ainda apontam para o "Component Library" (`7FS6JptRPLnco6VSAEAOAH`). Trocar pelos nós do arquivo novo (`manifest/components.json → figma.url`).
 
 - [ ] **Combobox Option:** no Light, `selected` (muted `#e7e9ed`) e `hover` (accent 10% sobre popover ≈ `#e9eaee`) ficam quase iguais. Mesmo resultado no código. Avaliar um token de seleção mais forte ou um check sutil.

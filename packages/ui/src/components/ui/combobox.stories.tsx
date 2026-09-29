@@ -22,7 +22,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Figma (Select): https://www.figma.com/design/7FS6JptRPLnco6VSAEAOAH/?node-id=885-3949 · Todo seletor do DS é um Combobox com busca. Seleção múltipla: fase 2.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=12-127 · Todo seletor do DS é um Combobox com busca. Seleção múltipla: fase 2.",
       },
     },
   },
