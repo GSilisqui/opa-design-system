@@ -1,15 +1,26 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "agentGuidance": false,
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", "generated/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        "generated/**"
+      ]
     },
     "test": {
-      "dependsOn": ["^build", "build"]
+      "dependsOn": [
+        "^build",
+        "build"
+      ]
     },
     "typecheck": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "lint": {}
   }
