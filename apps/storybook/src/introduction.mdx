@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introdução" />
+
+# OPA Design System
+
+Componentes do produto, baseados em Shadcn/Radix e no Figma "Component Library".
+
+```bash
+pnpm add @opa/ui@npm:@gsilisqui/ui
+```
+
+```css
+/* globals.css */
+@import "tailwindcss";
+@import "@opa/ui/styles.css";
+```
+
+```tsx
+import { Button, Icon } from "@opa/ui";
+```
+
+Regras: use só componentes do DS e tokens semânticos. Precisa de algo que não existe? Procure no Shadcn/Radix e proponha a entrada no DS. Nada é criado do zero sem aprovação.
