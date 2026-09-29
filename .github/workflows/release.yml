@@ -15,18 +15,19 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: pnpm
           registry-url: https://npm.pkg.github.com
           scope: "@gsilisqui"
       - run: pnpm install --frozen-lockfile
-      - uses: changesets/action@v1
+      - run: pnpm verify
+      # v2 = Changesets CLI v3. github-token usa github.token por padrão.
+      - uses: changesets/action@v2
         with:
-          publish: pnpm release
+          publish-script: pnpm release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -23,6 +23,9 @@ Design System da OPA baseado em Shadcn/Radix UI. Spec: `docs/superpowers/specs/2
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
+- Localmente, `GITHUB_TOKEN` é um Personal Access Token (classic) com o escopo `read:packages`.
+- No CI de outro repositório, o `GITHUB_TOKEN` do Actions só instala os pacotes depois que aquele repositório for liberado em *Package settings → Manage Actions access* de cada pacote.
+
 `package.json`:
 ```json
 "dependencies": { "@opa/tokens": "npm:@gsilisqui/tokens@^0.1.0" },
@@ -34,6 +37,8 @@ CSS:
 @import "tailwindcss";
 @import "@opa/tokens/theme.css";
 ```
+
+As fontes (Inter e JetBrains Mono) vêm junto e funcionam com **Vite** (`@tailwindcss/vite`) e **Next.js** (`@tailwindcss/postcss`). O `@tailwindcss/cli` não reescreve os caminhos das fontes; nesse caso, carregue as fontes por conta própria.
 
 `eslint.config.js`:
 ```js
