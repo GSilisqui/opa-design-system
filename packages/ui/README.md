@@ -48,7 +48,7 @@ Dark mode: coloque a classe `dark` no `<html>`.
 | `Dialog` | Modal `6377:1529` | `showCloseButton` opcional |
 | `Combobox` | Select `885:3949` | Seleção única com busca |
 
-Documentação completa: Storybook (`pnpm --filter storybook dev`).
+Documentação completa: Storybook (`pnpm --filter opa-storybook dev`).
 
 ## Desenvolvimento
 

@@ -26,7 +26,7 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: "@gsilisqui"
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter storybook exec playwright install --with-deps chromium
+      - run: pnpm --filter opa-storybook exec playwright install --with-deps chromium
       - run: pnpm verify
       # v2 = Changesets CLI v3. github-token usa github.token por padrão.
       - uses: changesets/action@v2

@@ -2648,7 +2648,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 ```json
 {
-  "name": "storybook",
+  "name": "opa-storybook",
   "private": true,
   "type": "module",
   "scripts": {
@@ -2661,13 +2661,15 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 }
 ```
 
+> O app se chama `opa-storybook`, e não `storybook`: com o mesmo nome do pacote npm `storybook`, o Changesets confunde o app com a dependência e o `changeset status` quebra.
+
 - [ ] **Step 2: Instalar** (com o token exportado)
 
 ```bash
 export FONTAWESOME_PACKAGE_TOKEN="$(powershell -NoProfile -Command "[Environment]::GetEnvironmentVariable('FONTAWESOME_PACKAGE_TOKEN','User')" | tr -d '\r')"
-pnpm --filter storybook add react@^19.3.0 react-dom@^19.3.0 "@opa/ui@workspace:@gsilisqui/ui@*" "@opa/tokens@workspace:@gsilisqui/tokens@*" @fortawesome/pro-regular-svg-icons@^7.3.1 @fortawesome/pro-solid-svg-icons@^7.3.1
-pnpm --filter storybook add -D storybook@10.6.0 @storybook/react-vite@10.6.0 @storybook/addon-docs@10.6.0 @storybook/addon-a11y@10.6.0 @storybook/addon-themes@10.6.0 @storybook/addon-vitest@10.6.0 vite@^8.3.1 @vitejs/plugin-react@^6.1.1 tailwindcss@^4.3.3 @tailwindcss/vite@^4.3.3 vitest@4.1.11 @vitest/browser@4.1.11 @vitest/browser-playwright@4.1.11 playwright typescript@~6.0 @types/node @types/react@^19.3.0 @types/react-dom@^19.3.0
-pnpm --filter storybook exec playwright install chromium
+pnpm --filter opa-storybook add react@^19.3.0 react-dom@^19.3.0 "@opa/ui@workspace:@gsilisqui/ui@*" "@opa/tokens@workspace:@gsilisqui/tokens@*" @fortawesome/pro-regular-svg-icons@^7.3.1 @fortawesome/pro-solid-svg-icons@^7.3.1
+pnpm --filter opa-storybook add -D storybook@10.6.0 @storybook/react-vite@10.6.0 @storybook/addon-docs@10.6.0 @storybook/addon-a11y@10.6.0 @storybook/addon-themes@10.6.0 @storybook/addon-vitest@10.6.0 vite@^8.3.1 @vitejs/plugin-react@^6.1.1 tailwindcss@^4.3.3 @tailwindcss/vite@^4.3.3 vitest@4.1.11 @vitest/browser@4.1.11 @vitest/browser-playwright@4.1.11 playwright typescript@~6.0 @types/node @types/react@^19.3.0 @types/react-dom@^19.3.0
+pnpm --filter opa-storybook exec playwright install chromium
 ```
 Expected: instalação sem erros. O `addon-vitest` 10.6 exige Vitest 4, por isso a versão fica travada **só neste app**.
 
@@ -2799,7 +2801,7 @@ export default defineConfig({
 });
 ```
 
-Se a API do `addon-vitest` 10.6 for diferente (nomes de export, opções), rode `pnpm --filter storybook exec storybook add @storybook/addon-vitest` num branch descartável, compare os arquivos que ele gera e adote o formato gerado. Registre a diferença.
+Se a API do `addon-vitest` 10.6 for diferente (nomes de export, opções), rode `pnpm --filter opa-storybook exec storybook add @storybook/addon-vitest` num branch descartável, compare os arquivos que ele gera e adote o formato gerado. Registre a diferença.
 
 - [ ] **Step 8: Criar as Fundações**
 
@@ -3064,12 +3066,12 @@ Regras: use só componentes do DS e tokens semânticos. Precisa de algo que não
 
 - [ ] **Step 9: Rodar o Storybook e os testes**
 
-Run: `pnpm --filter storybook run build && pnpm --filter storybook run test`
+Run: `pnpm --filter opa-storybook run build && pnpm --filter opa-storybook run test`
 Expected: build gera `apps/storybook/storybook-static` com uma página **Docs** por componente (autodocs, com o link do Figma); os testes rodam todas as stories no Chromium, sem violações de acessibilidade. Violação real → **corrija o componente ou a story** (ex.: `aria-label` faltando), não desligue a regra. As únicas exceções são as de `CONTRAST_EXCEPTIONS` no `preview.tsx`. Se o axe não aceitar o seletor composto com `:not(...)`, troque pela desativação `color-contrast` **só nas stories** que mostram esses elementos, citando a decisão, e registre. Contraste do `destructive` no Dark (decisão de tokens 7) não é testado porque as stories rodam no tema Light.
 
 - [ ] **Step 10: Conferir visualmente** (opcional, se o executor tiver navegador)
 
-Run: `pnpm --filter storybook run dev`, abra `http://localhost:6006` e alterne Light/Dark na barra.
+Run: `pnpm --filter opa-storybook run dev`, abra `http://localhost:6006` e alterne Light/Dark na barra.
 
 - [ ] **Step 11: Commit**
 
@@ -3378,7 +3380,7 @@ Nos dois workflows, no job, acrescente o token do FA (o `.npmrc` da raiz lê a v
 ```
 E, logo depois de `pnpm install --frozen-lockfile`, instale o Chromium dos testes do Storybook:
 ```yaml
-      - run: pnpm --filter storybook exec playwright install --with-deps chromium
+      - run: pnpm --filter opa-storybook exec playwright install --with-deps chromium
 ```
 
 - [ ] **Step 2: `.changeset/ui-initial-release.md`**
@@ -3444,7 +3446,7 @@ Dark mode: coloque a classe `dark` no `<html>`.
 | `Dialog` | Modal `6377:1529` | `showCloseButton` opcional |
 | `Combobox` | Select `885:3949` | Seleção única com busca |
 
-Documentação completa: Storybook (`pnpm --filter storybook dev`).
+Documentação completa: Storybook (`pnpm --filter opa-storybook dev`).
 
 ## Desenvolvimento
 
@@ -3482,7 +3484,7 @@ Deploy é ação externa e usa a conta do dono. **Pergunte antes.** Instruções
 
 1. Em vercel.com → **Add New… → Project** → importar `GSilisqui/opa-design-system`.
 2. **Root Directory:** `apps/storybook`. **Framework:** Other.
-3. **Build Command:** `cd ../.. && pnpm turbo run build --filter=storybook`. **Output Directory:** `storybook-static`. **Install Command:** `cd ../.. && pnpm install --frozen-lockfile`.
+3. **Build Command:** `cd ../.. && pnpm turbo run build --filter=opa-storybook`. **Output Directory:** `storybook-static`. **Install Command:** `cd ../.. && pnpm install --frozen-lockfile`.
 4. **Environment Variables:** `FONTAWESOME_PACKAGE_TOKEN` (mesmo valor do GitHub).
 5. Deploy. Cada PR ganha uma URL de preview.
 

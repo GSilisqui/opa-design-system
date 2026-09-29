@@ -1,5 +1,5 @@
 {
-  "name": "storybook",
+  "name": "opa-storybook",
   "private": true,
   "type": "module",
   "scripts": {
