@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["node"],
+    "paths": {
+      "@/*": ["../../packages/ui/src/*"],
+      "@opa/ui": ["../../packages/ui/src/index.ts"]
+    }
+  },
+  "include": ["src", ".storybook", "vitest.config.ts"]
+}

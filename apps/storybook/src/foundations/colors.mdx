@@ -1,0 +1,20 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Palette, SemanticColors } from "./colors";
+
+<Meta title="Fundações/Cores" />
+
+# Cores
+
+Use sempre os **tokens semânticos** (`bg-primary`, `text-foreground-secondary`, `border-border`). Cores cruas (`--opa-*`), hex e a paleta padrão do Tailwind são bloqueadas pelo lint `opa/no-raw-design-values`.
+
+Fonte: `packages/tokens/src/*.json`. Os valores abaixo são lidos do CSS em tempo real.
+
+## Semânticos e componente
+
+<SemanticColors />
+
+## Paleta (primitivos)
+
+Só para consulta: a família `-dark` guarda os valores do modo Dark. Nunca use estas cores direto.
+
+<Palette />

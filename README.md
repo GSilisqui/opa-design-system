@@ -8,6 +8,7 @@ Design System da OPA baseado em Shadcn/Radix UI. Spec: `docs/superpowers/specs/2
 |---|---|---|
 | `@opa/tokens` | `@gsilisqui/tokens` | Tokens (JSON DTCG → `theme.css` para Tailwind v4 e `tokens.css` puro) |
 | `@opa/eslint-config` | `@gsilisqui/eslint-config` | Regra `opa/no-raw-design-values` |
+| `@opa/ui` | `@gsilisqui/ui` | Componentes (Shadcn/Radix + Font Awesome Pro). Ver `packages/ui/README.md` |
 
 ## Tokens
 

@@ -1,0 +1,25 @@
+{
+  "name": "smoke-next",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "next build && node scripts/assert-build.mjs",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@fortawesome/pro-regular-svg-icons": "^7.3.1",
+    "@fortawesome/pro-solid-svg-icons": "^7.3.1",
+    "@opa/ui": "workspace:@gsilisqui/ui@*",
+    "next": "^16.3.7",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3"
+  }
+}

@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@import "../../../packages/ui/src/styles.css";
+@source "./";
+/* A página de Tipografia monta text-${name} em runtime; estas classes precisam existir. */
+@source inline("text-{xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl,8xl,9xl}");

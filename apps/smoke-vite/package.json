@@ -1,0 +1,25 @@
+{
+  "name": "smoke-vite",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build && node scripts/assert-build.mjs",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@fortawesome/pro-regular-svg-icons": "^7.3.1",
+    "@fortawesome/pro-solid-svg-icons": "^7.3.1",
+    "@opa/ui": "workspace:@gsilisqui/ui@*",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.1"
+  }
+}
