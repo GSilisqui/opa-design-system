@@ -21,8 +21,10 @@ describe("Combobox", () => {
 
   it("abre e lista as opções", async () => {
     render(<Combobox label="Departamento" options={options} />);
-    await userEvent.click(screen.getByRole("combobox", { name: "Departamento" }));
-    expect(screen.getByRole("combobox", { name: "Departamento" })).toHaveAttribute("aria-expanded", "true");
+    // Aberto, a busca também é um combobox "Departamento": guarda o trigger antes de abrir.
+    const trigger = screen.getByRole("combobox", { name: "Departamento" });
+    await userEvent.click(trigger);
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
     expect(screen.getAllByRole("option")).toHaveLength(4);
   });
 
@@ -87,6 +89,83 @@ describe("Combobox", () => {
 
   it("envia o valor em formulários quando recebe name", () => {
     const { container } = render(<Combobox label="Departamento" options={options} defaultValue="comercial" name="departamento" />);
-    expect(container.querySelector('input[type="hidden"][name="departamento"]')).toHaveValue("comercial");
+    expect(container.querySelector('input[name="departamento"]')).toHaveValue("comercial");
+  });
+
+  it("busca, lista e popup são nomeados pelo label", async () => {
+    render(<Combobox label="Departamento" options={options} required />);
+    await userEvent.click(screen.getByRole("combobox", { name: "Departamento" }));
+    expect(document.activeElement).toHaveAccessibleName("Departamento");
+    expect(document.activeElement).toHaveAttribute("cmdk-input");
+    expect(screen.getByRole("listbox", { name: "Departamento" })).toBeInTheDocument();
+    expect(screen.getByRole("dialog", { name: "Departamento" })).toBeInTheDocument();
+  });
+
+  it("ao abrir, destaca o valor atual; Enter não troca o valor", async () => {
+    const onValueChange = vi.fn();
+    render(<Combobox label="Departamento" options={options} defaultValue="financeiro" onValueChange={onValueChange} />);
+    screen.getByRole("combobox", { name: "Departamento" }).focus();
+    await userEvent.keyboard("{Enter}");
+    expect(screen.getByRole("option", { name: "Financeiro" })).toHaveAttribute("aria-selected", "true");
+    await userEvent.keyboard("{Enter}");
+    for (const [next] of onValueChange.mock.calls) expect(next).toBe("financeiro");
+  });
+
+  it("required bloqueia o envio do formulário enquanto está vazio", async () => {
+    render(
+      <form data-testid="form">
+        <Combobox label="Departamento" options={options} name="departamento" required />
+      </form>,
+    );
+    const form = screen.getByTestId("form") as HTMLFormElement;
+    expect(form.checkValidity()).toBe(false);
+    await userEvent.click(screen.getByRole("combobox", { name: "Departamento" }));
+    await userEvent.click(screen.getByRole("option", { name: "Suporte" }));
+    expect(form.checkValidity()).toBe(true);
+  });
+
+  it("desabilitado não envia o valor", () => {
+    render(
+      <form data-testid="form">
+        <Combobox label="Departamento" options={options} name="departamento" defaultValue="comercial" disabled />
+      </form>,
+    );
+    const data = new FormData(screen.getByTestId("form") as HTMLFormElement);
+    expect(data.has("departamento")).toBe(false);
+  });
+
+  it("campo inválido devolve o foco ao trigger", () => {
+    const { container } = render(<Combobox label="Departamento" options={options} name="departamento" required />);
+    const native = container.querySelector('input[name="departamento"]') as HTMLInputElement;
+    expect(native).toHaveAttribute("aria-hidden", "true");
+    expect(native).toHaveAttribute("tabindex", "-1");
+    native.focus();
+    expect(screen.getByRole("combobox", { name: "Departamento" })).toHaveFocus();
+  });
+
+  it("a busca olha o label e as palavras-chave, não o value", async () => {
+    const cidades: ComboboxOption[] = [
+      { value: "101", label: "Recife" },
+      { value: "202", label: "São Paulo" },
+    ];
+    render(<Combobox label="Cidade" options={cidades} searchPlaceholder="Buscar" />);
+    await userEvent.click(screen.getByRole("combobox", { name: "Cidade" }));
+    const search = screen.getByPlaceholderText("Buscar");
+    await userEvent.type(search, "1");
+    expect(screen.queryByRole("option", { name: "Recife" })).not.toBeInTheDocument();
+    await userEvent.clear(search);
+    await userEvent.type(search, "rec");
+    expect(screen.getAllByRole("option").map((o) => o.textContent)).toEqual(["Recife"]);
+    await userEvent.clear(search);
+    await userEvent.type(search, "sao");
+    expect(screen.getAllByRole("option").map((o) => o.textContent)).toEqual(["São Paulo"]);
+  });
+
+  it("onSelect usa o value original, mesmo com espaços", async () => {
+    const onValueChange = vi.fn();
+    render(<Combobox label="Departamento" options={[{ value: " vip ", label: "VIP" }]} onValueChange={onValueChange} />);
+    await userEvent.click(screen.getByRole("combobox", { name: "Departamento" }));
+    await userEvent.click(screen.getByRole("option", { name: "VIP" }));
+    expect(onValueChange).toHaveBeenCalledWith(" vip ");
   });
 });

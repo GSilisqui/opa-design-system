@@ -34,6 +34,15 @@ const statusText: Record<ComboboxStatus, string> = {
   warning: "text-warning",
 };
 
+// Busca sem acento e sem caixa. Pontua só o label e as palavras-chave: o value (ex.: um id) nunca casa com a busca.
+const normalize = (text: string) => text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+
+function filterByLabelAndKeywords(_value: string, search: string, keywords?: string[]) {
+  const term = normalize(search.trim());
+  if (!term) return 1;
+  return (keywords ?? []).some((keyword) => normalize(keyword).includes(term)) ? 1 : 0;
+}
+
 type ComboboxProps = {
   label: string;
   options: ComboboxOption[];
@@ -82,6 +91,8 @@ function Combobox({
   const descriptionId = description ? `${triggerId}-description` : undefined;
   const floated = open || Boolean(selected);
 
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+
   function handleSelect(next: string) {
     setInnerValue(next);
     onValueChange?.(next);
@@ -99,6 +110,7 @@ function Combobox({
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild disabled={disabled}>
           <button
+            ref={triggerRef}
             id={triggerId}
             type="button"
             role="combobox"
@@ -156,10 +168,11 @@ function Combobox({
             </span>
           </button>
         </PopoverTrigger>
-        <PopoverContent align="start" className="w-(--radix-popover-trigger-width) p-0">
-          <Command>
+        <PopoverContent align="start" aria-labelledby={labelId} className="w-(--radix-popover-trigger-width) p-0">
+          {/* defaultValue: ao abrir, o item destacado é o valor atual (não o primeiro), então Enter não troca a seleção. */}
+          <Command label={label} defaultValue={value?.trim() || undefined} filter={filterByLabelAndKeywords}>
             <CommandInput placeholder={searchPlaceholder} />
-            <CommandList>
+            <CommandList label={label}>
               <CommandEmpty>{emptyMessage}</CommandEmpty>
               <CommandGroup>
                 {options.map((option) => (
@@ -169,7 +182,7 @@ function Combobox({
                     keywords={[option.label, ...(option.keywords ?? [])]}
                     disabled={option.disabled}
                     data-checked={option.value === value ? "true" : undefined}
-                    onSelect={handleSelect}
+                    onSelect={() => handleSelect(option.value)}
                   >
                     {option.label}
                   </CommandItem>
@@ -179,7 +192,23 @@ function Combobox({
           </Command>
         </PopoverContent>
       </Popover>
-      {name ? <input type="hidden" name={name} value={value ?? ""} /> : null}
+      {name || required ? (
+        // Campo nativo escondido (como o fallback do Radix Select): participa do envio e da validação do formulário.
+        // Desabilitado, não é enviado; inválido ou focado, devolve o foco ao trigger.
+        <input
+          type="text"
+          name={name}
+          value={value ?? ""}
+          required={required}
+          disabled={disabled}
+          tabIndex={-1}
+          aria-hidden="true"
+          className="sr-only"
+          onChange={() => {}}
+          onInvalid={() => triggerRef.current?.focus()}
+          onFocus={() => triggerRef.current?.focus()}
+        />
+      ) : null}
       {description ? (
         <p
           id={descriptionId}
