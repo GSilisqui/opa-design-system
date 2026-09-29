@@ -1,0 +1,31 @@
+{
+  "name": "@gsilisqui/eslint-config",
+  "version": "0.0.0",
+  "description": "Regras de lint do OPA Design System. Importe como @opa/eslint-config.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "eslint": ">=9 <11"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSilisqui/opa-design-system.git",
+    "directory": "packages/eslint-config"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "vitest": "^5.0.2"
+  }
+}
