@@ -1,6 +1,6 @@
 {
   "name": "@gsilisqui/tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Tokens do OPA Design System. Fonte: JSON (W3C DTCG). Importe como @opa/tokens.",
   "type": "module",
   "exports": {
