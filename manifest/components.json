@@ -91,7 +91,7 @@
         {
           "figma": "leadingIconName",
           "react": "children",
-          "notes": "INSTANCE_SWAP de ícone: `regular/<name>` → `<Icon name=\"<name>\" />` antes do texto."
+          "notes": "INSTANCE_SWAP de ícone: `regular/<name>` → `<Icon name=\"<name>\" />` antes do texto. Em layout=icon-only é o único ícone exibido."
         },
         {
           "figma": "trailingIcon",
@@ -123,12 +123,18 @@
           "values": [
             "sm",
             "default",
-            "lg",
-            "icon-sm",
-            "icon",
-            "icon-lg"
+            "lg"
           ],
-          "notes": "icon-sm/icon/icon-lg = botão só com ícone: exige `aria-label` no código."
+          "notes": "24/36/48px. Vale para os dois layouts."
+        },
+        {
+          "figma": "layout",
+          "react": "layout",
+          "values": [
+            "default",
+            "icon-only"
+          ],
+          "notes": "icon-only = quadrado só com o ícone (aria-label obrigatório no código). Independente do size."
         },
         {
           "figma": "state",

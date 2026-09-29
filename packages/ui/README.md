@@ -42,7 +42,7 @@ Dark mode: coloque a classe `dark` no `<html>`.
 | Componente | Figma | Notas |
 |---|---|---|
 | `Icon` | — | Font Awesome 7 Pro, `variant="regular" \| "solid"` |
-| `Button` | Button `10:1010` | `primary`, `destructive`, `neutral`, `quiet`, `outline`, `destructive-quiet`, `success-quiet` · `sm`, `default`, `lg`, `icon-sm`, `icon`, `icon-lg` |
+| `Button` | Button `10:1010` | `primary`, `destructive`, `neutral`, `quiet`, `outline`, `destructive-quiet`, `success-quiet` · `size`: `sm`, `default`, `lg` · `layout`: `default`, `icon-only` |
 | `InputField` / `Input` / `Label` | InputField `11:138` · Input `11:154` | `InputField` tem label flutuante (`default`) ou inline (`sm`) |
 | `Tag` | Tag `11:253` | 7 variantes, `onRemove` |
 | `Dialog` | Dialog `11:357` | `showCloseButton` opcional |
