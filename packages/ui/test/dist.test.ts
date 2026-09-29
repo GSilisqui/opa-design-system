@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
@@ -37,6 +37,12 @@ describe.runIf(existsSync(dist))("dist publicado", () => {
     expect(read("index.d.ts")).toContain("Combobox");
     expect(existsSync(join(dist, "components/ui/icon-registry.d.ts"))).toBe(true);
     expect(read("components/ui/icon-registry.d.ts")).toContain('"magnifying-glass"');
+  });
+
+  it("todo .js do dist tem o seu .d.ts (o vite-plugin-dts pula arquivos com TS2883 sem falhar o build)", () => {
+    const jsFiles = (readdirSync(dist, { recursive: true }) as string[]).filter((file) => file.endsWith(".js"));
+    const missing = jsFiles.filter((file) => !existsSync(join(dist, file.replace(/\.js$/, ".d.ts"))));
+    expect(missing).toEqual([]);
   });
 
   it("styles.css embute o tema com @import no topo e @source do dist", () => {
