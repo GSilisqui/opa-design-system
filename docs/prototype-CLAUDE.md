@@ -82,7 +82,7 @@ import { Button, Combobox, Icon, InputField, Tag } from "@opa/ui";
 ```
 
 - Variantes e tamanhos: exatamente os do manifesto (ex.: Button `primary | destructive | neutral | quiet | outline |
-  destructive-quiet | success-quiet`; `sm | default | lg | icon-sm | icon | icon-lg`). Botão só com ícone precisa de `aria-label`.
+  destructive-quiet | success-quiet`; `size`: `sm | default | lg`; `layout`: `default | icon-only`). Botão só com ícone (`layout="icon-only"`) precisa de `aria-label`.
 - Ícones: `<Icon name="…" />` (regular) e `variant="solid"` para estados ativos/selecionados.
 - Dark mode: classe `dark` no `<html>`.
 - Tipografia com nomes do Figma: `text-sm`=12px, `text-base`=14px, `text-lg`=16px; pesos `font-normal | font-medium | font-bold`.

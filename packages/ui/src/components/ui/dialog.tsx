@@ -61,7 +61,7 @@ function DialogContent({
         {children}
         {showCloseButton ? (
           <DialogPrimitive.Close asChild>
-            <Button variant="quiet" size="icon" aria-label={closeLabel} className="absolute top-3 right-3">
+            <Button variant="quiet" layout="icon-only" aria-label={closeLabel} className="absolute top-3 right-3">
               <Icon name="xmark" />
             </Button>
           </DialogPrimitive.Close>
