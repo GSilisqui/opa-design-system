@@ -1,7 +1,7 @@
 # OPA Design System — Design
 
 - **Data:** 2026-09-29
-- **Status:** Aprovado em brainstorming, aguardando revisão do spec
+- **Status:** Aprovado em brainstorming; revisão técnica aprovada; aguardando revisão do dono
 - **Autor:** Gabriel Silisqui (com Claude)
 
 ## 1. Contexto e problema
@@ -67,7 +67,9 @@ design-system/
 │   │   │   ├── typography.json
 │   │   │   └── tailwind-scales.json   só para o Figma (spacing/radius/shadow)
 │   │   ├── scripts/build.ts    JSON (DTCG) → CSS
-│   │   └── dist/theme.css      gerado
+│   │   └── generated/          gerado e commitado (fora de dist/)
+│   │       ├── theme.css       para Tailwind v4 (@theme, @custom-variant)
+│   │       └── tokens.css      só variáveis CSS puras, para uso sem Tailwind
 │   └── ui/                     @opa/ui
 │       ├── components.json     config do shadcn CLI
 │       ├── src/components/<nome>/
@@ -104,7 +106,9 @@ design-system/
 import { Button, Icon } from "@opa/ui";
 ```
 
-`@opa/tokens` é pacote separado para permitir uso isolado (protótipos HTML, e-mails, outros apps).
+`@opa/tokens` é pacote separado para permitir uso isolado: `tokens.css` (variáveis CSS puras, sem sintaxe Tailwind) serve para protótipos HTML e outros apps.
+
+**Nomes reais dos pacotes:** no `package.json`, os campos `name` são `@<usuario>/ui`, `@<usuario>/tokens` e `@<usuario>/eslint-config`, porque o GitHub Packages exige o escopo da conta (seção 12). `@opa/*` é o nome de **import**, garantido por alias npm nos consumidores e por alias de workspace no monorepo (`"@opa/ui": "workspace:@<usuario>/ui@*"`). `<usuario>` = usuário do GitHub do dono do DS, definido no setup.
 
 ### 6.1 Build e empacotamento de `@opa/ui`
 
@@ -112,7 +116,8 @@ import { Button, Icon } from "@opa/ui";
 - `react`, `react-dom` e o Kit do Font Awesome são `peerDependencies`; Radix, cva e tailwind-merge são `dependencies`.
 - `dist/styles.css` é gerado no build e contém: o `theme.css` de `@opa/tokens` **copiado para dentro** (o CSS do `@opa/ui` não depende de resolver `@opa/tokens` no consumidor), mais `@source "./";` para o Tailwind do consumidor encontrar as classes nos `.js` do `dist`.
 - `package.json` → `exports`: `"."` (JS + tipos) e `"./styles.css"` → `./dist/styles.css`.
-- O Storybook dentro do monorepo usa `@source` apontando para `packages/ui/src` (hot reload), e não para o `dist`.
+- O Storybook dentro do monorepo importa `packages/ui/src/styles.css` (que importa `packages/tokens/generated/theme.css`) e usa `@source` apontando para `packages/ui/src`. Hot reload sem depender de build prévio.
+- Fontes entram por `@import "@fontsource-variable/inter";` e `@import "@fontsource-variable/jetbrains-mono";` **no topo** do `dist/styles.css`, e não com `@font-face` e `url()` relativo, que quebraria ao copiar o CSS.
 
 ## 7. Tokens
 
@@ -136,19 +141,19 @@ Para o Figma, `packages/tokens/src/tailwind-scales.json` descreve espaçamento, 
 
 **Tipografia:**
 - `--font-sans: Inter` para todo texto; `--font-mono: JetBrains Mono` para código.
-- Arquivos de fonte entregues pelo DS: `@fontsource-variable/inter` e `@fontsource-variable/jetbrains-mono` são dependências de `@opa/tokens`, e o `@font-face` já vem incluído no CSS do pacote. Sem `next/font`, para manter o pacote agnóstico de framework.
+- Arquivos de fonte entregues pelo DS: `@fontsource-variable/inter` e `@fontsource-variable/jetbrains-mono`, importados via `@import` no CSS do pacote (seção 6.1). Sem `next/font`, para manter o pacote agnóstico de framework.
 - Nomenclatura Tailwind (`text-xs … text-4xl`) com **valores próprios** (tamanho + altura de linha) extraídos dos estilos do Figma (`Default/{tamanho}/{peso}`), sobrescrevendo o `@theme`.
 - Pesos: os existentes no Figma (Regular, Medium, Bold e outros que forem encontrados).
 
 ### 7.3 Formato e build
 
 - Fonte de verdade: JSON no formato **W3C Design Tokens (DTCG)** em `packages/tokens/src`.
-- `build.ts` gera `theme.css` com:
+- `build.ts` gera `generated/tokens.css` (só `:root`/`.dark` com variáveis) e `generated/theme.css` com:
   - `@custom-variant dark (&:where(.dark, .dark *));`: faz o `dark:` do Tailwind seguir a classe `.dark`, e não o tema do sistema operacional
   - `:root { --opa-* }`: primitivos (não viram utilitários do Tailwind)
   - `:root { --primary … }` e `.dark { … }`: semânticos e componente
   - `@theme inline { --color-*: initial; --color-primary: var(--primary); … --font-*; --text-* }`: exposição ao Tailwind
-- O CI falha se o `theme.css` commitado divergir do gerado.
+- Os arquivos de `generated/` são commitados; o CI falha se divergirem do gerado.
 
 ### 7.4 Sincronização Figma ↔ código
 
@@ -238,7 +243,7 @@ Na raiz do DS e copiado para repositórios de protótipo:
 1. Usar só `@opa/ui` e classes semânticas.
 2. Faltou componente → buscar no Shadcn/Radix → propor entrada via `add-component`.
 3. **Nunca criar componente do zero sem avisar e obter aprovação**, explicando por que Shadcn/Radix não resolve.
-4. Proibido MUI, outras bibliotecas de ícones e valores arbitrários.
+4. Proibido MUI e outras bibliotecas de ícones. Valores arbitrários seguem os níveis da Regra 2 (seção 4): nunca remover variantes arbitrárias do Shadcn que são permitidas em `packages/ui`.
 
 ### 11.2 Skills (`.claude/skills/`)
 
@@ -273,7 +278,7 @@ Por componente: nome e chave no Figma, mapa propriedade Figma ↔ prop React, va
 1. `typecheck` + `lint`. A regra de tokens é uma **regra ESLint customizada** (`eslint-plugin-tailwindcss` tem suporte limitado ao v4) que analisa strings de `className`, `cn()` e `cva()` e aplica a Regra 2 (seção 4): cores arbitrárias e `--opa-*` bloqueados em todo lugar; espaçamento/tamanho arbitrário bloqueado só nos consumidores; variantes arbitrárias, variáveis do Radix e `calc()` liberados em `packages/ui`. A regra é publicada como `@opa/eslint-config` para produto e protótipos.
 2. Vitest + Testing Library: renderização por variante, comportamento, navegação por teclado.
 3. Addon a11y do Storybook: falha em violações sérias/críticas.
-4. Build dos pacotes + verificação `theme.css` gerado == commitado.
+4. Build dos pacotes + verificação `generated/*` gerado == commitado.
 5. Smoke test de consumo: app Vite mínimo e app Next mínimo importando o pacote buildado (garante agnosticismo de framework).
 
 ## 14. Riscos e pontos em aberto
