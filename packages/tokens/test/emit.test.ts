@@ -38,6 +38,10 @@ describe("emitTokensCss", () => {
     expect(dark).toContain("--tag-bg: var(--primary);");
   });
 
+  it("começa com o comentário de cabeçalho", () => {
+    expect(css.startsWith("/* GERADO")).toBe(true);
+  });
+
   it("não tem sintaxe do Tailwind nem @import", () => {
     expect(css).not.toContain("@theme");
     expect(css).not.toContain("@custom-variant");

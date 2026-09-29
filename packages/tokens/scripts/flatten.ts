@@ -21,6 +21,9 @@ export function flatten(tree: Node, inheritedType?: string, path: string[] = [])
     if (!isNode(node)) throw new Error(`"${id}" precisa ser um grupo ou token (objeto)`);
 
     if ("$value" in node) {
+      if (Object.keys(node).some((k) => !k.startsWith("$"))) {
+        throw new Error(`Token "${id}" não pode ter $value e filhos ao mesmo tempo`);
+      }
       const type = typeof node.$type === "string" ? node.$type : groupType;
       if (!type) throw new Error(`Token "${id}" sem $type (defina no token ou no grupo)`);
       out.push({ path: nodePath, type, value: node.$value });

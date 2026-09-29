@@ -30,3 +30,16 @@ describe("flatten", () => {
     expect(() => flatten({ a: "#fff" })).toThrow('"a" precisa ser um grupo ou token');
   });
 });
+
+describe("flatten: extras", () => {
+  it("$type do subgrupo sobrescreve o do grupo pai", () => {
+    const tokens = flatten({ a: { $type: "color", b: { $type: "number", c: { $value: 1 } } } });
+    expect(tokens[0].type).toBe("number");
+  });
+
+  it("falha se um nó tiver $value e filhos", () => {
+    expect(() => flatten({ a: { $type: "color", $value: "#fff", b: { $value: "#000" } } })).toThrow(
+      'Token "a" não pode ter $value e filhos ao mesmo tempo',
+    );
+  });
+});

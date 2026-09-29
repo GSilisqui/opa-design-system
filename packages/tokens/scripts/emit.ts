@@ -9,6 +9,7 @@ const FONT_IMPORTS = [
   '@import "@fontsource-variable/jetbrains-mono";',
 ];
 
+// `color-*: initial` remove a paleta de cores padrão do Tailwind; só o que está abaixo fica disponível.
 const BASE_COLORS: Decl[] = [
   ["color-*", "initial"],
   ["color-white", "#ffffff"],

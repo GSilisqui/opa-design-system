@@ -23,6 +23,16 @@ const GENERIC_FAMILIES = new Set([
   "math",
 ]);
 
+const SEGMENT = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
+function assertName(name: string, id: string): void {
+  if (!SEGMENT.test(name)) {
+    throw new Error(
+      `typography.json: "${id}" tem um segmento inválido "${name}" (use minúsculas, números e hífens)`,
+    );
+  }
+}
+
 export function formatFontFamily(families: string[]): string {
   return families.map((f) => (GENERIC_FAMILIES.has(f) ? f : `"${f}"`)).join(", ");
 }
@@ -39,6 +49,7 @@ export function resolveTypography(tokens: FlatToken[]): Typography {
       if (!Array.isArray(t.value) || !t.value.every((v) => typeof v === "string")) {
         throw new Error(`typography.json: "${id}" precisa ser uma lista de famílias`);
       }
+      assertName(name, id);
       fonts.push([`font-${name}`, formatFontFamily(t.value)]);
     } else if (
       group === "text" &&
@@ -48,6 +59,7 @@ export function resolveTypography(tokens: FlatToken[]): Typography {
       if (typeof t.value !== "string") {
         throw new Error(`typography.json: "${id}" precisa ser uma dimensão em texto (ex.: "0.875rem")`);
       }
+      assertName(name, id);
       const entry = sizes.get(name) ?? {};
       entry[prop] = t.value;
       sizes.set(name, entry);

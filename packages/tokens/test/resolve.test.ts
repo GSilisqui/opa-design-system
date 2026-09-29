@@ -90,3 +90,84 @@ describe("resolveColors", () => {
     );
   });
 });
+
+describe("resolveColors: colisões e nomes inválidos", () => {
+  const empty = { light: [], dark: [], component: [] };
+
+  it("falha com primitivos duplicados após normalizar o nome", () => {
+    const p = [tok("color.neutral.0", "#ffffff"), tok("color.neutral-0", "#000000")];
+    expect(() => resolveColors({ primitives: p, ...empty })).toThrow(
+      'primitives.json: "opa-neutral-0" duplicado',
+    );
+  });
+
+  it("falha com semântico usando o prefixo opa-", () => {
+    const l = [tok("color.opa-x", "{color.neutral.0}")];
+    expect(() => resolveColors({ primitives, light: l, dark: l, component: [] })).toThrow(
+      'semantic.light.json: "opa-x" usa o prefixo reservado "opa-"',
+    );
+  });
+
+  it("falha com componente usando o prefixo opa-", () => {
+    const component = [tok("color.opa-x", "{color.primary}")];
+    expect(() => resolveColors({ primitives, light, dark, component })).toThrow(
+      'component.json: "opa-x" usa o prefixo reservado "opa-"',
+    );
+  });
+
+  it("falha com duplicata no mesmo arquivo (light)", () => {
+    const l = [...light, tok("color.a.b", "{color.neutral.0}"), tok("color.a-b", "{color.neutral.0}")];
+    expect(() => resolveColors({ primitives, light: l, dark: l, component: [] })).toThrow(
+      'semantic.light.json: "a-b" duplicado',
+    );
+  });
+
+  it("falha com duplicata no mesmo arquivo (dark)", () => {
+    const d = [...dark, tok("color.primary", "{color.neutral.0}")];
+    expect(() => resolveColors({ primitives, light, dark: d, component: [] })).toThrow(
+      'semantic.dark.json: "primary" duplicado',
+    );
+  });
+
+  it("falha com duplicata no mesmo arquivo (component)", () => {
+    const component = [tok("color.tag-bg", "{color.primary}"), tok("color.tag.bg", "{color.primary}")];
+    expect(() => resolveColors({ primitives, light, dark, component })).toThrow(
+      'component.json: "tag-bg" duplicado',
+    );
+  });
+
+  it("falha se componente tiver o mesmo nome de um semântico", () => {
+    const component = [tok("color.primary", "{color.primary}")];
+    expect(() => resolveColors({ primitives, light, dark, component })).toThrow("já existe em outra camada");
+  });
+
+  it("falha com segmento inválido para CSS", () => {
+    const p = [tok("color.Brand.600", "#4a3fd9")];
+    expect(() => resolveColors({ primitives: p, ...empty })).toThrow(
+      'primitives.json: "color.Brand.600" tem um segmento inválido "Brand" (use minúsculas, números e hífens)',
+    );
+  });
+
+  it("falha com Faltando no light", () => {
+    expect(() => resolveColors({ primitives, light: [light[0]], dark, component: [] })).toThrow(
+      "Faltando no light: [primary]",
+    );
+  });
+
+  it("falha se componente tiver valor literal", () => {
+    const component = [tok("color.tag-bg", "#ffffff")];
+    expect(() => resolveColors({ primitives, light, dark, component })).toThrow("precisa ser uma referência");
+  });
+
+  it("falha se semântico tiver $type diferente de color", () => {
+    const l = [tok("color.background", "{color.neutral.0}", "dimension")];
+    expect(() => resolveColors({ primitives, light: l, dark: l, component: [] })).toThrow(
+      'precisa ter $type "color"',
+    );
+  });
+
+  it("rejeita cor com ; ou chaves", () => {
+    const p = [tok("color.x.1", "rgb(0 0 0); } body { x: y")];
+    expect(() => resolveColors({ primitives: p, ...empty })).toThrow("precisa ser uma cor literal");
+  });
+});

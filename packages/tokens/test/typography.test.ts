@@ -50,3 +50,22 @@ describe("resolveTypography", () => {
     );
   });
 });
+
+describe("resolveTypography: extras", () => {
+  it("não emite letter-spacing quando ausente", () => {
+    const r = resolveTypography([tok("text.sm.size", "1rem"), tok("text.sm.line-height", "1.5rem")]);
+    expect(r.text.map(([n]) => n)).toEqual(["text-sm", "text-sm--line-height"]);
+  });
+
+  it("falha com nome de fonte inválido", () => {
+    expect(() => resolveTypography([tok("font.Sans", ["Inter"], "fontFamily")])).toThrow(
+      'typography.json: "font.Sans" tem um segmento inválido "Sans" (use minúsculas, números e hífens)',
+    );
+  });
+
+  it("falha com nome de tamanho inválido", () => {
+    expect(() => resolveTypography([tok("text.2XL.size", "1rem")])).toThrow(
+      'tem um segmento inválido "2XL"',
+    );
+  });
+});
