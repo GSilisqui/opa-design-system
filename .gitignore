@@ -7,3 +7,6 @@ storybook-static/
 .DS_Store
 .obsidian/
 *.tgz
+.shadcn/
+.next/
+next-env.d.ts
