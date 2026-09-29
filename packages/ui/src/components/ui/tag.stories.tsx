@@ -25,7 +25,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Figma (Chip): https://www.figma.com/design/7FS6JptRPLnco6VSAEAOAH/?node-id=304-4496 · Rótulo/categoria. Para indicador de pendência (contador), use Badge (fora do piloto). Yellow = `highlight`, Danger = `destructive`.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=11-253 · Rótulo/categoria. Para indicador de pendência (contador), use Badge (fora do piloto). Yellow = `highlight`, Danger = `destructive`.",
       },
     },
   },

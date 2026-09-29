@@ -14,7 +14,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Figma: https://www.figma.com/design/7FS6JptRPLnco6VSAEAOAH/?node-id=885-5165 · `default` (60px) tem label flutuante; `sm` (36px) usa o label como placeholder. Para um campo sem label visível, use `Input`.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=11-138 · `default` (60px) tem label flutuante; `sm` (36px) usa o label como placeholder. Para um campo sem label visível, use `Input`.",
       },
     },
   },

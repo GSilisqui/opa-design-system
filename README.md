@@ -2,6 +2,10 @@
 
 Design System da OPA baseado em Shadcn/Radix UI. Spec: `docs/superpowers/specs/2026-09-29-opa-design-system-design.md`.
 
+- **Figma:** [OPA Design System](https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi) (variáveis, estilos e componentes com as mesmas props do código).
+- **Manifesto Figma ↔ React:** [`manifest/components.json`](manifest/components.json) — nó/chave no Figma, props, valores, ícones e tokens de cada componente. O teste `packages/ui/test/manifest.test.ts` falha se divergir do código.
+- **Claude:** regras e comandos em [`CLAUDE.md`](CLAUDE.md); skills em `.claude/skills/` (`add-component`, `sync-tokens`, `figma-component`, `build-figma-screen`). Para protótipos, copie [`docs/prototype-CLAUDE.md`](docs/prototype-CLAUDE.md).
+
 ## Pacotes
 
 | Import | Pacote publicado | O que é |
