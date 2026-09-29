@@ -1,0 +1,937 @@
+{
+  "$description": "Manifesto Figma ↔ React do OPA Design System. Referência do Claude para montar telas no Figma e protótipos em código. Validado por packages/ui/test/manifest.test.ts contra src/index.ts, os cva e docs/superpowers/notes/figma-library-index.json.",
+  "version": 1,
+  "figmaFile": {
+    "key": "UW4As1KdSaPboQ3sNMAbCi",
+    "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi"
+  },
+  "storybook": "apps/storybook (pnpm --filter opa-storybook dev → http://localhost:6006)",
+  "propsLegend": "props[]: figma = propriedade do Figma (null = só código); react = prop/filho no código (null = só visual); values = valores permitidos iguais nos dois lados; map = valor do Figma → como fica no código.",
+  "components": {
+    "Icon": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Icon",
+          "iconNames"
+        ],
+        "source": "packages/ui/src/components/ui/icon.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Não é um componente único no Figma: cada ícone é um componente vetorial `regular/<name>` e `solid/<name>` na página Ícones (chaves em `icons`). Entra nos componentes por INSTANCE_SWAP (ex.: `leadingIconName` do Button, `iconName` da Tag).",
+      "storybook": {
+        "title": "Componentes/Icon"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "name",
+          "notes": "Nome do componente no Figma sem o prefixo: `regular/plus` → `name=\"plus\"`. Valores = `icons.items[].name` (tipo IconName)."
+        },
+        {
+          "figma": null,
+          "react": "variant",
+          "values": [
+            "regular",
+            "solid"
+          ],
+          "notes": "Prefixo do componente no Figma (`regular/…` ou `solid/…`). Padrão `regular`; `solid` para estados ativos/selecionados."
+        },
+        {
+          "figma": null,
+          "react": "size",
+          "values": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "notes": "xs=12px, sm=14px, md=16px, lg=20px, xl=24px. Sem size o ícone tem 1em. No Figma o tamanho vem do frame da instância."
+        },
+        {
+          "figma": null,
+          "react": "label",
+          "notes": "Só código: texto para leitor de tela. Sem label o ícone é decorativo (aria-hidden)."
+        }
+      ]
+    },
+    "Button": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Button",
+          "buttonVariants"
+        ],
+        "source": "packages/ui/src/components/ui/button.tsx"
+      },
+      "figma": {
+        "name": "Button",
+        "nodeId": "10:1010",
+        "key": "3a10b254f9354f16522cddd9c2abfc6ca32f689f",
+        "page": "Button",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=10-1010"
+      },
+      "storybook": {
+        "title": "Componentes/Button"
+      },
+      "props": [
+        {
+          "figma": "label",
+          "react": "children",
+          "notes": "Texto do botão."
+        },
+        {
+          "figma": "leadingIcon",
+          "react": "children",
+          "notes": "true → `<Icon name=…>` como filho ANTES do texto."
+        },
+        {
+          "figma": "leadingIconName",
+          "react": "children",
+          "notes": "INSTANCE_SWAP de ícone: `regular/<name>` → `<Icon name=\"<name>\" />` antes do texto."
+        },
+        {
+          "figma": "trailingIcon",
+          "react": "children",
+          "notes": "true → `<Icon name=…>` como filho DEPOIS do texto."
+        },
+        {
+          "figma": "trailingIconName",
+          "react": "children",
+          "notes": "INSTANCE_SWAP de ícone: `regular/<name>` → `<Icon name=\"<name>\" />` depois do texto."
+        },
+        {
+          "figma": "variant",
+          "react": "variant",
+          "values": [
+            "primary",
+            "destructive",
+            "neutral",
+            "quiet",
+            "outline",
+            "destructive-quiet",
+            "success-quiet"
+          ],
+          "notes": "Mesmos nomes no Figma e no código. Red Quiet/Green Quiet antigos = destructive-quiet/success-quiet."
+        },
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "sm",
+            "default",
+            "lg",
+            "icon-sm",
+            "icon",
+            "icon-lg"
+          ],
+          "notes": "icon-sm/icon/icon-lg = botão só com ícone: exige `aria-label` no código."
+        },
+        {
+          "figma": "state",
+          "react": "disabled",
+          "values": [
+            "default",
+            "hover",
+            "focus",
+            "disabled"
+          ],
+          "map": {
+            "default": "(nenhuma prop)",
+            "hover": "visual: :hover no CSS",
+            "focus": "visual: :focus-visible no CSS (focus-ring)",
+            "disabled": "prop `disabled`"
+          },
+          "notes": "Só `disabled` é prop. Hover/focus são documentação no Figma."
+        },
+        {
+          "figma": null,
+          "react": "asChild",
+          "notes": "Só código: renderiza o filho (ex.: link) com o visual do botão (Radix Slot)."
+        }
+      ]
+    },
+    "Input": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Input"
+        ],
+        "source": "packages/ui/src/components/ui/input.tsx"
+      },
+      "figma": {
+        "name": "Input",
+        "nodeId": "11:154",
+        "key": "60ba63038238ba5a2f16d2d20a7545f6561130d7",
+        "page": "Input",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-154"
+      },
+      "storybook": {
+        "title": "Componentes/InputField",
+        "story": "InputPuro"
+      },
+      "props": [
+        {
+          "figma": "value",
+          "react": "value",
+          "notes": "Texto digitado (`value`/`defaultValue`)."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder"
+        },
+        {
+          "figma": "state",
+          "react": null,
+          "values": [
+            "empty",
+            "focus",
+            "filled",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "empty": "sem valor",
+            "focus": "visual: :focus-visible (borda ring + focus-halo)",
+            "filled": "com valor",
+            "error": "`aria-invalid`",
+            "disabled": "prop `disabled`"
+          },
+          "notes": "Campo puro (36px) sem label: use InputField quando houver label."
+        }
+      ]
+    },
+    "InputField": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "InputField"
+        ],
+        "source": "packages/ui/src/components/ui/input-field.tsx"
+      },
+      "figma": {
+        "name": "InputField",
+        "nodeId": "11:138",
+        "key": "a085f3d18d13a4cdd9bc0aaa4d106750441a0abe",
+        "page": "Input",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-138"
+      },
+      "storybook": {
+        "title": "Componentes/InputField"
+      },
+      "props": [
+        {
+          "figma": "label",
+          "react": "label",
+          "notes": "Obrigatório. No size default é label flutuante."
+        },
+        {
+          "figma": "value",
+          "react": "value",
+          "notes": "Texto digitado (`value`/`defaultValue`)."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder",
+          "notes": "size default: aparece só com foco (label flutuante). size sm: padrão = label (visível), label vira sr-only."
+        },
+        {
+          "figma": "required",
+          "react": "required",
+          "notes": "Mostra o `*`. Alternativa só no código: `optional` mostra \"(opcional)\"."
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "true → passe `description`."
+        },
+        {
+          "figma": "descriptionText",
+          "react": "description",
+          "notes": "Texto de ajuda/erro abaixo do campo (ReactNode)."
+        },
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 60px com label flutuante; sm = 36px."
+        },
+        {
+          "figma": "state",
+          "react": "status",
+          "values": [
+            "empty",
+            "focus",
+            "filled",
+            "error",
+            "success",
+            "warning",
+            "disabled",
+            "readOnly"
+          ],
+          "map": {
+            "empty": "sem valor",
+            "focus": "visual: :focus-visible",
+            "filled": "com valor",
+            "error": "status=\"error\" (aria-invalid)",
+            "success": "status=\"success\"",
+            "warning": "status=\"warning\"",
+            "disabled": "prop `disabled`",
+            "readOnly": "prop `readOnly`"
+          },
+          "notes": "Um único `state` no Figma vira três props no código: `status`, `disabled`, `readOnly`."
+        },
+        {
+          "figma": null,
+          "react": "optional",
+          "notes": "Só código: mostra \"(opcional)\" quando não é required."
+        },
+        {
+          "figma": null,
+          "react": "containerClassName",
+          "notes": "Só código: classes do wrapper (className vai para o input)."
+        }
+      ]
+    },
+    "Label": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Label"
+        ],
+        "source": "packages/ui/src/components/ui/label.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Helper só de código. No Figma aparece dentro de InputField e Combobox (propriedade `label`), não é componente próprio.",
+      "storybook": null,
+      "props": [
+        {
+          "figma": null,
+          "react": "htmlFor",
+          "notes": "Liga o label ao campo. Use InputField em vez de montar Label + Input à mão."
+        }
+      ]
+    },
+    "Tag": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Tag",
+          "tagVariants"
+        ],
+        "source": "packages/ui/src/components/ui/tag.tsx"
+      },
+      "figma": {
+        "name": "Tag",
+        "nodeId": "11:253",
+        "key": "b06bf21633cf8442b28155981184ff5c5b59bbf0",
+        "page": "Tag",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-253"
+      },
+      "storybook": {
+        "title": "Componentes/Tag"
+      },
+      "props": [
+        {
+          "figma": "label",
+          "react": "children",
+          "notes": "Texto da tag."
+        },
+        {
+          "figma": "icon",
+          "react": "children",
+          "notes": "true → `<Icon name=…>` como filho antes do texto."
+        },
+        {
+          "figma": "iconName",
+          "react": "children",
+          "notes": "INSTANCE_SWAP de ícone: `regular/<name>` → `<Icon name=\"<name>\" />`."
+        },
+        {
+          "figma": "removable",
+          "react": "onRemove",
+          "notes": "true → passe `onRemove` (mostra o ✕). `removeLabel` (padrão \"Remover\") compõe o nome acessível."
+        },
+        {
+          "figma": "variant",
+          "react": "variant",
+          "values": [
+            "neutral",
+            "primary",
+            "success",
+            "warning",
+            "info",
+            "destructive",
+            "highlight"
+          ],
+          "notes": "Tag = rótulo/categoria (Badge do Shadcn renomeado). Badge de pendência não existe no DS."
+        },
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "md"
+          ],
+          "notes": "default = 20px, md = 24px."
+        }
+      ]
+    },
+    "Dialog": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Dialog",
+          "DialogClose",
+          "DialogContent",
+          "DialogDescription",
+          "DialogFooter",
+          "DialogHeader",
+          "DialogOverlay",
+          "DialogPortal",
+          "DialogTitle",
+          "DialogTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/dialog.tsx"
+      },
+      "figma": {
+        "name": "Dialog",
+        "nodeId": "11:357",
+        "key": "1adf4da08f3d1936b4f36214c2271d1083c619ba",
+        "page": "Dialog",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-357"
+      },
+      "figmaParts": [
+        {
+          "name": "_Dialog/Body",
+          "nodeId": "11:355",
+          "key": "adcfc2f6744bf743261d2606721035b9acf47efb",
+          "page": "Dialog",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-355",
+          "props": [],
+          "notes": "Slot de conteúdo (placeholder). No Figma, troque por um componente local via `bodyContent`; no código, é o conteúdo entre DialogHeader e DialogFooter."
+        }
+      ],
+      "storybook": {
+        "title": "Componentes/Dialog"
+      },
+      "props": [
+        {
+          "figma": "title",
+          "react": "DialogTitle",
+          "notes": "Filho `<DialogTitle>` dentro de `<DialogHeader>`. Obrigatório (acessibilidade)."
+        },
+        {
+          "figma": "description",
+          "react": "DialogDescription",
+          "notes": "Filho `<DialogDescription>` dentro de `<DialogHeader>`."
+        },
+        {
+          "figma": "body",
+          "react": "children",
+          "notes": "true → conteúdo entre DialogHeader e DialogFooter."
+        },
+        {
+          "figma": "bodyContent",
+          "react": "children",
+          "notes": "INSTANCE_SWAP (padrão `_Dialog/Body`): o conteúdo do corpo."
+        },
+        {
+          "figma": "showCloseButton",
+          "react": "DialogContent.showCloseButton",
+          "notes": "X no canto; padrão false (decisão G). Ações ficam em `<DialogFooter>` com Buttons."
+        },
+        {
+          "figma": null,
+          "react": "open / onOpenChange",
+          "notes": "Só código (Dialog raiz). Abrir por `<DialogTrigger asChild>`."
+        }
+      ]
+    },
+    "Combobox": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Combobox"
+        ],
+        "source": "packages/ui/src/components/ui/combobox.tsx"
+      },
+      "figma": {
+        "name": "Combobox",
+        "nodeId": "12:127",
+        "key": "c5a22883a3b29339774c253d0f24f8f12317ab50",
+        "page": "Combobox",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=12-127"
+      },
+      "figmaParts": [
+        {
+          "name": "Combobox Option",
+          "nodeId": "12:136",
+          "key": "a733c99cffc097dd3aeba84c6ce1a1f2ab9a1bee",
+          "page": "Combobox",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=12-136",
+          "props": [
+            {
+              "figma": "label",
+              "react": "options[].label"
+            },
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "selected",
+                "disabled"
+              ],
+              "map": {
+                "default": "(nada)",
+                "hover": "visual: item destacado (teclado/mouse)",
+                "selected": "options[].value === value (fundo muted, sem check)",
+                "disabled": "options[].disabled"
+              }
+            }
+          ],
+          "notes": "Item da lista (CommandItem). No código vem de `options`."
+        },
+        {
+          "name": "Combobox Popover",
+          "nodeId": "12:137",
+          "key": "e8909cf72adba25e2408de9638e7137a6fe7357b",
+          "page": "Combobox",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=12-137",
+          "props": [
+            {
+              "figma": "searchPlaceholder",
+              "react": "searchPlaceholder",
+              "notes": "Placeholder da busca (padrão \"Buscar…\")."
+            }
+          ],
+          "notes": "Popover + Command abertos (state=open). No código, é interno ao Combobox."
+        }
+      ],
+      "storybook": {
+        "title": "Componentes/Combobox"
+      },
+      "props": [
+        {
+          "figma": "label",
+          "react": "label",
+          "notes": "Obrigatório."
+        },
+        {
+          "figma": "value",
+          "react": "value",
+          "notes": "No Figma é o TEXTO mostrado = label da opção selecionada; no código `value`/`defaultValue` é o `options[].value` correspondente."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder",
+          "notes": "Padrão \"Busque ou selecione…\"."
+        },
+        {
+          "figma": "required",
+          "react": "required"
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "true → passe `description`."
+        },
+        {
+          "figma": "descriptionText",
+          "react": "description"
+        },
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 60px com label flutuante; sm = 36px com label inline."
+        },
+        {
+          "figma": "state",
+          "react": "status",
+          "values": [
+            "empty",
+            "open",
+            "filled",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "empty": "value null",
+            "open": "popup aberto (interação; mostra Combobox Popover)",
+            "filled": "value definido",
+            "error": "status=\"error\"",
+            "disabled": "prop `disabled`"
+          },
+          "notes": "O código também aceita status=\"success\" | \"warning\" (ainda sem variante no Figma)."
+        },
+        {
+          "figma": null,
+          "react": "options",
+          "notes": "Só código: `{ value, label, disabled?, keywords? }[]`."
+        },
+        {
+          "figma": null,
+          "react": "onValueChange",
+          "notes": "Só código."
+        },
+        {
+          "figma": null,
+          "react": "emptyMessage",
+          "notes": "Só código: texto quando a busca não acha nada."
+        },
+        {
+          "figma": null,
+          "react": "name",
+          "notes": "Só código: campo oculto para envio de formulário."
+        }
+      ]
+    },
+    "Popover": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Popover",
+          "PopoverAnchor",
+          "PopoverContent",
+          "PopoverTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/popover.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Helper só de código (base do Combobox). No Figma aparece como `Combobox Popover`; não é componente próprio.",
+      "storybook": null,
+      "props": []
+    },
+    "Command": {
+      "status": "stable",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Command",
+          "CommandEmpty",
+          "CommandGroup",
+          "CommandInput",
+          "CommandItem",
+          "CommandList",
+          "CommandSeparator"
+        ],
+        "source": "packages/ui/src/components/ui/command.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Helper só de código (lista com busca do Combobox, cmdk). No Figma aparece como `Combobox Popover` (CommandInput + CommandList) e `Combobox Option` (CommandItem).",
+      "storybook": null,
+      "props": []
+    }
+  },
+  "icons": {
+    "$description": "Ícones do DS (Font Awesome 7 Pro). Nomes = `iconNames` de packages/ui/src/components/ui/icon-registry.ts = componentes `regular/<name>` e `solid/<name>` da página Ícones do Figma.",
+    "registry": "packages/ui/src/components/ui/icon-registry.ts",
+    "figmaPage": "Ícones",
+    "usage": {
+      "regular": "<Icon name=\"<name>\" />",
+      "solid": "<Icon name=\"<name>\" variant=\"solid\" />"
+    },
+    "add": "Novo ícone: importe o regular e o solid no icon-registry.ts (IconName + os dois mapas), crie `regular/<name>` e `solid/<name>` no Figma (skill figma-component) e adicione aqui.",
+    "items": [
+      {
+        "name": "angle-down",
+        "figma": {
+          "regular": {
+            "nodeId": "9:4",
+            "key": "92d0c4da5e30d4251a26f3bd4e0c1ca8535c7c25"
+          },
+          "solid": {
+            "nodeId": "9:49",
+            "key": "310c421a931d2876147c40d183d710a3f4504de8"
+          }
+        },
+        "react": "<Icon name=\"angle-down\" />",
+        "reactSolid": "<Icon name=\"angle-down\" variant=\"solid\" />"
+      },
+      {
+        "name": "angle-up",
+        "figma": {
+          "regular": {
+            "nodeId": "9:7",
+            "key": "20c17f684d374d827df90639ffc40431955b243e"
+          },
+          "solid": {
+            "nodeId": "9:52",
+            "key": "f46c44decef3201e7f8fd4d6e7a3bed05661db9f"
+          }
+        },
+        "react": "<Icon name=\"angle-up\" />",
+        "reactSolid": "<Icon name=\"angle-up\" variant=\"solid\" />"
+      },
+      {
+        "name": "check",
+        "figma": {
+          "regular": {
+            "nodeId": "9:10",
+            "key": "fc0a63bb507ba97a71660bf620c9f266f68f5986"
+          },
+          "solid": {
+            "nodeId": "9:55",
+            "key": "a9dd3ba775bc6898de586a521b4ced25555848dc"
+          }
+        },
+        "react": "<Icon name=\"check\" />",
+        "reactSolid": "<Icon name=\"check\" variant=\"solid\" />"
+      },
+      {
+        "name": "circle-check",
+        "figma": {
+          "regular": {
+            "nodeId": "9:13",
+            "key": "20b975c3f9c14debb437830245dbdb54b79ae1a0"
+          },
+          "solid": {
+            "nodeId": "9:58",
+            "key": "ea74307ad6ca9abdf7ee30670688fbc6eecbea9c"
+          }
+        },
+        "react": "<Icon name=\"circle-check\" />",
+        "reactSolid": "<Icon name=\"circle-check\" variant=\"solid\" />"
+      },
+      {
+        "name": "circle-exclamation",
+        "figma": {
+          "regular": {
+            "nodeId": "9:16",
+            "key": "3b9e03bd1e99e15beceae1554d4ce59c1f1adbc8"
+          },
+          "solid": {
+            "nodeId": "9:61",
+            "key": "0e3d70414ae0bd3e6fefa827a6de0b7e8cad0bc6"
+          }
+        },
+        "react": "<Icon name=\"circle-exclamation\" />",
+        "reactSolid": "<Icon name=\"circle-exclamation\" variant=\"solid\" />"
+      },
+      {
+        "name": "circle-info",
+        "figma": {
+          "regular": {
+            "nodeId": "9:19",
+            "key": "10f42607f260c156db44fce0823aec37e88132b6"
+          },
+          "solid": {
+            "nodeId": "9:64",
+            "key": "d58f5c2a83bd4d1139b0a20de826d00f471bb53f"
+          }
+        },
+        "react": "<Icon name=\"circle-info\" />",
+        "reactSolid": "<Icon name=\"circle-info\" variant=\"solid\" />"
+      },
+      {
+        "name": "copy",
+        "figma": {
+          "regular": {
+            "nodeId": "9:22",
+            "key": "dcd9d6e91d65258ebc69fbc231f14e25f3ddf1bb"
+          },
+          "solid": {
+            "nodeId": "9:67",
+            "key": "4b37a1dfcd1c9efe6729ff4ff2fbeff2a1d2a6f1"
+          }
+        },
+        "react": "<Icon name=\"copy\" />",
+        "reactSolid": "<Icon name=\"copy\" variant=\"solid\" />"
+      },
+      {
+        "name": "ellipsis",
+        "figma": {
+          "regular": {
+            "nodeId": "9:25",
+            "key": "531c7871d8f0f4bd02a79e8a5d065c29d6e0361f"
+          },
+          "solid": {
+            "nodeId": "9:70",
+            "key": "5f8cd369339908fa55a458e0237d3972ec119d62"
+          }
+        },
+        "react": "<Icon name=\"ellipsis\" />",
+        "reactSolid": "<Icon name=\"ellipsis\" variant=\"solid\" />"
+      },
+      {
+        "name": "face-smile",
+        "figma": {
+          "regular": {
+            "nodeId": "9:28",
+            "key": "17781a575b95889d1c4b8cb9d9fcf6de5cd4d5d6"
+          },
+          "solid": {
+            "nodeId": "9:73",
+            "key": "6feb5100f11266fc6cbc578b3fcc0b06f5c6675e"
+          }
+        },
+        "react": "<Icon name=\"face-smile\" />",
+        "reactSolid": "<Icon name=\"face-smile\" variant=\"solid\" />"
+      },
+      {
+        "name": "magnifying-glass",
+        "figma": {
+          "regular": {
+            "nodeId": "9:31",
+            "key": "d7b311e752a85f61786169560a61528d6d2577a1"
+          },
+          "solid": {
+            "nodeId": "9:76",
+            "key": "c07213f55399a44a21bb5a49b66313ab25c024a5"
+          }
+        },
+        "react": "<Icon name=\"magnifying-glass\" />",
+        "reactSolid": "<Icon name=\"magnifying-glass\" variant=\"solid\" />"
+      },
+      {
+        "name": "pen",
+        "figma": {
+          "regular": {
+            "nodeId": "9:34",
+            "key": "32e316bee100f8fd7e3ec3af08af65c0a4967e3f"
+          },
+          "solid": {
+            "nodeId": "9:79",
+            "key": "21f9a1fa64dd24141fe408eeb3c9824b1791745a"
+          }
+        },
+        "react": "<Icon name=\"pen\" />",
+        "reactSolid": "<Icon name=\"pen\" variant=\"solid\" />"
+      },
+      {
+        "name": "plus",
+        "figma": {
+          "regular": {
+            "nodeId": "9:37",
+            "key": "f50335cf22c1ae3bd93aa79c8b79077e4c17e542"
+          },
+          "solid": {
+            "nodeId": "9:82",
+            "key": "0cbd5623c4fc33fdb2c53896ad08f18a65799da1"
+          }
+        },
+        "react": "<Icon name=\"plus\" />",
+        "reactSolid": "<Icon name=\"plus\" variant=\"solid\" />"
+      },
+      {
+        "name": "trash",
+        "figma": {
+          "regular": {
+            "nodeId": "9:40",
+            "key": "20aa63cfd11ed4abc086852844e88f977c0d2d4a"
+          },
+          "solid": {
+            "nodeId": "9:85",
+            "key": "8dd83d340b5e55a619d998f3f1b7cfca1cddb57f"
+          }
+        },
+        "react": "<Icon name=\"trash\" />",
+        "reactSolid": "<Icon name=\"trash\" variant=\"solid\" />"
+      },
+      {
+        "name": "triangle-exclamation",
+        "figma": {
+          "regular": {
+            "nodeId": "9:43",
+            "key": "d8dec2e5beb9ba1542a959812ea3238969b84e84"
+          },
+          "solid": {
+            "nodeId": "9:88",
+            "key": "ab94c0252ef569f257da61a3d7e02700a4344b9e"
+          }
+        },
+        "react": "<Icon name=\"triangle-exclamation\" />",
+        "reactSolid": "<Icon name=\"triangle-exclamation\" variant=\"solid\" />"
+      },
+      {
+        "name": "xmark",
+        "figma": {
+          "regular": {
+            "nodeId": "9:46",
+            "key": "fd0a34984759ef42ea6ee73263367711432b9e10"
+          },
+          "solid": {
+            "nodeId": "9:91",
+            "key": "d1ff15cb9677a5f039e7fd0acefaed2ec4295e2a"
+          }
+        },
+        "react": "<Icon name=\"xmark\" />",
+        "reactSolid": "<Icon name=\"xmark\" variant=\"solid\" />"
+      }
+    ]
+  },
+  "tokens": {
+    "$description": "Como os tokens aparecem no Figma e no código. Fonte de verdade: packages/tokens/src/*.json (gerado em packages/tokens/generated/, nunca editado à mão).",
+    "collections": {
+      "Primitives": {
+        "figma": "Coleção Primitives (1 modo). Nomes `<grupo>/<degrau>` (ex.: `brand/600`, `neutral/alpha-10`). Escopos vazios: não aparecem nos seletores.",
+        "css": "--opa-<grupo>-<degrau> (ex.: --opa-brand-600)",
+        "source": "packages/tokens/src/primitives.json",
+        "rule": "Nunca usar direto em componentes ou telas (lint `primitive`). Só a camada Semantic/Component referencia primitivos."
+      },
+      "Semantic": {
+        "figma": "Coleção Semantic, modos Light e Dark (aliases de Primitives). Nome da variável = nome do token (ex.: `primary`, `primary-foreground`, `destructive-subtle`).",
+        "css": "--<nome> em :root (Light) e .dark (Dark); code syntax WEB = var(--<nome>)",
+        "tailwind": "Cor <nome>: bg-primary, text-foreground, border-border, ring-ring…",
+        "source": "packages/tokens/src/semantic.light.json, semantic.dark.json",
+        "rule": "A única camada de cor para componentes e telas. Tela escura no Figma = modo Dark da coleção Semantic no frame; no código = classe .dark num ancestral."
+      },
+      "Component": {
+        "figma": "Coleção Component (1 modo, aliases de Semantic): tag-bg, tag-foreground, tag-border.",
+        "css": "--tag-bg etc.",
+        "tailwind": "bg-tag-bg, text-tag-foreground, border-tag-border",
+        "source": "packages/tokens/src/component.json",
+        "rule": "Só o componente dono usa."
+      },
+      "Spacing": {
+        "figma": "Coleção Spacing (escala padrão do Tailwind, escopos WIDTH_HEIGHT e GAP). Figma não aceita ponto no nome: `0_5`, `1_5`, `2_5`, `3_5`.",
+        "tailwind": "`0_5` no Figma = `0.5` no Tailwind (p-0.5, gap-1.5, h-9…). 1 unidade = 4px.",
+        "source": "packages/tokens/src/tailwind-scales.json (só JSON → Figma; o build do CSS ignora)"
+      },
+      "Radius": {
+        "figma": "Coleção Radius com nomes do Tailwind v4: none, xs=2, sm=4, md=6, lg=8, xl=12, 2xl=16, 3xl=24, 4xl=32, full.",
+        "tailwind": "rounded-<nome> (rounded-xl = 12px).",
+        "source": "packages/tokens/src/tailwind-scales.json"
+      }
+    },
+    "textStyles": {
+      "figma": "`text-{size}/{weight}` com size xs…9xl e weight regular | medium | bold; e `mono/{xs|sm|base|lg}`.",
+      "code": "text-{size} + font-normal | font-medium | font-bold (mono: font-mono text-{size}).",
+      "sizes": "Nomes do Figma: text-xs=10px, text-sm=12px, text-base=14px, text-lg=16px… (packages/tokens/src/typography.json). Não há font-semibold: use font-medium.",
+      "example": "`text-base/medium` = className \"text-base font-medium\"."
+    },
+    "effectStyles": {
+      "focus/ring": "focus-ring (1px ring + halo 2px primary-subtle) — foco de elementos sem borda",
+      "focus/halo": "focus-halo (+ borda ring) — foco de elementos com borda",
+      "focus/halo-destructive": "focus-halo-destructive",
+      "focus/halo-success": "focus-halo-success",
+      "focus/halo-warning": "focus-halo-warning",
+      "shadow/popover": "shadow-popover",
+      "shadow/dropdown": "shadow-dropdown",
+      "notes": "Utilitários definidos em packages/ui/src/styles.css. Sombras não são variáveis no Figma, só effect styles."
+    },
+    "states": {
+      "hover": "Figma: fill extra de `foreground` a 15% (hover) / 25% (active) sobre o fundo. Código: bg-shade-<token> / bg-shade-strong-<token>; neutral usa hover:bg-input.",
+      "disabled": "Opacidade 40% (disabled:opacity-40)."
+    }
+  }
+}
