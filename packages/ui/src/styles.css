@@ -1,0 +1,54 @@
+/* Fonte do CSS do @opa/ui. O build gera dist/styles.css embutindo @opa/tokens/theme.css (scripts/build-css.ts). */
+@import "@opa/tokens/theme.css";
+@import "tw-animate-css";
+
+@source "./";
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Usa as variáveis semânticas (--ring, --foreground...): com @theme inline o Tailwind não emite --color-* no CSS. */
+
+/* Foco (decisão C): 1px ring + halo 2px. Em elementos com borda, troque a borda por border-ring e use focus-halo. */
+@utility focus-ring {
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--ring), 0 0 0 2px var(--primary-subtle);
+}
+@utility focus-halo {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-subtle);
+}
+@utility focus-halo-destructive {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--destructive-subtle);
+}
+@utility focus-halo-success {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--success-subtle);
+}
+@utility focus-halo-warning {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--warning-subtle);
+}
+
+/* Hover/active (decisão A): mistura com o foreground. Escurece no Light e clareia no Dark, como o Figma. */
+@utility bg-shade-* {
+  background-color: color-mix(in oklab, --value(--color-*), var(--foreground) 15%);
+}
+@utility bg-shade-strong-* {
+  background-color: color-mix(in oklab, --value(--color-*), var(--foreground) 25%);
+}
+
+/* Sombras = effect styles do Figma ("popover" e o dropdown do Select). */
+@utility shadow-popover {
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 0.25);
+}
+@utility shadow-dropdown {
+  box-shadow: 0 6px 16px 0 rgb(0 0 0 / 0.08);
+}
