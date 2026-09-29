@@ -1,6 +1,6 @@
 {
   "name": "@gsilisqui/eslint-config",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Regras de lint do OPA Design System. Importe como @opa/eslint-config.",
   "type": "module",
   "exports": {
