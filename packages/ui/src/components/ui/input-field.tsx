@@ -2,7 +2,7 @@
 
 // Composição aprovada pelo dono (decisão D): Input + Label + descrição do Shadcn, no layout do Input Field do Figma 885:5165.
 import * as React from "react";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 

@@ -1,6 +1,6 @@
 // Origem: shadcn/ui input (shadcn@4.21.0, new-york). Visual do Input SM do Figma 885:5165 (36px, card + border, raio 12px).
 import * as React from "react";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (

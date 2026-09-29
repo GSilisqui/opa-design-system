@@ -3,7 +3,7 @@
 // Composição oficial do Shadcn (Combobox = Popover + Command). Seleção única com busca (decisão do dono: só Combobox).
 // Trigger no visual do Select do Figma 885:3949.
 import * as React from "react";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Icon } from "@/components/ui/icon";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";

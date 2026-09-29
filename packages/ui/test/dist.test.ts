@@ -24,6 +24,12 @@ describe.runIf(existsSync(dist))("dist publicado", () => {
 
   it("imports internos viraram caminhos relativos", () => {
     expect(read(component("dialog"))).not.toContain('"@/');
+    expect(read(component("dialog"))).toContain('from "../../lib/utils.js"');
+  });
+
+  it("o cn do DS usa o pacote cn como import externo", () => {
+    expect(read("lib/utils.js")).toContain('from "cn/config"');
+    expect(existsSync(join(dist, "lib/utils.test.js"))).toBe(false);
   });
 
   it("gera tipos, inclusive do registro de ícones", () => {

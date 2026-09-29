@@ -12,7 +12,7 @@ export default defineConfig({
       tsconfigPath: "./tsconfig.build.json",
       entryRoot: "src",
       include: ["src"],
-      exclude: ["src/**/*.test.tsx", "src/**/*.stories.tsx"],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/**/*.stories.tsx"],
     }),
   ],
   resolve: { alias: { "@": src } },
@@ -23,7 +23,7 @@ export default defineConfig({
     emptyOutDir: true,
     rolldownOptions: {
       // Tudo de fora fica como import: ícones Pro nunca entram no dist (licença), React/Radix vêm do consumidor.
-      external: [/^react(\/|$)/, /^react-dom(\/|$)/, /^radix-ui(\/|$)/, /^@radix-ui\//, /^@fortawesome\//, "cmdk", "cn", "class-variance-authority"],
+      external: [/^react(\/|$)/, /^react-dom(\/|$)/, /^radix-ui(\/|$)/, /^@radix-ui\//, /^@fortawesome\//, "cmdk", /^cn(\/|$)/, "class-variance-authority"],
       output: { preserveModules: true, preserveModulesRoot: "src", entryFileNames: "[name].js" },
     },
   },

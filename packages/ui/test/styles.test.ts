@@ -43,8 +43,9 @@ describe("src/styles.css compilado pelo Tailwind v4", () => {
   });
 
   it("gera as sombras do Figma", () => {
-    expect(css).toMatch(/\.shadow-popover \{[^}]*0 1px 4px 0 rgb\(0 0 0 \/ 0\.25\)/);
-    expect(css).toMatch(/\.shadow-dropdown \{[^}]*0 6px 16px 0 rgb\(0 0 0 \/ 0\.08\)/);
+    // Via @theme: o Tailwind embrulha a cor em var(--tw-shadow-color, ...) para aceitar shadow-<cor>.
+    expect(css).toMatch(/\.shadow-popover \{[^}]*0 1px 4px 0 var\(--tw-shadow-color, rgb\(0 0 0 \/ 0\.25\)\)/);
+    expect(css).toMatch(/\.shadow-dropdown \{[^}]*0 6px 16px 0 var\(--tw-shadow-color, rgb\(0 0 0 \/ 0\.08\)\)/);
   });
 
   it("inclui as animações do tw-animate-css", () => {

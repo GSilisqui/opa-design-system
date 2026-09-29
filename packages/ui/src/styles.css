@@ -45,10 +45,9 @@
   background-color: color-mix(in oklab, --value(--color-*), var(--foreground) 25%);
 }
 
-/* Sombras = effect styles do Figma ("popover" e o dropdown do Select). */
-@utility shadow-popover {
-  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 0.25);
-}
-@utility shadow-dropdown {
-  box-shadow: 0 6px 16px 0 rgb(0 0 0 / 0.08);
+/* Sombras = effect styles do Figma ("popover" e o dropdown do Select). No @theme viram tamanhos de sombra do Tailwind:
+   a cor de sombra e o "none" combinam com elas como com as sombras nativas (o cn de src/lib/utils.ts sabe disso). */
+@theme {
+  --shadow-popover: 0 1px 4px 0 rgb(0 0 0 / 0.25);
+  --shadow-dropdown: 0 6px 16px 0 rgb(0 0 0 / 0.08);
 }

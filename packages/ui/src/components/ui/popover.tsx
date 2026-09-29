@@ -2,7 +2,7 @@
 
 // Origem: shadcn/ui popover (shadcn@4.21.0, new-york). Visual do Select Popover do Figma 6216:189.
 import * as React from "react";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 import { Popover as PopoverPrimitive } from "radix-ui";
 
 function Popover(props: React.ComponentProps<typeof PopoverPrimitive.Root>) {

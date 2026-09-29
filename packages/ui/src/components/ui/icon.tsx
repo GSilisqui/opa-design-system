@@ -1,6 +1,6 @@
 // Ícone do DS: desenha o SVG do Font Awesome Pro direto. Regular é o padrão; solid para estados ativos/selecionados.
 import * as React from "react";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 import { icons, type IconName } from "@/components/ui/icon-registry";
 
 const iconSizes = {

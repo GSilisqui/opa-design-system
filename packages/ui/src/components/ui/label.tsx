@@ -2,7 +2,7 @@
 
 // Origem: shadcn/ui label (shadcn@4.21.0, new-york). Texto do label do Figma: 12px Regular, foreground-secondary.
 import * as React from "react";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 import { Label as LabelPrimitive } from "radix-ui";
 
 function Label({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) {

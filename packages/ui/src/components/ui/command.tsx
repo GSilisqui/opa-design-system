@@ -4,7 +4,7 @@
 // Itens no visual do Select Item do Figma 6214:164: 36px, rounded-lg, hover accent, selecionado muted.
 import * as React from "react";
 import { Command as CommandPrimitive } from "cmdk";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/icon";
 
 function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive>) {

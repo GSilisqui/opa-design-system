@@ -1,7 +1,7 @@
 // Origem: shadcn/ui button (shadcn@4.21.0, new-york). Adaptado ao Figma Button 36:2938.
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 import { Slot } from "radix-ui";
 
 const buttonVariants = cva(

@@ -3,7 +3,7 @@
 // Origem: shadcn/ui badge (shadcn@4.21.0, new-york), renomeado para Tag. Adaptado ao Figma Chip 304:4496.
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/icon";
 
 const tagVariants = cva(
