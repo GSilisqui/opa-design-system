@@ -1,0 +1,51 @@
+{
+  "$description": "Camada 1: cores cruas. PROVISÓRIO até a extração do Figma (Plano 1, Task 11).",
+  "color": {
+    "$type": "color",
+    "neutral": {
+      "0": { "$value": "#ffffff" },
+      "50": { "$value": "#f8f9fb" },
+      "100": { "$value": "#f1f2f5" },
+      "200": { "$value": "#e4e6eb" },
+      "300": { "$value": "#cfd2da" },
+      "400": { "$value": "#9aa0ad" },
+      "500": { "$value": "#6b7280" },
+      "600": { "$value": "#4b5260" },
+      "700": { "$value": "#363b47" },
+      "800": { "$value": "#23272f" },
+      "900": { "$value": "#16181d" },
+      "950": { "$value": "#0d0f12" }
+    },
+    "brand": {
+      "100": { "$value": "#eceafd" },
+      "400": { "$value": "#8f86f0" },
+      "500": { "$value": "#6a5fe8" },
+      "600": { "$value": "#4a3fd9" },
+      "900": { "$value": "#221c6b" }
+    },
+    "red": {
+      "100": { "$value": "#fde8e8" },
+      "500": { "$value": "#e5484d" },
+      "600": { "$value": "#cd2b31" },
+      "900": { "$value": "#5c1215" }
+    },
+    "green": {
+      "100": { "$value": "#e6f6ec" },
+      "500": { "$value": "#30a46c" },
+      "600": { "$value": "#18794e" },
+      "900": { "$value": "#0f3d27" }
+    },
+    "amber": {
+      "100": { "$value": "#fff4d6" },
+      "500": { "$value": "#f5a524" },
+      "600": { "$value": "#b76e00" },
+      "900": { "$value": "#4a2c00" }
+    },
+    "blue": {
+      "100": { "$value": "#e6f0fe" },
+      "500": { "$value": "#3b82f6" },
+      "600": { "$value": "#1d64d8" },
+      "900": { "$value": "#0f2a5c" }
+    }
+  }
+}

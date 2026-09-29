@@ -1,0 +1,19 @@
+{
+  "$description": "Famílias e escala de texto (nomes do Tailwind, valores do DS). Tamanhos PROVISÓRIOS até a Task 11.",
+  "font": {
+    "$type": "fontFamily",
+    "sans": { "$value": ["Inter Variable", "Inter", "ui-sans-serif", "system-ui", "sans-serif"] },
+    "mono": { "$value": ["JetBrains Mono Variable", "JetBrains Mono", "ui-monospace", "monospace"] }
+  },
+  "text": {
+    "$type": "dimension",
+    "xs": { "size": { "$value": "0.75rem" }, "line-height": { "$value": "1rem" } },
+    "sm": { "size": { "$value": "0.875rem" }, "line-height": { "$value": "1.25rem" } },
+    "base": { "size": { "$value": "1rem" }, "line-height": { "$value": "1.5rem" } },
+    "lg": { "size": { "$value": "1.125rem" }, "line-height": { "$value": "1.75rem" } },
+    "xl": { "size": { "$value": "1.25rem" }, "line-height": { "$value": "1.75rem" } },
+    "2xl": { "size": { "$value": "1.5rem" }, "line-height": { "$value": "2rem" } },
+    "3xl": { "size": { "$value": "1.875rem" }, "line-height": { "$value": "2.25rem" } },
+    "4xl": { "size": { "$value": "2.25rem" }, "line-height": { "$value": "2.5rem" } }
+  }
+}

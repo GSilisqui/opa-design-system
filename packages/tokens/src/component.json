@@ -1,0 +1,9 @@
+{
+  "$description": "Camada 3: exceções por componente. Só referencia semânticos.",
+  "color": {
+    "$type": "color",
+    "tag-bg": { "$value": "{color.muted}" },
+    "tag-foreground": { "$value": "{color.muted-foreground}" },
+    "tag-border": { "$value": "{color.border}" }
+  }
+}
