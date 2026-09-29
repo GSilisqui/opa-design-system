@@ -1,0 +1,71 @@
+{
+  "runId": "opa-ds-figma-2026-09-29",
+  "fileKey": "UW4As1KdSaPboQ3sNMAbCi",
+  "fileUrl": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi",
+  "referenceFileKey": "7FS6JptRPLnco6VSAEAOAH",
+  "phase": "phase2",
+  "step": "P2.a",
+  "entities": {
+    "collections": {
+      "Primitives": "VariableCollectionId:4:2",
+      "Semantic": "VariableCollectionId:4:3",
+      "Component": "VariableCollectionId:4:4",
+      "Spacing": "VariableCollectionId:4:5",
+      "Radius": "VariableCollectionId:4:6"
+    },
+    "variables": {
+      "count": 227,
+      "Primitives": 154,
+      "Semantic": 39,
+      "Component": 3,
+      "Spacing": 21,
+      "Radius": 10,
+      "note": "spacing names use _ instead of . (0_5)"
+    },
+    "styles": {
+      "text": 43,
+      "effects": {
+        "shadow/popover": "S:1b60b70dec6674149d336e28648aa8aa0084f7ee,",
+        "shadow/dropdown": "S:c043f44ecc09fa7f67feb15a3e032bbb0dc7a5da,",
+        "focus/ring": "S:d69798e5ce60d36fc474846c018acf0191474c9f,",
+        "focus/halo": "S:270a72cf7d589fec949bc444a47a929a2be21c0a,",
+        "focus/halo-destructive": "S:a755a317fb52dd07fd3f3db28bcc1932092df9dc,",
+        "focus/halo-success": "S:fcf62d6c8415183a8a512d0243ec15ea6cd39c02,",
+        "focus/halo-warning": "S:aac5b5762ade431e721d76758db8e2b2e1512d98,"
+      }
+    },
+    "pages": {},
+    "components": {},
+    "modes": {
+      "Primitives/Value": "4:0",
+      "Semantic/Light": "4:1",
+      "Semantic/Dark": "4:2",
+      "Component/Value": "4:3",
+      "Spacing/Value": "4:4",
+      "Radius/Value": "4:5"
+    }
+  },
+  "decisions": [
+    "Button states as variant (168)",
+    "Semantic variable names = code names",
+    "Radius names Tailwind v4",
+    "File moved to project Opa! Suite by owner",
+    "Figma spacing names replace . with _ (Figma rejects dots)"
+  ],
+  "completedSteps": [
+    "P0.a",
+    "P0.b",
+    "P0.c",
+    "P0.d",
+    "P0.e",
+    "P0.f",
+    "P1.a",
+    "P1.b",
+    "P1.c",
+    "P1.d",
+    "P1.e",
+    "P1.f",
+    "P1.g",
+    "P1.h"
+  ]
+}

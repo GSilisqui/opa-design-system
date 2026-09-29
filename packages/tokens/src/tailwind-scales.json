@@ -1,0 +1,40 @@
+{
+  "$description": "Escalas padrão do Tailwind v4 usadas SÓ para gerar as coleções Spacing e Radius do Figma (JSON → Figma). O build do CSS ignora este arquivo: o Tailwind já fornece esses valores. $extensions.css = sintaxe de código mostrada no Dev Mode.",
+  "spacing": {
+    "$type": "dimension",
+    "0": { "$value": "0px", "$extensions": { "css": "0" } },
+    "0.5": { "$value": "2px", "$extensions": { "css": "calc(var(--spacing) * 0.5)" } },
+    "1": { "$value": "4px", "$extensions": { "css": "calc(var(--spacing) * 1)" } },
+    "1.5": { "$value": "6px", "$extensions": { "css": "calc(var(--spacing) * 1.5)" } },
+    "2": { "$value": "8px", "$extensions": { "css": "calc(var(--spacing) * 2)" } },
+    "2.5": { "$value": "10px", "$extensions": { "css": "calc(var(--spacing) * 2.5)" } },
+    "3": { "$value": "12px", "$extensions": { "css": "calc(var(--spacing) * 3)" } },
+    "3.5": { "$value": "14px", "$extensions": { "css": "calc(var(--spacing) * 3.5)" } },
+    "4": { "$value": "16px", "$extensions": { "css": "calc(var(--spacing) * 4)" } },
+    "5": { "$value": "20px", "$extensions": { "css": "calc(var(--spacing) * 5)" } },
+    "6": { "$value": "24px", "$extensions": { "css": "calc(var(--spacing) * 6)" } },
+    "7": { "$value": "28px", "$extensions": { "css": "calc(var(--spacing) * 7)" } },
+    "8": { "$value": "32px", "$extensions": { "css": "calc(var(--spacing) * 8)" } },
+    "9": { "$value": "36px", "$extensions": { "css": "calc(var(--spacing) * 9)" } },
+    "10": { "$value": "40px", "$extensions": { "css": "calc(var(--spacing) * 10)" } },
+    "12": { "$value": "48px", "$extensions": { "css": "calc(var(--spacing) * 12)" } },
+    "14": { "$value": "56px", "$extensions": { "css": "calc(var(--spacing) * 14)" } },
+    "15": { "$value": "60px", "$extensions": { "css": "calc(var(--spacing) * 15)" } },
+    "16": { "$value": "64px", "$extensions": { "css": "calc(var(--spacing) * 16)" } },
+    "20": { "$value": "80px", "$extensions": { "css": "calc(var(--spacing) * 20)" } },
+    "24": { "$value": "96px", "$extensions": { "css": "calc(var(--spacing) * 24)" } }
+  },
+  "radius": {
+    "$type": "dimension",
+    "none": { "$value": "0px", "$extensions": { "css": "0" } },
+    "xs": { "$value": "2px", "$extensions": { "css": "var(--radius-xs)" } },
+    "sm": { "$value": "4px", "$extensions": { "css": "var(--radius-sm)" } },
+    "md": { "$value": "6px", "$extensions": { "css": "var(--radius-md)" } },
+    "lg": { "$value": "8px", "$extensions": { "css": "var(--radius-lg)" } },
+    "xl": { "$value": "12px", "$extensions": { "css": "var(--radius-xl)" } },
+    "2xl": { "$value": "16px", "$extensions": { "css": "var(--radius-2xl)" } },
+    "3xl": { "$value": "24px", "$extensions": { "css": "var(--radius-3xl)" } },
+    "4xl": { "$value": "32px", "$extensions": { "css": "var(--radius-4xl)" } },
+    "full": { "$value": "9999px", "$extensions": { "css": "calc(infinity * 1px)" } }
+  }
+}
