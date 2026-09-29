@@ -30,6 +30,8 @@
 | H + busca | **Só Combobox** (Popover + Command do Shadcn), seleção única com busca. Selecionado = fundo `muted`, sem check. Múltipla seleção fica para a fase 2. |
 | I | Tag: ícone como filho; `onRemove` mostra o botão ✕ ("Remover"). Borda sobreposta ao fundo (decisão de tokens 12). |
 | J | Hex soltos no Figma ficam para o Plano 3. |
+| Contraste | **Exceções aprovadas (2026-09-29):** texto da Tag `info` (4,0:1) e `highlight` (2,05:1, decisão 10), e label/descrição de campo com status `success` (≈3,5:1) e `warning` (≈2,3:1). Mantêm as cores do Figma; o teste de a11y ignora contraste **só nesses elementos**. |
+| Ícones | Sem Kit (dono): pacotes Pro diretos. O `<Icon>` desenha o SVG da definição, sem `@fortawesome/react-fontawesome` (ajuste ao spec §8.3). |
 
 ## Convenções
 
@@ -40,6 +42,7 @@
   export FONTAWESOME_PACKAGE_TOKEN="$(powershell -NoProfile -Command "[Environment]::GetEnvironmentVariable('FONTAWESOME_PACKAGE_TOKEN','User')" | tr -d '\r')"
   ```
   **Nunca** imprima, grave em arquivo ou commite o valor.
+- **Windows:** trabalhe no repo em `C:\Users\IXCSoft\Downloads\DesignSystem`. Não crie worktrees em pastas profundas (ex.: `%TEMP%`): caminhos do store do pnpm acima de ~260 caracteres quebram o Vitest 5 (`#module-evaluator`).
 - Componentes: layout plano do Shadcn. Arquivo, teste e story lado a lado: `button.tsx`, `button.test.tsx`, `button.stories.tsx`. (Ajuste ao spec §6: mantém o `shadcn add` funcionando sem mover arquivos.)
 - Cada componente começa com um comentário de origem: `// Origem: shadcn/ui <nome> (shadcn@4.21.0, new-york). Adaptado ao Figma <node>.`
 - Ícones: `"use client"` só onde há estado/efeito/Radix interativo. `Button`, `Icon` e `Input` ficam sem diretiva (funcionam em Server Components).
@@ -515,7 +518,7 @@ Expected: FAIL, `Failed to resolve import "./icon"`.
 
 ```ts
 // Ícones do DS (Font Awesome 7 Pro). Import por ícone: só o que está listado entra no bundle do consumidor.
-// Para adicionar: importe o regular e o solid, e inclua a chave (nome do FA) nos dois mapas.
+// Para adicionar: importe o regular e o solid, inclua o nome em IconName e a chave (nome do FA) nos dois mapas.
 import { faAngleDown as rAngleDown } from "@fortawesome/pro-regular-svg-icons/faAngleDown";
 import { faAngleUp as rAngleUp } from "@fortawesome/pro-regular-svg-icons/faAngleUp";
 import { faCheck as rCheck } from "@fortawesome/pro-regular-svg-icons/faCheck";
@@ -554,7 +557,26 @@ export type IconDefinition = {
   icon: [width: number, height: number, aliases: (string | number)[], unicode: string, path: string | string[]];
 };
 
-const regular = {
+// União explícita (em vez de inferir): o tipo inferido apontaria para @fortawesome/fontawesome-common-types,
+// que não é dependência direta, e o vite-plugin-dts deixaria de gerar este .d.ts.
+export type IconName =
+  | "angle-down"
+  | "angle-up"
+  | "check"
+  | "circle-check"
+  | "circle-exclamation"
+  | "circle-info"
+  | "copy"
+  | "ellipsis"
+  | "face-smile"
+  | "magnifying-glass"
+  | "pen"
+  | "plus"
+  | "trash"
+  | "triangle-exclamation"
+  | "xmark";
+
+const regular: Record<IconName, IconDefinition> = {
   "angle-down": rAngleDown,
   "angle-up": rAngleUp,
   check: rCheck,
@@ -570,9 +592,7 @@ const regular = {
   trash: rTrash,
   "triangle-exclamation": rTriangleExclamation,
   xmark: rXmark,
-} satisfies Record<string, IconDefinition>;
-
-export type IconName = keyof typeof regular;
+};
 
 const solid: Record<IconName, IconDefinition> = {
   "angle-down": sAngleDown,
@@ -1037,6 +1057,11 @@ describe("InputField", () => {
     expect(screen.getByText("*")).toBeInTheDocument();
   });
 
+  it("o asterisco segue a cor do estado", () => {
+    render(<InputField label="CPF" required status="success" />);
+    expect(screen.getByText("*").className).toContain("text-success");
+  });
+
   it("optional mostra (opcional)", () => {
     render(<InputField label="Apelido" optional />);
     expect(screen.getByText("(opcional)")).toBeInTheDocument();
@@ -1169,8 +1194,14 @@ function InputField({
   const inputId = id ?? `input-${autoId}`;
   const descriptionId = description ? `${inputId}-description` : undefined;
 
+  // Figma: o * é vermelho, segue a cor do estado em sucesso/alerta e fica cinza quando desabilitado.
+  const markerColor = disabled
+    ? "text-muted-foreground"
+    : status === "success" || status === "warning"
+      ? statusText[status]
+      : "text-destructive";
   const marker = required ? (
-    <span aria-hidden="true" className="text-destructive">
+    <span aria-hidden="true" className={markerColor}>
       *
     </span>
   ) : optional ? (
@@ -1206,6 +1237,7 @@ function InputField({
           />
           <Label
             htmlFor={inputId}
+            data-status={status}
             className={cn(
               "pointer-events-none absolute top-5 left-3 text-base leading-5 transition-all",
               "peer-focus-visible:top-2 peer-focus-visible:text-sm peer-focus-visible:leading-4",
@@ -1235,6 +1267,7 @@ function InputField({
         <p
           id={descriptionId}
           data-slot="input-field-description"
+          data-status={status}
           className={cn("text-xs leading-3 text-muted-foreground", status && statusText[status])}
         >
           {description}
@@ -1250,7 +1283,7 @@ export { InputField, type InputFieldStatus };
 - [ ] **Step 6: Rodar e confirmar que passa**
 
 Run: `pnpm --filter @gsilisqui/ui exec vitest run src/components/ui/input-field.test.tsx`
-Expected: PASS (11 testes). Se `required` via `getByLabelText(/Nome/)` falhar porque o asterisco entra no nome, mantenha o `aria-hidden` do marcador e ajuste só a consulta do teste, sem mudar o componente.
+Expected: PASS (12 testes). Se `required` via `getByLabelText(/Nome/)` falhar porque o asterisco entra no nome, mantenha o `aria-hidden` do marcador e ajuste só a consulta do teste, sem mudar o componente.
 
 - [ ] **Step 7: Criar `input-field.stories.tsx`**
 
@@ -1909,6 +1942,23 @@ describe("Combobox", () => {
     expect(trigger).toHaveTextContent("Financeiro");
   });
 
+  it("funciona pelo teclado: seta para baixo e Enter selecionam", async () => {
+    const onValueChange = vi.fn();
+    render(<Combobox label="Departamento" options={options} onValueChange={onValueChange} searchPlaceholder="Buscar" />);
+    screen.getByRole("combobox", { name: "Departamento" }).focus();
+    await userEvent.keyboard("{Enter}");
+    expect(screen.getByPlaceholderText("Buscar")).toHaveFocus();
+    await userEvent.keyboard("{ArrowDown}{Enter}");
+    expect(onValueChange).toHaveBeenCalledWith("suporte");
+  });
+
+  it("status mantém a cor ao focar e ao abrir", () => {
+    render(<Combobox label="Departamento" options={options} status="error" />);
+    const className = screen.getByRole("combobox", { name: "Departamento" }).className;
+    expect(className).toContain("focus-visible:border-destructive");
+    expect(className).toContain("data-[state=open]:border-destructive");
+  });
+
   it("funciona controlado e marca o item selecionado", async () => {
     function Controlled() {
       const [value, setValue] = useState<string | null>("suporte");
@@ -2093,10 +2143,14 @@ type ComboboxOption = {
 
 type ComboboxStatus = "error" | "success" | "warning";
 
+// Os variants focus-visible/data-[state=open] precisam ser repetidos: senão o foco e o estado aberto trocam a cor do status pela do ring.
 const statusTrigger: Record<ComboboxStatus, string> = {
-  error: "border-destructive focus-halo-destructive",
-  success: "border-success focus-halo-success",
-  warning: "border-warning focus-halo-warning",
+  error:
+    "border-destructive focus-halo-destructive focus-visible:border-destructive focus-visible:focus-halo-destructive data-[state=open]:border-destructive data-[state=open]:focus-halo-destructive",
+  success:
+    "border-success focus-halo-success focus-visible:border-success focus-visible:focus-halo-success data-[state=open]:border-success data-[state=open]:focus-halo-success",
+  warning:
+    "border-warning focus-halo-warning focus-visible:border-warning focus-visible:focus-halo-warning data-[state=open]:border-warning data-[state=open]:focus-halo-warning",
 };
 
 const statusText: Record<ComboboxStatus, string> = {
@@ -2189,6 +2243,7 @@ function Combobox({
               <span className="grid min-w-0 gap-1">
                 <span
                   id={labelId}
+                  data-status={status}
                   className={cn(
                     "text-foreground-secondary transition-all",
                     floated ? "text-sm leading-4" : "text-base leading-5",
@@ -2206,7 +2261,7 @@ function Combobox({
               </span>
             ) : (
               <span className="flex min-w-0 items-center gap-2 text-sm">
-                <span id={labelId} className={cn("text-foreground-secondary", status && statusText[status])}>
+                <span id={labelId} data-status={status} className={cn("text-foreground-secondary", status && statusText[status])}>
                   {label}
                   {marker}
                 </span>
@@ -2250,7 +2305,7 @@ function Combobox({
       </Popover>
       {name ? <input type="hidden" name={name} value={value ?? ""} /> : null}
       {description ? (
-        <p id={descriptionId} className={cn("text-xs leading-3 text-muted-foreground", status && statusText[status])}>
+        <p id={descriptionId} data-status={status} className={cn("text-xs leading-3 text-muted-foreground", status && statusText[status])}>
           {description}
         </p>
       ) : null}
@@ -2264,7 +2319,7 @@ export { Combobox, type ComboboxOption, type ComboboxStatus };
 - [ ] **Step 6: Rodar e confirmar que passa**
 
 Run: `pnpm --filter @gsilisqui/ui exec vitest run src/components/ui/combobox.test.tsx`
-Expected: PASS (8 testes). Pontos prováveis de ajuste, **sem enfraquecer os testes**:
+Expected: PASS (10 testes). No teste de teclado, o cmdk destaca o primeiro item ao abrir; `ArrowDown` vai para o segundo ("Suporte"). Se a versão instalada não destacar o primeiro automaticamente, ajuste só a sequência de teclas para chegar em "Suporte". Pontos prováveis de ajuste, **sem enfraquecer os testes**:
 - Se o cmdk não filtrar por `keywords` na versão instalada, confira a assinatura do `CommandItem` no `.d.ts` do cmdk e corrija a prop.
 - Se `getAllByRole("option")` não achar itens, confirme no DOM que o cmdk usa `role="option"` e que o popover abriu (o setup do jsdom precisa de `ResizeObserver` e `scrollIntoView`).
 - Se o nome acessível do trigger não bater, verifique se o `aria-labelledby` aponta para o `id` do label.
@@ -2364,7 +2419,7 @@ describe("composeDistCss", () => {
     expect(lines.slice(firstRule).some((l) => l.startsWith("@import"))).toBe(false);
     expect(out).toContain("--primary: #000;");
     expect(out).toContain('@source "./";');
-    expect(out).not.toContain("@opa/tokens/theme.css");
+    expect(out).not.toContain('@import "@opa/tokens/theme.css"');
   });
 
   it("falha se o src não importar o tema", () => {
@@ -2489,9 +2544,11 @@ describe.runIf(existsSync(dist))("dist publicado", () => {
     expect(read(component("dialog"))).not.toContain('"@/');
   });
 
-  it("gera tipos", () => {
+  it("gera tipos, inclusive do registro de ícones", () => {
     expect(existsSync(join(dist, "index.d.ts"))).toBe(true);
     expect(read("index.d.ts")).toContain("Combobox");
+    expect(existsSync(join(dist, "components/ui/icon-registry.d.ts"))).toBe(true);
+    expect(read("components/ui/icon-registry.d.ts")).toContain('"magnifying-glass"');
   });
 
   it("styles.css embute o tema com @import no topo e @source do dist", () => {
@@ -2502,7 +2559,7 @@ describe.runIf(existsSync(dist))("dist publicado", () => {
     expect(css).toContain("@custom-variant dark");
     expect(css).toContain('@source "./";');
     expect(css).toContain("@utility focus-ring");
-    expect(css).not.toContain("@opa/tokens/theme.css");
+    expect(css).not.toContain('@import "@opa/tokens/theme.css"');
   });
 });
 ```
@@ -2510,7 +2567,7 @@ describe.runIf(existsSync(dist))("dist publicado", () => {
 - [ ] **Step 8: Build e testes**
 
 Run: `pnpm --filter @gsilisqui/ui run build && pnpm --filter @gsilisqui/ui run test`
-Expected: build sem erros (`dist/index.js`, `dist/components/ui/*.js`, `*.d.ts`, `dist/styles.css`) e todos os testes do pacote passando, incluindo `dist.test.ts`. Se o `"use client"` sumir de algum arquivo, investigue a opção de diretivas do Rolldown antes de trocar de ferramenta, e registre.
+Expected: build sem erros (`dist/index.js`, `dist/components/ui/*.js`, `*.d.ts`, `dist/styles.css`) e todos os testes do pacote passando, incluindo `dist.test.ts`. Leia a saída do build: um aviso `TS2883 … not portable` do vite-plugin-dts significa que um `.d.ts` foi pulado mesmo com exit 0 — trate como erro. Se o `"use client"` sumir de algum arquivo, investigue a opção de diretivas do Rolldown antes de trocar de ferramenta, e registre.
 
 - [ ] **Step 9: Typecheck e lint**
 
@@ -2579,7 +2636,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ### Task 11: Storybook
 
 **Files:**
-- Create: `apps/storybook/package.json`, `apps/storybook/tsconfig.json`, `apps/storybook/.storybook/main.ts`, `apps/storybook/.storybook/preview.tsx`, `apps/storybook/.storybook/vitest.setup.ts`, `apps/storybook/vitest.config.ts`, `apps/storybook/src/styles.css`, `apps/storybook/src/foundations/colors.tsx`, `colors.mdx`, `typography.tsx`, `typography.mdx`, `icons.tsx`, `icons.mdx`, `apps/storybook/src/introduction.mdx`
+- Create: `apps/storybook/package.json`, `apps/storybook/tsconfig.json`, `apps/storybook/.storybook/main.ts`, `apps/storybook/.storybook/preview.tsx`, `apps/storybook/.storybook/vitest.setup.ts`, `apps/storybook/vitest.config.ts`, `apps/storybook/src/styles.css`, `apps/storybook/src/foundations/colors.tsx`, `colors.mdx`, `typography.tsx`, `typography.mdx`, `icons.tsx`, `icons.mdx`, `apps/storybook/src/introduction.mdx`, `apps/storybook/src/changelog.mdx`, `apps/storybook/src/raw.d.ts`
 
 - [ ] **Step 1: Criar `apps/storybook/package.json`**
 
@@ -2592,7 +2649,8 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
     "dev": "storybook dev -p 6006",
     "build": "storybook build -o storybook-static",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
   }
 }
 ```
@@ -2602,7 +2660,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ```bash
 export FONTAWESOME_PACKAGE_TOKEN="$(powershell -NoProfile -Command "[Environment]::GetEnvironmentVariable('FONTAWESOME_PACKAGE_TOKEN','User')" | tr -d '\r')"
 pnpm --filter storybook add react@^19.3.0 react-dom@^19.3.0 "@opa/ui@workspace:@gsilisqui/ui@*" "@opa/tokens@workspace:@gsilisqui/tokens@*" @fortawesome/pro-regular-svg-icons@^7.3.1 @fortawesome/pro-solid-svg-icons@^7.3.1
-pnpm --filter storybook add -D storybook@10.6.0 @storybook/react-vite@10.6.0 @storybook/addon-docs@10.6.0 @storybook/addon-a11y@10.6.0 @storybook/addon-themes@10.6.0 @storybook/addon-vitest@10.6.0 vite@^8.3.1 @vitejs/plugin-react@^6.1.1 tailwindcss@^4.3.3 @tailwindcss/vite@^4.3.3 vitest@4.1.11 @vitest/browser@4.1.11 @vitest/browser-playwright@4.1.11 playwright typescript@~6.0 @types/react@^19.3.0 @types/react-dom@^19.3.0
+pnpm --filter storybook add -D storybook@10.6.0 @storybook/react-vite@10.6.0 @storybook/addon-docs@10.6.0 @storybook/addon-a11y@10.6.0 @storybook/addon-themes@10.6.0 @storybook/addon-vitest@10.6.0 vite@^8.3.1 @vitejs/plugin-react@^6.1.1 tailwindcss@^4.3.3 @tailwindcss/vite@^4.3.3 vitest@4.1.11 @vitest/browser@4.1.11 @vitest/browser-playwright@4.1.11 playwright typescript@~6.0 @types/node @types/react@^19.3.0 @types/react-dom@^19.3.0
 pnpm --filter storybook exec playwright install chromium
 ```
 Expected: instalação sem erros. O `addon-vitest` 10.6 exige Vitest 4, por isso a versão fica travada **só neste app**.
@@ -2668,13 +2726,34 @@ import type { Preview } from "@storybook/react-vite";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import "../src/styles.css";
 
+// Exceções de contraste aprovadas pelo dono em 2026-09-29 (ver tabela de decisões do Plano 2):
+// Tag info/highlight e textos de campo com status success/warning mantêm as cores do Figma.
+// O contraste continua sendo verificado em todos os outros elementos.
+const CONTRAST_EXCEPTIONS = [
+  '[data-slot="tag"][data-variant="info"]',
+  '[data-slot="tag"][data-variant="highlight"]',
+  '[data-status="success"]',
+  '[data-status="warning"]',
+];
+
 const preview: Preview = {
+  tags: ["autodocs"],
   decorators: [withThemeByClassName({ themes: { Light: "", Dark: "dark" }, defaultTheme: "Light" })],
   parameters: {
     layout: "padded",
     controls: { expanded: true },
-    a11y: { test: "error" },
-    options: { storySort: { order: ["Introdução", "Fundações", "Componentes"] } },
+    a11y: {
+      test: "error",
+      config: {
+        rules: [
+          {
+            id: "color-contrast",
+            selector: `*${CONTRAST_EXCEPTIONS.map((s) => `:not(${s}):not(${s} *)`).join("")}`,
+          },
+        ],
+      },
+    },
+    options: { storySort: { order: ["Introdução", "Fundações", "Componentes", "Changelog"] } },
   },
 };
 
@@ -2722,7 +2801,41 @@ Se a API do `addon-vitest` 10.6 for diferente (nomes de export, opções), rode 
 ```tsx
 import { useEffect, useRef, useState } from "react";
 import component from "@opa/tokens/json/component";
+import primitives from "@opa/tokens/json/primitives";
 import light from "@opa/tokens/json/semantic.light";
+
+type PrimitiveFile = { color: Record<string, Record<string, { $value: string }> | string> };
+
+// Única exceção consciente à regra opa/no-raw-design-values: esta página existe para MOSTRAR a paleta crua.
+// A cor passa por função (a regra só inspeciona objetos literais em style), deixando a exceção explícita aqui.
+const rawSwatch = (hex: string) => ({ background: hex });
+
+/** Paleta crua (camada 1): só para consulta. Componentes e telas usam os semânticos. */
+export function Palette() {
+  const groups = Object.entries((primitives as unknown as PrimitiveFile).color).filter(
+    ([key]) => !key.startsWith("$"),
+  ) as [string, Record<string, { $value: string }>][];
+  return (
+    <div className="grid gap-4 text-foreground">
+      {groups.map(([group, steps]) => (
+        <div key={group} className="grid gap-1">
+          <code className="text-sm">{group}</code>
+          <div className="flex flex-wrap gap-1">
+            {Object.entries(steps)
+              .filter(([step]) => !step.startsWith("$"))
+              .map(([step, token]) => (
+                <div key={step} className="grid w-16 gap-1">
+                  <span className="h-10 rounded-md border border-border" style={rawSwatch(token.$value)} />
+                  <span className="font-mono text-xs text-muted-foreground">{step}</span>
+                  <span className="font-mono text-xs text-muted-foreground">{token.$value}</span>
+                </div>
+              ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 type TokenFile = { color: Record<string, unknown> };
 const names = (file: TokenFile) => Object.keys(file.color).filter((key) => !key.startsWith("$"));
@@ -2767,7 +2880,7 @@ export function SemanticColors() {
 `apps/storybook/src/foundations/colors.mdx`:
 ```mdx
 import { Meta } from "@storybook/addon-docs/blocks";
-import { SemanticColors } from "./colors";
+import { Palette, SemanticColors } from "./colors";
 
 <Meta title="Fundações/Cores" />
 
@@ -2777,8 +2890,43 @@ Use sempre os **tokens semânticos** (`bg-primary`, `text-foreground-secondary`,
 
 Fonte: `packages/tokens/src/*.json`. Os valores abaixo são lidos do CSS em tempo real.
 
+## Semânticos e componente
+
 <SemanticColors />
+
+## Paleta (primitivos)
+
+Só para consulta: a família `-dark` guarda os valores do modo Dark. Nunca use estas cores direto.
+
+<Palette />
 ```
+
+`apps/storybook/src/changelog.mdx`:
+```mdx
+import { Markdown, Meta } from "@storybook/addon-docs/blocks";
+import eslintChangelog from "../../../packages/eslint-config/CHANGELOG.md?raw";
+import tokensChangelog from "../../../packages/tokens/CHANGELOG.md?raw";
+
+<Meta title="Changelog" />
+
+# Changelog
+
+Versões publicadas: https://github.com/GSilisqui/opa-design-system/releases
+
+<Markdown>{tokensChangelog}</Markdown>
+
+<Markdown>{eslintChangelog}</Markdown>
+```
+
+`apps/storybook/src/raw.d.ts`:
+```ts
+declare module "*?raw" {
+  const content: string;
+  export default content;
+}
+```
+
+> O `packages/ui/CHANGELOG.md` só existe depois do primeiro release do `@gsilisqui/ui`. Quando existir, acrescente o import e o bloco dele na página de Changelog.
 
 `apps/storybook/src/foundations/typography.tsx`:
 ```tsx
@@ -2911,7 +3059,7 @@ Regras: use só componentes do DS e tokens semânticos. Precisa de algo que não
 - [ ] **Step 9: Rodar o Storybook e os testes**
 
 Run: `pnpm --filter storybook run build && pnpm --filter storybook run test`
-Expected: build gera `apps/storybook/storybook-static`; os testes rodam todas as stories no Chromium, sem violações de acessibilidade. Violação real → **corrija o componente ou a story** (ex.: `aria-label` faltando), não desligue a regra. Contraste abaixo do mínimo que o dono aprovou conscientemente (tokens 7 e 10: `destructive` no Dark e Tag `highlight` no Light) pode ser desligado **só na story afetada** com `parameters: { a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } } }` e um comentário citando a decisão.
+Expected: build gera `apps/storybook/storybook-static` com uma página **Docs** por componente (autodocs, com o link do Figma); os testes rodam todas as stories no Chromium, sem violações de acessibilidade. Violação real → **corrija o componente ou a story** (ex.: `aria-label` faltando), não desligue a regra. As únicas exceções são as de `CONTRAST_EXCEPTIONS` no `preview.tsx`. Se o axe não aceitar o seletor composto com `:not(...)`, troque pela desativação `color-contrast` **só nas stories** que mostram esses elementos, citando a decisão, e registre. Contraste do `destructive` no Dark (decisão de tokens 7) não é testado porque as stories rodam no tema Light.
 
 - [ ] **Step 10: Conferir visualmente** (opcional, se o executor tiver navegador)
 
@@ -2944,7 +3092,8 @@ Provam, com o `dist` real: o CSS gera os utilitários, as fontes são emitidas (
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build && node scripts/assert-build.mjs"
+    "build": "vite build && node scripts/assert-build.mjs",
+    "lint": "eslint ."
   }
 }
 ```
@@ -3066,7 +3215,8 @@ if (failed.length) process.exit(1);
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build && node scripts/assert-build.mjs"
+    "build": "next build && node scripts/assert-build.mjs",
+    "lint": "eslint ."
   }
 }
 ```
@@ -3092,27 +3242,31 @@ export default config;
 export default { plugins: { "@tailwindcss/postcss": {} } };
 ```
 
-`tsconfig.json`:
+`tsconfig.json` (já na forma que o `next build` reescreveria, para não gerar diff):
 ```json
 {
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
     "strict": true,
     "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "skipLibCheck": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
     "incremental": true,
     "plugins": [{ "name": "next" }]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
 ```
+
+Se depois do primeiro `next build` o `git diff` mostrar mudanças no `tsconfig.json`, commite a versão que o Next gerou.
 
 `app/globals.css`:
 ```css
