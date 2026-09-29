@@ -1,4 +1,5 @@
 import { RuleTester } from "eslint";
+import tseslint from "typescript-eslint";
 import { afterAll, describe, it } from "vitest";
 import rule from "../src/rules/no-raw-design-values.js";
 
@@ -28,6 +29,13 @@ tester.run("no-raw-design-values", rule, {
       options: ui,
     },
     { code: 'cva("", { variants: { variant: { primary: "bg-primary" } }, defaultVariants: { variant: "primary" } })' },
+    { code: '<div className="[mask:url(#fade)]" />', options: ui },
+    { code: '<svg style={{ clipPath: "url(#abc)" }} />' },
+    { code: '<div className="bg-(color:--x)" />', options: ui },
+    { code: '<div style={{ border: "none" }} />' },
+    { code: '<div style={{ color: "var(--primary)" }} />' },
+    { code: '<div style={{ color: "transparent", fill: "currentColor" }} />' },
+    { code: 'myCn("bg-primary")', options: [{ callees: ["myCn"] }] },
     { code: 'const label = "bg-[#fff]"', name: "strings fora de className/cn não são analisadas" },
   ],
   invalid: [
@@ -72,9 +80,36 @@ tester.run("no-raw-design-values", rule, {
       errors: [{ messageId: "palette" }],
       name: "cn aninhado reporta uma vez só",
     },
+    { code: 'cn("bg-[linear-gradient(90deg,#fff_0%,#000_100%)]")', options: ui, errors: [{ messageId: "rawColor" }] },
+    { code: 'cn("shadow-[#0003_0_1px_2px]")', options: ui, errors: [{ messageId: "rawColor" }] },
+    { code: '<div style={{ color: "red" }} />', errors: [{ messageId: "rawColor" }] },
+    { code: '<div style={{ border: "1px solid Red" }} />', errors: [{ messageId: "rawColor" }] },
+    { code: '<div style={{ color: a ? "#fff" : "var(--primary)" }} />', errors: [{ messageId: "rawColor" }] },
+    { code: "<div style={{ color: `#fff` }} />", errors: [{ messageId: "rawColor" }] },
+    { code: 'cn("bg-mauve-500 text-taupe-100 border-mist-200 ring-olive-900")', errors: Array(4).fill({ messageId: "palette" }) },
+    { code: 'cn("bg-(color:--x)")', errors: [{ messageId: "arbitraryValue" }] },
+    { code: 'cn("bg-blue-500")', options: [{ callees: ["myCn"] }], errors: [{ messageId: "palette" }] },
+    { code: 'myCn("bg-blue-500")', options: [{ callees: ["myCn"] }], errors: [{ messageId: "palette" }] },
+    { code: 'tv("bg-blue-500"); twJoin("bg-red-500")', errors: [{ messageId: "palette" }, { messageId: "palette" }] },
     {
       code: "<div className={`flex ${open ? 'bg-[#000]' : 'bg-muted'}`} />",
       errors: [{ messageId: "rawColor" }],
     },
+  ],
+});
+
+const tsTester = new RuleTester({
+  languageOptions: {
+    parser: tseslint.parser,
+    parserOptions: { ecmaFeatures: { jsx: true } },
+  },
+});
+
+tsTester.run("no-raw-design-values (ts)", rule, {
+  valid: [{ code: 'cva("", { variants: { v: { a: "bg-primary" } } as const })' }],
+  invalid: [
+    { code: 'cva("", { variants: { v: { a: "bg-[#000]" } } as const })', options: ui, errors: [{ messageId: "rawColor" }] },
+    { code: 'cn("bg-[#000]" satisfies string)', options: ui, errors: [{ messageId: "rawColor" }] },
+    { code: 'cn(x! && "bg-[#000]"!)', options: ui, errors: [{ messageId: "rawColor" }] },
   ],
 });

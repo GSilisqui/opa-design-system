@@ -8,6 +8,8 @@ export const plugin = {
 /** Para packages/ui: libera valores arbitrários vindos do código-fonte do Shadcn. */
 export const ui = [
   {
+    files: ["**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}"],
+    languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } },
     plugins: { opa: plugin },
     rules: { "opa/no-raw-design-values": ["error", { allowArbitraryValues: true }] },
   },
@@ -16,6 +18,8 @@ export const ui = [
 /** Para produto e protótipos: só a escala do Tailwind e tokens semânticos. */
 export const app = [
   {
+    files: ["**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}"],
+    languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } },
     plugins: { opa: plugin },
     rules: { "opa/no-raw-design-values": ["error", { allowArbitraryValues: false }] },
   },

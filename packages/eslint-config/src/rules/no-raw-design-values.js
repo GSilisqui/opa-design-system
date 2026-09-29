@@ -1,11 +1,18 @@
 import { splitClasses, utilityOf } from "../lib/classes.js";
 
 // (?<![a-z]) em vez de \b: no Tailwind "_" substitui espaço (ex.: 0_0_0_1px_rgba(...)), e "_" conta como caractere de palavra.
-const COLOR_LITERAL = /#[0-9a-f]{3,8}\b|(?<![a-z])(?:rgba?|hsla?|oklch|oklab|lab|lch|color-mix)\(/i;
+// Hex: termina em qualquer coisa que não seja [0-9a-z] (então "#fff_0%" é pego) e ignora referências "url(#id)".
+const COLOR_LITERAL = /(?<!url\()#[0-9a-f]{3,8}(?![0-9a-z])|(?<![a-z])(?:rgba?|hsla?|oklch|oklab|lab|lch|color-mix)\(/i;
+const NAMED_COLORS = [
+  "black", "white", "red", "green", "blue", "yellow", "orange", "purple", "pink", "gray", "grey", "silver",
+  "maroon", "navy", "teal", "olive", "lime", "aqua", "cyan", "magenta", "fuchsia", "brown", "gold", "indigo", "violet",
+];
+const NAMED_COLOR = new RegExp(`(?<![\w-])(?:${NAMED_COLORS.join("|")})(?![\w-])`, "i");
+const COLOR_PROPERTY = /color|background|fill|stroke|border|outline|shadow/i;
 const PALETTE =
-  /-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|[1-9]00|950)(?:\/\S+)?$/;
-const ARBITRARY = /\[[^\]]*\]|\(--[^)]*\)/;
-const DEFAULT_CALLEES = ["cn", "clsx", "cx", "cva", "twMerge"];
+  /-(?:slate|gray|zinc|neutral|stone|mauve|olive|mist|taupe|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|[1-9]00|950)(?:\/\S+)?$/;
+const ARBITRARY = /\[[^\]]*\]|\((?:[a-z-]+:)?--[^)]*\)/;
+const DEFAULT_CALLEES = ["cn", "clsx", "cx", "cva", "twMerge", "tv", "twJoin"];
 
 /**
  * @param {string} cls
@@ -55,6 +62,9 @@ function collectStrings(node, out = []) {
       collectStrings(node.right, out);
       break;
     case "JSXExpressionContainer":
+    case "TSAsExpression":
+    case "TSSatisfiesExpression":
+    case "TSNonNullExpression":
       collectStrings(node.expression, out);
       break;
   }
@@ -86,7 +96,8 @@ export default {
     },
   },
   create(context) {
-    const options = { allowArbitraryValues: false, callees: DEFAULT_CALLEES, ...context.options[0] };
+    const options = { allowArbitraryValues: false, ...context.options[0] };
+    options.callees = [...new Set([...DEFAULT_CALLEES, ...(context.options[0]?.callees ?? [])])];
 
     function checkClasses(strings) {
       for (const { node, value } of strings) {
@@ -99,10 +110,14 @@ export default {
 
     function checkStyle(objectExpression) {
       for (const p of objectExpression.properties) {
-        if (p.type !== "Property" || p.value.type !== "Literal" || typeof p.value.value !== "string") continue;
-        const value = p.value.value;
-        if (value.includes("--opa-")) context.report({ node: p.value, messageId: "primitive", data: { cls: value } });
-        else if (COLOR_LITERAL.test(value)) context.report({ node: p.value, messageId: "rawColor", data: { cls: value } });
+        if (p.type !== "Property") continue;
+        const key = p.key.type === "Identifier" ? p.key.name : String(p.key.value ?? "");
+        const colorKey = COLOR_PROPERTY.test(key);
+        for (const { node, value } of collectStrings(p.value)) {
+          if (value.includes("--opa-")) context.report({ node, messageId: "primitive", data: { cls: value } });
+          else if (COLOR_LITERAL.test(value) || (colorKey && NAMED_COLOR.test(value)))
+            context.report({ node, messageId: "rawColor", data: { cls: value } });
+        }
       }
     }
 
