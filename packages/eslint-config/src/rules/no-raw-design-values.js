@@ -2,12 +2,13 @@ import { splitClasses, utilityOf } from "../lib/classes.js";
 
 // (?<![a-z]) em vez de \b: no Tailwind "_" substitui espaço (ex.: 0_0_0_1px_rgba(...)), e "_" conta como caractere de palavra.
 // Hex: termina em qualquer coisa que não seja [0-9a-z] (então "#fff_0%" é pego) e ignora referências "url(#id)".
-const COLOR_LITERAL = /(?<!url\()#[0-9a-f]{3,8}(?![0-9a-z])|(?<![a-z])(?:rgba?|hsla?|oklch|oklab|lab|lch|color-mix)\(/i;
+const COLOR_LITERAL = /(?<!url\(['"]?)#[0-9a-f]{3,8}(?![0-9a-z])|(?<![a-z])(?:rgba?|hsla?|oklch|oklab|lab|lch|color-mix)\(/i;
 const NAMED_COLORS = [
   "black", "white", "red", "green", "blue", "yellow", "orange", "purple", "pink", "gray", "grey", "silver",
   "maroon", "navy", "teal", "olive", "lime", "aqua", "cyan", "magenta", "fuchsia", "brown", "gold", "indigo", "violet",
 ];
-const NAMED_COLOR = new RegExp(`(?<![\w-])(?:${NAMED_COLORS.join("|")})(?![\w-])`, "i");
+const NAMED_COLOR = new RegExp(String.raw`(?<![\w-])(?:${NAMED_COLORS.join("|")})(?![\w-])`, "i");
+const URL_CALL = /url\([^)]*\)/gi;
 const COLOR_PROPERTY = /color|background|fill|stroke|border|outline|shadow/i;
 const PALETTE =
   /-(?:slate|gray|zinc|neutral|stone|mauve|olive|mist|taupe|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|[1-9]00|950)(?:\/\S+)?$/;
@@ -115,7 +116,7 @@ export default {
         const colorKey = COLOR_PROPERTY.test(key);
         for (const { node, value } of collectStrings(p.value)) {
           if (value.includes("--opa-")) context.report({ node, messageId: "primitive", data: { cls: value } });
-          else if (COLOR_LITERAL.test(value) || (colorKey && NAMED_COLOR.test(value)))
+          else if (COLOR_LITERAL.test(value) || (colorKey && NAMED_COLOR.test(value.replace(URL_CALL, ""))))
             context.report({ node, messageId: "rawColor", data: { cls: value } });
         }
       }
