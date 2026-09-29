@@ -24,8 +24,6 @@ const GENERIC_FAMILIES = new Set([
   "math",
 ]);
 
-
-
 function assertName(name: string, id: string): void {
   if (!NAME_SEGMENT.test(name)) {
     throw new Error(

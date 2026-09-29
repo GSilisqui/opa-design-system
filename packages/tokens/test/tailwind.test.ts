@@ -16,6 +16,7 @@ describe("theme.css compilado pelo Tailwind v4", () => {
     execSync(`pnpm exec tailwindcss -i test/tailwind-fixture/input.css -o "${out}"`, {
       cwd: pkgRoot,
       stdio: "pipe",
+      timeout: 60_000,
     });
     css = readFileSync(out, "utf8");
   }, 60_000);
@@ -30,10 +31,10 @@ describe("theme.css compilado pelo Tailwind v4", () => {
   });
 
   it("dark: segue a classe .dark", () => {
-    expect(css).toContain(".dark\\:bg-muted");
-    expect(css).toMatch(/:where\(\.dark, ?\.dark \*\)/);
+    expect(css).toMatch(/\.dark\\:bg-muted:where\(\.dark, ?\.dark \*\)/);
   });
 
+  // Depende de `@theme inline` emitir valores literais (tamanhos do seed = defaults do Tailwind; só fica significativo com os valores do Figma).
   it("usa a escala tipográfica do DS", () => {
     const size = typography.text.sm.size.$value.replace(".", "\\.");
     expect(css).toMatch(new RegExp(`\\.text-sm\\s*\\{[^}]*font-size:\\s*${size}`));
