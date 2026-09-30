@@ -1,5 +1,11 @@
 # @gsilisqui/ui
 
+## 0.2.1
+
+### Patch Changes
+
+- e5af4ab: Icon: não corta mais os ícones do Font Awesome que passam do viewBox (`overflow-visible`, como no CSS oficial do FA e no Figma).
+
 ## 0.2.0
 
 ### Minor Changes
