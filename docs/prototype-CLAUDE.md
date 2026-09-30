@@ -16,7 +16,8 @@ com os componentes e tokens do DS. Escreva textos e documentação em português
 4. **NUNCA crie componente do zero sem avisar e obter aprovação explícita do dono do DS.** Pare, explique por que
    Shadcn/Radix não resolve e espere a resposta.
 5. **Proibido MUI e qualquer outra biblioteca de componentes ou de ícones** (Lucide, Heroicons, react-icons…).
-   Ícones só via `<Icon>` do `@opa/ui` (Font Awesome Pro). Ícone que não existe no DS → peça a inclusão.
+   Ícones só via `<Icon>` do `@opa/ui` (Font Awesome Pro). No Figma há o catálogo completo (inclusive brands), mas o código só desenha os do
+   registro do DS: ícone fora dele → peça a inclusão.
 6. **Proibido:** cores arbitrárias (`bg-[#3b35c9]`, `rgb()`, `hsl()`, `oklch()`, `style={{ color }}`), primitivos
    `var(--opa-*)`, paleta padrão do Tailwind (`bg-blue-500`) e **valores arbitrários de espaçamento/tamanho**
    (`p-[13px]`, `w-[372px]`). Use a escala do Tailwind (`p-3`, `gap-1.5`, `w-96`). O lint (`opa.configs.app`) bloqueia isso.

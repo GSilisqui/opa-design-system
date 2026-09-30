@@ -47,6 +47,8 @@ import { Button, Icon } from "@opa/ui";
 ```
 
 - Ícones: `<Icon name="plus" />` (regular) ou `variant="solid"` para ativo/selecionado; nomes em `manifest/components.json → icons`.
+  No Figma, cada ícone é um componente com a propriedade `variant` (regular | solid; brands para logos). O Figma tem o catálogo
+  completo do Font Awesome 7; o código só desenha os do `icon-registry.ts`.
 - Dark mode: classe `.dark` num ancestral (normalmente `<html>`). O `dark:` do Tailwind segue essa classe.
 - Tipografia com nomes do Figma: `text-sm`=12px, `text-base`=14px, `text-lg`=16px. Pesos: `font-normal|medium|bold` (sem `font-semibold`).
 - Foco: `focus-visible:focus-ring` (sem borda) ou `focus-visible:border-ring focus-visible:focus-halo` (com borda). Disabled: `opacity-40`.
@@ -97,7 +99,7 @@ export FONTAWESOME_PACKAGE_TOKEN="$(powershell -NoProfile -Command "[Environment
 
 - Arquivo **OPA Design System**: `UW4As1KdSaPboQ3sNMAbCi` — https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi
   (o antigo "Component Library" `7FS6JptRPLnco6VSAEAOAH` é só referência visual).
-- Páginas: Capa · Comece aqui · Cores · Tipografia · Espaçamento e raio · Efeitos · Ícones · Button · Input · Tag · Dialog · Combobox · Changelog.
+- Páginas: Capa · Comece aqui · Cores · Tipografia · Espaçamento e raio · Efeitos · Ícones · Ícones · Font Awesome · Ícones · brands · Button · Input · Tag · Dialog · Combobox · Changelog.
 - Coleções: `Primitives` (escondidos: escopos vazios) · `Semantic` (Light/Dark, nomes = variáveis CSS) · `Component` (`tag-*`) · `Spacing` · `Radius`.
   Estilos de texto `text-{size}/{regular|medium|bold}` e `mono/*`; effect styles `focus/*` e `shadow/*`.
 - **Antes de qualquer `use_figma`:** carregue as skills `figma:figma-use` e `figma:figma-generate-library`

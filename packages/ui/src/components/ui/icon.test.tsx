@@ -14,6 +14,11 @@ describe("Icon", () => {
     expect(svg.getAttribute("class")).toContain("h-[1em]");
   });
 
+  it("não corta ícones que passam do viewBox (como o CSS do Font Awesome)", () => {
+    const { container } = render(<Icon name="check" />);
+    expect(container.querySelector("svg")!.getAttribute("class")).toContain("overflow-visible");
+  });
+
   it("com label vira imagem acessível", () => {
     render(<Icon name="trash" label="Excluir" />);
     expect(screen.getByRole("img", { name: "Excluir" })).toBeInTheDocument();

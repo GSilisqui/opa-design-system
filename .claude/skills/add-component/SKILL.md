@@ -40,7 +40,8 @@ pnpm dlx shadcn@4.21.0 add <nome>
 3. **Ícones:** troque todo Lucide por `<Icon name="…" />` de `@/components/ui/icon`. Ícone novo:
    - `src/components/ui/icon-registry.ts`: import do regular (`@fortawesome/pro-regular-svg-icons/fa<Nome>`) e do solid,
      nome na união `IconName`, chave nos mapas `regular` e `solid`;
-   - Figma: componentes `regular/<name>` e `solid/<name>` na página Ícones (skill `figma-component`);
+   - Figma: o ícone já existe no catálogo (página Ícones · Font Awesome) como componente `<name>` com `variant` regular | solid.
+     Anote o nodeId/key do componente e das duas variantes em `figma-library-index.json → icons` (e, se quiser, mostre-o na página Ícones);
    - `manifest/components.json → icons.items` (o teste exige os três em sincronia).
 4. **Tokens e specs do Figma** (decisões do Plano 2):
    - Só cores semânticas (`bg-primary`, `text-muted-foreground`, `border-border`…). Nada de `--opa-*`, hex ou paleta do Tailwind.

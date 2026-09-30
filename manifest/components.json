@@ -649,25 +649,30 @@
     }
   },
   "icons": {
-    "$description": "Ícones do DS (Font Awesome 7 Pro). Nomes = `iconNames` de packages/ui/src/components/ui/icon-registry.ts = componentes `regular/<name>` e `solid/<name>` da página Ícones do Figma.",
+    "$description": "Ícones do DS (Font Awesome 7 Pro). Nomes = `iconNames` de packages/ui/src/components/ui/icon-registry.ts = componentes do Figma com o mesmo nome e a propriedade `variant` (regular | solid), como o <Icon variant>. O Figma tem o catálogo completo (páginas Ícones · Font Awesome e Ícones · brands); aqui ficam só os que o código desenha.",
     "registry": "packages/ui/src/components/ui/icon-registry.ts",
-    "figmaPage": "Ícones",
+    "figmaPage": "Ícones (os do código) · Ícones · Font Awesome e Ícones · brands (catálogo)",
     "usage": {
       "regular": "<Icon name=\"<name>\" />",
       "solid": "<Icon name=\"<name>\" variant=\"solid\" />"
     },
-    "add": "Novo ícone: importe o regular e o solid no icon-registry.ts (IconName + os dois mapas), crie `regular/<name>` e `solid/<name>` no Figma (skill figma-component) e adicione aqui.",
+    "add": "Novo ícone no código: importe o regular e o solid no icon-registry.ts (IconName + os dois mapas) e adicione aqui com o nodeId/key do componente e das variantes (o ícone já existe no catálogo do Figma; pegue em figma-library-index.json ou pelo use_figma). Brands ainda não são desenhados pelo <Icon>.",
     "items": [
       {
         "name": "angle-down",
         "figma": {
-          "regular": {
-            "nodeId": "9:4",
-            "key": "92d0c4da5e30d4251a26f3bd4e0c1ca8535c7c25"
-          },
-          "solid": {
-            "nodeId": "9:49",
-            "key": "310c421a931d2876147c40d183d710a3f4504de8"
+          "nodeId": "36:3779",
+          "key": "3d5c87b7766bf67e06c9f431028563b83c4cb458",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:4",
+              "key": "92d0c4da5e30d4251a26f3bd4e0c1ca8535c7c25"
+            },
+            "solid": {
+              "nodeId": "9:49",
+              "key": "310c421a931d2876147c40d183d710a3f4504de8"
+            }
           }
         },
         "react": "<Icon name=\"angle-down\" />",
@@ -676,13 +681,18 @@
       {
         "name": "angle-up",
         "figma": {
-          "regular": {
-            "nodeId": "9:7",
-            "key": "20c17f684d374d827df90639ffc40431955b243e"
-          },
-          "solid": {
-            "nodeId": "9:52",
-            "key": "f46c44decef3201e7f8fd4d6e7a3bed05661db9f"
+          "nodeId": "36:3780",
+          "key": "a8eb606ef106c3b12fb42406ad351a3c97022b74",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:7",
+              "key": "20c17f684d374d827df90639ffc40431955b243e"
+            },
+            "solid": {
+              "nodeId": "9:52",
+              "key": "f46c44decef3201e7f8fd4d6e7a3bed05661db9f"
+            }
           }
         },
         "react": "<Icon name=\"angle-up\" />",
@@ -691,13 +701,18 @@
       {
         "name": "check",
         "figma": {
-          "regular": {
-            "nodeId": "9:10",
-            "key": "fc0a63bb507ba97a71660bf620c9f266f68f5986"
-          },
-          "solid": {
-            "nodeId": "9:55",
-            "key": "a9dd3ba775bc6898de586a521b4ced25555848dc"
+          "nodeId": "36:3781",
+          "key": "330f728224573fbe981bc5ff2cb6bbc97276e681",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:10",
+              "key": "fc0a63bb507ba97a71660bf620c9f266f68f5986"
+            },
+            "solid": {
+              "nodeId": "9:55",
+              "key": "a9dd3ba775bc6898de586a521b4ced25555848dc"
+            }
           }
         },
         "react": "<Icon name=\"check\" />",
@@ -706,13 +721,18 @@
       {
         "name": "circle-check",
         "figma": {
-          "regular": {
-            "nodeId": "9:13",
-            "key": "20b975c3f9c14debb437830245dbdb54b79ae1a0"
-          },
-          "solid": {
-            "nodeId": "9:58",
-            "key": "ea74307ad6ca9abdf7ee30670688fbc6eecbea9c"
+          "nodeId": "36:3782",
+          "key": "b4040d71560f5e068e6ec4dada7a6e1e01a65135",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:13",
+              "key": "20b975c3f9c14debb437830245dbdb54b79ae1a0"
+            },
+            "solid": {
+              "nodeId": "9:58",
+              "key": "ea74307ad6ca9abdf7ee30670688fbc6eecbea9c"
+            }
           }
         },
         "react": "<Icon name=\"circle-check\" />",
@@ -721,13 +741,18 @@
       {
         "name": "circle-exclamation",
         "figma": {
-          "regular": {
-            "nodeId": "9:16",
-            "key": "3b9e03bd1e99e15beceae1554d4ce59c1f1adbc8"
-          },
-          "solid": {
-            "nodeId": "9:61",
-            "key": "0e3d70414ae0bd3e6fefa827a6de0b7e8cad0bc6"
+          "nodeId": "36:3783",
+          "key": "ad18fd8e6a99f5b2627d7a7cc32fe9536dc9bb92",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:16",
+              "key": "3b9e03bd1e99e15beceae1554d4ce59c1f1adbc8"
+            },
+            "solid": {
+              "nodeId": "9:61",
+              "key": "0e3d70414ae0bd3e6fefa827a6de0b7e8cad0bc6"
+            }
           }
         },
         "react": "<Icon name=\"circle-exclamation\" />",
@@ -736,13 +761,18 @@
       {
         "name": "circle-info",
         "figma": {
-          "regular": {
-            "nodeId": "9:19",
-            "key": "10f42607f260c156db44fce0823aec37e88132b6"
-          },
-          "solid": {
-            "nodeId": "9:64",
-            "key": "d58f5c2a83bd4d1139b0a20de826d00f471bb53f"
+          "nodeId": "36:3784",
+          "key": "3031648d9387b75387aeb7b06e0372be03855eb4",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:19",
+              "key": "10f42607f260c156db44fce0823aec37e88132b6"
+            },
+            "solid": {
+              "nodeId": "9:64",
+              "key": "d58f5c2a83bd4d1139b0a20de826d00f471bb53f"
+            }
           }
         },
         "react": "<Icon name=\"circle-info\" />",
@@ -751,13 +781,18 @@
       {
         "name": "copy",
         "figma": {
-          "regular": {
-            "nodeId": "9:22",
-            "key": "dcd9d6e91d65258ebc69fbc231f14e25f3ddf1bb"
-          },
-          "solid": {
-            "nodeId": "9:67",
-            "key": "4b37a1dfcd1c9efe6729ff4ff2fbeff2a1d2a6f1"
+          "nodeId": "36:3785",
+          "key": "15fbe326dc8a4051e74f216987eb5daf26240979",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:22",
+              "key": "dcd9d6e91d65258ebc69fbc231f14e25f3ddf1bb"
+            },
+            "solid": {
+              "nodeId": "9:67",
+              "key": "4b37a1dfcd1c9efe6729ff4ff2fbeff2a1d2a6f1"
+            }
           }
         },
         "react": "<Icon name=\"copy\" />",
@@ -766,13 +801,18 @@
       {
         "name": "ellipsis",
         "figma": {
-          "regular": {
-            "nodeId": "9:25",
-            "key": "531c7871d8f0f4bd02a79e8a5d065c29d6e0361f"
-          },
-          "solid": {
-            "nodeId": "9:70",
-            "key": "5f8cd369339908fa55a458e0237d3972ec119d62"
+          "nodeId": "36:3786",
+          "key": "9e5bff3c34de8001f89c7a6e99817f8be44ba715",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:25",
+              "key": "531c7871d8f0f4bd02a79e8a5d065c29d6e0361f"
+            },
+            "solid": {
+              "nodeId": "9:70",
+              "key": "5f8cd369339908fa55a458e0237d3972ec119d62"
+            }
           }
         },
         "react": "<Icon name=\"ellipsis\" />",
@@ -781,13 +821,18 @@
       {
         "name": "face-smile",
         "figma": {
-          "regular": {
-            "nodeId": "9:28",
-            "key": "17781a575b95889d1c4b8cb9d9fcf6de5cd4d5d6"
-          },
-          "solid": {
-            "nodeId": "9:73",
-            "key": "6feb5100f11266fc6cbc578b3fcc0b06f5c6675e"
+          "nodeId": "36:3787",
+          "key": "eeb3f7a7acb451fad08bc4a22541d0361c741f57",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:28",
+              "key": "17781a575b95889d1c4b8cb9d9fcf6de5cd4d5d6"
+            },
+            "solid": {
+              "nodeId": "9:73",
+              "key": "6feb5100f11266fc6cbc578b3fcc0b06f5c6675e"
+            }
           }
         },
         "react": "<Icon name=\"face-smile\" />",
@@ -796,13 +841,18 @@
       {
         "name": "magnifying-glass",
         "figma": {
-          "regular": {
-            "nodeId": "9:31",
-            "key": "d7b311e752a85f61786169560a61528d6d2577a1"
-          },
-          "solid": {
-            "nodeId": "9:76",
-            "key": "c07213f55399a44a21bb5a49b66313ab25c024a5"
+          "nodeId": "36:3789",
+          "key": "a248ff20d1ae4e29a945b7a262cfec90b65f0e3f",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:31",
+              "key": "d7b311e752a85f61786169560a61528d6d2577a1"
+            },
+            "solid": {
+              "nodeId": "9:76",
+              "key": "c07213f55399a44a21bb5a49b66313ab25c024a5"
+            }
           }
         },
         "react": "<Icon name=\"magnifying-glass\" />",
@@ -811,13 +861,18 @@
       {
         "name": "pen",
         "figma": {
-          "regular": {
-            "nodeId": "9:34",
-            "key": "32e316bee100f8fd7e3ec3af08af65c0a4967e3f"
-          },
-          "solid": {
-            "nodeId": "9:79",
-            "key": "21f9a1fa64dd24141fe408eeb3c9824b1791745a"
+          "nodeId": "36:3790",
+          "key": "a8a9ceaa56634e1e8ce95df6b79f44d810733e23",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:34",
+              "key": "32e316bee100f8fd7e3ec3af08af65c0a4967e3f"
+            },
+            "solid": {
+              "nodeId": "9:79",
+              "key": "21f9a1fa64dd24141fe408eeb3c9824b1791745a"
+            }
           }
         },
         "react": "<Icon name=\"pen\" />",
@@ -826,13 +881,18 @@
       {
         "name": "plus",
         "figma": {
-          "regular": {
-            "nodeId": "9:37",
-            "key": "f50335cf22c1ae3bd93aa79c8b79077e4c17e542"
-          },
-          "solid": {
-            "nodeId": "9:82",
-            "key": "0cbd5623c4fc33fdb2c53896ad08f18a65799da1"
+          "nodeId": "36:3875",
+          "key": "c399bfd141e2adcbe76d8fc75fbacc5c0cce0135",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:37",
+              "key": "f50335cf22c1ae3bd93aa79c8b79077e4c17e542"
+            },
+            "solid": {
+              "nodeId": "9:82",
+              "key": "0cbd5623c4fc33fdb2c53896ad08f18a65799da1"
+            }
           }
         },
         "react": "<Icon name=\"plus\" />",
@@ -841,13 +901,18 @@
       {
         "name": "trash",
         "figma": {
-          "regular": {
-            "nodeId": "9:40",
-            "key": "20aa63cfd11ed4abc086852844e88f977c0d2d4a"
-          },
-          "solid": {
-            "nodeId": "9:85",
-            "key": "8dd83d340b5e55a619d998f3f1b7cfca1cddb57f"
+          "nodeId": "36:3876",
+          "key": "1b1a689fa251717cdaef4030934ff6612f553831",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:40",
+              "key": "20aa63cfd11ed4abc086852844e88f977c0d2d4a"
+            },
+            "solid": {
+              "nodeId": "9:85",
+              "key": "8dd83d340b5e55a619d998f3f1b7cfca1cddb57f"
+            }
           }
         },
         "react": "<Icon name=\"trash\" />",
@@ -856,13 +921,18 @@
       {
         "name": "triangle-exclamation",
         "figma": {
-          "regular": {
-            "nodeId": "9:43",
-            "key": "d8dec2e5beb9ba1542a959812ea3238969b84e84"
-          },
-          "solid": {
-            "nodeId": "9:88",
-            "key": "ab94c0252ef569f257da61a3d7e02700a4344b9e"
+          "nodeId": "36:3877",
+          "key": "3b132bab453bc5ae1c0d36cdf30aaa431f010d9d",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:43",
+              "key": "d8dec2e5beb9ba1542a959812ea3238969b84e84"
+            },
+            "solid": {
+              "nodeId": "9:88",
+              "key": "ab94c0252ef569f257da61a3d7e02700a4344b9e"
+            }
           }
         },
         "react": "<Icon name=\"triangle-exclamation\" />",
@@ -871,13 +941,18 @@
       {
         "name": "xmark",
         "figma": {
-          "regular": {
-            "nodeId": "9:46",
-            "key": "fd0a34984759ef42ea6ee73263367711432b9e10"
-          },
-          "solid": {
-            "nodeId": "9:91",
-            "key": "d1ff15cb9677a5f039e7fd0acefaed2ec4295e2a"
+          "nodeId": "36:3878",
+          "key": "7487b206738557ae95b077baafd96c13297ec5f2",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "9:46",
+              "key": "fd0a34984759ef42ea6ee73263367711432b9e10"
+            },
+            "solid": {
+              "nodeId": "9:91",
+              "key": "d1ff15cb9677a5f039e7fd0acefaed2ec4295e2a"
+            }
           }
         },
         "react": "<Icon name=\"xmark\" />",
