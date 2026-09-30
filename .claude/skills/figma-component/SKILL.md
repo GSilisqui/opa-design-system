@@ -58,6 +58,8 @@ const pad = (n, x, y) => { n.setBoundVariable("paddingLeft", V.Spacing[x]); n.se
   Cuidado ao trocar `preferredValues` em lote: só em propriedades de ícone (`*IconName`/`iconName`), nunca em slots como `bodyContent`.
 - **Grade de variantes:** `figma.combineAsVariants`, variantes em grade legível (linhas = variant, colunas = size × state).
   **A variante padrão é a do canto superior esquerdo** — posicione a combinação default do código (ex.: `primary/default/default`) lá.
+- **Fills ligados a variável, em massa:** depois de reatribuir `fills`/`strokes`, compare `paint.color` com `variable.resolveForConsumer(node).value`.
+  Com a cor bruta `{0,0,0}` do helper, alguns paints renderizam pretos mesmo com binding (aconteceu no Button outline). Regrave a cor resolvida e confirme com screenshot.
 - Armadilhas do ledger: `createAutoLayout()` põe fill branco — `fills = []` nos frames internos; `resize()` volta o sizing para
   FIXED — reaplique `primaryAxisSizingMode = "AUTO"` / `layoutSizing* = "HUG"` depois.
 - `description` do COMPONENT_SET: uma frase de uso + link da story do Storybook e caminho do código.
