@@ -53,6 +53,8 @@ const pad = (n, x, y) => { n.setBoundVariable("paddingLeft", V.Spacing[x]); n.se
   (`{ type: "COMPONENT_SET", key }` dos ícones em `figma-library-index.json → icons`). Cada ícone é um componente `<name>`
   com a propriedade `variant` (regular | solid, e brands para logos), cor ligada a `foreground` (a instância herda a cor do contexto).
   O catálogo completo do Font Awesome 7 já está nas páginas Ícones · Font Awesome e Ícones · brands: não recrie ícones.
+  Em todo nó de ícone dentro de um componente (inclusive fixos, como chevron e remover), use `isExposedInstance = true`: o seletor
+  `variant` (regular | solid) aparece no painel da instância, sem precisar entrar no ícone.
   Cuidado ao trocar `preferredValues` em lote: só em propriedades de ícone (`*IconName`/`iconName`), nunca em slots como `bodyContent`.
 - **Grade de variantes:** `figma.combineAsVariants`, variantes em grade legível (linhas = variant, colunas = size × state).
   **A variante padrão é a do canto superior esquerdo** — posicione a combinação default do código (ex.: `primary/default/default`) lá.
