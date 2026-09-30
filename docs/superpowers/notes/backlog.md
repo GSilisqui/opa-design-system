@@ -14,7 +14,7 @@ Itens menores levantados nas revisões. Nenhum bloqueia o uso atual. Marque com 
 - [x] **Exportar o `cn` do DS** em `index.ts` para quem estende componentes (o `cn` puro não conhece `shadow-popover`/`focus-halo`).
 - [x] **Changelog do Storybook:** incluir `packages/ui/CHANGELOG.md` (existe desde o release 0.1.0).
 - [x] **Contraste no Dark** agora é testável: `pnpm --filter opa-storybook test:dark` roda as stories com `.dark`. Fora do `verify` porque reprova (ver próximo item).
-- [ ] **Decisão do dono: `destructive` no Dark (#dc4440) não passa AA.** Texto destrutivo (label/descrição de erro, Button `destructive-quiet`) sobre `background`/`card` escuro: 3,14 a 3,97:1 (precisa de 4,5:1); texto `destructive-foreground` (#ebeef5) sobre o botão `destructive`: 3,65:1. Opções: clarear o `destructive` no Dark (tokens + Figma), ou registrar exceção como as da Tag `info`/`highlight`. Depois de decidir, incluir `test:dark` no `test`.
+- [ ] **Adiado pelo dono (2026-09-30): manter `destructive` como está.** Ele no Dark (#dc4440) não passa AA. Texto destrutivo (label/descrição de erro, Button `destructive-quiet`) sobre `background`/`card` escuro: 3,14 a 3,97:1 (precisa de 4,5:1); texto `destructive-foreground` (#ebeef5) sobre o botão `destructive`: 3,65:1. Opções: clarear o `destructive` no Dark (tokens + Figma), ou registrar exceção como as da Tag `info`/`highlight`. Depois de decidir, incluir `test:dark` no `test`.
 
 ## Figma (para o Plano 3)
 
