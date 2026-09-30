@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Shadcn Calendar (react-day-picker), pt-BR por padrão. Dia selecionado em primary; período com extremos em primary e meio em primary-subtle; hoje com um ponto. Normalmente usado dentro de DatePicker/DateRangePicker; standalone quando o calendário fica sempre visível.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=56-269 · Shadcn Calendar (react-day-picker), pt-BR por padrão. Dia selecionado em primary; período com extremos em primary e meio em primary-subtle; hoje com um ponto. Normalmente usado dentro de DatePicker/DateRangePicker; standalone quando o calendário fica sempre visível.",
       },
     },
   },

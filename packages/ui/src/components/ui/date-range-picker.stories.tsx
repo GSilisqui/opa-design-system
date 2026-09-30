@@ -25,7 +25,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Popover + Calendar em modo período, no campo do DatePicker. O período só é aplicado quando o fim é escolhido. `presets` (opcional) desenha a coluna de atalhos à esquerda: cada item tem `label` e `range()`; os atalhos em si (Hoje, Últimos 7 dias…) são de quem usa. `name` envia aaaa-mm-dd/aaaa-mm-dd.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=54-157 · Popover + Calendar em modo período, no campo do DatePicker. O período só é aplicado quando o fim é escolhido. `presets` (opcional) desenha a coluna de atalhos à esquerda: cada item tem `label` e `range()`; os atalhos em si (Hoje, Últimos 7 dias…) são de quem usa. `name` envia aaaa-mm-dd/aaaa-mm-dd.",
       },
     },
   },

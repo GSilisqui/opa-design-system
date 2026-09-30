@@ -917,20 +917,25 @@
         ],
         "source": "packages/ui/src/components/ui/calendar.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (etapa 4 do desenho do Date Picker): Calendar Day + Calendar. Use as stories como referência.",
+      "figma": {
+        "name": "Calendar",
+        "nodeId": "56:269",
+        "key": "12aad76c6a13bbc97457a103c71e691ce2ffc53f",
+        "page": "Calendar",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=56-269"
+      },
       "storybook": {
         "title": "Componentes/Calendar"
       },
       "props": [
         {
-          "figma": null,
+          "figma": "mode",
           "react": "mode",
           "values": [
             "single",
             "range"
           ],
-          "notes": "`single` = data única; `range` = período (extremos em primary, meio em primary-subtle)."
+          "notes": "`single` = data única; `range` = período."
         },
         {
           "figma": null,
@@ -941,6 +946,53 @@
           "figma": null,
           "react": "disabled",
           "notes": "Dias desabilitados (opacity-40), ex.: `{ before: new Date() }`."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Calendar Day",
+          "nodeId": "55:45",
+          "key": "f9474829a50b9007111ef5b14bb1e127955da4db",
+          "page": "Calendar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=55-45",
+          "props": [
+            {
+              "figma": "day",
+              "react": null,
+              "notes": "Número do dia (vem do calendário)."
+            },
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "selected",
+                "range-start",
+                "range-middle",
+                "range-end",
+                "outside",
+                "disabled"
+              ],
+              "map": {
+                "default": "dia normal",
+                "selected": "modo single: dia escolhido",
+                "range-start": "modo range: início",
+                "range-middle": "modo range: meio (primary-subtle)",
+                "range-end": "modo range: fim",
+                "outside": "dia de outro mês",
+                "disabled": "`disabled` (opacity-40)"
+              }
+            },
+            {
+              "figma": "today",
+              "react": null,
+              "values": [
+                "false",
+                "true"
+              ],
+              "notes": "Ponto indicador do dia de hoje."
+            }
+          ]
         }
       ]
     },
@@ -953,44 +1005,98 @@
         ],
         "source": "packages/ui/src/components/ui/date-picker.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (etapa 4 do desenho do Date Picker).",
+      "figma": {
+        "name": "DatePicker",
+        "nodeId": "54:41",
+        "key": "8569b6fbdd09d4e1c6d96066870f3b8274d1fccf",
+        "page": "Date Picker",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=54-41"
+      },
       "storybook": {
         "title": "Componentes/DatePicker"
       },
       "props": [
         {
-          "figma": null,
+          "figma": "label",
           "react": "label",
           "notes": "Obrigatório. No size default é label flutuante; no sm o label é o placeholder e some com valor."
         },
         {
-          "figma": null,
+          "figma": "value",
+          "react": "value",
+          "notes": "No Figma é o TEXTO mostrado (dd/mm/aaaa); no código `value`/`defaultValue` é um `Date`."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder",
+          "notes": "Padrão dd/mm/aaaa."
+        },
+        {
+          "figma": "required",
+          "react": "required"
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "true → passe `description`."
+        },
+        {
+          "figma": "descriptionText",
+          "react": "description"
+        },
+        {
+          "figma": "size",
           "react": "size",
           "values": [
             "default",
             "sm"
           ],
-          "notes": "default = 60px; sm = 36px (igual ao Combobox)."
+          "notes": "default = 60px com label flutuante; sm = 36px, label some com valor."
         },
         {
-          "figma": null,
-          "react": "value / defaultValue / onValueChange",
-          "notes": "`Date`; `onValueChange(date | undefined)`."
-        },
-        {
-          "figma": null,
+          "figma": "state",
           "react": "status",
           "values": [
+            "empty",
+            "open",
+            "filled",
             "error",
-            "success",
-            "warning"
-          ]
+            "disabled"
+          ],
+          "map": {
+            "empty": "sem valor",
+            "open": "popover aberto (mostra o Popover do componente)",
+            "filled": "com valor",
+            "error": "status=\"error\"",
+            "disabled": "prop `disabled`"
+          },
+          "notes": "O código também aceita status=\"success\" | \"warning\" (ainda sem variante no Figma)."
+        },
+        {
+          "figma": null,
+          "react": "onValueChange",
+          "notes": "Só código."
         },
         {
           "figma": null,
           "react": "minDate / maxDate",
-          "notes": "Limites; dias fora ficam desabilitados."
+          "notes": "Só código: dias fora ficam desabilitados."
+        },
+        {
+          "figma": null,
+          "react": "name",
+          "notes": "Só código: campo oculto para envio de formulário."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "DatePicker Popover",
+          "nodeId": "57:22",
+          "key": "e20de67e3b23c42c3335016e5c64eed12ded5ad4",
+          "page": "Date Picker",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=57-22",
+          "props": [],
+          "notes": "Popover com o Calendar (mode single)."
         }
       ]
     },
@@ -1003,38 +1109,103 @@
         ],
         "source": "packages/ui/src/components/ui/date-range-picker.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (etapa 4 do desenho do Date Picker).",
+      "figma": {
+        "name": "DateRangePicker",
+        "nodeId": "54:157",
+        "key": "314454b12c957ef3f2fe03cd63105a49463a1bb3",
+        "page": "Date Picker",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=54-157"
+      },
       "storybook": {
         "title": "Componentes/DateRangePicker"
       },
       "props": [
         {
-          "figma": null,
+          "figma": "label",
           "react": "label",
-          "notes": "Obrigatório. Mesmo comportamento do DatePicker."
+          "notes": "Obrigatório. No size default é label flutuante; no sm o label é o placeholder e some com valor."
         },
         {
-          "figma": null,
+          "figma": "value",
+          "react": "value",
+          "notes": "No Figma é o TEXTO mostrado (dd/mm/aaaa – dd/mm/aaaa); no código `value`/`defaultValue` é um `DateRange` ({ from, to })."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder",
+          "notes": "Padrão dd/mm/aaaa."
+        },
+        {
+          "figma": "required",
+          "react": "required"
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "true → passe `description`."
+        },
+        {
+          "figma": "descriptionText",
+          "react": "description"
+        },
+        {
+          "figma": "size",
           "react": "size",
           "values": [
             "default",
             "sm"
-          ]
+          ],
+          "notes": "default = 60px com label flutuante; sm = 36px, label some com valor."
+        },
+        {
+          "figma": "state",
+          "react": "status",
+          "values": [
+            "empty",
+            "open",
+            "filled",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "empty": "sem valor",
+            "open": "popover aberto (mostra o Popover do componente)",
+            "filled": "com valor",
+            "error": "status=\"error\"",
+            "disabled": "prop `disabled`"
+          },
+          "notes": "O código também aceita status=\"success\" | \"warning\" (ainda sem variante no Figma)."
         },
         {
           "figma": null,
-          "react": "value / defaultValue / onValueChange",
-          "notes": "`DateRange` ({ from, to }); só é aplicado quando o fim é escolhido."
+          "react": "onValueChange",
+          "notes": "Só código."
+        },
+        {
+          "figma": null,
+          "react": "minDate / maxDate",
+          "notes": "Só código: dias fora ficam desabilitados."
+        },
+        {
+          "figma": null,
+          "react": "name",
+          "notes": "Só código: campo oculto para envio de formulário."
         },
         {
           "figma": null,
           "react": "presets",
-          "notes": "`{ label, range() }[]`: coluna de atalhos à esquerda; o ativo fica marcado (`aria-pressed`). Os atalhos são de quem usa."
-        },
+          "notes": "Só código: `{ label, range() }[]` desenha a coluna de atalhos; o ativo fica marcado (`aria-pressed`)."
+        }
+      ],
+      "figmaParts": [
         {
-          "figma": null,
-          "react": "minDate / maxDate"
+          "name": "DateRangePicker Popover",
+          "nodeId": "57:233",
+          "key": "21f21eba631e2b3c36101cf4e8b27dbd5ac96661",
+          "page": "Date Picker",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=57-233",
+          "props": [],
+          "notes": "Popover com a coluna de atalhos e o Calendar (mode range). No código, os atalhos vêm de `presets`."
         }
       ]
     }

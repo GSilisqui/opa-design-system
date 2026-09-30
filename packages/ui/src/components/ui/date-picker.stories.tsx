@@ -13,7 +13,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Popover + Calendar do Shadcn, com o campo no padrão do Combobox: `default` (60px, label flutuante) e `sm` (36px, label como placeholder). Data em dd/mm/aaaa; `name` envia em aaaa-mm-dd. Para período, use DateRangePicker.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=54-41 · Popover + Calendar do Shadcn, com o campo no padrão do Combobox: `default` (60px, label flutuante) e `sm` (36px, label como placeholder). Data em dd/mm/aaaa; `name` envia em aaaa-mm-dd. Para período, use DateRangePicker.",
       },
     },
   },
