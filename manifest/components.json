@@ -234,7 +234,7 @@
         {
           "figma": "label",
           "react": "label",
-          "notes": "Obrigatório. No size default é label flutuante."
+          "notes": "Obrigatório. No size default é label flutuante. No size sm o label é o placeholder: com valor preenchido ele some e fica só o valor (no Figma, labelRow e separator ocultos nos estados com valor)."
         },
         {
           "figma": "value",
@@ -567,7 +567,7 @@
             "default",
             "sm"
           ],
-          "notes": "default = 60px com label flutuante; sm = 36px com label inline."
+          "notes": "default = 60px com label flutuante; sm = 36px com label inline; com valor selecionado o label some (sr-only) e fica só o valor."
         },
         {
           "figma": "state",

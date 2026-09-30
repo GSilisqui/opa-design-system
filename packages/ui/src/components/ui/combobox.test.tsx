@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
@@ -81,6 +81,19 @@ describe("Combobox", () => {
     expect(screen.getByRole("option", { name: "Suporte" })).toHaveAttribute("data-checked", "true");
   });
 
+  it("sm preenchido esconde o label (só sr-only) e mostra apenas o valor", () => {
+    render(<Combobox label="Departamento" size="sm" options={options} defaultValue="suporte" />);
+    const trigger = screen.getByRole("combobox", { name: "Departamento" });
+    expect(screen.getByText("Suporte")).toBeVisible();
+    expect(screen.getByText("Departamento").className).toContain("sr-only");
+    expect(trigger).not.toHaveTextContent("│");
+  });
+
+  it("sm vazio mostra o label como placeholder", () => {
+    render(<Combobox label="Departamento" size="sm" options={options} />);
+    expect(screen.getByText("Departamento").className).not.toContain("sr-only");
+  });
+
   it("status e descrição ficam ligados ao trigger", () => {
     render(<Combobox label="Departamento" options={options} status="error" description="Escolha um departamento" />);
     expect(screen.getByRole("combobox", { name: "Departamento" })).toHaveAccessibleDescription("Escolha um departamento");
@@ -108,7 +121,8 @@ describe("Combobox", () => {
     await userEvent.keyboard("{Enter}");
     expect(screen.getByRole("option", { name: "Financeiro" })).toHaveAttribute("aria-selected", "true");
     await userEvent.keyboard("{Enter}");
-    for (const [next] of onValueChange.mock.calls) expect(next).toBe("financeiro");
+    expect(onValueChange).not.toHaveBeenCalledWith(expect.not.stringMatching(/^financeiro$/));
+    expect(screen.queryByRole("option")).not.toBeInTheDocument();
   });
 
   it("required bloqueia o envio do formulário enquanto está vazio", async () => {
@@ -122,6 +136,64 @@ describe("Combobox", () => {
     await userEvent.click(screen.getByRole("combobox", { name: "Departamento" }));
     await userEvent.click(screen.getByRole("option", { name: "Suporte" }));
     expect(form.checkValidity()).toBe(true);
+  });
+
+  it("envio bloqueado por required mostra o erro no próprio componente e limpa ao escolher", async () => {
+    render(
+      <form data-testid="form">
+        <Combobox label="Departamento" options={options} name="departamento" required />
+      </form>,
+    );
+    const form = screen.getByTestId("form") as HTMLFormElement;
+    const trigger = screen.getByRole("combobox", { name: "Departamento" });
+    expect(trigger).not.toHaveAttribute("aria-invalid");
+    act(() => {
+      form.reportValidity();
+    });
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+    expect(trigger).toHaveFocus();
+    await userEvent.click(trigger);
+    await userEvent.click(screen.getByRole("option", { name: "Suporte" }));
+    expect(screen.getByRole("combobox", { name: "Departamento" })).not.toHaveAttribute("aria-invalid");
+  });
+
+  it("o input oculto desliga o autocompletar", () => {
+    const { container } = render(<Combobox label="Departamento" options={options} name="departamento" />);
+    expect(container.querySelector('input[name="departamento"]')).toHaveAttribute("autocomplete", "off");
+  });
+
+  it("com o popup aberto, o destaque acompanha o valor controlado", async () => {
+    function Controlled() {
+      const [value, setValue] = useState<string | null>("suporte");
+      return (
+        <>
+          <button type="button" onClick={() => setValue("logistica")}>
+            trocar
+          </button>
+          <Combobox label="Departamento" options={options} value={value} onValueChange={setValue} />
+        </>
+      );
+    }
+    render(<Controlled />);
+    await userEvent.click(screen.getByRole("combobox", { name: "Departamento" }));
+    expect(screen.getByRole("option", { name: "Suporte" })).toHaveAttribute("aria-selected", "true");
+    act(() => screen.getByRole("button", { name: "trocar" }).click());
+    expect(screen.getByRole("option", { name: "Logística" })).toHaveAttribute("aria-selected", "true");
+  });
+
+  it("ao abrir, rola o valor atual para a vista", async () => {
+    const scrollIntoView = vi.fn();
+    const original = HTMLElement.prototype.scrollIntoView;
+    HTMLElement.prototype.scrollIntoView = scrollIntoView;
+    try {
+      render(<Combobox label="Departamento" options={options} defaultValue="financeiro" />);
+      await userEvent.click(screen.getByRole("combobox", { name: "Departamento" }));
+      await waitFor(() =>
+        expect(scrollIntoView.mock.contexts.some((el) => (el as HTMLElement).textContent === "Financeiro")).toBe(true),
+      );
+    } finally {
+      HTMLElement.prototype.scrollIntoView = original;
+    }
   });
 
   it("desabilitado não envia o valor", () => {
