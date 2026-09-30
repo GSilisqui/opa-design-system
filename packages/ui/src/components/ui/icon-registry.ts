@@ -1,6 +1,7 @@
 // Ícones do DS (Font Awesome 7 Pro). Import por ícone: só o que está listado entra no bundle do consumidor.
 // Para adicionar: importe o regular e o solid, inclua o nome em IconName e a chave (nome do FA) nos dois mapas.
 // Logos: importe de @fortawesome/free-brands-svg-icons, inclua em BrandIconName e no mapa brandsMap.
+import { faAlignLeft as rAlignLeft } from "@fortawesome/pro-regular-svg-icons/faAlignLeft";
 import { faAngleDown as rAngleDown } from "@fortawesome/pro-regular-svg-icons/faAngleDown";
 import { faAngleUp as rAngleUp } from "@fortawesome/pro-regular-svg-icons/faAngleUp";
 import { faAngleLeft as rAngleLeft } from "@fortawesome/pro-regular-svg-icons/faAngleLeft";
@@ -24,6 +25,7 @@ import { faPlus as rPlus } from "@fortawesome/pro-regular-svg-icons/faPlus";
 import { faTrash as rTrash } from "@fortawesome/pro-regular-svg-icons/faTrash";
 import { faTriangleExclamation as rTriangleExclamation } from "@fortawesome/pro-regular-svg-icons/faTriangleExclamation";
 import { faXmark as rXmark } from "@fortawesome/pro-regular-svg-icons/faXmark";
+import { faAlignLeft as sAlignLeft } from "@fortawesome/pro-solid-svg-icons/faAlignLeft";
 import { faAngleDown as sAngleDown } from "@fortawesome/pro-solid-svg-icons/faAngleDown";
 import { faAngleUp as sAngleUp } from "@fortawesome/pro-solid-svg-icons/faAngleUp";
 import { faAngleLeft as sAngleLeft } from "@fortawesome/pro-solid-svg-icons/faAngleLeft";
@@ -66,6 +68,7 @@ export type IconDefinition = {
 // União explícita (em vez de inferir): o tipo inferido apontaria para @fortawesome/fontawesome-common-types,
 // que não é dependência direta, e o vite-plugin-dts deixaria de gerar este .d.ts.
 export type IconName =
+  | "align-left"
   | "angle-down"
   | "angle-left"
   | "angle-right"
@@ -113,6 +116,7 @@ const brandsMap: Record<BrandIconName, IconDefinition> = {
 };
 
 const regular: Record<IconName, IconDefinition> = {
+  "align-left": rAlignLeft,
   "angle-down": rAngleDown,
   "angle-left": rAngleLeft,
   "angle-right": rAngleRight,
@@ -139,6 +143,7 @@ const regular: Record<IconName, IconDefinition> = {
 };
 
 const solid: Record<IconName, IconDefinition> = {
+  "align-left": sAlignLeft,
   "angle-down": sAngleDown,
   "angle-left": sAngleLeft,
   "angle-right": sAngleRight,
