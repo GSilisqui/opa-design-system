@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Trilha de navegação no estilo validado com o dono: 14px em `foreground-secondary`, seta pequena entre os itens e a página atual em `foreground` medium (sem link, `aria-current=\"page\"`). Caminhos longos colapsam num \"…\" que abre um DropdownMenu.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=85-48 · Trilha de navegação no estilo validado com o dono: 14px em `foreground-secondary`, seta pequena entre os itens e a página atual em `foreground` medium (sem link, `aria-current=\"page\"`). Caminhos longos colapsam num \"…\" que abre um DropdownMenu.",
       },
     },
   },

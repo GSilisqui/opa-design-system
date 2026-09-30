@@ -1631,8 +1631,13 @@
         ],
         "source": "packages/ui/src/components/ui/dropdown-menu.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "figma": {
+        "name": "Dropdown Menu",
+        "nodeId": "82:62",
+        "key": "eb0383d702ebca1aa7b3eed581190e11d0873c8c",
+        "page": "Dropdown Menu",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=82-62"
+      },
       "storybook": {
         "title": "Componentes/DropdownMenu"
       },
@@ -1645,6 +1650,109 @@
             "destructive"
           ],
           "notes": "destructive = texto vermelho."
+        },
+        {
+          "figma": null,
+          "react": "open / onOpenChange",
+          "notes": "Só código (raiz DropdownMenu). Abre por `<DropdownMenuTrigger asChild>`."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Dropdown Item",
+          "nodeId": "82:45",
+          "key": "122e7f1912a24a8c8de83b4d03ba64d94f699274",
+          "page": "Dropdown Menu",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=82-45",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Texto do item."
+            },
+            {
+              "figma": "icon",
+              "react": "children",
+              "notes": "true → <Icon> antes do texto."
+            },
+            {
+              "figma": "iconName",
+              "react": "children",
+              "notes": "Qual ícone (instance swap)."
+            },
+            {
+              "figma": "shortcut",
+              "react": "DropdownMenuShortcut",
+              "notes": "true → atalho à direita."
+            },
+            {
+              "figma": "shortcutText",
+              "react": "DropdownMenuShortcut",
+              "notes": "Texto do atalho."
+            },
+            {
+              "figma": "submenu",
+              "react": "DropdownMenuSubTrigger",
+              "notes": "true → seta de submenu à direita (item que abre o submenu)."
+            },
+            {
+              "figma": "variant",
+              "react": "variant",
+              "values": [
+                "default",
+                "destructive"
+              ]
+            },
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "disabled"
+              ],
+              "map": {
+                "default": "item normal",
+                "hover": "foco/hover (focus:bg-accent)",
+                "disabled": "prop disabled (opacity 40%)"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Dropdown Selectable Item",
+          "nodeId": "82:61",
+          "key": "5f62b0ef27dbf094abf17950f09477b9e42a3bd4",
+          "page": "Dropdown Menu",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=82-61",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Texto do item."
+            },
+            {
+              "figma": "kind",
+              "react": null,
+              "values": [
+                "checkbox",
+                "radio"
+              ],
+              "map": {
+                "checkbox": "DropdownMenuCheckboxItem (check)",
+                "radio": "DropdownMenuRadioItem (ponto)"
+              }
+            },
+            {
+              "figma": "checked",
+              "react": "checked",
+              "values": [
+                "false",
+                "true"
+              ],
+              "notes": "checkbox: checked; radio: value do grupo."
+            }
+          ]
         }
       ]
     },
@@ -1664,14 +1772,39 @@
         ],
         "source": "packages/ui/src/components/ui/sheet.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "figma": {
+        "name": "Sheet",
+        "nodeId": "84:108",
+        "key": "73b5410a9a5923cd04a8dd4c193e248e6f3d942f",
+        "page": "Sheet",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=84-108"
+      },
       "storybook": {
         "title": "Componentes/Sheet"
       },
       "props": [
         {
-          "figma": null,
+          "figma": "title",
+          "react": "SheetTitle",
+          "notes": "Filho <SheetTitle> dentro de <SheetHeader>. Obrigatório (acessibilidade)."
+        },
+        {
+          "figma": "description",
+          "react": "SheetDescription",
+          "notes": "Filho <SheetDescription> dentro de <SheetHeader>."
+        },
+        {
+          "figma": "showCloseButton",
+          "react": "showCloseButton",
+          "notes": "X no canto (padrão true)."
+        },
+        {
+          "figma": "body",
+          "react": "children",
+          "notes": "SLOT: qualquer filho direto entre <SheetHeader> e <SheetFooter> (recebe p-3 e rola)."
+        },
+        {
+          "figma": "side",
           "react": "side",
           "values": [
             "right",
@@ -1679,12 +1812,12 @@
             "top",
             "bottom"
           ],
-          "notes": "Padrão right; largura máxima 400px."
+          "notes": "Padrão right; largura máxima 400px (left/right)."
         },
         {
           "figma": null,
-          "react": "showCloseButton",
-          "notes": "X no canto (padrão true)."
+          "react": "open / onOpenChange",
+          "notes": "Só código (raiz Sheet). Abre por <SheetTrigger asChild>."
         }
       ]
     },
@@ -1703,21 +1836,72 @@
         ],
         "source": "packages/ui/src/components/ui/breadcrumb.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "figma": {
+        "name": "Breadcrumb",
+        "nodeId": "85:48",
+        "key": "e71cc7206c19b7bd1907cbedb27db7461afe4207",
+        "page": "Breadcrumb",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=85-48"
+      },
       "storybook": {
         "title": "Componentes/Breadcrumb"
       },
       "props": [
         {
-          "figma": null,
-          "react": "BreadcrumbPage",
-          "notes": "Página atual: sem link, `aria-current=\"page\"`."
-        },
+          "figma": "collapsed",
+          "react": null,
+          "values": [
+            "false",
+            "true"
+          ],
+          "map": {
+            "false": "todos os níveis",
+            "true": "trecho do meio trocado por BreadcrumbEllipsis (+ DropdownMenu)"
+          }
+        }
+      ],
+      "figmaParts": [
         {
-          "figma": null,
-          "react": "BreadcrumbEllipsis",
-          "notes": "Colapso de caminhos longos; envolva num DropdownMenuTrigger."
+          "name": "Breadcrumb Item",
+          "nodeId": "85:20",
+          "key": "3898368b1b9fa9a31bcb28d3684f216f41a93b13",
+          "page": "Breadcrumb",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=85-20",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Texto do item."
+            },
+            {
+              "figma": "kind",
+              "react": null,
+              "values": [
+                "link",
+                "page",
+                "ellipsis"
+              ],
+              "map": {
+                "link": "BreadcrumbLink",
+                "page": "BreadcrumbPage (atual, sem link)",
+                "ellipsis": "BreadcrumbEllipsis"
+              }
+            },
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "focus"
+              ],
+              "map": {
+                "default": "normal",
+                "hover": "visual: :hover",
+                "focus": "visual: :focus-visible (focus-ring)"
+              }
+            }
+          ]
         }
       ]
     }

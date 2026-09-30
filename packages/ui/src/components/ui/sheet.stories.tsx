@@ -10,7 +10,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix Dialog como painel lateral, no estilo do Dialog v2: padding 12, cabeçalho e rodapé separados por divisórias (rodapé no `background`), overlay preto a 50% e X no canto. Entra pela direita por padrão (`side`: left, top, bottom), largura máxima de 400px. O corpo (qualquer filho direto fora de cabeçalho e rodapé) rola. Só texto? Use Dialog.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=84-108 · Radix Dialog como painel lateral, no estilo do Dialog v2: padding 12, cabeçalho e rodapé separados por divisórias (rodapé no `background`), overlay preto a 50% e X no canto. Entra pela direita por padrão (`side`: left, top, bottom), largura máxima de 400px. O corpo (qualquer filho direto fora de cabeçalho e rodapé) rola. Só texto? Use Dialog.",
       },
     },
   },

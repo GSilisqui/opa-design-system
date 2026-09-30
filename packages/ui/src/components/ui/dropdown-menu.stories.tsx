@@ -25,7 +25,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix DropdownMenu no estilo validado com o dono: superfície do Popover (borda, sombra `dropdown`, raio xl), itens de 36px com ícone à esquerda e atalho à direita, rótulo de grupo, separador, item destrutivo em vermelho, itens de marcar/opção e submenu. Para ações; escolher um valor de um formulário é Combobox.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=82-62 · Radix DropdownMenu no estilo validado com o dono: superfície do Popover (borda, sombra `dropdown`, raio xl), itens de 36px com ícone à esquerda e atalho à direita, rótulo de grupo, separador, item destrutivo em vermelho, itens de marcar/opção e submenu. Para ações; escolher um valor de um formulário é Combobox.",
       },
     },
   },
