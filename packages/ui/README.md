@@ -37,6 +37,8 @@ import { Button, Icon } from "@opa/ui";
 
 Dark mode: coloque a classe `dark` no `<html>`.
 
+Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (padrão de Vite e Next.js). Os `.d.ts` usam imports relativos sem extensão, então `node16`/`nodenext` não resolvem os tipos. Para estender componentes, use o `cn` do DS (`import { cn } from "@opa/ui"`): ele conhece `shadow-popover`, `focus-ring` e afins.
+
 ## Componentes
 
 | Componente | Figma | Notas |

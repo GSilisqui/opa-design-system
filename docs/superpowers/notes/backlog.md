@@ -5,14 +5,14 @@ Itens menores levantados nas revisões. Nenhum bloqueia o uso atual. Marque com 
 ## @opa/ui (revisão final do Plano 2, 2026-09-29)
 
 - [x] **Combobox obrigatório sem erro acessível.** Ao bloquear o envio, o balão do navegador fica preso no input oculto (aria-hidden) e o trigger não recebe `aria-invalid`. Proposta: `onInvalid` com `preventDefault()` e mostrar o estado de erro do próprio componente. Adicionar `autoComplete="off"` no input oculto. (`combobox.tsx`)
-- [ ] **Tipos em `moduleResolution: nodenext`.** Os `.d.ts` usam imports relativos sem extensão. Vite/Next (`bundler`) funcionam. Adicionar `.js` no build ou documentar o requisito `bundler` no README.
-- [ ] **`package.json` do ui:** condição `default` em `exports["."]`; Tailwind v4 como peerDependency; `@types/react` como peer opcional.
-- [ ] **Source maps publicados** são varridos pelo `@source "./"` e podem gerar classes soltas a partir de comentários. Usar `@source not "./**/*.map"` ou não publicar os maps.
+- [x] **Tipos em `moduleResolution: nodenext`.** Os `.d.ts` usam imports relativos sem extensão. Vite/Next (`bundler`) funcionam. Adicionar `.js` no build ou documentar o requisito `bundler` no README.
+- [x] **`package.json` do ui:** condição `default` em `exports["."]`; Tailwind v4 como peerDependency; `@types/react` como peer opcional.
+- [x] **Source maps publicados** são varridos pelo `@source "./"` e podem gerar classes soltas a partir de comentários. Usar `@source not "./**/*.map"` ou não publicar os maps.
 - [x] **Combobox:** o item destacado não acompanha mudança de `value` controlado com o popup aberto; em listas longas o valor atual não é rolado para a vista ao abrir.
 - [x] **Teste fraco:** "Enter não troca o valor" (`combobox.test.tsx`) itera `mock.calls` e passa sem chamadas. Assertar a quantidade de chamadas.
-- [ ] **Tag com `onRemove`:** o `gap-1` fica fixo no wrapper interno; `className="gap-*"` do consumidor não muda o espaço entre ícone e texto.
-- [ ] **Exportar o `cn` do DS** em `index.ts` para quem estende componentes (o `cn` puro não conhece `shadow-popover`/`focus-halo`).
-- [ ] **Changelog do Storybook:** incluir `packages/ui/CHANGELOG.md` (existe desde o release 0.1.0).
+- [x] **Tag com `onRemove`:** o `gap-1` fica fixo no wrapper interno; `className="gap-*"` do consumidor não muda o espaço entre ícone e texto.
+- [x] **Exportar o `cn` do DS** em `index.ts` para quem estende componentes (o `cn` puro não conhece `shadow-popover`/`focus-halo`).
+- [x] **Changelog do Storybook:** incluir `packages/ui/CHANGELOG.md` (existe desde o release 0.1.0).
 - [ ] **Contraste no Dark não é testado** (as stories rodam só no tema Light). Avaliar um segundo projeto de teste com `.dark`.
 
 ## Figma (para o Plano 3)

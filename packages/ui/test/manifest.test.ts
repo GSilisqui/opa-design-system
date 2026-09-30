@@ -81,7 +81,8 @@ describe("manifest/components.json", () => {
     const listed = components.flatMap(([, c]) => c.react.exports);
     for (const name of listed) expect(ui, `export "${name}" não existe em src/index.ts`).toHaveProperty(name);
     // Exports de runtime (inclui helpers como buttonVariants e iconNames; tipos não aparecem aqui).
-    expect(Object.keys(ui).filter((name) => !listed.includes(name))).toEqual([]);
+    // `cn` é utilitário para quem estende componentes, não um componente do Figma.
+    expect(Object.keys(ui).filter((name) => name !== "cn" && !listed.includes(name))).toEqual([]);
   });
 
   it("usa @opa/ui e caminhos de código que existem", () => {

@@ -45,6 +45,17 @@ describe("Tag", () => {
     expect(onRemove).toHaveBeenCalledTimes(1);
   });
 
+  it("gap do consumidor vale para o espaço entre ícone e texto (wrapper não fixa gap)", () => {
+    render(
+      <Tag onRemove={() => {}} className="gap-2" data-testid="tag">
+        VIP
+      </Tag>,
+    );
+    expect(screen.getByTestId("tag").className).toContain("gap-2");
+    expect(screen.getByTestId("tag").className).not.toContain("gap-1");
+    expect(screen.getByText("VIP").className).toContain("contents");
+  });
+
   it("aceita outro texto para o botão", () => {
     render(
       <Tag onRemove={() => {}} removeLabel="Excluir">
