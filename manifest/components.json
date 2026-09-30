@@ -2583,16 +2583,44 @@
         ],
         "source": "packages/ui/src/components/ui/code-input.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 5). Contêiner com borda e raio xl em muted; cabeçalho em background com a linguagem (14px muted-foreground) e botões Quiet sm (align-left Formatar, copy Copiar); gutter de 44px com números em JetBrains Mono 14/22; realce: chave primary-subtle-foreground, texto success-subtle-foreground, número/literal warning-subtle-foreground, colchete info-subtle-foreground, pontuação muted-foreground. Referência: OPAII-4930, nó 1:9224.",
+      "figma": {
+        "name": "CodeInput",
+        "nodeId": "110:221",
+        "key": "2d1ff284b8a49a67760e8afe1cbf83c083a6d8ff",
+        "page": "Code Input",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=110-221"
+      },
       "storybook": {
         "title": "Componentes/CodeInput"
       },
       "props": [
         {
-          "figma": null,
+          "figma": "state",
+          "react": null,
+          "values": [
+            "default",
+            "invalid",
+            "disabled"
+          ],
+          "notes": "Só Figma: `invalid` = prop `invalid`; `disabled` = prop `disabled` (opacity 40%)."
+        },
+        {
+          "figma": "title",
+          "react": "title"
+        },
+        {
+          "figma": "showFormat",
+          "react": "showFormat",
+          "notes": "Mostra Formatar (padrão: só em json)."
+        },
+        {
+          "figma": "showCopy",
+          "react": "showCopy"
+        },
+        {
+          "figma": "code",
           "react": "value",
-          "notes": "Controlado; com `defaultValue` fica não controlado."
+          "notes": "Slot: o texto do campo (`value`/`onValueChange`)."
         },
         {
           "figma": null,
@@ -2610,11 +2638,6 @@
         },
         {
           "figma": null,
-          "react": "title",
-          "notes": "Texto do cabeçalho (padrão: linguagem em maiúsculas)."
-        },
-        {
-          "figma": null,
           "react": "invalid",
           "notes": "Borda `destructive` e `aria-invalid`."
         },
@@ -2622,16 +2645,6 @@
           "figma": null,
           "react": "readOnly",
           "notes": "Sem edição; Formatar desabilita."
-        },
-        {
-          "figma": null,
-          "react": "showFormat",
-          "notes": "Mostra Formatar (padrão: só em json)."
-        },
-        {
-          "figma": null,
-          "react": "showCopy",
-          "notes": "Mostra Copiar (padrão true)."
         },
         {
           "figma": null,

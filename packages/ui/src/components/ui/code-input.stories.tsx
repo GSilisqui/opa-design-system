@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Editor de código leve, baseado no exemplo \"Copiar e colar JSON\" (OPAII-4930). Cabeçalho com a linguagem e as ações **Formatar** (reindenta JSON) e **Copiar**; números de linha; realce de sintaxe JSON (chave em `primary`, texto em `success`, números e literais em `warning`, colchetes em `info`); rolagem pelo `ScrollArea` do DS. A altura vem de `className` (ex.: `h-80`). Tab insere dois espaços e Enter mantém a indentação. Um `<textarea>` transparente fica sobre o texto colorido, sem biblioteca de editor.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=110-221 · Editor de código leve, baseado no exemplo \"Copiar e colar JSON\" (OPAII-4930). Cabeçalho com a linguagem e as ações **Formatar** (reindenta JSON) e **Copiar**; números de linha; realce de sintaxe JSON (chave em `primary`, texto em `success`, números e literais em `warning`, colchetes em `info`); rolagem pelo `ScrollArea` do DS. A altura vem de `className` (ex.: `h-80`). Tab insere dois espaços e Enter mantém a indentação. Um `<textarea>` transparente fica sobre o texto colorido, sem biblioteca de editor.",
       },
     },
   },
