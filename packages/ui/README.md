@@ -13,7 +13,7 @@ Componentes do OPA Design System (Shadcn/Radix), publicados como `@gsilisqui/ui`
 ```
 
 ```bash
-pnpm add @opa/ui@npm:@gsilisqui/ui @fortawesome/pro-regular-svg-icons @fortawesome/pro-solid-svg-icons
+pnpm add @opa/ui@npm:@gsilisqui/ui @fortawesome/pro-regular-svg-icons @fortawesome/pro-solid-svg-icons @fortawesome/free-brands-svg-icons
 ```
 
 `GITHUB_TOKEN`: PAT com `read:packages`. `FONTAWESOME_PACKAGE_TOKEN`: token npm da conta Font Awesome Pro.

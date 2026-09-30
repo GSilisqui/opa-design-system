@@ -1,7 +1,7 @@
 // Ícone do DS: desenha o SVG do Font Awesome Pro direto. Regular é o padrão; solid para estados ativos/selecionados.
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { icons, type IconName } from "@/components/ui/icon-registry";
+import { icons, type BrandIconName, type IconName } from "@/components/ui/icon-registry";
 
 const iconSizes = {
   xs: "size-3",
@@ -11,9 +11,12 @@ const iconSizes = {
   xl: "size-6",
 } as const;
 
-type IconProps = Omit<React.ComponentProps<"svg">, "children"> & {
-  name: IconName;
-  variant?: "regular" | "solid";
+type IconProps = Omit<React.ComponentProps<"svg">, "children"> &
+  (
+    | { name: IconName; variant?: "regular" | "solid" }
+    /** Logos de marcas (WhatsApp, Instagram…). */
+    | { name: BrandIconName; variant: "brands" }
+  ) & {
   /** Sem size, o ícone tem 1em e o componente pai pode definir o tamanho. */
   size?: keyof typeof iconSizes;
   /** Texto para leitores de tela. Sem label, o ícone é decorativo (aria-hidden). */
@@ -32,7 +35,7 @@ function isDev() {
 }
 
 function Icon({ name, variant = "regular", size, label, className, ...props }: IconProps) {
-  const definition = icons[variant]?.[name];
+  const definition = icons[variant]?.[name as string];
   if (!definition) {
     if (isDev()) console.warn(`[@opa/ui] Icon: "${name}" (${variant}) não está no registro de ícones (icon-registry.ts).`);
     return null;
@@ -61,4 +64,4 @@ function Icon({ name, variant = "regular", size, label, className, ...props }: I
   );
 }
 
-export { Icon, type IconName };
+export { Icon, type BrandIconName, type IconName };

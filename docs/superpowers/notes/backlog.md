@@ -32,7 +32,7 @@ Itens menores levantados nas revisões. Nenhum bloqueia o uso atual. Marque com 
 
 ## Ícones (catálogo completo no Figma, 2026-09-30)
 
-- [ ] **Brands no código.** O Figma tem os 572 logos (`variant=brands`), mas o `<Icon>` só desenha regular e solid do `icon-registry.ts`. Proposta: aceitar `variant="brands"` com um mapa `brands` no registro (pacote `@fortawesome/free-brands-svg-icons`, deep imports), mantendo o registro explícito.
+- [x] **Brands no código** (8 logos de comunicação; para mais, incluir no `brandsMap`). O Figma tem os 572 logos (`variant=brands`), mas o `<Icon>` só desenha regular e solid do `icon-registry.ts`. Proposta: aceitar `variant="brands"` com um mapa `brands` no registro (pacote `@fortawesome/free-brands-svg-icons`, deep imports), mantendo o registro explícito.
 - [x] **Changelog do Figma:** entrada 0.2.0 registrada na página Changelog (troca para um componente por ícone com `variant` e catálogo completo).
 
 ## Antes da Fase 2

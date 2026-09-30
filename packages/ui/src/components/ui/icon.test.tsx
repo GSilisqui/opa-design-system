@@ -35,6 +35,14 @@ describe("Icon", () => {
     expect(regular.getAttribute("d")).not.toBe(solid.getAttribute("d"));
   });
 
+  it("variant brands desenha o logo da marca", () => {
+    const { container } = render(<Icon name="whatsapp" variant="brands" label="WhatsApp" />);
+    const svg = container.querySelector("svg")!;
+    expect(svg).toHaveAttribute("data-icon", "whatsapp");
+    expect(svg.querySelector("path")?.getAttribute("d")).toBeTruthy();
+    expect(screen.getByRole("img", { name: "WhatsApp" })).toBeInTheDocument();
+  });
+
   it("nome desconhecido não desenha nada e avisa em desenvolvimento", () => {
     const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
     // @ts-expect-error nome fora do registro, como pode chegar de JS ou de dados.

@@ -25,7 +25,7 @@ type Manifest = {
   version: number;
   figmaFile: { key: string; url: string };
   components: Record<string, ManifestComponent>;
-  icons: { items: { name: string; figma: FigmaIcon }[] };
+  icons: { items: { name: string; figma: FigmaIcon }[]; brands: { names: string[] } };
   tokens: unknown;
 };
 type FigmaIndex = {
@@ -146,6 +146,10 @@ describe("manifest/components.json", () => {
       expect(Object.keys(figma.variants).sort(), `${item.name}: variantes`).toEqual(["regular", "solid"]);
       expect(item.figma).toEqual(figma);
     }
+  });
+
+  it("logos: mesmos nomes do brandsMap do registro", () => {
+    expect([...(manifest?.icons.brands.names ?? [])].sort()).toEqual([...ui.brandIconNames].sort());
   });
 
   it("stories citadas existem", () => {

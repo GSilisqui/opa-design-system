@@ -22,8 +22,8 @@ export {
   DialogTrigger,
 } from "./components/ui/dialog";
 export { cn } from "./lib/utils";
-export { Icon, type IconName } from "./components/ui/icon";
-export { iconNames } from "./components/ui/icon-registry";
+export { Icon, type BrandIconName, type IconName } from "./components/ui/icon";
+export { brandIconNames, iconNames } from "./components/ui/icon-registry";
 export { Input } from "./components/ui/input";
 export { InputField, type InputFieldStatus } from "./components/ui/input-field";
 export { Label } from "./components/ui/label";
