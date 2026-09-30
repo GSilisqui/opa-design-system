@@ -1,4 +1,5 @@
 export { Button, buttonVariants } from "./components/ui/button";
+export { Calendar, CalendarDayButton, type DateRange } from "./components/ui/calendar";
 export { Checkbox, checkboxVariants } from "./components/ui/checkbox";
 export { Combobox, type ComboboxOption, type ComboboxStatus } from "./components/ui/combobox";
 export {

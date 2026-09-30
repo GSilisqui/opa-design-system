@@ -906,6 +906,43 @@
           "notes": "Envolve o campo: injeta `id`, `aria-describedby` e `aria-invalid`."
         }
       ]
+    },
+    "Calendar": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Calendar",
+          "CalendarDayButton"
+        ],
+        "source": "packages/ui/src/components/ui/calendar.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (etapa 4 do desenho do Date Picker): Calendar Day + Calendar. Use as stories como referência.",
+      "storybook": {
+        "title": "Componentes/Calendar"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "mode",
+          "values": [
+            "single",
+            "range"
+          ],
+          "notes": "`single` = data única; `range` = período (extremos em primary, meio em primary-subtle)."
+        },
+        {
+          "figma": null,
+          "react": "selected / onSelect",
+          "notes": "`Date` ou `DateRange` ({ from, to })."
+        },
+        {
+          "figma": null,
+          "react": "disabled",
+          "notes": "Dias desabilitados (opacity-40), ex.: `{ before: new Date() }`."
+        }
+      ]
     }
   },
   "icons": {
@@ -940,6 +977,46 @@
         "reactSolid": "<Icon name=\"angle-down\" variant=\"solid\" />"
       },
       {
+        "name": "angle-left",
+        "figma": {
+          "nodeId": "36:56",
+          "key": "ac893602d3b24f665fd7ce1be9c87d29c90252ee",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:7822",
+              "key": "33439c4c434984f00fc455ed52a1b3998cf5c9eb"
+            },
+            "solid": {
+              "nodeId": "34:19136",
+              "key": "29c8df94672e8579d2f0a023874b16bafccc72ed"
+            }
+          }
+        },
+        "react": "<Icon name=\"angle-left\" />",
+        "reactSolid": "<Icon name=\"angle-left\" variant=\"solid\" />"
+      },
+      {
+        "name": "angle-right",
+        "figma": {
+          "nodeId": "36:57",
+          "key": "3d38382717957d5ae96ecbe2e4e317974334b123",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:7823",
+              "key": "fad2efd06d43864c3c031adbf56065322c616fce"
+            },
+            "solid": {
+              "nodeId": "34:19137",
+              "key": "2a1bb1b3ae0eb28633207a9127281ef9cd6e890f"
+            }
+          }
+        },
+        "react": "<Icon name=\"angle-right\" />",
+        "reactSolid": "<Icon name=\"angle-right\" variant=\"solid\" />"
+      },
+      {
         "name": "angle-up",
         "figma": {
           "nodeId": "36:3780",
@@ -958,6 +1035,26 @@
         },
         "react": "<Icon name=\"angle-up\" />",
         "reactSolid": "<Icon name=\"angle-up\" variant=\"solid\" />"
+      },
+      {
+        "name": "calendar",
+        "figma": {
+          "nodeId": "36:540",
+          "key": "30e6188250cd2e4686dd67f66f81713b7b8be236",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:8306",
+              "key": "04be0303e404cafea58f653039cf43c0ff53ccaa"
+            },
+            "solid": {
+              "nodeId": "34:19620",
+              "key": "8a7a6cf211648923b9fe3ed0be664afe890a9fd3"
+            }
+          }
+        },
+        "react": "<Icon name=\"calendar\" />",
+        "reactSolid": "<Icon name=\"calendar\" variant=\"solid\" />"
       },
       {
         "name": "check",

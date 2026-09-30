@@ -3,6 +3,9 @@
 // Logos: importe de @fortawesome/free-brands-svg-icons, inclua em BrandIconName e no mapa brandsMap.
 import { faAngleDown as rAngleDown } from "@fortawesome/pro-regular-svg-icons/faAngleDown";
 import { faAngleUp as rAngleUp } from "@fortawesome/pro-regular-svg-icons/faAngleUp";
+import { faAngleLeft as rAngleLeft } from "@fortawesome/pro-regular-svg-icons/faAngleLeft";
+import { faAngleRight as rAngleRight } from "@fortawesome/pro-regular-svg-icons/faAngleRight";
+import { faCalendar as rCalendar } from "@fortawesome/pro-regular-svg-icons/faCalendar";
 import { faCheck as rCheck } from "@fortawesome/pro-regular-svg-icons/faCheck";
 import { faCircleCheck as rCircleCheck } from "@fortawesome/pro-regular-svg-icons/faCircleCheck";
 import { faCircleExclamation as rCircleExclamation } from "@fortawesome/pro-regular-svg-icons/faCircleExclamation";
@@ -19,6 +22,9 @@ import { faTriangleExclamation as rTriangleExclamation } from "@fortawesome/pro-
 import { faXmark as rXmark } from "@fortawesome/pro-regular-svg-icons/faXmark";
 import { faAngleDown as sAngleDown } from "@fortawesome/pro-solid-svg-icons/faAngleDown";
 import { faAngleUp as sAngleUp } from "@fortawesome/pro-solid-svg-icons/faAngleUp";
+import { faAngleLeft as sAngleLeft } from "@fortawesome/pro-solid-svg-icons/faAngleLeft";
+import { faAngleRight as sAngleRight } from "@fortawesome/pro-solid-svg-icons/faAngleRight";
+import { faCalendar as sCalendar } from "@fortawesome/pro-solid-svg-icons/faCalendar";
 import { faCheck as sCheck } from "@fortawesome/pro-solid-svg-icons/faCheck";
 import { faCircleCheck as sCircleCheck } from "@fortawesome/pro-solid-svg-icons/faCircleCheck";
 import { faCircleExclamation as sCircleExclamation } from "@fortawesome/pro-solid-svg-icons/faCircleExclamation";
@@ -53,7 +59,10 @@ export type IconDefinition = {
 // que não é dependência direta, e o vite-plugin-dts deixaria de gerar este .d.ts.
 export type IconName =
   | "angle-down"
+  | "angle-left"
+  | "angle-right"
   | "angle-up"
+  | "calendar"
   | "check"
   | "circle-check"
   | "circle-exclamation"
@@ -93,7 +102,10 @@ const brandsMap: Record<BrandIconName, IconDefinition> = {
 
 const regular: Record<IconName, IconDefinition> = {
   "angle-down": rAngleDown,
+  "angle-left": rAngleLeft,
+  "angle-right": rAngleRight,
   "angle-up": rAngleUp,
+  calendar: rCalendar,
   check: rCheck,
   "circle-check": rCircleCheck,
   "circle-exclamation": rCircleExclamation,
@@ -112,7 +124,10 @@ const regular: Record<IconName, IconDefinition> = {
 
 const solid: Record<IconName, IconDefinition> = {
   "angle-down": sAngleDown,
+  "angle-left": sAngleLeft,
+  "angle-right": sAngleRight,
   "angle-up": sAngleUp,
+  calendar: sCalendar,
   check: sCheck,
   "circle-check": sCircleCheck,
   "circle-exclamation": sCircleExclamation,
