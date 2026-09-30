@@ -498,6 +498,15 @@
                 "selected": "options[].value === value (fundo muted, sem check)",
                 "disabled": "options[].disabled"
               }
+            },
+            {
+              "figma": "multiple",
+              "react": "multiple",
+              "values": [
+                "false",
+                "true"
+              ],
+              "notes": "true → Checkbox à direita do item."
             }
           ],
           "notes": "Item da lista (CommandItem). No código vem de `options`."
@@ -516,6 +525,20 @@
             }
           ],
           "notes": "Popover + Command abertos (state=open). No código, é interno ao Combobox."
+        },
+        {
+          "name": "Combobox Popover Multiple",
+          "nodeId": "65:133",
+          "key": "524ba3fefd65ec32f231854ceeecf99dde9f3ed8",
+          "page": "Combobox",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=65-133",
+          "props": [
+            {
+              "figma": "searchPlaceholder",
+              "react": "searchPlaceholder"
+            }
+          ],
+          "notes": "Lista da seleção múltipla: itens com Checkbox à direita; fica aberta ao escolher."
         }
       ],
       "storybook": {
@@ -597,6 +620,15 @@
           "figma": null,
           "react": "name",
           "notes": "Só código: campo oculto para envio de formulário."
+        },
+        {
+          "figma": "multiple",
+          "react": "multiple",
+          "values": [
+            "false",
+            "true"
+          ],
+          "notes": "true → seleção múltipla: `value`/`defaultValue` em `string[]`; o campo mostra Tags (uma linha, com ✕) e um contador +N quando não cabem mais; a lista fica aberta e mostra Checkbox à direita."
         }
       ]
     },

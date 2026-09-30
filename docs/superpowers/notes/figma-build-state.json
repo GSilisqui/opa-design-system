@@ -97,7 +97,8 @@
       "DateRangePicker": "54:157",
       "DatePicker Popover": "57:22",
       "DateRangePicker Popover": "57:233",
-      "TextareaField": "62:24"
+      "TextareaField": "62:24",
+      "Combobox Popover Multiple": "65:133"
     },
     "modes": {
       "Primitives/Value": "4:0",
@@ -181,6 +182,7 @@
     "2026-09-30: Dialog redesenhado com o dono (brainstorming + companion): padding 12, header e corpo no card, footer no background, raio 12, Cancelar Outline. O corpo virou SLOT (body#49:0, nó 49:236) e a booleana passou a showBody; _Dialog/Body e bodyContent removidos. Button outline com fundo card nos 24 variants (hover: card + foreground 15%).",
     "2026-09-30: cuidado ao reatribuir fills ligados a variável em massa: com a cor bruta {0,0,0} do helper, alguns paints ficam pretos na renderização mesmo com binding (aconteceu nos 12 variants outline hover/focus do Button). Depois de reatribuir, compare paint.color com variable.resolveForConsumer(node).value e regrave a cor resolvida; confira com screenshot.",
     "2026-09-30: Date Picker no Figma: página Calendar (Calendar Day 14 variantes state × today; Calendar mode single | range, com Button quiet icon-only e instâncias de Calendar Day) e página Date Picker (DatePicker e DateRangePicker clonados do Combobox com ícone calendar; DatePicker Popover e DateRangePicker Popover com a coluna de atalhos). Desenho aprovado no companion: docs/superpowers/specs/2026-09-30-date-picker-design.md.",
-    "2026-09-30: TextareaField (10 variantes: size × state) clonado do InputField na página Textarea: campo VERTICAL com altura mínima (96 default, 64 sm), label no topo, valor com quebra de linha. Referência: TextArea do Component Library antigo (caixa escura, label que sobe; sem a barra de edição de texto). Combobox multiple ainda sem variante no Figma."
+    "2026-09-30: TextareaField (10 variantes: size × state) clonado do InputField na página Textarea: campo VERTICAL com altura mínima (96 default, 64 sm), label no topo, valor com quebra de linha. Referência: TextArea do Component Library antigo (caixa escura, label que sobe; sem a barra de edição de texto). Combobox multiple ainda sem variante no Figma.",
+    "2026-09-30: Combobox multiple no Figma: propriedade de variante multiple (false|true) em Combobox (20 variantes; Tags Suporte/Comercial + contador +2 nos estados com valor) e Combobox Option (Checkbox à direita), mais o componente Combobox Popover Multiple. Combobox Popover (single) continua igual."
   ]
 }

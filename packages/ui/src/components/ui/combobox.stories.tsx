@@ -22,7 +22,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=12-127 · Todo seletor do DS é um Combobox com busca. `multiple` ativa a seleção múltipla: as escolhas viram Tags no campo (uma linha, com ✕) e o que não couber vira um contador +N; a lista fica aberta e mostra um Checkbox à direita.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=12-127 (propriedade multiple) · Todo seletor do DS é um Combobox com busca. `multiple` ativa a seleção múltipla: as escolhas viram Tags no campo (uma linha, com ✕) e o que não couber vira um contador +N; a lista fica aberta e mostra um Checkbox à direita.",
       },
     },
   },
