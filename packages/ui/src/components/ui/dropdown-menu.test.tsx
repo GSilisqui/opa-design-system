@@ -105,6 +105,8 @@ describe("DropdownMenu", () => {
     const label = screen.getByText("Contato");
     expect(label.className).toContain("px-3");
     expect(label.className).toContain("py-2");
+    // mais suave que o texto dos itens; 80% mantém o contraste de 4,5:1 (70% reprovava no Light)
+    expect(label.className).toContain("text-foreground-secondary/80");
   });
 
   it("submenu abre com a seta para a direita", async () => {
