@@ -17,12 +17,14 @@ Itens menores levantados nas revisões. Nenhum bloqueia o uso atual. Marque com 
 
 ## Figma (para o Plano 3)
 
-- [ ] Ligar a variáveis os valores soltos: contador do Input (`#000000`), descrição do Select Item (`#6b738c`), check do Checkbox (`#ffffff`), sombras.
-- [ ] Destructive Active igual ao Default no Button.
-- [ ] Surface/Tertiary no Light = Gray/300 (muted, decisão de tokens 3).
-- [ ] Nomes de radius no padrão Tailwind v4 (2px `rounded-xs`, 4px `rounded-sm`).
-- [ ] Renomear `Default/lg/Regular28` → `Default/lg/Regular` (ação do dono).
-- [ ] Estados de hover/active/disabled seguindo a abordagem do código (mistura com foreground, opacidade 40%).
+Auditado em 2026-09-30 no arquivo novo (`UW4As1KdSaPboQ3sNMAbCi`): Button, Input, Tag, Dialog e Combobox sem fill/stroke/texto/efeito solto (única exceção intencional: overlay `bg-black/50` do Dialog, igual ao código). Estes itens eram do "Component Library" antigo e não se aplicam à biblioteca nova.
+
+- [x] Valores soltos (contador do Input, descrição do Select Item, check do Checkbox, sombras): obsoleto, tudo ligado a variáveis/estilos na biblioteca nova.
+- [x] Destructive Active igual ao Default: obsoleto. O novo tem estados default/hover/focus/disabled e o hover destructive usa `foreground` 25%, igual ao código (`bg-shade-strong-destructive`).
+- [x] Surface/Tertiary no Light = Gray/300: decisão de tokens 3, já refletida nas variáveis Semantic.
+- [x] Nomes de radius no padrão Tailwind v4 (decisão registrada no ledger).
+- [ ] Renomear `Default/lg/Regular28` → `Default/lg/Regular`: é do arquivo antigo, ação do dono (baixa prioridade).
+- [x] Estados de hover/active/disabled seguindo o código: aplicado (15%/25% de `foreground`, opacidade 40%).
 
 ## Figma (construção da biblioteca, 2026-09-29)
 
