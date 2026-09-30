@@ -84,3 +84,23 @@ export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader,
 export { ScrollArea, ScrollBar } from "./components/ui/scroll-area";
 export { Separator } from "./components/ui/separator";
 export { Skeleton } from "./components/ui/skeleton";
+export { DataTable, DataTableColumnHeader, type DataTableLabels, type DataTableProps } from "./components/ui/data-table";
+export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "./components/ui/table";
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarItem,
+  SidebarPanel,
+  SidebarPanelActions,
+  SidebarPanelContent,
+  SidebarPanelGroup,
+  SidebarPanelGroupLabel,
+  SidebarPanelHeader,
+  SidebarPanelItem,
+  SidebarPanelTitle,
+  type SidebarItemProps,
+  type SidebarPanelItemProps,
+} from "./components/ui/sidebar";

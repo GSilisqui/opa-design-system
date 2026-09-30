@@ -23,7 +23,7 @@ export default defineConfig({
     emptyOutDir: true,
     rolldownOptions: {
       // Tudo de fora fica como import: ícones Pro nunca entram no dist (licença), React/Radix vêm do consumidor.
-      external: [/^react(\/|$)/, /^react-dom(\/|$)/, /^radix-ui(\/|$)/, /^@radix-ui\//, /^@fortawesome\//, /^react-hook-form(\/|$)/, /^react-day-picker(\/|$)/, /^sonner(\/|$)/, /^date-fns(\/|$)/, "cmdk", /^cn(\/|$)/, "class-variance-authority"],
+      external: [/^react(\/|$)/, /^react-dom(\/|$)/, /^radix-ui(\/|$)/, /^@radix-ui\//, /^@fortawesome\//, /^react-hook-form(\/|$)/, /^react-day-picker(\/|$)/, /^sonner(\/|$)/, /^@tanstack\//, /^date-fns(\/|$)/, "cmdk", /^cn(\/|$)/, "class-variance-authority"],
       output: { preserveModules: true, preserveModulesRoot: "src", entryFileNames: "[name].js" },
     },
   },

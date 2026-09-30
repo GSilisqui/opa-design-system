@@ -69,6 +69,9 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `Separator` | — (Figma na Fase 4) | Linha de 1px, horizontal ou vertical |
 | `Accordion` | — (Figma na Fase 4) | Itens com seta; `single` ou `multiple` |
 | `ScrollArea` | — (Figma na Fase 4) | Faixa de 14px com setas; vertical ou horizontal |
+| `Table` | — (Figma na Fase 4) | Tabela do Shadcn: cabeçalho `muted`, linhas de 48px, selecionada `primary-subtle` |
+| `DataTable` | — (Figma na Fase 4) | TanStack Table v8: ordenação, seleção, paginação, loading, `toolbar` |
+| `Sidebar` / `SidebarPanel` | — (Figma na Fase 4) | Rail de ícones (56px, sempre recolhido) + painel contextual (248px) |
 
 Documentação completa: Storybook (`pnpm --filter opa-storybook dev`).
 

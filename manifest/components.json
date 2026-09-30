@@ -2123,6 +2123,138 @@
           "notes": "Pixels rolados a cada clique nas setas (padrão 48)."
         }
       ]
+    },
+    "Table": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Table",
+          "TableBody",
+          "TableCaption",
+          "TableCell",
+          "TableFooter",
+          "TableHead",
+          "TableHeader",
+          "TableRow"
+        ],
+        "source": "packages/ui/src/components/ui/table.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Cabeçalho 36px em `muted` (texto 12px `foreground-secondary`), linhas de 48px com divisor `border`, hover `accent`, selecionada `primary-subtle`. Documentada junto do DataTable.",
+      "storybook": {
+        "title": "Componentes/DataTable"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "Table",
+          "notes": "Tabela simples (HTML semântico) para dados estáticos."
+        },
+        {
+          "figma": null,
+          "react": "TableRow",
+          "notes": "`data-state=\"selected\"` pinta a linha em `primary-subtle`."
+        }
+      ]
+    },
+    "DataTable": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "DataTable",
+          "DataTableColumnHeader"
+        ],
+        "source": "packages/ui/src/components/ui/data-table.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Monte: barra de ferramentas (Input + botões) acima; contêiner com borda e raio 12; tabela; rodapé com Pagination. Referências: Estudo-datatable 2:8833 e 22:4189.",
+      "storybook": {
+        "title": "Componentes/DataTable"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "columns",
+          "notes": "Definição de colunas do TanStack Table v8 (`ColumnDef`). Use `DataTableColumnHeader` para colunas ordenáveis."
+        },
+        {
+          "figma": null,
+          "react": "data",
+          "notes": "Linhas."
+        },
+        {
+          "figma": null,
+          "react": "selectable",
+          "notes": "Coluna de checkbox e \"N selecionados\" no rodapé."
+        },
+        {
+          "figma": null,
+          "react": "pageSize",
+          "notes": "Linhas por página (padrão 10)."
+        },
+        {
+          "figma": null,
+          "react": "loading",
+          "notes": "Linhas de Skeleton no lugar dos dados."
+        },
+        {
+          "figma": null,
+          "react": "toolbar",
+          "notes": "Função que recebe a tabela e devolve a barra acima (busca, filtros, ações)."
+        },
+        {
+          "figma": null,
+          "react": "onSelectionChange",
+          "notes": "Recebe as linhas selecionadas."
+        }
+      ]
+    },
+    "Sidebar": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Sidebar",
+          "SidebarContent",
+          "SidebarFooter",
+          "SidebarGroup",
+          "SidebarHeader",
+          "SidebarItem",
+          "SidebarPanel",
+          "SidebarPanelActions",
+          "SidebarPanelContent",
+          "SidebarPanelGroup",
+          "SidebarPanelGroupLabel",
+          "SidebarPanelHeader",
+          "SidebarPanelItem",
+          "SidebarPanelTitle"
+        ],
+        "source": "packages/ui/src/components/ui/sidebar.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Rail de 56px só com ícones (sempre recolhido) + painel contextual de 248px. Referências: Chat 481:10021, 604:6113 e 415:3226.",
+      "storybook": {
+        "title": "Componentes/Sidebar"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "SidebarItem",
+          "notes": "Item do rail: `label` obrigatório (aria-label e Tooltip), `active` (cartão elevado, ícone solid), `notification` (bolinha)."
+        },
+        {
+          "figma": null,
+          "react": "SidebarPanelItem",
+          "notes": "Item do painel: `active`, `count`, ícone + texto como filhos."
+        },
+        {
+          "figma": null,
+          "react": "SidebarPanelGroupLabel",
+          "notes": "Título pequeno de grupo."
+        }
+      ]
     }
   },
   "icons": {
