@@ -55,7 +55,7 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `Checkbox` | Checkbox `46:115` | `size`: `default` (20px), `sm` (16px); `checked="indeterminate"` |
 | `RadioGroup` / `RadioGroupItem` | RadioGroupItem `47:27` | Itens de 20px ou 16px (`sm`) |
 | `Switch` | Switch `47:72` | 36×20px ou 28×16px (`sm`) |
-| `Textarea` | Textarea `47:103` | Mesmo visual do `Input` |
+| `Textarea` / `TextareaField` | Textarea `47:103` · TextareaField `62:24` | `Textarea` = caixa clara; `TextareaField` = padrão do InputField (default: caixa escura + label flutuante; sm: clara) |
 
 Documentação completa: Storybook (`pnpm --filter opa-storybook dev`).
 

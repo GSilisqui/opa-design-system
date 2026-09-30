@@ -1208,6 +1208,88 @@
           "notes": "Popover com a coluna de atalhos e o Calendar (mode range). No código, os atalhos vêm de `presets`."
         }
       ]
+    },
+    "TextareaField": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "TextareaField"
+        ],
+        "source": "packages/ui/src/components/ui/textarea-field.tsx"
+      },
+      "figma": {
+        "name": "TextareaField",
+        "nodeId": "62:24",
+        "key": "a214a2d6851824ab33cc24d1c69e5bdc8ced4c2e",
+        "page": "Textarea",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=62-24"
+      },
+      "storybook": {
+        "title": "Componentes/TextareaField"
+      },
+      "props": [
+        {
+          "figma": "label",
+          "react": "label",
+          "notes": "Obrigatório. No size default é label flutuante; no sm vira o placeholder."
+        },
+        {
+          "figma": "value",
+          "react": "value",
+          "notes": "Texto digitado (`value`/`defaultValue`)."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder"
+        },
+        {
+          "figma": "required",
+          "react": "required"
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "true → passe `description`."
+        },
+        {
+          "figma": "descriptionText",
+          "react": "description"
+        },
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = caixa escura (input-background), min-h 96px; sm = caixa clara (igual ao Textarea), min-h 64px."
+        },
+        {
+          "figma": "state",
+          "react": "status",
+          "values": [
+            "empty",
+            "focus",
+            "filled",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "empty": "sem texto",
+            "focus": "visual: :focus-visible (borda ring + focus-halo)",
+            "filled": "com texto",
+            "error": "status=\"error\"",
+            "disabled": "prop `disabled`"
+          },
+          "notes": "O código também aceita status=\"success\" | \"warning\" (ainda sem variante no Figma)."
+        },
+        {
+          "figma": null,
+          "react": "optional",
+          "notes": "Só código: mostra \"(opcional)\"."
+        }
+      ]
     }
   },
   "icons": {

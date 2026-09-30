@@ -46,3 +46,4 @@ export { RadioGroup, RadioGroupItem, radioGroupItemVariants } from "./components
 export { Switch, switchVariants } from "./components/ui/switch";
 export { Tag, tagVariants } from "./components/ui/tag";
 export { Textarea } from "./components/ui/textarea";
+export { TextareaField, type TextareaFieldProps, type TextareaFieldStatus } from "./components/ui/textarea-field";
