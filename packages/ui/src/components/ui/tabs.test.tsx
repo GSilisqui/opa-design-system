@@ -73,6 +73,14 @@ describe("Tabs", () => {
     expect(screen.getByRole("tab", { name: "Fechados" }).className).toContain("group-data-[size=sm]/tabs-list:h-6");
   });
 
+  it("underline: a linha da aba ativa tem 1px e usa a cor ring", () => {
+    render(<Example variant="underline" />);
+    const cls = screen.getByRole("tab", { name: "Abertos" }).className;
+    expect(cls).toContain("group-data-[variant=underline]/tabs-list:after:h-px");
+    expect(cls).toContain("group-data-[variant=underline]/tabs-list:after:bg-ring");
+    expect(cls).not.toContain("after:bg-foreground");
+  });
+
   it("layout icon-only é quadrado e precisa de aria-label", () => {
     render(<Example />);
     const tab = screen.getByRole("tab", { name: "Busca" });

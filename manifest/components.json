@@ -1401,7 +1401,7 @@
             "segmented",
             "underline"
           ],
-          "notes": "`<TabsList variant>`: segmented = trilho cinza com aba ativa em card; underline = linha embaixo."
+          "notes": "`<TabsList variant>`: segmented = trilho cinza com aba ativa em card; underline = linha de 1px embaixo na cor `ring` (primary 400 no Light, 800 no Dark)."
         },
         {
           "figma": "size",

@@ -58,9 +58,9 @@ const tabsTriggerVariants = cva(
     "group-data-[size=sm]/tabs-list:h-6 group-data-[size=sm]/tabs-list:text-sm group-data-[size=sm]/tabs-list:[&_svg:not([class*='size-'])]:size-3",
     // segmented: aba ativa em card; hover em accent
     "group-data-[variant=segmented]/tabs-list:rounded-lg group-data-[variant=segmented]/tabs-list:hover:bg-accent group-data-[variant=segmented]/tabs-list:data-[state=active]:bg-card group-data-[variant=segmented]/tabs-list:data-[state=active]:shadow-popover",
-    // underline: hover em accent; ativa com a linha
+    // underline: hover em accent; ativa com a linha de 1px na cor ring (brand 400 no Light, 800 no Dark)
     "group-data-[variant=underline]/tabs-list:rounded-xl group-data-[variant=underline]/tabs-list:hover:bg-accent",
-    "group-data-[variant=underline]/tabs-list:after:absolute group-data-[variant=underline]/tabs-list:after:inset-x-0 group-data-[variant=underline]/tabs-list:after:-bottom-px group-data-[variant=underline]/tabs-list:after:h-0.5 group-data-[variant=underline]/tabs-list:after:bg-foreground group-data-[variant=underline]/tabs-list:after:opacity-0 group-data-[variant=underline]/tabs-list:data-[state=active]:after:opacity-100",
+    "group-data-[variant=underline]/tabs-list:after:absolute group-data-[variant=underline]/tabs-list:after:inset-x-0 group-data-[variant=underline]/tabs-list:after:-bottom-px group-data-[variant=underline]/tabs-list:after:h-px group-data-[variant=underline]/tabs-list:after:bg-ring group-data-[variant=underline]/tabs-list:after:opacity-0 group-data-[variant=underline]/tabs-list:data-[state=active]:after:opacity-100",
   ],
   {
     variants: {
