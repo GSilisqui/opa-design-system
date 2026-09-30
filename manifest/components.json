@@ -1907,6 +1907,636 @@
           ]
         }
       ]
+    },
+    "Card": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Card",
+          "CardAction",
+          "CardContent",
+          "CardDescription",
+          "CardFooter",
+          "CardHeader",
+          "CardTitle"
+        ],
+        "source": "packages/ui/src/components/ui/card.tsx"
+      },
+      "figma": {
+        "name": "Card",
+        "nodeId": "96:4",
+        "key": "8017a5a4d2330444462ec3131f5b7b6f69ac2ef2",
+        "page": "Card",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=96-4"
+      },
+      "storybook": {
+        "title": "Componentes/Card"
+      },
+      "props": [
+        {
+          "figma": "title",
+          "react": "children",
+          "notes": "`<CardTitle>` dentro do `<CardHeader>`."
+        },
+        {
+          "figma": "description",
+          "react": "children",
+          "notes": "`<CardDescription>`."
+        },
+        {
+          "figma": "content",
+          "react": "children",
+          "notes": "Slot: corpo do `<CardContent>`."
+        },
+        {
+          "figma": "showFooter",
+          "react": null,
+          "notes": "`<CardFooter>` presente ou não."
+        },
+        {
+          "figma": null,
+          "react": "Card",
+          "notes": "Contêiner: `bg-card`, borda `border`, raio 12px, padding vertical 16px e gap 12px."
+        },
+        {
+          "figma": null,
+          "react": "CardHeader",
+          "notes": "Título (`CardTitle`), descrição (`CardDescription`) e ação opcional (`CardAction`)."
+        },
+        {
+          "figma": null,
+          "react": "CardContent",
+          "notes": "Corpo, com 16px laterais."
+        },
+        {
+          "figma": null,
+          "react": "CardFooter",
+          "notes": "Rodapé; com `border-t` ganha 16px de respiro acima."
+        }
+      ]
+    },
+    "Avatar": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Avatar",
+          "AvatarFallback",
+          "AvatarGroup",
+          "AvatarGroupCount",
+          "AvatarImage",
+          "avatarVariants"
+        ],
+        "source": "packages/ui/src/components/ui/avatar.tsx"
+      },
+      "figma": {
+        "name": "Avatar",
+        "nodeId": "97:13",
+        "key": "5b7acdbf6513be73e437110d15b54248b50600e7",
+        "page": "Avatar",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-13"
+      },
+      "storybook": {
+        "title": "Componentes/Avatar"
+      },
+      "props": [
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "sm",
+            "default",
+            "lg",
+            "xl",
+            "2xl"
+          ]
+        },
+        {
+          "figma": "initials",
+          "react": "children",
+          "notes": "Iniciais no `<AvatarFallback>` (sem foto)."
+        },
+        {
+          "figma": null,
+          "react": "AvatarImage",
+          "notes": "Foto; se falhar, aparece o `AvatarFallback` (iniciais sobre `secondary`)."
+        },
+        {
+          "figma": null,
+          "react": "AvatarGroup",
+          "notes": "Avatares sobrepostos; `AvatarGroupCount` mostra o restante (+N)."
+        }
+      ]
+    },
+    "Skeleton": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Skeleton"
+        ],
+        "source": "packages/ui/src/components/ui/skeleton.tsx"
+      },
+      "figma": {
+        "name": "Skeleton",
+        "nodeId": "97:47",
+        "key": "4cff40747d602babb57bf1ebdfe4b596c368ff35",
+        "page": "Skeleton",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-47"
+      },
+      "storybook": {
+        "title": "Componentes/Skeleton"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "className",
+          "notes": "Forma e tamanho: `h-3 w-48`, `size-9 rounded-xl`…"
+        }
+      ]
+    },
+    "Separator": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Separator"
+        ],
+        "source": "packages/ui/src/components/ui/separator.tsx"
+      },
+      "figma": {
+        "name": "Separator",
+        "nodeId": "97:70",
+        "key": "a14fc903cb9dc2d9fd11014ab1d047195377684c",
+        "page": "Separator",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-70"
+      },
+      "storybook": {
+        "title": "Componentes/Separator"
+      },
+      "props": [
+        {
+          "figma": "orientation",
+          "react": "orientation",
+          "values": [
+            "horizontal",
+            "vertical"
+          ]
+        },
+        {
+          "figma": null,
+          "react": "decorative",
+          "notes": "Padrão true (sem papel para leitor de tela)."
+        }
+      ]
+    },
+    "Accordion": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Accordion",
+          "AccordionContent",
+          "AccordionItem",
+          "AccordionTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/accordion.tsx"
+      },
+      "figma": {
+        "name": "Accordion Item",
+        "nodeId": "97:117",
+        "key": "0668f9e87c9e2706d0b6f02b95927da5d846a8a9",
+        "page": "Accordion",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-117"
+      },
+      "storybook": {
+        "title": "Componentes/Accordion"
+      },
+      "props": [
+        {
+          "figma": "open",
+          "react": null,
+          "values": [
+            "false",
+            "true"
+          ],
+          "notes": "Estado do item (aberto/fechado); no código é o `value` do `<Accordion>`."
+        },
+        {
+          "figma": "title",
+          "react": "children",
+          "notes": "`<AccordionTrigger>`."
+        },
+        {
+          "figma": "content",
+          "react": "children",
+          "notes": "`<AccordionContent>`."
+        },
+        {
+          "figma": null,
+          "react": "type",
+          "values": [
+            "single",
+            "multiple"
+          ],
+          "notes": "`single` abre um por vez (`collapsible` deixa fechar); `multiple` abre vários."
+        },
+        {
+          "figma": null,
+          "react": "AccordionItem",
+          "notes": "Item (`value` único)."
+        },
+        {
+          "figma": null,
+          "react": "AccordionTrigger",
+          "notes": "Título clicável com seta que gira."
+        },
+        {
+          "figma": null,
+          "react": "AccordionContent",
+          "notes": "Conteúdo em `foreground-secondary`."
+        }
+      ]
+    },
+    "ScrollArea": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "ScrollArea",
+          "ScrollBar"
+        ],
+        "source": "packages/ui/src/components/ui/scroll-area.tsx"
+      },
+      "figma": {
+        "name": "Scroll Area",
+        "nodeId": "98:62",
+        "key": "d8a4d39a00c07088988c065615572a035ab4d449",
+        "page": "Scroll Area",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=98-62"
+      },
+      "storybook": {
+        "title": "Componentes/ScrollArea"
+      },
+      "props": [
+        {
+          "figma": "orientation",
+          "react": "orientation",
+          "values": [
+            "vertical",
+            "horizontal"
+          ]
+        },
+        {
+          "figma": "content",
+          "react": "children",
+          "notes": "Slot: conteúdo rolável."
+        },
+        {
+          "figma": null,
+          "react": "step",
+          "notes": "Pixels rolados a cada clique nas setas (padrão 48)."
+        }
+      ]
+    },
+    "Table": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Table",
+          "TableBody",
+          "TableCaption",
+          "TableCell",
+          "TableFooter",
+          "TableHead",
+          "TableHeader",
+          "TableRow"
+        ],
+        "source": "packages/ui/src/components/ui/table.tsx"
+      },
+      "figma": {
+        "name": "Table Row",
+        "nodeId": "99:89",
+        "key": "d624c47c7cde8641cde6b315effbde23337c0cb7",
+        "page": "Table",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=99-89"
+      },
+      "storybook": {
+        "title": "Componentes/DataTable"
+      },
+      "props": [
+        {
+          "figma": "state",
+          "react": null,
+          "values": [
+            "default",
+            "hover",
+            "selected"
+          ],
+          "notes": "Só Figma: `default`, `hover` e `selected` (código: `data-state=\"selected\"` no `<TableRow>`)."
+        },
+        {
+          "figma": "selectable",
+          "react": null,
+          "notes": "Coluna de checkbox da linha (`selectable` no `<DataTable>`)."
+        },
+        {
+          "figma": null,
+          "react": "Table",
+          "notes": "Tabela simples (HTML semântico) para dados estáticos."
+        },
+        {
+          "figma": null,
+          "react": "TableRow",
+          "notes": "`data-state=\"selected\"` pinta a linha em `primary-subtle`."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Table Head",
+          "nodeId": "99:30",
+          "key": "042e4d4114c44dc423171b641616edc722ef107d",
+          "page": "Table",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=99-30",
+          "props": [
+            {
+              "figma": "sort",
+              "react": null,
+              "values": [
+                "none",
+                "unsorted",
+                "asc",
+                "desc"
+              ],
+              "notes": "Só Figma: ordenação da coluna (`DataTableColumnHeader`, `aria-sort`)."
+            },
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "`<TableHead>`."
+            },
+            {
+              "figma": "showLabel",
+              "react": null,
+              "notes": "Esconde o título (coluna de seleção)."
+            },
+            {
+              "figma": "showCheckbox",
+              "react": null,
+              "notes": "Checkbox de selecionar tudo."
+            }
+          ]
+        },
+        {
+          "name": "Table Cell",
+          "nodeId": "99:31",
+          "key": "a5e5c18a54e284ab018dd7cb0bc6436db512da5e",
+          "page": "Table",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=99-31",
+          "props": [
+            {
+              "figma": "text",
+              "react": "children",
+              "notes": "`<TableCell>`."
+            },
+            {
+              "figma": "showText",
+              "react": null,
+              "notes": "Esconde o texto (coluna de seleção)."
+            },
+            {
+              "figma": "showCheckbox",
+              "react": null,
+              "notes": "Checkbox da linha."
+            }
+          ]
+        },
+        {
+          "name": "Table Header",
+          "nodeId": "99:34",
+          "key": "3ef92925bdc114628e79dc254e2bc95b2908c934",
+          "page": "Table",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=99-34",
+          "props": [
+            {
+              "figma": "selectable",
+              "react": null,
+              "notes": "Coluna de seleção no cabeçalho."
+            }
+          ]
+        }
+      ]
+    },
+    "DataTable": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "DataTable",
+          "DataTableColumnHeader"
+        ],
+        "source": "packages/ui/src/components/ui/data-table.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Sem componente único: monte com Table Header + Table Row (Figma) e o Pagination; a página Table traz um exemplo completo (barra de ferramentas, contêiner, linhas e rodapé).",
+      "storybook": {
+        "title": "Componentes/DataTable"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "columns",
+          "notes": "Definição de colunas do TanStack Table v8 (`ColumnDef`). Use `DataTableColumnHeader` para colunas ordenáveis."
+        },
+        {
+          "figma": null,
+          "react": "data",
+          "notes": "Linhas."
+        },
+        {
+          "figma": null,
+          "react": "selectable",
+          "notes": "Coluna de checkbox e \"N selecionados\" no rodapé."
+        },
+        {
+          "figma": null,
+          "react": "pageSize",
+          "notes": "Linhas por página (padrão 10)."
+        },
+        {
+          "figma": null,
+          "react": "loading",
+          "notes": "Linhas de Skeleton no lugar dos dados."
+        },
+        {
+          "figma": null,
+          "react": "toolbar",
+          "notes": "Função que recebe a tabela e devolve a barra acima (busca, filtros, ações)."
+        },
+        {
+          "figma": null,
+          "react": "onSelectionChange",
+          "notes": "Recebe as linhas selecionadas."
+        }
+      ]
+    },
+    "Sidebar": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Sidebar",
+          "SidebarContent",
+          "SidebarFooter",
+          "SidebarGroup",
+          "SidebarHeader",
+          "SidebarItem",
+          "SidebarPanel",
+          "SidebarPanelActions",
+          "SidebarPanelContent",
+          "SidebarPanelGroup",
+          "SidebarPanelGroupLabel",
+          "SidebarPanelHeader",
+          "SidebarPanelItem",
+          "SidebarPanelTitle"
+        ],
+        "source": "packages/ui/src/components/ui/sidebar.tsx"
+      },
+      "figma": {
+        "name": "Sidebar",
+        "nodeId": "100:78",
+        "key": "e7295c0c9562fa38448fb9e07e98ca0b707c3ba9",
+        "page": "Sidebar",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-78"
+      },
+      "storybook": {
+        "title": "Componentes/Sidebar"
+      },
+      "props": [
+        {
+          "figma": "content",
+          "react": "children",
+          "notes": "Slot: grupos e itens do `<SidebarContent>`."
+        },
+        {
+          "figma": null,
+          "react": "SidebarItem",
+          "notes": "Item do rail: `label` obrigatório (aria-label e Tooltip), `active` (cartão elevado, ícone solid), `notification` (bolinha)."
+        },
+        {
+          "figma": null,
+          "react": "SidebarPanelItem",
+          "notes": "Item do painel: `active`, `count`, ícone + texto como filhos."
+        },
+        {
+          "figma": null,
+          "react": "SidebarPanelGroupLabel",
+          "notes": "Título pequeno de grupo."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Sidebar Item",
+          "nodeId": "100:15",
+          "key": "a2fe12409618322d24ffb4c2de9c631c029c6064",
+          "page": "Sidebar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-15",
+          "props": [
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "active"
+              ],
+              "notes": "Só Figma: `default`, `hover` e `active` (`active` no código)."
+            },
+            {
+              "figma": "icon",
+              "react": "children",
+              "notes": "Ícone do `<SidebarItem>`."
+            },
+            {
+              "figma": "notification",
+              "react": "notification"
+            }
+          ]
+        },
+        {
+          "name": "Sidebar Panel",
+          "nodeId": "100:37",
+          "key": "4715be9ebf42c4799e1b8a2c6a4089c6fa29ec17",
+          "page": "Sidebar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-37",
+          "props": [
+            {
+              "figma": "title",
+              "react": "children",
+              "notes": "`<SidebarPanelTitle>`."
+            },
+            {
+              "figma": "content",
+              "react": "children",
+              "notes": "Slot: `<SidebarPanelContent>`."
+            }
+          ]
+        },
+        {
+          "name": "Sidebar Panel Item",
+          "nodeId": "100:34",
+          "key": "aa6287d427d373e3d3d3f1dc5b30ee4dd9e74b4a",
+          "page": "Sidebar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-34",
+          "props": [
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "active"
+              ],
+              "notes": "Só Figma: `default`, `hover` e `active` (`active` no código)."
+            },
+            {
+              "figma": "icon",
+              "react": "children",
+              "notes": "Ícone do `<SidebarPanelItem>`."
+            },
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Nome do item."
+            },
+            {
+              "figma": "count",
+              "react": "count"
+            },
+            {
+              "figma": "showCount",
+              "react": null,
+              "notes": "Mostra o contador."
+            }
+          ]
+        },
+        {
+          "name": "Sidebar Panel Group Label",
+          "nodeId": "100:35",
+          "key": "1e9b35b2d8846fa48696ff9bd19ee8c7932619ac",
+          "page": "Sidebar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-35",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "`<SidebarPanelGroupLabel>`."
+            }
+          ]
+        }
+      ]
     }
   },
   "icons": {

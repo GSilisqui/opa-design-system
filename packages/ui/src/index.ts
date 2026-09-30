@@ -78,3 +78,29 @@ export { Textarea } from "./components/ui/textarea";
 export { TextareaField, type TextareaFieldProps, type TextareaFieldStatus } from "./components/ui/textarea-field";
 export { Toaster, toast } from "./components/ui/sonner";
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./components/ui/tooltip";
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
+export { Avatar, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage, avatarVariants } from "./components/ui/avatar";
+export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./components/ui/card";
+export { ScrollArea, ScrollBar } from "./components/ui/scroll-area";
+export { Separator } from "./components/ui/separator";
+export { Skeleton } from "./components/ui/skeleton";
+export { DataTable, DataTableColumnHeader, type DataTableLabels, type DataTableProps } from "./components/ui/data-table";
+export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "./components/ui/table";
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarItem,
+  SidebarPanel,
+  SidebarPanelActions,
+  SidebarPanelContent,
+  SidebarPanelGroup,
+  SidebarPanelGroupLabel,
+  SidebarPanelHeader,
+  SidebarPanelItem,
+  SidebarPanelTitle,
+  type SidebarItemProps,
+  type SidebarPanelItemProps,
+} from "./components/ui/sidebar";

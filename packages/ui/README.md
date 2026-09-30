@@ -63,6 +63,15 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `RadioGroup` / `RadioGroupItem` | RadioGroupItem `47:27` | Itens de 20px ou 16px (`sm`) |
 | `Switch` | Switch `47:72` | 36×20px ou 28×16px (`sm`) |
 | `Textarea` / `TextareaField` | Textarea `47:103` · TextareaField `62:24` | `Textarea` = caixa clara; `TextareaField` = padrão do InputField (default: caixa escura + label flutuante; sm: clara) |
+| `Card` | Card `96:4` | Quadro `bg-card` com borda e raio 12; Header, Title, Description, Action, Content, Footer |
+| `Avatar` | Avatar `97:13` | Quadrado arredondado; `size`: sm 24, default 36, lg 48, xl 60, 2xl 96; `AvatarGroup` |
+| `Skeleton` | Skeleton `97:47` | Bloco `accent` que pulsa |
+| `Separator` | Separator `97:70` | Linha de 1px, horizontal ou vertical |
+| `Accordion` | Accordion Item `97:117` | Itens com seta; `single` ou `multiple` |
+| `ScrollArea` | Scroll Area `98:62` | Faixa de 14px com setas; vertical ou horizontal |
+| `Table` | Table Head `99:30` · Table Cell `99:31` · Table Header `99:34` · Table Row `99:89` | Tabela do Shadcn: cabeçalho `muted`, linhas de 48px, selecionada `primary-subtle` |
+| `DataTable` | exemplo na página Table | TanStack Table v8: ordenação, seleção, paginação, loading, `toolbar` |
+| `Sidebar` / `SidebarPanel` | Sidebar `100:78` · Sidebar Panel `100:37` · Sidebar Item `100:15` · Sidebar Panel Item `100:34` | Rail de ícones (56px, sempre recolhido) + painel contextual (248px) |
 
 Documentação completa: Storybook (`pnpm --filter opa-storybook dev`).
 
