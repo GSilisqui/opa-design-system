@@ -49,6 +49,9 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `Tag` | Tag `11:253` | 7 variantes, `onRemove` |
 | `Dialog` | Dialog `11:357` | `showCloseButton` opcional |
 | `Combobox` | Combobox `12:127` | Seleção única com busca |
+| `Calendar` | — (etapa do Figma pendente) | Data única e período, pt-BR; dia em primary, meio do período em primary-subtle |
+| `DatePicker` / `DateRangePicker` | — (etapa do Figma pendente) | Campo `default`/`sm`; período com `presets` (coluna de atalhos) |
+| `Form` | — (sem componente próprio) | react-hook-form + zod |
 | `Checkbox` | Checkbox `46:115` | `size`: `default` (20px), `sm` (16px); `checked="indeterminate"` |
 | `RadioGroup` / `RadioGroupItem` | RadioGroupItem `47:27` | Itens de 20px ou 16px (`sm`) |
 | `Switch` | Switch `47:72` | 36×20px ou 28×16px (`sm`) |

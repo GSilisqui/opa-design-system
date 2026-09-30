@@ -43,7 +43,7 @@ describe("Calendar", () => {
   it("dias de outro mês ficam esmaecidos", () => {
     render(<Calendar mode="single" defaultMonth={jan} />);
     const outside = screen.getByRole("button", { name: /^\D+, 30 de dezembro/i });
-    expect(outside.className).toContain("text-muted-foreground");
+    expect(outside.className).toContain("text-foreground-secondary");
     expect(outside.closest("td")).toHaveAttribute("data-outside", "true");
   });
 

@@ -943,6 +943,100 @@
           "notes": "Dias desabilitados (opacity-40), ex.: `{ before: new Date() }`."
         }
       ]
+    },
+    "DatePicker": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "DatePicker"
+        ],
+        "source": "packages/ui/src/components/ui/date-picker.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (etapa 4 do desenho do Date Picker).",
+      "storybook": {
+        "title": "Componentes/DatePicker"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "label",
+          "notes": "Obrigatório. No size default é label flutuante; no sm o label é o placeholder e some com valor."
+        },
+        {
+          "figma": null,
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 60px; sm = 36px (igual ao Combobox)."
+        },
+        {
+          "figma": null,
+          "react": "value / defaultValue / onValueChange",
+          "notes": "`Date`; `onValueChange(date | undefined)`."
+        },
+        {
+          "figma": null,
+          "react": "status",
+          "values": [
+            "error",
+            "success",
+            "warning"
+          ]
+        },
+        {
+          "figma": null,
+          "react": "minDate / maxDate",
+          "notes": "Limites; dias fora ficam desabilitados."
+        }
+      ]
+    },
+    "DateRangePicker": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "DateRangePicker"
+        ],
+        "source": "packages/ui/src/components/ui/date-range-picker.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (etapa 4 do desenho do Date Picker).",
+      "storybook": {
+        "title": "Componentes/DateRangePicker"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "label",
+          "notes": "Obrigatório. Mesmo comportamento do DatePicker."
+        },
+        {
+          "figma": null,
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ]
+        },
+        {
+          "figma": null,
+          "react": "value / defaultValue / onValueChange",
+          "notes": "`DateRange` ({ from, to }); só é aplicado quando o fim é escolhido."
+        },
+        {
+          "figma": null,
+          "react": "presets",
+          "notes": "`{ label, range() }[]`: coluna de atalhos à esquerda; o ativo fica marcado (`aria-pressed`). Os atalhos são de quem usa."
+        },
+        {
+          "figma": null,
+          "react": "minDate / maxDate"
+        }
+      ]
     }
   },
   "icons": {

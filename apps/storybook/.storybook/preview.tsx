@@ -5,7 +5,7 @@ import "../src/styles.css";
 // Exceções de contraste aprovadas pelo dono em 2026-09-29 (ver tabela de decisões do Plano 2):
 // Tag info/highlight e textos de campo com status success/warning mantêm as cores do Figma.
 // O contraste continua sendo verificado em todos os outros elementos.
-const STATUS_TEXT_SLOTS = ["label", "input-field-description", "combobox-label", "combobox-description"];
+const STATUS_TEXT_SLOTS = ["label", "input-field-description", "combobox-label", "combobox-description", "date-picker-label", "date-picker-description"];
 const CONTRAST_EXCEPTIONS = [
   '[data-slot="tag"][data-variant="info"]',
   '[data-slot="tag"][data-variant="highlight"]',

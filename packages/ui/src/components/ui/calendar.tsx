@@ -90,7 +90,7 @@ function Calendar({
         range_middle: cn("bg-primary-subtle first:rounded-l-xl last:rounded-r-xl", defaultClassNames.range_middle),
         range_end: cn(defaultClassNames.range_end),
         today: cn("after:block data-[selected=true]:after:bg-primary-foreground", defaultClassNames.today),
-        outside: cn("text-muted-foreground aria-selected:text-muted-foreground", defaultClassNames.outside),
+        outside: cn("text-foreground-secondary aria-selected:text-foreground-secondary", defaultClassNames.outside),
         disabled: cn("opacity-40", defaultClassNames.disabled),
         hidden: cn("invisible", defaultClassNames.hidden),
         ...classNames,
@@ -135,7 +135,7 @@ function CalendarDayButton({ className, day, modifiers, ...props }: React.Compon
       data-range-middle={modifiers.range_middle}
       className={cn(
         "size-auto w-full min-w-(--cell-size) font-normal",
-        "group-data-[outside=true]/day:not-data-[selected-single=true]:not-data-[range-start=true]:not-data-[range-end=true]:text-muted-foreground",
+        "group-data-[outside=true]/day:not-data-[selected-single=true]:not-data-[range-start=true]:not-data-[range-end=true]:text-foreground-secondary",
         "data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground data-[selected-single=true]:hover:bg-shade-primary",
         "data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-start=true]:hover:bg-shade-primary",
         "data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-end=true]:hover:bg-shade-primary",
