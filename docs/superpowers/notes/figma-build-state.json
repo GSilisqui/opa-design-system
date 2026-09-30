@@ -131,7 +131,8 @@
       "Sidebar Panel Item": "100:34",
       "Sidebar Panel Group Label": "100:35",
       "Sidebar Panel": "100:37",
-      "Sidebar": "100:78"
+      "Sidebar": "100:78",
+      "Badge": "103:6"
     },
     "modes": {
       "Primitives/Value": "4:0",
@@ -177,7 +178,8 @@
       "Accordion": "97:118",
       "Scroll Area": "98:63",
       "Table": "99:90",
-      "Sidebar": "100:211"
+      "Sidebar": "100:211",
+      "Badge": "103:7"
     }
   },
   "decisions": [
@@ -237,6 +239,7 @@
     "2026-09-30: Pagination no Figma (3 variantes: position middle | first | last), composição de texto + 4 instâncias do Button Quiet icon-only (ícones angles-left, angle-left, angle-right, angles-right). Aprovada pelo dono como composição do DS (não é o Pagination numerado do Shadcn).",
     "2026-09-30: Fase 3 no Figma, parte 2: Dropdown Menu (Dropdown Item 6 variantes, Dropdown Selectable Item 4, Dropdown Menu exemplo), Sheet (4 lados, corpo como SLOT criado na propriedade do set e ligado a cada variante com slotContentId) e Breadcrumb (Breadcrumb Item 7, Breadcrumb 2). Alert ficou de fora: aguardando decisão do dono (há o Toast).",
     "2026-09-30: Combobox ganhou os estados success e warning no Figma (28 variantes: size × multiple × state), clonados de error e recoloridos (borda, label, descrição e halo nas variáveis success/warning).",
-    "2026-09-30 Fase 4: páginas Card, Avatar, Skeleton, Separator, Accordion, Scroll Area, Table e Sidebar criadas. SLOT no componente: card.addComponentProperty('content','SLOT','') + frame.componentPropertyReferences={slotContentId:key}. isExposedInstance só depois de o ícone estar dentro do componente. Ícones do índice não importam por chave (getNodeByIdAsync + defaultVariant). Tabela = Table Head/Cell/Header/Row; DataTable só como exemplo na doc. Sombra sutil do item ativo da Sidebar só existe no código."
+    "2026-09-30 Fase 4: páginas Card, Avatar, Skeleton, Separator, Accordion, Scroll Area, Table e Sidebar criadas. SLOT no componente: card.addComponentProperty('content','SLOT','') + frame.componentPropertyReferences={slotContentId:key}. isExposedInstance só depois de o ícone estar dentro do componente. Ícones do índice não importam por chave (getNodeByIdAsync + defaultVariant). Tabela = Table Head/Cell/Header/Row; DataTable só como exemplo na doc. Sombra sutil do item ativo da Sidebar só existe no código.",
+    "2026-09-30: Badge (pendência) aprovado pelo dono; Figma Chat 413:5242 (bolinha) e 987:16351 (contador). Número em primary-foreground (quase branco nos dois temas, como o branco fixo do Chat; dono aceitou contraste abaixo do AA). O dot do Sidebar Item no Figma segue sendo um quadro próprio; no código usa Badge dot."
   ]
 }

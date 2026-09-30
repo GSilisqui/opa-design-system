@@ -104,3 +104,4 @@ export {
   type SidebarItemProps,
   type SidebarPanelItemProps,
 } from "./components/ui/sidebar";
+export { Badge, type BadgeProps } from "./components/ui/badge";
