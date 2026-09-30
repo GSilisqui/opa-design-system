@@ -42,12 +42,13 @@ Auditado em 2026-09-30 no arquivo novo (`UW4As1KdSaPboQ3sNMAbCi`): Button, Input
 
 - [x] **Revisar o estilo do Dialog** (header e footer separados; código e Figma atualizados em 2026-09-30) para um visual mais refinado (pedido do dono, 2026-09-30). Atualizar Figma, manifesto e story junto.
 
-## Tokens emprestados de outro papel (auditoria de 2026-09-30)
+## Tokens emprestados de outro papel (decisão do dono, 2026-09-30)
 
-Estados e controles que usam um token semântico criado para outra coisa. Funciona e está espelhado no Figma, mas acopla papéis: mexer em um muda o outro.
+Auditoria: Button neutral (hover/active) e Switch desligado usam `input`; Checkbox/Radio desmarcados usam `muted-foreground` na borda; Dialog footer usa `background`.
 
-- [ ] **Button neutral hover/active** usam `input` (borda de campo) como fundo. Decisão A do Plano 2 aprovou `hover:bg-input`. Proposta: `secondary-hover` e `secondary-active` nas Semantic (Light/Dark).
-- [ ] **Switch desligado** usa `input` como fundo do track. Proposta: `switch-track` (ou reaproveitar `secondary-hover`).
-- [ ] **Checkbox/Radio desmarcados** usam `muted-foreground` (token de texto) como borda (Gray/800 do Figma antigo). Proposta: `control-border`.
-- [ ] **Dialog footer** usa `background` (fundo da página). Aceitável enquanto o Dialog for sempre sobre `background`; se o fundo mudar, o footer acompanha.
+**Decisão: seguir o padrão do Shadcn, que faz o mesmo empréstimo. Não criar tokens específicos.** Ao adaptar um componente do Shadcn, mantenha os tokens semânticos que ele usa; só crie token novo se o Figma exigir uma cor sem equivalente (como os `tag-*`).
 
+- [x] Button neutral hover/active com `input`: mantido (decisão A do Plano 2 + esta).
+- [x] Switch desligado com `input`: mantido.
+- [x] Checkbox/Radio com `muted-foreground` na borda: mantido.
+- [x] Dialog footer com `background`: mantido.
