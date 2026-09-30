@@ -52,7 +52,6 @@ function Pagination({ page, pageCount, onPageChange, total, pageSize, disabled, 
 
   return (
     <nav
-      role="navigation"
       aria-label={text.nav}
       data-slot="pagination"
       className={cn("flex w-full items-center justify-between gap-4 text-base text-foreground-secondary", className)}

@@ -33,10 +33,11 @@ export const Playground: Story = {
 export const Posicoes: Story = {
   render: () => (
     <div className="grid max-w-[560px] gap-4">
-      <Pagination page={1} pageCount={10} total={100} pageSize={10} />
-      <Pagination page={5} pageCount={10} total={100} pageSize={10} />
-      <Pagination page={10} pageCount={10} total={95} pageSize={10} />
-      <Pagination page={1} pageCount={1} />
+      {/* Cada navegação precisa de um nome único quando há várias na mesma tela. */}
+      <Pagination page={1} pageCount={10} total={100} pageSize={10} labels={{ nav: "Paginação, primeira página" }} />
+      <Pagination page={5} pageCount={10} total={100} pageSize={10} labels={{ nav: "Paginação, página do meio" }} />
+      <Pagination page={10} pageCount={10} total={95} pageSize={10} labels={{ nav: "Paginação, última página" }} />
+      <Pagination page={1} pageCount={1} labels={{ nav: "Paginação, página única" }} />
     </div>
   ),
 };
