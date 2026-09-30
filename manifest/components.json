@@ -1556,6 +1556,57 @@
           "notes": "Só código: uma vez na raiz; canto inferior direito, 4s, pilha que abre no hover."
         }
       ]
+    },
+    "Pagination": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Pagination"
+        ],
+        "source": "packages/ui/src/components/ui/pagination.tsx"
+      },
+      "figma": {
+        "name": "Pagination",
+        "nodeId": "80:97",
+        "key": "c4551b6bc9329349e1a6cd676d586facd6c3f328",
+        "page": "Pagination",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=80-97"
+      },
+      "storybook": {
+        "title": "Componentes/Pagination"
+      },
+      "props": [
+        {
+          "figma": "summary",
+          "react": "total / pageSize",
+          "notes": "No Figma é o TEXTO \"Exibindo X – Y de Z\"; no código vem de `total` + `pageSize` (some sem eles)."
+        },
+        {
+          "figma": "pageText",
+          "react": "page / pageCount",
+          "notes": "No Figma é o TEXTO \"Página X de Y\"; no código vem de `page` + `pageCount`."
+        },
+        {
+          "figma": "position",
+          "react": null,
+          "values": [
+            "middle",
+            "first",
+            "last"
+          ],
+          "map": {
+            "middle": "page entre 1 e pageCount",
+            "first": "page = 1: primeira/anterior desabilitados",
+            "last": "page = pageCount: próxima/última desabilitados"
+          }
+        },
+        {
+          "figma": null,
+          "react": "onPageChange",
+          "notes": "Só código: controlado. `labels` troca os textos."
+        }
+      ]
     }
   },
   "icons": {
@@ -1648,6 +1699,46 @@
         },
         "react": "<Icon name=\"angle-up\" />",
         "reactSolid": "<Icon name=\"angle-up\" variant=\"solid\" />"
+      },
+      {
+        "name": "angles-left",
+        "figma": {
+          "nodeId": "36:59",
+          "key": "19959c0baf25b7b327fb2adf707e54d2f08deb9c",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:7825",
+              "key": "f1ee837a469988579550dd889a021fc1717876f5"
+            },
+            "solid": {
+              "nodeId": "34:19139",
+              "key": "53e10c637558affc68511114a35aab36515934c3"
+            }
+          }
+        },
+        "react": "<Icon name=\"angles-left\" />",
+        "reactSolid": "<Icon name=\"angles-left\" variant=\"solid\" />"
+      },
+      {
+        "name": "angles-right",
+        "figma": {
+          "nodeId": "36:60",
+          "key": "589b11260130f9dfd8d8210faad9433ced85de54",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:7826",
+              "key": "ed5392b60f8bd0232a1c3c0d3da746186fba1cb1"
+            },
+            "solid": {
+              "nodeId": "34:19140",
+              "key": "d82a3814f4022f124b2f1ee57d937ea08b1f587d"
+            }
+          }
+        },
+        "react": "<Icon name=\"angles-right\" />",
+        "reactSolid": "<Icon name=\"angles-right\" variant=\"solid\" />"
       },
       {
         "name": "calendar",

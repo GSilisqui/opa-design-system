@@ -55,6 +55,7 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `Tabs` | Tabs `73:232` · Tab `73:163` | `segmented` \| `underline`; `default` (36px) \| `sm` (24px); aba só com ícone |
 | `Toaster` / `toast` | Toast `75:153` | Sonner: ícone só nos tipos, ação Outline pequena, canto inferior direito |
 | `Tooltip` | Tooltip `72:3` | Compacto, cor inversa, `text-sm`, sem seta |
+| `Pagination` | Pagination `80:97` | Composição do DS: resumo + "Página X de Y" + primeira/anterior/próxima/última |
 | `Checkbox` | Checkbox `46:115` | `size`: `default` (20px), `sm` (16px); `checked="indeterminate"` |
 | `RadioGroup` / `RadioGroupItem` | RadioGroupItem `47:27` | Itens de 20px ou 16px (`sm`) |
 | `Switch` | Switch `47:72` | 36×20px ou 28×16px (`sm`) |

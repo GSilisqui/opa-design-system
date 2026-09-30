@@ -8,6 +8,8 @@ import { faAngleRight as rAngleRight } from "@fortawesome/pro-regular-svg-icons/
 import { faCalendar as rCalendar } from "@fortawesome/pro-regular-svg-icons/faCalendar";
 import { faCircleXmark as rCircleXmark } from "@fortawesome/pro-regular-svg-icons/faCircleXmark";
 import { faSpinner as rSpinner } from "@fortawesome/pro-regular-svg-icons/faSpinner";
+import { faAnglesLeft as rAnglesLeft } from "@fortawesome/pro-regular-svg-icons/faAnglesLeft";
+import { faAnglesRight as rAnglesRight } from "@fortawesome/pro-regular-svg-icons/faAnglesRight";
 import { faCheck as rCheck } from "@fortawesome/pro-regular-svg-icons/faCheck";
 import { faCircleCheck as rCircleCheck } from "@fortawesome/pro-regular-svg-icons/faCircleCheck";
 import { faCircleExclamation as rCircleExclamation } from "@fortawesome/pro-regular-svg-icons/faCircleExclamation";
@@ -29,6 +31,8 @@ import { faAngleRight as sAngleRight } from "@fortawesome/pro-solid-svg-icons/fa
 import { faCalendar as sCalendar } from "@fortawesome/pro-solid-svg-icons/faCalendar";
 import { faCircleXmark as sCircleXmark } from "@fortawesome/pro-solid-svg-icons/faCircleXmark";
 import { faSpinner as sSpinner } from "@fortawesome/pro-solid-svg-icons/faSpinner";
+import { faAnglesLeft as sAnglesLeft } from "@fortawesome/pro-solid-svg-icons/faAnglesLeft";
+import { faAnglesRight as sAnglesRight } from "@fortawesome/pro-solid-svg-icons/faAnglesRight";
 import { faCheck as sCheck } from "@fortawesome/pro-solid-svg-icons/faCheck";
 import { faCircleCheck as sCircleCheck } from "@fortawesome/pro-solid-svg-icons/faCircleCheck";
 import { faCircleExclamation as sCircleExclamation } from "@fortawesome/pro-solid-svg-icons/faCircleExclamation";
@@ -66,6 +70,8 @@ export type IconName =
   | "angle-left"
   | "angle-right"
   | "angle-up"
+  | "angles-left"
+  | "angles-right"
   | "calendar"
   | "check"
   | "circle-check"
@@ -111,6 +117,8 @@ const regular: Record<IconName, IconDefinition> = {
   "angle-left": rAngleLeft,
   "angle-right": rAngleRight,
   "angle-up": rAngleUp,
+  "angles-left": rAnglesLeft,
+  "angles-right": rAnglesRight,
   calendar: rCalendar,
   check: rCheck,
   "circle-check": rCircleCheck,
@@ -135,6 +143,8 @@ const solid: Record<IconName, IconDefinition> = {
   "angle-left": sAngleLeft,
   "angle-right": sAngleRight,
   "angle-up": sAngleUp,
+  "angles-left": sAnglesLeft,
+  "angles-right": sAnglesRight,
   calendar: sCalendar,
   check: sCheck,
   "circle-check": sCircleCheck,
