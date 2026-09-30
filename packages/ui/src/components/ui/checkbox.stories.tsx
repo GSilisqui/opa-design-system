@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix Checkbox. 20px (`default`) e 16px (`sm`). Use com `Label` (`htmlFor`) ou `aria-label`. `checked=\"indeterminate\"` mostra o traço.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=46-115 · Radix Checkbox. 20px (`default`) e 16px (`sm`). Use com `Label` (`htmlFor`) ou `aria-label`. `checked=\"indeterminate\"` mostra o traço.",
       },
     },
   },

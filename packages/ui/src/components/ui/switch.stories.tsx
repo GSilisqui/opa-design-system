@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix Switch. 36×20px (`default`) e 28×16px (`sm`). Liga/desliga aplica na hora; para escolhas que dependem de um envio, use Checkbox.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=47-72 · Radix Switch. 36×20px (`default`) e 28×16px (`sm`). Liga/desliga aplica na hora; para escolhas que dependem de um envio, use Checkbox.",
       },
     },
   },

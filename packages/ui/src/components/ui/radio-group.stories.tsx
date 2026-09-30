@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix RadioGroup. Itens de 20px (`default`) ou 16px (`sm`). O grupo precisa de nome acessível (`aria-label` ou `aria-labelledby`).",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=47-27 · Radix RadioGroup. Itens de 20px (`default`) ou 16px (`sm`). O grupo precisa de nome acessível (`aria-label` ou `aria-labelledby`).",
       },
     },
   },

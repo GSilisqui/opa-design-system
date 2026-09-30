@@ -10,7 +10,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Mesmo visual do Input (card + border, raio 12px). Cresce com o conteúdo (`field-sizing-content`). Para texto curto de uma linha, use Input ou InputField.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=47-103 · Mesmo visual do Input (card + border, raio 12px). Cresce com o conteúdo (`field-sizing-content`). Para texto curto de uma linha, use Input ou InputField.",
       },
     },
   },
