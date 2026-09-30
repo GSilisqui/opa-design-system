@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=103-6 · Indicador de pendência: contador laranja (`warning`, 16px de altura, largura mínima 16, `rounded-full`, número em 10px medium) ou só a bolinha de 6px com halo de 2px (`warning` a 20%) com `dot`. Não confundir com o Tag (rótulo/categoria). Referências no Figma Chat: 413:5242 (bolinha) e 987:16351 (contador).",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=103-6 · Indicador de pendência: contador laranja (`warning`, 16px de altura, largura mínima 16, `rounded-full`, número em 10px medium) ou só a bolinha de 6px com halo de 2px (`warning` a 20%) com `dot`. O número é sempre claro (`primary-foreground`), por decisão do dono, mesmo com contraste abaixo do AA. Não confundir com o Tag (rótulo/categoria). Referências no Figma Chat: 413:5242 (bolinha) e 987:16351 (contador).",
       },
     },
   },

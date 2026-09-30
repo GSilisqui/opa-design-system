@@ -4,11 +4,13 @@ import "../src/styles.css";
 
 // Exceções de contraste aprovadas pelo dono em 2026-09-29 (ver tabela de decisões do Plano 2):
 // Tag info/highlight e textos de campo com status success/warning mantêm as cores do Figma.
+// Badge: o número é sempre claro, como no Chat (decisão do dono em 2026-09-30).
 // O contraste continua sendo verificado em todos os outros elementos.
 const STATUS_TEXT_SLOTS = ["label", "input-field-description", "combobox-label", "combobox-description", "date-picker-label", "date-picker-description", "textarea-field-description"];
 const CONTRAST_EXCEPTIONS = [
   '[data-slot="tag"][data-variant="info"]',
   '[data-slot="tag"][data-variant="highlight"]',
+  '[data-slot="badge"]',
   ...STATUS_TEXT_SLOTS.flatMap((slot) => ["success", "warning"].map((status) => `[data-slot="${slot}"][data-status="${status}"]`)),
 ];
 
