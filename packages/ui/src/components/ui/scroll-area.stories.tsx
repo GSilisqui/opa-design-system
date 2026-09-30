@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix ScrollArea com faixa fixa de 14px demarcada por uma linha, setas nas pontas e o polegar no meio, tudo em `muted-foreground` a 50% (escurece no hover). `orientation` vertical (padrão) ou horizontal. A caixa ao redor (borda, raio) é de quem usa: passe `className`. As setas são só para o mouse; o teclado rola o conteúdo direto.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=98-62 · Radix ScrollArea com faixa fixa de 14px demarcada por uma linha, setas nas pontas e o polegar no meio, tudo em `muted-foreground` a 50% (escurece no hover). `orientation` vertical (padrão) ou horizontal. A caixa ao redor (borda, raio) é de quem usa: passe `className`. As setas são só para o mouse; o teclado rola o conteúdo direto.",
       },
     },
   },

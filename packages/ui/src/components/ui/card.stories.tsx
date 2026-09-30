@@ -12,7 +12,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Bloco de conteúdo dentro da página: superfície `card` com borda e raio xl, **sem sombra** (a sombra é de quem flutua: popover, menu, toast), padding de 16px. Agrupa uma informação (métrica, resumo de um contato, uma configuração) e pode ser clicável. Não é o Dialog: o Card fica no fluxo da tela e não interrompe o usuário.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=96-4 · Bloco de conteúdo dentro da página: superfície `card` com borda e raio xl, **sem sombra** (a sombra é de quem flutua: popover, menu, toast), padding de 16px. Agrupa uma informação (métrica, resumo de um contato, uma configuração) e pode ser clicável. Não é o Dialog: o Card fica no fluxo da tela e não interrompe o usuário.",
       },
     },
   },

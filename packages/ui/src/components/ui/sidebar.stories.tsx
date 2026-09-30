@@ -28,7 +28,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Enxugada do Shadcn a pedido do dono: **sem modo expandido**. `Sidebar` é o rail de 56px, só com ícones (nome no Tooltip e no `aria-label`), item ativo como cartão elevado com ícone `solid`, bolinha de aviso e rodapé (notificações, avatar). Os grupos se separam só por espaço. `SidebarPanel` é o painel contextual de 248px de cada aplicação: cabeçalho com título e ações, grupos com título pequeno e itens com ícone, nome e contador; para listas longas (configurações) envolva o conteúdo num `ScrollArea`. Refs no Figma Chat: rail 481:10021, painel 604:6113, lista de configurações 415:3226.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-78 · Enxugada do Shadcn a pedido do dono: **sem modo expandido**. `Sidebar` é o rail de 56px, só com ícones (nome no Tooltip e no `aria-label`), item ativo como cartão elevado com ícone `solid`, bolinha de aviso e rodapé (notificações, avatar). Os grupos se separam só por espaço. `SidebarPanel` é o painel contextual de 248px de cada aplicação: cabeçalho com título e ações, grupos com título pequeno e itens com ícone, nome e contador; para listas longas (configurações) envolva o conteúdo num `ScrollArea`. Refs no Figma Chat: rail 481:10021, painel 604:6113, lista de configurações 415:3226.",
       },
     },
   },

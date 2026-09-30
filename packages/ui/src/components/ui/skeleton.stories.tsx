@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Bloco `accent` que pulsa enquanto o conteúdo carrega (parado com \"reduzir movimento\"). Você monta a forma com classes: linha, círculo ou quadrado com o raio do componente que vai aparecer no lugar.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-47 · Bloco `accent` que pulsa enquanto o conteúdo carrega (parado com \"reduzir movimento\"). Você monta a forma com classes: linha, círculo ou quadrado com o raio do componente que vai aparecer no lugar.",
       },
     },
   },

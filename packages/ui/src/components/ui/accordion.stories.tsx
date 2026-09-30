@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix Accordion: itens separados por linha fina, título em 14px medium (44px de altura) com seta que gira, conteúdo em `foreground-secondary`. `type=\"single\"` abre um por vez (`collapsible` deixa fechar todos); `type=\"multiple\"` abre vários. Sem borda externa: envolva num Card ou numa borda quando precisar.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-117 · Radix Accordion: itens separados por linha fina, título em 14px medium (44px de altura) com seta que gira, conteúdo em `foreground-secondary`. `type=\"single\"` abre um por vez (`collapsible` deixa fechar todos); `type=\"multiple\"` abre vários. Sem borda externa: envolva num Card ou numa borda quando precisar.",
       },
     },
   },

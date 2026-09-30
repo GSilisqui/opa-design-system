@@ -12,7 +12,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix Avatar, **não redondo**: os tamanhos casam com as alturas do DS para ficarem lado a lado com Button, Input e Combobox (24 = Button sm; 36 = Button, Input sm; 48 = Button lg; 60 = Input default) e 96px para perfis. O raio acompanha o do vizinho (8, 12, 16, 12, 24). Sem foto mostra as iniciais sobre `secondary`.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-13 · Radix Avatar, **não redondo**: os tamanhos casam com as alturas do DS para ficarem lado a lado com Button, Input e Combobox (24 = Button sm; 36 = Button, Input sm; 48 = Button lg; 60 = Input default) e 96px para perfis. O raio acompanha o do vizinho (8, 12, 16, 12, 24). Sem foto mostra as iniciais sobre `secondary`.",
       },
     },
   },

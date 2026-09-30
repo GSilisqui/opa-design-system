@@ -1923,12 +1923,37 @@
         ],
         "source": "packages/ui/src/components/ui/card.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Quadro com borda e fundo `card`, raio xl, sem sombra; monte com frame auto layout usando os mesmos tokens.",
+      "figma": {
+        "name": "Card",
+        "nodeId": "96:4",
+        "key": "8017a5a4d2330444462ec3131f5b7b6f69ac2ef2",
+        "page": "Card",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=96-4"
+      },
       "storybook": {
         "title": "Componentes/Card"
       },
       "props": [
+        {
+          "figma": "title",
+          "react": "children",
+          "notes": "`<CardTitle>` dentro do `<CardHeader>`."
+        },
+        {
+          "figma": "description",
+          "react": "children",
+          "notes": "`<CardDescription>`."
+        },
+        {
+          "figma": "content",
+          "react": "children",
+          "notes": "Slot: corpo do `<CardContent>`."
+        },
+        {
+          "figma": "showFooter",
+          "react": null,
+          "notes": "`<CardFooter>` presente ou não."
+        },
         {
           "figma": null,
           "react": "Card",
@@ -1965,14 +1990,19 @@
         ],
         "source": "packages/ui/src/components/ui/avatar.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Quadrado arredondado (não redondo) com os tamanhos dos botões e inputs.",
+      "figma": {
+        "name": "Avatar",
+        "nodeId": "97:13",
+        "key": "5b7acdbf6513be73e437110d15b54248b50600e7",
+        "page": "Avatar",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-13"
+      },
       "storybook": {
         "title": "Componentes/Avatar"
       },
       "props": [
         {
-          "figma": null,
+          "figma": "size",
           "react": "size",
           "values": [
             "sm",
@@ -1980,8 +2010,12 @@
             "lg",
             "xl",
             "2xl"
-          ],
-          "notes": "Tamanho e raio: sm 24/8, default 36/12, lg 48/16, xl 60/12, 2xl 96/24."
+          ]
+        },
+        {
+          "figma": "initials",
+          "react": "children",
+          "notes": "Iniciais no `<AvatarFallback>` (sem foto)."
         },
         {
           "figma": null,
@@ -2004,8 +2038,13 @@
         ],
         "source": "packages/ui/src/components/ui/skeleton.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Retângulo `accent` com o raio do item que vai aparecer.",
+      "figma": {
+        "name": "Skeleton",
+        "nodeId": "97:47",
+        "key": "4cff40747d602babb57bf1ebdfe4b596c368ff35",
+        "page": "Skeleton",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-47"
+      },
       "storybook": {
         "title": "Componentes/Skeleton"
       },
@@ -2026,20 +2065,24 @@
         ],
         "source": "packages/ui/src/components/ui/separator.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Linha de 1px em `border`.",
+      "figma": {
+        "name": "Separator",
+        "nodeId": "97:70",
+        "key": "a14fc903cb9dc2d9fd11014ab1d047195377684c",
+        "page": "Separator",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-70"
+      },
       "storybook": {
         "title": "Componentes/Separator"
       },
       "props": [
         {
-          "figma": null,
+          "figma": "orientation",
           "react": "orientation",
           "values": [
             "horizontal",
             "vertical"
-          ],
-          "notes": "Direção da linha."
+          ]
         },
         {
           "figma": null,
@@ -2060,12 +2103,36 @@
         ],
         "source": "packages/ui/src/components/ui/accordion.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Itens separados por linha, título 14px medium com seta.",
+      "figma": {
+        "name": "Accordion Item",
+        "nodeId": "97:117",
+        "key": "0668f9e87c9e2706d0b6f02b95927da5d846a8a9",
+        "page": "Accordion",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-117"
+      },
       "storybook": {
         "title": "Componentes/Accordion"
       },
       "props": [
+        {
+          "figma": "open",
+          "react": null,
+          "values": [
+            "false",
+            "true"
+          ],
+          "notes": "Estado do item (aberto/fechado); no código é o `value` do `<Accordion>`."
+        },
+        {
+          "figma": "title",
+          "react": "children",
+          "notes": "`<AccordionTrigger>`."
+        },
+        {
+          "figma": "content",
+          "react": "children",
+          "notes": "`<AccordionContent>`."
+        },
         {
           "figma": null,
           "react": "type",
@@ -2102,20 +2169,29 @@
         ],
         "source": "packages/ui/src/components/ui/scroll-area.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Faixa de 14px com linha de demarcação, setas e polegar em `muted-foreground` a 50%.",
+      "figma": {
+        "name": "Scroll Area",
+        "nodeId": "98:62",
+        "key": "d8a4d39a00c07088988c065615572a035ab4d449",
+        "page": "Scroll Area",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=98-62"
+      },
       "storybook": {
         "title": "Componentes/ScrollArea"
       },
       "props": [
         {
-          "figma": null,
+          "figma": "orientation",
           "react": "orientation",
           "values": [
             "vertical",
             "horizontal"
-          ],
-          "notes": "Direção da rolagem."
+          ]
+        },
+        {
+          "figma": "content",
+          "react": "children",
+          "notes": "Slot: conteúdo rolável."
         },
         {
           "figma": null,
@@ -2140,12 +2216,32 @@
         ],
         "source": "packages/ui/src/components/ui/table.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Cabeçalho 36px em `muted` (texto 12px `foreground-secondary`), linhas de 48px com divisor `border`, hover `accent`, selecionada `primary-subtle`. Documentada junto do DataTable.",
+      "figma": {
+        "name": "Table Row",
+        "nodeId": "99:89",
+        "key": "d624c47c7cde8641cde6b315effbde23337c0cb7",
+        "page": "Table",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=99-89"
+      },
       "storybook": {
         "title": "Componentes/DataTable"
       },
       "props": [
+        {
+          "figma": "state",
+          "react": null,
+          "values": [
+            "default",
+            "hover",
+            "selected"
+          ],
+          "notes": "Só Figma: `default`, `hover` e `selected` (código: `data-state=\"selected\"` no `<TableRow>`)."
+        },
+        {
+          "figma": "selectable",
+          "react": null,
+          "notes": "Coluna de checkbox da linha (`selectable` no `<DataTable>`)."
+        },
         {
           "figma": null,
           "react": "Table",
@@ -2155,6 +2251,81 @@
           "figma": null,
           "react": "TableRow",
           "notes": "`data-state=\"selected\"` pinta a linha em `primary-subtle`."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Table Head",
+          "nodeId": "99:30",
+          "key": "042e4d4114c44dc423171b641616edc722ef107d",
+          "page": "Table",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=99-30",
+          "props": [
+            {
+              "figma": "sort",
+              "react": null,
+              "values": [
+                "none",
+                "unsorted",
+                "asc",
+                "desc"
+              ],
+              "notes": "Só Figma: ordenação da coluna (`DataTableColumnHeader`, `aria-sort`)."
+            },
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "`<TableHead>`."
+            },
+            {
+              "figma": "showLabel",
+              "react": null,
+              "notes": "Esconde o título (coluna de seleção)."
+            },
+            {
+              "figma": "showCheckbox",
+              "react": null,
+              "notes": "Checkbox de selecionar tudo."
+            }
+          ]
+        },
+        {
+          "name": "Table Cell",
+          "nodeId": "99:31",
+          "key": "a5e5c18a54e284ab018dd7cb0bc6436db512da5e",
+          "page": "Table",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=99-31",
+          "props": [
+            {
+              "figma": "text",
+              "react": "children",
+              "notes": "`<TableCell>`."
+            },
+            {
+              "figma": "showText",
+              "react": null,
+              "notes": "Esconde o texto (coluna de seleção)."
+            },
+            {
+              "figma": "showCheckbox",
+              "react": null,
+              "notes": "Checkbox da linha."
+            }
+          ]
+        },
+        {
+          "name": "Table Header",
+          "nodeId": "99:34",
+          "key": "3ef92925bdc114628e79dc254e2bc95b2908c934",
+          "page": "Table",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=99-34",
+          "props": [
+            {
+              "figma": "selectable",
+              "react": null,
+              "notes": "Coluna de seleção no cabeçalho."
+            }
+          ]
         }
       ]
     },
@@ -2169,7 +2340,7 @@
         "source": "packages/ui/src/components/ui/data-table.tsx"
       },
       "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Monte: barra de ferramentas (Input + botões) acima; contêiner com borda e raio 12; tabela; rodapé com Pagination. Referências: Estudo-datatable 2:8833 e 22:4189.",
+      "figmaUsage": "Sem componente único: monte com Table Header + Table Row (Figma) e o Pagination; a página Table traz um exemplo completo (barra de ferramentas, contêiner, linhas e rodapé).",
       "storybook": {
         "title": "Componentes/DataTable"
       },
@@ -2233,12 +2404,22 @@
         ],
         "source": "packages/ui/src/components/ui/sidebar.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Rail de 56px só com ícones (sempre recolhido) + painel contextual de 248px. Referências: Chat 481:10021, 604:6113 e 415:3226.",
+      "figma": {
+        "name": "Sidebar",
+        "nodeId": "100:78",
+        "key": "e7295c0c9562fa38448fb9e07e98ca0b707c3ba9",
+        "page": "Sidebar",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-78"
+      },
       "storybook": {
         "title": "Componentes/Sidebar"
       },
       "props": [
+        {
+          "figma": "content",
+          "react": "children",
+          "notes": "Slot: grupos e itens do `<SidebarContent>`."
+        },
         {
           "figma": null,
           "react": "SidebarItem",
@@ -2253,6 +2434,107 @@
           "figma": null,
           "react": "SidebarPanelGroupLabel",
           "notes": "Título pequeno de grupo."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Sidebar Item",
+          "nodeId": "100:15",
+          "key": "a2fe12409618322d24ffb4c2de9c631c029c6064",
+          "page": "Sidebar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-15",
+          "props": [
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "active"
+              ],
+              "notes": "Só Figma: `default`, `hover` e `active` (`active` no código)."
+            },
+            {
+              "figma": "icon",
+              "react": "children",
+              "notes": "Ícone do `<SidebarItem>`."
+            },
+            {
+              "figma": "notification",
+              "react": "notification"
+            }
+          ]
+        },
+        {
+          "name": "Sidebar Panel",
+          "nodeId": "100:37",
+          "key": "4715be9ebf42c4799e1b8a2c6a4089c6fa29ec17",
+          "page": "Sidebar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-37",
+          "props": [
+            {
+              "figma": "title",
+              "react": "children",
+              "notes": "`<SidebarPanelTitle>`."
+            },
+            {
+              "figma": "content",
+              "react": "children",
+              "notes": "Slot: `<SidebarPanelContent>`."
+            }
+          ]
+        },
+        {
+          "name": "Sidebar Panel Item",
+          "nodeId": "100:34",
+          "key": "aa6287d427d373e3d3d3f1dc5b30ee4dd9e74b4a",
+          "page": "Sidebar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-34",
+          "props": [
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "active"
+              ],
+              "notes": "Só Figma: `default`, `hover` e `active` (`active` no código)."
+            },
+            {
+              "figma": "icon",
+              "react": "children",
+              "notes": "Ícone do `<SidebarPanelItem>`."
+            },
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Nome do item."
+            },
+            {
+              "figma": "count",
+              "react": "count"
+            },
+            {
+              "figma": "showCount",
+              "react": null,
+              "notes": "Mostra o contador."
+            }
+          ]
+        },
+        {
+          "name": "Sidebar Panel Group Label",
+          "nodeId": "100:35",
+          "key": "1e9b35b2d8846fa48696ff9bd19ee8c7932619ac",
+          "page": "Sidebar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=100-35",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "`<SidebarPanelGroupLabel>`."
+            }
+          ]
         }
       ]
     }

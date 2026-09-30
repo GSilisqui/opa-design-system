@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: "Linha de 1px em `border`, horizontal ou vertical. Decorativa por padrão (sem papel para leitor de tela); `decorative={false}` expõe `role=\"separator\"`.",
+        component: "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=97-70 · Linha de 1px em `border`, horizontal ou vertical. Decorativa por padrão (sem papel para leitor de tela); `decorative={false}` expõe `role=\"separator\"`.",
       },
     },
   },

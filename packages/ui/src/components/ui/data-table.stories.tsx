@@ -16,7 +16,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Receita do Shadcn (`Table` + TanStack Table v8) no visual do DS: contêiner com borda e raio 12, cabeçalho em `muted`, linhas de 48px, hover em `accent`, linha selecionada em `primary-subtle`, rolagem horizontal pelo `ScrollArea` e rodapé com `Pagination`. Ordenação com `DataTableColumnHeader`; `selectable` adiciona os checkboxes; `toolbar` recebe a tabela e fica acima, fora do contêiner. Para tabelas estáticas use `Table`, `TableRow`… direto.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=99-89 · Receita do Shadcn (`Table` + TanStack Table v8) no visual do DS: contêiner com borda e raio 12, cabeçalho em `muted`, linhas de 48px, hover em `accent`, linha selecionada em `primary-subtle`, rolagem horizontal pelo `ScrollArea` e rodapé com `Pagination`. Ordenação com `DataTableColumnHeader`; `selectable` adiciona os checkboxes; `toolbar` recebe a tabela e fica acima, fora do contêiner. Para tabelas estáticas use `Table`, `TableRow`… direto.",
       },
     },
   },
