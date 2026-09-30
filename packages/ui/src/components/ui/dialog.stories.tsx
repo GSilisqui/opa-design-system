@@ -19,7 +19,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=11-357 · Header e footer separados por divisórias; o corpo fica entre os dois. Sem X por padrão; `showCloseButton` para ativar. Footer: Neutral (cancelar) + Primary.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=11-357 · Header e footer separados por divisórias; o corpo fica entre os dois. Sem X por padrão; `showCloseButton` para ativar. Footer: Outline (cancelar) + Primary. Só texto? Ele vai na `DialogDescription`, não num corpo separado; o corpo é para formulários e outros componentes.",
       },
     },
   },
@@ -41,7 +41,7 @@ export const Padrao: Story = {
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="neutral">Cancelar</Button>
+            <Button variant="outline">Cancelar</Button>
           </DialogClose>
           <Button>Encerrar</Button>
         </DialogFooter>
@@ -67,7 +67,7 @@ export const ComFormulario: Story = {
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="neutral">Cancelar</Button>
+            <Button variant="outline">Cancelar</Button>
           </DialogClose>
           <Button>Salvar</Button>
         </DialogFooter>
@@ -75,3 +75,28 @@ export const ComFormulario: Story = {
     </Dialog>
   ),
 };
+
+export const Destrutivo: Story = {
+  render: (args) => (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="destructive">Excluir contatos</Button>
+      </DialogTrigger>
+      <DialogContent {...args}>
+        <DialogHeader>
+          <DialogTitle>Excluir 3 contatos?</DialogTitle>
+          <DialogDescription>
+            Os contatos saem das listas e dos atendimentos em aberto. O histórico de conversas continua salvo. Essa ação não pode ser desfeita.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline">Cancelar</Button>
+          </DialogClose>
+          <Button variant="destructive">Excluir</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  ),
+};
+

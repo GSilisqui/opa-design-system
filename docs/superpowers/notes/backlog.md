@@ -41,3 +41,19 @@ Auditado em 2026-09-30 no arquivo novo (`UW4As1KdSaPboQ3sNMAbCi`): Button, Input
 ## Antes da Fase 2
 
 - [x] **Revisar o estilo do Dialog** (header e footer separados; código e Figma atualizados em 2026-09-30) para um visual mais refinado (pedido do dono, 2026-09-30). Atualizar Figma, manifesto e story junto.
+
+## Tokens emprestados de outro papel (decisão do dono, 2026-09-30)
+
+Auditoria: Button neutral (hover/active) e Switch desligado usam `input`; Checkbox/Radio desmarcados usam `muted-foreground` na borda; Dialog footer usa `background`.
+
+**Decisão: seguir o padrão do Shadcn, que faz o mesmo empréstimo. Não criar tokens específicos.** Ao adaptar um componente do Shadcn, mantenha os tokens semânticos que ele usa; só crie token novo se o Figma exigir uma cor sem equivalente (como os `tag-*`).
+
+- [x] Button neutral hover/active com `input`: mantido (decisão A do Plano 2 + esta).
+- [x] Switch desligado com `input`: mantido.
+- [x] Checkbox/Radio com `muted-foreground` na borda: mantido.
+- [x] Dialog footer com `background`: mantido.
+
+## A11y (achado ao criar o Form, 2026-09-30)
+
+- [x] **Descrição padrão de campo em `muted-foreground` a 10px reprova contraste (3,99:1 sobre `background`, precisa de 4,5:1).** O `FormDescription` já usa `foreground-secondary`. O `InputField`/`Combobox` sem status usam `muted-foreground` na descrição e nenhuma story cobre esse caso; avaliar trocar por `foreground-secondary` (e o Figma).
+Resolvido em 2026-09-30: InputField, Combobox (single e múltiplo), DatePicker, DateRangePicker e TextareaField usam `foreground-secondary` na descrição sem status (código e Figma); stories cobrem o caso.

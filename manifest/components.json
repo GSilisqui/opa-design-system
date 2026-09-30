@@ -419,17 +419,6 @@
         "page": "Dialog",
         "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-357"
       },
-      "figmaParts": [
-        {
-          "name": "_Dialog/Body",
-          "nodeId": "11:355",
-          "key": "adcfc2f6744bf743261d2606721035b9acf47efb",
-          "page": "Dialog",
-          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-355",
-          "props": [],
-          "notes": "Slot de conteúdo (placeholder). No Figma, troque por um componente local via `bodyContent`; no código, é o conteúdo entre DialogHeader e DialogFooter (recebe px-6 py-4). Header e footer têm divisórias; sem corpo, só a do header aparece."
-        }
-      ],
       "storybook": {
         "title": "Componentes/Dialog"
       },
@@ -445,14 +434,14 @@
           "notes": "Filho `<DialogDescription>` dentro de `<DialogHeader>`."
         },
         {
-          "figma": "body",
+          "figma": "showBody",
           "react": "children",
-          "notes": "true → conteúdo entre DialogHeader e DialogFooter."
+          "notes": "true → mostra o corpo (slot) entre DialogHeader e DialogFooter."
         },
         {
-          "figma": "bodyContent",
+          "figma": "body",
           "react": "children",
-          "notes": "INSTANCE_SWAP (padrão `_Dialog/Body`): o conteúdo do corpo."
+          "notes": "SLOT: solte aqui o formulário ou outro componente. Só texto? Use a `DialogDescription` do header, sem corpo separado. No código, o corpo é o filho direto entre header e footer (recebe p-3). Header e footer têm divisórias; sem corpo, só a do header aparece."
         },
         {
           "figma": "showCloseButton",
@@ -509,6 +498,15 @@
                 "selected": "options[].value === value (fundo muted, sem check)",
                 "disabled": "options[].disabled"
               }
+            },
+            {
+              "figma": "multiple",
+              "react": "multiple",
+              "values": [
+                "false",
+                "true"
+              ],
+              "notes": "true → Checkbox à direita do item."
             }
           ],
           "notes": "Item da lista (CommandItem). No código vem de `options`."
@@ -527,6 +525,20 @@
             }
           ],
           "notes": "Popover + Command abertos (state=open). No código, é interno ao Combobox."
+        },
+        {
+          "name": "Combobox Popover Multiple",
+          "nodeId": "65:133",
+          "key": "524ba3fefd65ec32f231854ceeecf99dde9f3ed8",
+          "page": "Combobox",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=65-133",
+          "props": [
+            {
+              "figma": "searchPlaceholder",
+              "react": "searchPlaceholder"
+            }
+          ],
+          "notes": "Lista da seleção múltipla: itens com Checkbox à direita; fica aberta ao escolher."
         }
       ],
       "storybook": {
@@ -608,6 +620,15 @@
           "figma": null,
           "react": "name",
           "notes": "Só código: campo oculto para envio de formulário."
+        },
+        {
+          "figma": "multiple",
+          "react": "multiple",
+          "values": [
+            "false",
+            "true"
+          ],
+          "notes": "true → seleção múltipla: `value`/`defaultValue` em `string[]`; o campo mostra Tags (uma linha, com ✕) e um contador +N quando não cabem mais; a lista fica aberta e mostra Checkbox à direita."
         }
       ]
     },
@@ -647,6 +668,660 @@
       "figmaUsage": "Helper só de código (lista com busca do Combobox, cmdk). No Figma aparece como `Combobox Popover` (CommandInput + CommandList) e `Combobox Option` (CommandItem).",
       "storybook": null,
       "props": []
+    },
+    "Checkbox": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Checkbox",
+          "checkboxVariants"
+        ],
+        "source": "packages/ui/src/components/ui/checkbox.tsx"
+      },
+      "figma": {
+        "name": "Checkbox",
+        "nodeId": "46:115",
+        "key": "f9b07e77560df48e65d87e8f91941d5b6df51452",
+        "page": "Checkbox",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=46-115"
+      },
+      "storybook": {
+        "title": "Componentes/Checkbox"
+      },
+      "props": [
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 20px; sm = 16px."
+        },
+        {
+          "figma": "checked",
+          "react": "checked",
+          "values": [
+            "unchecked",
+            "checked",
+            "indeterminate"
+          ],
+          "map": {
+            "unchecked": "false",
+            "checked": "true",
+            "indeterminate": "\"indeterminate\" (mostra o traço)"
+          }
+        },
+        {
+          "figma": "state",
+          "react": null,
+          "values": [
+            "default",
+            "focus",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "default": "estado normal",
+            "focus": "visual: :focus-visible (borda ring + focus-halo)",
+            "error": "`aria-invalid` (borda e halo destructive)",
+            "disabled": "prop `disabled` (opacidade 40%)"
+          }
+        }
+      ]
+    },
+    "Switch": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Switch",
+          "switchVariants"
+        ],
+        "source": "packages/ui/src/components/ui/switch.tsx"
+      },
+      "figma": {
+        "name": "Switch",
+        "nodeId": "47:72",
+        "key": "7d2b912fd934ec744b36da19cb220f92c2914191",
+        "page": "Switch",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=47-72"
+      },
+      "storybook": {
+        "title": "Componentes/Switch"
+      },
+      "props": [
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 36×20px; sm = 28×16px."
+        },
+        {
+          "figma": "checked",
+          "react": "checked",
+          "values": [
+            "unchecked",
+            "checked"
+          ],
+          "map": {
+            "unchecked": "false",
+            "checked": "true"
+          }
+        },
+        {
+          "figma": "state",
+          "react": null,
+          "values": [
+            "default",
+            "focus",
+            "disabled"
+          ],
+          "map": {
+            "default": "estado normal",
+            "focus": "visual: :focus-visible (focus/ring)",
+            "disabled": "prop `disabled` (opacidade 40%)"
+          }
+        }
+      ]
+    },
+    "Textarea": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Textarea"
+        ],
+        "source": "packages/ui/src/components/ui/textarea.tsx"
+      },
+      "figma": {
+        "name": "Textarea",
+        "nodeId": "47:103",
+        "key": "296441153f7a7f1d864255df098c67b57c02eb90",
+        "page": "Textarea",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=47-103"
+      },
+      "storybook": {
+        "title": "Componentes/Textarea"
+      },
+      "props": [
+        {
+          "figma": "value",
+          "react": "value",
+          "notes": "Texto digitado (`value`/`defaultValue`)."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder"
+        },
+        {
+          "figma": "state",
+          "react": null,
+          "values": [
+            "empty",
+            "focus",
+            "filled",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "empty": "sem valor",
+            "focus": "visual: :focus-visible (borda ring + focus-halo)",
+            "filled": "com valor",
+            "error": "`aria-invalid`",
+            "disabled": "prop `disabled`"
+          }
+        }
+      ]
+    },
+    "RadioGroupItem": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "RadioGroup",
+          "RadioGroupItem",
+          "radioGroupItemVariants"
+        ],
+        "source": "packages/ui/src/components/ui/radio-group.tsx"
+      },
+      "figma": {
+        "name": "RadioGroupItem",
+        "nodeId": "47:27",
+        "key": "894e83f9fb38af9102cc9c5abbfc1a8250a1dc5a",
+        "page": "Radio Group",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=47-27"
+      },
+      "storybook": {
+        "title": "Componentes/RadioGroup"
+      },
+      "props": [
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 20px; sm = 16px."
+        },
+        {
+          "figma": "checked",
+          "react": null,
+          "values": [
+            "unchecked",
+            "checked"
+          ],
+          "map": {
+            "unchecked": "item não escolhido",
+            "checked": "`value` do item igual ao `value` do grupo"
+          }
+        },
+        {
+          "figma": "state",
+          "react": null,
+          "values": [
+            "default",
+            "focus",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "default": "estado normal",
+            "focus": "visual: :focus-visible (borda ring + focus-halo)",
+            "error": "`aria-invalid` (borda e halo destructive)",
+            "disabled": "prop `disabled` (opacidade 40%)"
+          }
+        }
+      ],
+      "figmaUsage": "O componente do Figma é o item (RadioGroupItem); o grupo (`RadioGroup`) é só o container de layout no código: empilhe itens + Label com auto layout (gap 12)."
+    },
+    "Form": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Form",
+          "FormControl",
+          "FormDescription",
+          "FormField",
+          "FormItem",
+          "FormLabel",
+          "FormMessage",
+          "useFormField"
+        ],
+        "source": "packages/ui/src/components/ui/form.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Sem componente próprio no Figma: é a composição Label + campo (Input, Textarea, Checkbox…) + descrição + mensagem de erro (texto 10px em destructive), como o InputField. O erro deixa o label e a borda em destructive.",
+      "storybook": {
+        "title": "Componentes/Form"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "Form",
+          "notes": "É o `FormProvider` do react-hook-form: `<Form {...form}>` com `useForm({ resolver: zodResolver(schema) })`."
+        },
+        {
+          "figma": null,
+          "react": "FormField",
+          "notes": "Liga o campo ao react-hook-form (`control`, `name`, `render`)."
+        },
+        {
+          "figma": null,
+          "react": "FormControl",
+          "notes": "Envolve o campo: injeta `id`, `aria-describedby` e `aria-invalid`."
+        }
+      ]
+    },
+    "Calendar": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Calendar",
+          "CalendarDayButton"
+        ],
+        "source": "packages/ui/src/components/ui/calendar.tsx"
+      },
+      "figma": {
+        "name": "Calendar",
+        "nodeId": "56:269",
+        "key": "12aad76c6a13bbc97457a103c71e691ce2ffc53f",
+        "page": "Calendar",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=56-269"
+      },
+      "storybook": {
+        "title": "Componentes/Calendar"
+      },
+      "props": [
+        {
+          "figma": "mode",
+          "react": "mode",
+          "values": [
+            "single",
+            "range"
+          ],
+          "notes": "`single` = data única; `range` = período."
+        },
+        {
+          "figma": null,
+          "react": "selected / onSelect",
+          "notes": "`Date` ou `DateRange` ({ from, to })."
+        },
+        {
+          "figma": null,
+          "react": "disabled",
+          "notes": "Dias desabilitados (opacity-40), ex.: `{ before: new Date() }`."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Calendar Day",
+          "nodeId": "55:45",
+          "key": "f9474829a50b9007111ef5b14bb1e127955da4db",
+          "page": "Calendar",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=55-45",
+          "props": [
+            {
+              "figma": "day",
+              "react": null,
+              "notes": "Número do dia (vem do calendário)."
+            },
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "selected",
+                "range-start",
+                "range-middle",
+                "range-end",
+                "outside",
+                "disabled"
+              ],
+              "map": {
+                "default": "dia normal",
+                "selected": "modo single: dia escolhido",
+                "range-start": "modo range: início",
+                "range-middle": "modo range: meio (primary-subtle)",
+                "range-end": "modo range: fim",
+                "outside": "dia de outro mês",
+                "disabled": "`disabled` (opacity-40)"
+              }
+            },
+            {
+              "figma": "today",
+              "react": null,
+              "values": [
+                "false",
+                "true"
+              ],
+              "notes": "Ponto indicador do dia de hoje."
+            }
+          ]
+        }
+      ]
+    },
+    "DatePicker": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "DatePicker"
+        ],
+        "source": "packages/ui/src/components/ui/date-picker.tsx"
+      },
+      "figma": {
+        "name": "DatePicker",
+        "nodeId": "54:41",
+        "key": "8569b6fbdd09d4e1c6d96066870f3b8274d1fccf",
+        "page": "Date Picker",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=54-41"
+      },
+      "storybook": {
+        "title": "Componentes/DatePicker"
+      },
+      "props": [
+        {
+          "figma": "label",
+          "react": "label",
+          "notes": "Obrigatório. No size default é label flutuante; no sm o label é o placeholder e some com valor."
+        },
+        {
+          "figma": "value",
+          "react": "value",
+          "notes": "No Figma é o TEXTO mostrado (dd/mm/aaaa); no código `value`/`defaultValue` é um `Date`."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder",
+          "notes": "Padrão dd/mm/aaaa."
+        },
+        {
+          "figma": "required",
+          "react": "required"
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "true → passe `description`."
+        },
+        {
+          "figma": "descriptionText",
+          "react": "description"
+        },
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 60px com label flutuante; sm = 36px, label some com valor."
+        },
+        {
+          "figma": "state",
+          "react": "status",
+          "values": [
+            "empty",
+            "open",
+            "filled",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "empty": "sem valor",
+            "open": "popover aberto (mostra o Popover do componente)",
+            "filled": "com valor",
+            "error": "status=\"error\"",
+            "disabled": "prop `disabled`"
+          },
+          "notes": "O código também aceita status=\"success\" | \"warning\" (ainda sem variante no Figma)."
+        },
+        {
+          "figma": null,
+          "react": "onValueChange",
+          "notes": "Só código."
+        },
+        {
+          "figma": null,
+          "react": "minDate / maxDate",
+          "notes": "Só código: dias fora ficam desabilitados."
+        },
+        {
+          "figma": null,
+          "react": "name",
+          "notes": "Só código: campo oculto para envio de formulário."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "DatePicker Popover",
+          "nodeId": "57:22",
+          "key": "e20de67e3b23c42c3335016e5c64eed12ded5ad4",
+          "page": "Date Picker",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=57-22",
+          "props": [],
+          "notes": "Popover com o Calendar (mode single)."
+        }
+      ]
+    },
+    "DateRangePicker": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "DateRangePicker"
+        ],
+        "source": "packages/ui/src/components/ui/date-range-picker.tsx"
+      },
+      "figma": {
+        "name": "DateRangePicker",
+        "nodeId": "54:157",
+        "key": "314454b12c957ef3f2fe03cd63105a49463a1bb3",
+        "page": "Date Picker",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=54-157"
+      },
+      "storybook": {
+        "title": "Componentes/DateRangePicker"
+      },
+      "props": [
+        {
+          "figma": "label",
+          "react": "label",
+          "notes": "Obrigatório. No size default é label flutuante; no sm o label é o placeholder e some com valor."
+        },
+        {
+          "figma": "value",
+          "react": "value",
+          "notes": "No Figma é o TEXTO mostrado (dd/mm/aaaa – dd/mm/aaaa); no código `value`/`defaultValue` é um `DateRange` ({ from, to })."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder",
+          "notes": "Padrão dd/mm/aaaa."
+        },
+        {
+          "figma": "required",
+          "react": "required"
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "true → passe `description`."
+        },
+        {
+          "figma": "descriptionText",
+          "react": "description"
+        },
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 60px com label flutuante; sm = 36px, label some com valor."
+        },
+        {
+          "figma": "state",
+          "react": "status",
+          "values": [
+            "empty",
+            "open",
+            "filled",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "empty": "sem valor",
+            "open": "popover aberto (mostra o Popover do componente)",
+            "filled": "com valor",
+            "error": "status=\"error\"",
+            "disabled": "prop `disabled`"
+          },
+          "notes": "O código também aceita status=\"success\" | \"warning\" (ainda sem variante no Figma)."
+        },
+        {
+          "figma": null,
+          "react": "onValueChange",
+          "notes": "Só código."
+        },
+        {
+          "figma": null,
+          "react": "minDate / maxDate",
+          "notes": "Só código: dias fora ficam desabilitados."
+        },
+        {
+          "figma": null,
+          "react": "name",
+          "notes": "Só código: campo oculto para envio de formulário."
+        },
+        {
+          "figma": null,
+          "react": "presets",
+          "notes": "Só código: `{ label, range() }[]` desenha a coluna de atalhos; o ativo fica marcado (`aria-pressed`)."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "DateRangePicker Popover",
+          "nodeId": "57:233",
+          "key": "21f21eba631e2b3c36101cf4e8b27dbd5ac96661",
+          "page": "Date Picker",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=57-233",
+          "props": [],
+          "notes": "Popover com a coluna de atalhos e o Calendar (mode range). No código, os atalhos vêm de `presets`."
+        }
+      ]
+    },
+    "TextareaField": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "TextareaField"
+        ],
+        "source": "packages/ui/src/components/ui/textarea-field.tsx"
+      },
+      "figma": {
+        "name": "TextareaField",
+        "nodeId": "62:24",
+        "key": "a214a2d6851824ab33cc24d1c69e5bdc8ced4c2e",
+        "page": "Textarea",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=62-24"
+      },
+      "storybook": {
+        "title": "Componentes/TextareaField"
+      },
+      "props": [
+        {
+          "figma": "label",
+          "react": "label",
+          "notes": "Obrigatório. No size default é label flutuante; no sm vira o placeholder."
+        },
+        {
+          "figma": "value",
+          "react": "value",
+          "notes": "Texto digitado (`value`/`defaultValue`)."
+        },
+        {
+          "figma": "placeholder",
+          "react": "placeholder"
+        },
+        {
+          "figma": "required",
+          "react": "required"
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "true → passe `description`."
+        },
+        {
+          "figma": "descriptionText",
+          "react": "description"
+        },
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = caixa escura (input-background), min-h 96px; sm = caixa clara (igual ao Textarea), min-h 64px."
+        },
+        {
+          "figma": "state",
+          "react": "status",
+          "values": [
+            "empty",
+            "focus",
+            "filled",
+            "error",
+            "disabled"
+          ],
+          "map": {
+            "empty": "sem texto",
+            "focus": "visual: :focus-visible (borda ring + focus-halo)",
+            "filled": "com texto",
+            "error": "status=\"error\"",
+            "disabled": "prop `disabled`"
+          },
+          "notes": "O código também aceita status=\"success\" | \"warning\" (ainda sem variante no Figma)."
+        },
+        {
+          "figma": null,
+          "react": "optional",
+          "notes": "Só código: mostra \"(opcional)\"."
+        }
+      ]
     }
   },
   "icons": {
@@ -681,6 +1356,46 @@
         "reactSolid": "<Icon name=\"angle-down\" variant=\"solid\" />"
       },
       {
+        "name": "angle-left",
+        "figma": {
+          "nodeId": "36:56",
+          "key": "ac893602d3b24f665fd7ce1be9c87d29c90252ee",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:7822",
+              "key": "33439c4c434984f00fc455ed52a1b3998cf5c9eb"
+            },
+            "solid": {
+              "nodeId": "34:19136",
+              "key": "29c8df94672e8579d2f0a023874b16bafccc72ed"
+            }
+          }
+        },
+        "react": "<Icon name=\"angle-left\" />",
+        "reactSolid": "<Icon name=\"angle-left\" variant=\"solid\" />"
+      },
+      {
+        "name": "angle-right",
+        "figma": {
+          "nodeId": "36:57",
+          "key": "3d38382717957d5ae96ecbe2e4e317974334b123",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:7823",
+              "key": "fad2efd06d43864c3c031adbf56065322c616fce"
+            },
+            "solid": {
+              "nodeId": "34:19137",
+              "key": "2a1bb1b3ae0eb28633207a9127281ef9cd6e890f"
+            }
+          }
+        },
+        "react": "<Icon name=\"angle-right\" />",
+        "reactSolid": "<Icon name=\"angle-right\" variant=\"solid\" />"
+      },
+      {
         "name": "angle-up",
         "figma": {
           "nodeId": "36:3780",
@@ -699,6 +1414,26 @@
         },
         "react": "<Icon name=\"angle-up\" />",
         "reactSolid": "<Icon name=\"angle-up\" variant=\"solid\" />"
+      },
+      {
+        "name": "calendar",
+        "figma": {
+          "nodeId": "36:540",
+          "key": "30e6188250cd2e4686dd67f66f81713b7b8be236",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:8306",
+              "key": "04be0303e404cafea58f653039cf43c0ff53ccaa"
+            },
+            "solid": {
+              "nodeId": "34:19620",
+              "key": "8a7a6cf211648923b9fe3ed0be664afe890a9fd3"
+            }
+          }
+        },
+        "react": "<Icon name=\"calendar\" />",
+        "reactSolid": "<Icon name=\"calendar\" variant=\"solid\" />"
       },
       {
         "name": "check",
@@ -859,6 +1594,26 @@
         },
         "react": "<Icon name=\"magnifying-glass\" />",
         "reactSolid": "<Icon name=\"magnifying-glass\" variant=\"solid\" />"
+      },
+      {
+        "name": "minus",
+        "figma": {
+          "nodeId": "36:2244",
+          "key": "3298df12c233114254c4e9ed2e8955025a50b145",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:10010",
+              "key": "24e3559f6bd619eaad06b46d59c580966186f6b0"
+            },
+            "solid": {
+              "nodeId": "34:21324",
+              "key": "921747c0821441c1312cc97571554e887ef02d0b"
+            }
+          }
+        },
+        "react": "<Icon name=\"minus\" />",
+        "reactSolid": "<Icon name=\"minus\" variant=\"solid\" />"
       },
       {
         "name": "pen",

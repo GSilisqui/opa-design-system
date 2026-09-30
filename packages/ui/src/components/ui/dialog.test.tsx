@@ -16,7 +16,7 @@ function Example({ showCloseButton }: { showCloseButton?: boolean }) {
           <DialogDescription>O cliente vai receber a pesquisa de satisfação.</DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="neutral">Cancelar</Button>
+          <Button variant="outline">Cancelar</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -44,6 +44,19 @@ describe("Dialog", () => {
     await userEvent.click(screen.getByRole("button", { name: "Encerrar" }));
     await userEvent.click(screen.getByRole("button", { name: "Fechar" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+
+  it("header e footer têm divisórias e o footer usa o fundo background", async () => {
+    render(<Example />);
+    await userEvent.click(screen.getByRole("button", { name: "Encerrar" }));
+    const dialog = screen.getByRole("dialog");
+    const header = dialog.querySelector('[data-slot="dialog-header"]')!;
+    const footer = dialog.querySelector('[data-slot="dialog-footer"]')!;
+    expect(header.className).toContain("border-b");
+    expect(header.className).toContain("p-3");
+    expect(footer.className).toContain("bg-background");
+    expect(footer.className).toContain("border-t");
+    expect(dialog.className).toContain("rounded-xl");
   });
 
   it("Esc fecha o dialog", async () => {

@@ -1,6 +1,6 @@
 "use client";
 
-// Composição oficial do Shadcn (Combobox = Popover + Command). Seleção única com busca (decisão do dono: só Combobox).
+// Composição oficial do Shadcn (Combobox = Popover + Command). Seleção única com busca; `multiple` usa combobox-multiple.tsx.
 // Trigger no visual do Select do Figma 885:3949.
 import * as React from "react";
 import { cn } from "@/lib/utils";
@@ -8,61 +8,26 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Icon } from "@/components/ui/icon";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
-type ComboboxOption = {
-  value: string;
-  label: string;
-  disabled?: boolean;
-  /** Termos extras que também encontram a opção na busca. */
-  keywords?: string[];
-};
+import { ComboboxMultiple, type ComboboxMultipleProps } from "@/components/ui/combobox-multiple";
+import {
+  filterByLabelAndKeywords,
+  statusText,
+  statusTrigger,
+  type ComboboxCommonProps,
+  type ComboboxOption,
+  type ComboboxStatus,
+} from "@/components/ui/combobox-utils";
 
-type ComboboxStatus = "error" | "success" | "warning";
-
-// Os variants focus-visible/data-[state=open] precisam ser repetidos: senão o foco e o estado aberto trocam a cor do status pela do ring.
-const statusTrigger: Record<ComboboxStatus, string> = {
-  error:
-    "border-destructive focus-halo-destructive focus-visible:border-destructive focus-visible:focus-halo-destructive data-[state=open]:border-destructive data-[state=open]:focus-halo-destructive",
-  success:
-    "border-success focus-halo-success focus-visible:border-success focus-visible:focus-halo-success data-[state=open]:border-success data-[state=open]:focus-halo-success",
-  warning:
-    "border-warning focus-halo-warning focus-visible:border-warning focus-visible:focus-halo-warning data-[state=open]:border-warning data-[state=open]:focus-halo-warning",
-};
-
-const statusText: Record<ComboboxStatus, string> = {
-  error: "text-destructive",
-  success: "text-success",
-  warning: "text-warning",
-};
-
-// Busca sem acento e sem caixa. Pontua só o label e as palavras-chave: o value (ex.: um id) nunca casa com a busca.
-const normalize = (text: string) => text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
-
-function filterByLabelAndKeywords(_value: string, search: string, keywords?: string[]) {
-  const term = normalize(search.trim());
-  if (!term) return 1;
-  return (keywords ?? []).some((keyword) => normalize(keyword).includes(term)) ? 1 : 0;
-}
-
-type ComboboxProps = {
-  label: string;
-  options: ComboboxOption[];
+type ComboboxSingleProps = ComboboxCommonProps & {
+  multiple?: false;
   value?: string | null;
   defaultValue?: string | null;
   onValueChange?: (value: string) => void;
-  placeholder?: string;
-  searchPlaceholder?: string;
-  emptyMessage?: string;
-  description?: React.ReactNode;
-  status?: ComboboxStatus;
-  size?: "default" | "sm";
-  required?: boolean;
-  disabled?: boolean;
-  name?: string;
-  id?: string;
-  className?: string;
 };
 
-function Combobox({
+type ComboboxProps = ComboboxSingleProps | ComboboxMultipleProps;
+
+function ComboboxSingle({
   label,
   options,
   value: valueProp,
@@ -79,7 +44,7 @@ function Combobox({
   name,
   id,
   className,
-}: ComboboxProps) {
+}: ComboboxSingleProps) {
   const [open, setOpen] = React.useState(false);
   const [innerValue, setInnerValue] = React.useState<string | null>(defaultValue);
   const value = valueProp !== undefined ? valueProp : innerValue;
@@ -243,7 +208,7 @@ function Combobox({
           id={descriptionId}
           data-slot="combobox-description"
           data-status={status}
-          className={cn("text-xs leading-3 text-muted-foreground", status && statusText[status])}
+          className={cn("text-xs leading-3 text-foreground-secondary", status && statusText[status])}
         >
           {description}
         </p>
@@ -252,4 +217,9 @@ function Combobox({
   );
 }
 
-export { Combobox, type ComboboxOption, type ComboboxStatus };
+/** Seleção única (padrão) ou múltipla (`multiple`, com `value` em `string[]`). */
+function Combobox(props: ComboboxProps) {
+  return props.multiple ? <ComboboxMultiple {...props} /> : <ComboboxSingle {...props} />;
+}
+
+export { Combobox, type ComboboxOption, type ComboboxProps, type ComboboxStatus };

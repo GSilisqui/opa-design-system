@@ -1,35 +1,37 @@
 "use client";
 
-// Composição aprovada pelo dono (decisão D): Input + Label + descrição do Shadcn, no layout do Input Field do Figma 885:5165.
+// Composição pedida pelo dono (mesmo padrão do InputField): Textarea + Label + descrição, com label flutuante no size default.
+// Visual do TextArea do Figma antigo (caixa input-background, label no topo que sobe ao digitar), sem a barra de edição de texto.
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
-type InputFieldStatus = "error" | "success" | "warning";
+type TextareaFieldStatus = "error" | "success" | "warning";
 
-const statusField: Record<InputFieldStatus, string> = {
+const statusField: Record<TextareaFieldStatus, string> = {
   error: "border-destructive focus-halo-destructive focus-visible:border-destructive focus-visible:focus-halo-destructive",
   success: "border-success focus-halo-success focus-visible:border-success focus-visible:focus-halo-success",
   warning: "border-warning focus-halo-warning focus-visible:border-warning focus-visible:focus-halo-warning",
 };
 
-const statusText: Record<InputFieldStatus, string> = {
+const statusText: Record<TextareaFieldStatus, string> = {
   error: "text-destructive",
   success: "text-success",
   warning: "text-warning",
 };
 
-type InputFieldProps = Omit<React.ComponentProps<"input">, "size"> & {
+type TextareaFieldProps = React.ComponentProps<"textarea"> & {
   label: string;
   description?: React.ReactNode;
-  status?: InputFieldStatus;
+  status?: TextareaFieldStatus;
+  /** `default`: caixa escura com label flutuante; `sm`: caixa clara, o label é o placeholder. */
   size?: "default" | "sm";
   optional?: boolean;
   containerClassName?: string;
 };
 
-function InputField({
+function TextareaField({
   label,
   description,
   status,
@@ -43,12 +45,12 @@ function InputField({
   className,
   containerClassName,
   ...props
-}: InputFieldProps) {
+}: TextareaFieldProps) {
   const autoId = React.useId();
-  const inputId = id ?? `input-${autoId}`;
-  const descriptionId = description ? `${inputId}-description` : undefined;
+  const fieldId = id ?? `textarea-${autoId}`;
+  const descriptionId = description ? `${fieldId}-description` : undefined;
 
-  // Figma: o * é vermelho, segue a cor do estado em sucesso/alerta e fica cinza quando desabilitado.
+  // Igual ao InputField: o * segue a cor do estado em sucesso/alerta e fica cinza quando desabilitado.
   const markerColor = disabled
     ? "text-muted-foreground"
     : status === "success" || status === "warning"
@@ -63,41 +65,36 @@ function InputField({
   ) : null;
 
   const shared = {
-    id: inputId,
+    id: fieldId,
     required,
     readOnly,
     disabled,
     "aria-invalid": status === "error" ? true : undefined,
     "data-status": status,
     ...props,
-    // Depois do ...props: soma a descrição ao aria-describedby do consumidor em vez de ser sobrescrito por ele.
     "aria-describedby": [descriptionId, props["aria-describedby"]].filter(Boolean).join(" ") || undefined,
   };
 
-  const readOnlyClass = "rounded-none border-0 border-b border-b-border bg-transparent px-0";
-
   return (
-    <div data-slot="input-field" data-size={size} className={cn("grid gap-1", containerClassName)}>
+    <div data-slot="textarea-field" data-size={size} className={cn("grid gap-1", containerClassName)}>
       {size === "default" ? (
         <div className="relative">
-          <Input
+          <Textarea
             {...shared}
             placeholder={placeholder ?? " "}
             className={cn(
-              "peer h-15 border-input bg-input-background px-3 pt-6 pb-2 text-base placeholder:text-transparent focus-visible:placeholder:text-muted-foreground",
-              readOnly && readOnlyClass,
+              "peer min-h-24 border-input bg-input-background px-3 pt-7 pb-3 text-base placeholder:text-transparent focus-visible:placeholder:text-muted-foreground",
               status && statusField[status],
               className,
             )}
           />
           <Label
-            htmlFor={inputId}
+            htmlFor={fieldId}
             data-status={status}
             className={cn(
-              "pointer-events-none absolute top-5 left-3 text-base leading-5 transition-all",
+              "pointer-events-none absolute top-3 left-3 text-base leading-5 transition-all",
               "peer-focus-visible:top-2 peer-focus-visible:text-sm peer-focus-visible:leading-4",
               "peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-sm peer-[:not(:placeholder-shown)]:leading-4",
-              readOnly && "left-0",
               status && statusText[status],
               disabled && "text-muted-foreground",
             )}
@@ -108,20 +105,16 @@ function InputField({
         </div>
       ) : (
         <>
-          <Label htmlFor={inputId} className="sr-only">
+          <Label htmlFor={fieldId} className="sr-only">
             {label}
           </Label>
-          <Input
-            {...shared}
-            placeholder={placeholder ?? label}
-            className={cn(readOnly && readOnlyClass, status && statusField[status], className)}
-          />
+          <Textarea {...shared} placeholder={placeholder ?? label} className={cn(status && statusField[status], className)} />
         </>
       )}
       {description ? (
         <p
           id={descriptionId}
-          data-slot="input-field-description"
+          data-slot="textarea-field-description"
           data-status={status}
           className={cn("text-xs leading-3 text-foreground-secondary", status && statusText[status])}
         >
@@ -132,4 +125,4 @@ function InputField({
   );
 }
 
-export { InputField, type InputFieldStatus };
+export { TextareaField, type TextareaFieldProps, type TextareaFieldStatus };
