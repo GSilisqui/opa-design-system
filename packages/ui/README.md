@@ -52,9 +52,9 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `Calendar` | Calendar `56:269` · Calendar Day `55:45` | Data única e período, pt-BR; dia em primary, meio do período em primary-subtle |
 | `DatePicker` / `DateRangePicker` | DatePicker `54:41` · DateRangePicker `54:157` | Campo `default`/`sm`; período com `presets` (coluna de atalhos) |
 | `Form` | — (sem componente próprio) | react-hook-form + zod |
-| `Tabs` | — (Figma pendente) | `segmented` \| `underline`; `default` (36px) \| `sm` (24px); aba só com ícone |
-| `Toaster` / `toast` | — (Figma pendente) | Sonner: ícone só nos tipos, ação Outline pequena, canto inferior direito |
-| `Tooltip` | — (Figma pendente) | Compacto, cor inversa, `text-sm`, sem seta |
+| `Tabs` | Tabs `73:232` · Tab `73:163` | `segmented` \| `underline`; `default` (36px) \| `sm` (24px); aba só com ícone |
+| `Toaster` / `toast` | Toast `75:153` | Sonner: ícone só nos tipos, ação Outline pequena, canto inferior direito |
+| `Tooltip` | Tooltip `72:3` | Compacto, cor inversa, `text-sm`, sem seta |
 | `Checkbox` | Checkbox `46:115` | `size`: `default` (20px), `sm` (16px); `checked="indeterminate"` |
 | `RadioGroup` / `RadioGroupItem` | RadioGroupItem `47:27` | Itens de 20px ou 16px (`sm`) |
 | `Switch` | Switch `47:72` | 36×20px ou 28×16px (`sm`) |

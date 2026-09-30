@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Sonner no estilo validado com o dono: cartão popover com ícone só nos tipos, título + descrição, ação em Outline pequeno (secundária em Quiet) e botão de fechar no canto ao passar o mouse. Canto inferior direito, pilha compacta, some em 4s. Coloque `<Toaster />` uma vez na raiz do app e chame `toast(...)` de qualquer lugar.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=75-153 · Sonner no estilo validado com o dono: cartão popover com ícone só nos tipos, título + descrição, ação em Outline pequeno (secundária em Quiet) e botão de fechar no canto ao passar o mouse. Canto inferior direito, pilha compacta, some em 4s. Coloque `<Toaster />` uma vez na raiz do app e chame `toast(...)` de qualquer lugar.",
       },
     },
   },

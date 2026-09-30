@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix Tabs. `variant` da lista: `segmented` (trilho cinza, aba ativa em card) ou `underline` (linha embaixo). `size`: `default` (36px) ou `sm` (24px). Aba só com ícone: `layout=\"icon-only\"` e `aria-label`. Setas navegam, Home/End vão às pontas.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=73-232 · Radix Tabs. `variant` da lista: `segmented` (trilho cinza, aba ativa em card) ou `underline` (linha embaixo). `size`: `default` (36px) ou `sm` (24px). Aba só com ícone: `layout=\"icon-only\"` e `aria-label`. Setas navegam, Home/End vão às pontas.",
       },
     },
   },

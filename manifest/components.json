@@ -1335,12 +1335,22 @@
         ],
         "source": "packages/ui/src/components/ui/tooltip.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "figma": {
+        "name": "Tooltip",
+        "nodeId": "72:3",
+        "key": "b3dfdcf233b07b22055d89acd30d23de5f5ab8ec",
+        "page": "Tooltip",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=72-3"
+      },
       "storybook": {
         "title": "Componentes/Tooltip"
       },
       "props": [
+        {
+          "figma": "label",
+          "react": "children",
+          "notes": "Texto do balão (`<TooltipContent>`)."
+        },
         {
           "figma": null,
           "react": "side",
@@ -1350,12 +1360,12 @@
             "bottom",
             "left"
           ],
-          "notes": "Posição do balão (padrão top). Sem seta."
+          "notes": "Só código: posição do balão (padrão top). Sem seta: o visual não muda."
         },
         {
           "figma": null,
-          "react": "children",
-          "notes": "Texto curto; conteúdo interativo ou longo é Popover."
+          "react": "TooltipProvider",
+          "notes": "Só código: uma vez na raiz (atraso de abertura)."
         }
       ]
     },
@@ -1373,43 +1383,110 @@
         ],
         "source": "packages/ui/src/components/ui/tabs.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "figma": {
+        "name": "Tabs",
+        "nodeId": "73:232",
+        "key": "3090cefddbfc33539421fab305db60f73033f404",
+        "page": "Tabs",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=73-232"
+      },
       "storybook": {
         "title": "Componentes/Tabs"
       },
       "props": [
         {
-          "figma": null,
+          "figma": "variant",
           "react": "variant",
           "values": [
             "segmented",
             "underline"
           ],
-          "notes": "Na `TabsList`."
+          "notes": "`<TabsList variant>`: segmented = trilho cinza com aba ativa em card; underline = linha embaixo."
         },
         {
-          "figma": null,
+          "figma": "size",
           "react": "size",
           "values": [
             "default",
             "sm"
           ],
-          "notes": "Na `TabsList`: default = 36px; sm = 24px."
-        },
-        {
-          "figma": null,
-          "react": "layout",
-          "values": [
-            "default",
-            "icon-only"
-          ],
-          "notes": "Na `TabsTrigger`. Só ícone exige `aria-label`."
+          "notes": "`<TabsList size>`: default = abas de 36px; sm = 24px."
         },
         {
           "figma": null,
           "react": "value / onValueChange",
-          "notes": "Na raiz `Tabs`."
+          "notes": "Só código: na raiz `Tabs`."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Tab",
+          "nodeId": "73:163",
+          "key": "02e73da128494ca986ebc2ba0e68a847cbb0ce0f",
+          "page": "Tabs",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=73-163",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Texto da aba (`<TabsTrigger>`)."
+            },
+            {
+              "figma": "icon",
+              "react": "children",
+              "notes": "true → <Icon> antes do texto."
+            },
+            {
+              "figma": "iconName",
+              "react": "children",
+              "notes": "Qual ícone (instance swap)."
+            },
+            {
+              "figma": "variant",
+              "react": "variant",
+              "values": [
+                "segmented",
+                "underline"
+              ],
+              "notes": "No código a variante fica na `TabsList` (as abas herdam)."
+            },
+            {
+              "figma": "size",
+              "react": "size",
+              "values": [
+                "default",
+                "sm"
+              ],
+              "notes": "No código o tamanho fica na `TabsList`."
+            },
+            {
+              "figma": "layout",
+              "react": "layout",
+              "values": [
+                "default",
+                "icon-only"
+              ],
+              "notes": "`TabsTrigger layout`. Só ícone exige aria-label."
+            },
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "selected",
+                "disabled",
+                "focus"
+              ],
+              "map": {
+                "default": "aba inativa",
+                "hover": "visual: :hover",
+                "selected": "`data-state=active` (aba ativa)",
+                "disabled": "prop `disabled`",
+                "focus": "visual: :focus-visible (borda ring + focus-halo)"
+              }
+            }
+          ]
         }
       ]
     },
@@ -1423,21 +1500,60 @@
         ],
         "source": "packages/ui/src/components/ui/sonner.tsx"
       },
-      "figma": null,
-      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "figma": {
+        "name": "Toast",
+        "nodeId": "75:153",
+        "key": "af92f5e26dcb392591480ad1bccfe337b79b02e1",
+        "page": "Toast",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=75-153"
+      },
       "storybook": {
         "title": "Componentes/Toast"
       },
       "props": [
         {
-          "figma": null,
-          "react": "toast() / toast.success() / .error() / .warning() / .info() / .loading()",
-          "notes": "Chamado de qualquer lugar; `description`, `action` (Outline pequeno) e `cancel` (Quiet pequeno)."
+          "figma": "title",
+          "react": "toast(título)",
+          "notes": "Primeiro argumento de toast()."
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "`toast(título, { description })`."
+        },
+        {
+          "figma": "action",
+          "react": "action",
+          "notes": "true → `{ action: { label, onClick } }` (Outline pequeno); `cancel` em Quiet pequeno (só código)."
+        },
+        {
+          "figma": "closeButton",
+          "react": "closeButton",
+          "notes": "Círculo no canto, visível ao passar o mouse (padrão do Toaster)."
+        },
+        {
+          "figma": "type",
+          "react": "toast.success() etc.",
+          "values": [
+            "default",
+            "success",
+            "error",
+            "warning",
+            "info"
+          ],
+          "map": {
+            "default": "toast()",
+            "success": "toast.success()",
+            "error": "toast.error()",
+            "warning": "toast.warning()",
+            "info": "toast.info()"
+          },
+          "notes": "Só o tipo default fica sem ícone. `toast.loading()` (spinner) só no código."
         },
         {
           "figma": null,
           "react": "Toaster",
-          "notes": "Uma vez na raiz. Canto inferior direito, 4s, fechar no canto ao passar o mouse."
+          "notes": "Só código: uma vez na raiz; canto inferior direito, 4s, pilha que abre no hover."
         }
       ]
     }

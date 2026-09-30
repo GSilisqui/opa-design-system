@@ -10,7 +10,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Radix Tooltip no estilo validado com o dono: compacto, cor inversa (`bg-foreground text-background`), `text-sm`, sem seta. Aparece no hover e no foco; Esc fecha. Serve para explicar botões só com ícone (que também precisam de `aria-label`). Texto longo ou conteúdo interativo: use Popover.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=72-3 · Radix Tooltip no estilo validado com o dono: compacto, cor inversa (`bg-foreground text-background`), `text-sm`, sem seta. Aparece no hover e no foco; Esc fecha. Serve para explicar botões só com ícone (que também precisam de `aria-label`). Texto longo ou conteúdo interativo: use Popover.",
       },
     },
   },

@@ -55,7 +55,10 @@
       "Switch": "47:47",
       "Textarea": "47:92",
       "Calendar": "55:2",
-      "Date Picker": "54:273"
+      "Date Picker": "54:273",
+      "Tooltip": "72:2",
+      "Tabs": "73:2",
+      "Toast": "75:79"
     },
     "components": {
       "icons": {
@@ -98,7 +101,11 @@
       "DatePicker Popover": "57:22",
       "DateRangePicker Popover": "57:233",
       "TextareaField": "62:24",
-      "Combobox Popover Multiple": "65:133"
+      "Combobox Popover Multiple": "65:133",
+      "Tooltip": "72:3",
+      "Tab": "73:163",
+      "Tabs": "73:232",
+      "Toast": "75:153"
     },
     "modes": {
       "Primitives/Value": "4:0",
@@ -129,7 +136,10 @@
       "Switch": "47:73",
       "Textarea": "47:104",
       "Calendar": "56:270",
-      "Date Picker": "57:478"
+      "Date Picker": "57:478",
+      "Tooltip": "72:5",
+      "Tabs": "73:233",
+      "Toast": "75:154"
     }
   },
   "decisions": [
@@ -184,6 +194,7 @@
     "2026-09-30: Date Picker no Figma: página Calendar (Calendar Day 14 variantes state × today; Calendar mode single | range, com Button quiet icon-only e instâncias de Calendar Day) e página Date Picker (DatePicker e DateRangePicker clonados do Combobox com ícone calendar; DatePicker Popover e DateRangePicker Popover com a coluna de atalhos). Desenho aprovado no companion: docs/superpowers/specs/2026-09-30-date-picker-design.md.",
     "2026-09-30: TextareaField (10 variantes: size × state) clonado do InputField na página Textarea: campo VERTICAL com altura mínima (96 default, 64 sm), label no topo, valor com quebra de linha. Referência: TextArea do Component Library antigo (caixa escura, label que sobe; sem a barra de edição de texto). Combobox multiple ainda sem variante no Figma.",
     "2026-09-30: Combobox multiple no Figma: propriedade de variante multiple (false|true) em Combobox (20 variantes; Tags Suporte/Comercial + contador +2 nos estados com valor) e Combobox Option (Checkbox à direita), mais o componente Combobox Popover Multiple. Combobox Popover (single) continua igual.",
-    "2026-09-30: descrição de campo (texto sem status) passou de muted-foreground para foreground-secondary em InputField, Combobox, DatePicker, DateRangePicker e TextareaField (contraste 4,5:1)."
+    "2026-09-30: descrição de campo (texto sem status) passou de muted-foreground para foreground-secondary em InputField, Combobox, DatePicker, DateRangePicker e TextareaField (contraste 4,5:1).",
+    "2026-09-30: Fase 3 no Figma: Tooltip (1 componente), Tab (40 variantes: variant × size × layout × state) e Tabs (4), Toast (5 tipos, com action e closeButton booleanos). Sublinhado da aba selecionada é um retângulo de 2px (não borda: a borda segue o raio). Rótulo do botão de ação do Toast é trocado na instância do Button (componentPropertyReferences não aceita propriedade aninhada). Dropdown Menu, Alert, Sheet e Breadcrumb aguardam validação com o dono."
   ]
 }
