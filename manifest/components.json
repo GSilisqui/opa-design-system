@@ -647,6 +647,155 @@
       "figmaUsage": "Helper só de código (lista com busca do Combobox, cmdk). No Figma aparece como `Combobox Popover` (CommandInput + CommandList) e `Combobox Option` (CommandItem).",
       "storybook": null,
       "props": []
+    },
+    "Checkbox": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Checkbox",
+          "checkboxVariants"
+        ],
+        "source": "packages/ui/src/components/ui/checkbox.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (fase 2). Use as stories do Storybook como referência visual até a biblioteca ganhar o componente.",
+      "storybook": {
+        "title": "Componentes/Checkbox"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 20px; sm = 16px."
+        },
+        {
+          "figma": null,
+          "react": "checked",
+          "notes": "true | false | \"indeterminate\" (mostra o traço)."
+        },
+        {
+          "figma": null,
+          "react": "disabled"
+        },
+        {
+          "figma": null,
+          "react": "aria-invalid",
+          "notes": "Estado de erro (borda e halo destructive)."
+        }
+      ]
+    },
+    "RadioGroup": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "RadioGroup",
+          "RadioGroupItem",
+          "radioGroupItemVariants"
+        ],
+        "source": "packages/ui/src/components/ui/radio-group.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (fase 2). Use as stories do Storybook como referência visual até a biblioteca ganhar o componente.",
+      "storybook": {
+        "title": "Componentes/RadioGroup"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "value",
+          "notes": "Valor do item marcado (`value`/`defaultValue`/`onValueChange` no grupo)."
+        },
+        {
+          "figma": null,
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 20px; sm = 16px."
+        },
+        {
+          "figma": null,
+          "react": "disabled"
+        },
+        {
+          "figma": null,
+          "react": "aria-invalid",
+          "notes": "Estado de erro (borda e halo destructive)."
+        }
+      ]
+    },
+    "Switch": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Switch",
+          "switchVariants"
+        ],
+        "source": "packages/ui/src/components/ui/switch.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (fase 2). Use as stories do Storybook como referência visual até a biblioteca ganhar o componente.",
+      "storybook": {
+        "title": "Componentes/Switch"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "default = 36×20px; sm = 28×16px."
+        },
+        {
+          "figma": null,
+          "react": "checked",
+          "notes": "`checked`/`defaultChecked`/`onCheckedChange`."
+        },
+        {
+          "figma": null,
+          "react": "disabled"
+        }
+      ]
+    },
+    "Textarea": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Textarea"
+        ],
+        "source": "packages/ui/src/components/ui/textarea.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (fase 2). Use as stories do Storybook como referência visual até a biblioteca ganhar o componente.",
+      "storybook": {
+        "title": "Componentes/Textarea"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "placeholder"
+        },
+        {
+          "figma": null,
+          "react": "disabled"
+        },
+        {
+          "figma": null,
+          "react": "aria-invalid",
+          "notes": "Estado de erro (borda e halo destructive)."
+        }
+      ]
     }
   },
   "icons": {
@@ -859,6 +1008,26 @@
         },
         "react": "<Icon name=\"magnifying-glass\" />",
         "reactSolid": "<Icon name=\"magnifying-glass\" variant=\"solid\" />"
+      },
+      {
+        "name": "minus",
+        "figma": {
+          "nodeId": "36:2244",
+          "key": "3298df12c233114254c4e9ed2e8955025a50b145",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:10010",
+              "key": "24e3559f6bd619eaad06b46d59c580966186f6b0"
+            },
+            "solid": {
+              "nodeId": "34:21324",
+              "key": "921747c0821441c1312cc97571554e887ef02d0b"
+            }
+          }
+        },
+        "react": "<Icon name=\"minus\" />",
+        "reactSolid": "<Icon name=\"minus\" variant=\"solid\" />"
       },
       {
         "name": "pen",

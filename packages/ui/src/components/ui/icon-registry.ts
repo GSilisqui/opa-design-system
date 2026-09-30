@@ -11,6 +11,7 @@ import { faCopy as rCopy } from "@fortawesome/pro-regular-svg-icons/faCopy";
 import { faEllipsis as rEllipsis } from "@fortawesome/pro-regular-svg-icons/faEllipsis";
 import { faFaceSmile as rFaceSmile } from "@fortawesome/pro-regular-svg-icons/faFaceSmile";
 import { faMagnifyingGlass as rMagnifyingGlass } from "@fortawesome/pro-regular-svg-icons/faMagnifyingGlass";
+import { faMinus as rMinus } from "@fortawesome/pro-regular-svg-icons/faMinus";
 import { faPen as rPen } from "@fortawesome/pro-regular-svg-icons/faPen";
 import { faPlus as rPlus } from "@fortawesome/pro-regular-svg-icons/faPlus";
 import { faTrash as rTrash } from "@fortawesome/pro-regular-svg-icons/faTrash";
@@ -26,6 +27,7 @@ import { faCopy as sCopy } from "@fortawesome/pro-solid-svg-icons/faCopy";
 import { faEllipsis as sEllipsis } from "@fortawesome/pro-solid-svg-icons/faEllipsis";
 import { faFaceSmile as sFaceSmile } from "@fortawesome/pro-solid-svg-icons/faFaceSmile";
 import { faMagnifyingGlass as sMagnifyingGlass } from "@fortawesome/pro-solid-svg-icons/faMagnifyingGlass";
+import { faMinus as sMinus } from "@fortawesome/pro-solid-svg-icons/faMinus";
 import { faPen as sPen } from "@fortawesome/pro-solid-svg-icons/faPen";
 import { faPlus as sPlus } from "@fortawesome/pro-solid-svg-icons/faPlus";
 import { faTrash as sTrash } from "@fortawesome/pro-solid-svg-icons/faTrash";
@@ -60,6 +62,7 @@ export type IconName =
   | "ellipsis"
   | "face-smile"
   | "magnifying-glass"
+  | "minus"
   | "pen"
   | "plus"
   | "trash"
@@ -99,6 +102,7 @@ const regular: Record<IconName, IconDefinition> = {
   ellipsis: rEllipsis,
   "face-smile": rFaceSmile,
   "magnifying-glass": rMagnifyingGlass,
+  minus: rMinus,
   pen: rPen,
   plus: rPlus,
   trash: rTrash,
@@ -117,6 +121,7 @@ const solid: Record<IconName, IconDefinition> = {
   ellipsis: sEllipsis,
   "face-smile": sFaceSmile,
   "magnifying-glass": sMagnifyingGlass,
+  minus: sMinus,
   pen: sPen,
   plus: sPlus,
   trash: sTrash,
