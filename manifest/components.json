@@ -590,16 +590,19 @@
             "open",
             "filled",
             "error",
-            "disabled"
+            "disabled",
+            "success",
+            "warning"
           ],
           "map": {
             "empty": "value null",
             "open": "popup aberto (interação; mostra Combobox Popover)",
             "filled": "value definido",
             "error": "status=\"error\"",
-            "disabled": "prop `disabled`"
-          },
-          "notes": "O código também aceita status=\"success\" | \"warning\" (ainda sem variante no Figma)."
+            "disabled": "prop `disabled`",
+            "success": "status=\"success\"",
+            "warning": "status=\"warning\""
+          }
         },
         {
           "figma": null,
