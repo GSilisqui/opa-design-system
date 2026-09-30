@@ -6,6 +6,7 @@
     "dev": "storybook dev -p 6006",
     "build": "storybook build -o storybook-static",
     "test": "vitest run",
+    "test:dark": "vitest run --mode dark",
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },

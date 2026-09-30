@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Icon } from "./icon";
-import { iconNames } from "./icon-registry";
+import { brandIconNames, iconNames } from "./icon-registry";
 
 const meta = {
   title: "Componentes/Icon",
@@ -15,7 +15,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Font Awesome 7 Pro. Regular por padrão; solid para estados ativos. Sem `label`, é decorativo. Galeria completa em Fundações/Ícones.",
+          "Font Awesome 7 Pro. Regular por padrão; solid para estados ativos. Logos de marcas com `variant=\"brands\"`. Sem `label`, é decorativo. Galeria completa em Fundações/Ícones.",
       },
     },
   },
@@ -31,6 +31,16 @@ export const Tamanhos: Story = {
     <div className="flex items-end gap-4 text-foreground">
       {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
         <Icon key={size} {...args} size={size} />
+      ))}
+    </div>
+  ),
+};
+
+export const Logos: Story = {
+  render: () => (
+    <div className="flex items-center gap-4 text-foreground">
+      {brandIconNames.map((name) => (
+        <Icon key={name} name={name} variant="brands" size="xl" label={name} />
       ))}
     </div>
   ),

@@ -48,7 +48,7 @@ function Tag({ className, variant = "neutral", size = "default", onRemove, remov
     <span data-slot="tag" data-variant={variant} className={cn(tagVariants({ variant, size }), className)} {...props}>
       {onRemove ? (
         // O texto ganha id para compor o nome do botão: "Remover VIP", distinto em cada tag.
-        <span id={textId} data-slot="tag-text" className="inline-flex items-center gap-1">
+        <span id={textId} data-slot="tag-text" className="contents">
           {children}
         </span>
       ) : (

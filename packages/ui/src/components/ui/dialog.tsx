@@ -53,7 +53,7 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-xl border border-border bg-card p-6 text-card-foreground shadow-popover duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-[448px]",
+          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-0 overflow-hidden rounded-xl border border-border bg-card p-0 text-card-foreground shadow-popover duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-[448px] [&>:not([data-slot=dialog-header],[data-slot=dialog-footer],[data-dialog-close])]:px-6 [&>:not([data-slot=dialog-header],[data-slot=dialog-footer],[data-dialog-close])]:py-4",
           className,
         )}
         {...props}
@@ -61,7 +61,7 @@ function DialogContent({
         {children}
         {showCloseButton ? (
           <DialogPrimitive.Close asChild>
-            <Button variant="quiet" layout="icon-only" aria-label={closeLabel} className="absolute top-3 right-3">
+            <Button variant="quiet" layout="icon-only" aria-label={closeLabel} data-dialog-close className="absolute top-3 right-3">
               <Icon name="xmark" />
             </Button>
           </DialogPrimitive.Close>
@@ -72,12 +72,20 @@ function DialogContent({
 }
 
 function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
-  return <div data-slot="dialog-header" className={cn("flex flex-col gap-2 text-left", className)} {...props} />;
+  return <div data-slot="dialog-header" className={cn("flex flex-col gap-1 border-b border-border px-6 py-4 text-left", className)} {...props} />;
 }
 
 function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div data-slot="dialog-footer" className={cn("flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", className)} {...props} />
+    <div
+      data-slot="dialog-footer"
+      // Sem corpo entre header e footer, a divisória do header já separa: evita a linha dupla.
+      className={cn(
+        "flex flex-col-reverse gap-2 border-t border-border bg-muted/50 px-6 py-4 sm:flex-row sm:justify-end [[data-slot=dialog-header]+&]:border-t-0",
+        className,
+      )}
+      {...props}
+    />
   );
 }
 

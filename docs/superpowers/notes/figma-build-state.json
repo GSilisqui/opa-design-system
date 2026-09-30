@@ -153,6 +153,7 @@
     "resize() resets primaryAxisSizingMode to FIXED: set AUTO after resize for hug components",
     "Default variant = top-left variant on canvas (not child order)",
     "2026-09-30: ícones viraram um componente por ícone com variant (regular|solid|brands). Catálogo completo do FA 7.3.1 importado de SVGs em folhas via upload_assets (termos de busca no id dos grupos) e convertido com use_figma. A descrição lida pela API vem com HTML escapado: não regrave sem desescapar. combineAsVariants exige os nós na mesma página do parent.",
-    "2026-09-30: instâncias de ícone dentro de Button (336), Tag (28), Combobox e Popover (11) com isExposedInstance=true, para expor o variant do ícone. instance.exposedInstances vem vazio enquanto o ícone está oculto (visible=false)."
+    "2026-09-30: instâncias de ícone dentro de Button (336), Tag (28), Combobox e Popover (11) com isExposedInstance=true, para expor o variant do ícone. instance.exposedInstances vem vazio enquanto o ícone está oculto (visible=false).",
+    "2026-09-30: Dialog com header e footer separados. Raiz sem padding/gap e clipsContent; header com borda inferior; body agora dentro de bodyWrap (43:29, padding 24x16, borda inferior) que recebe a propriedade booleana body (a instância _Dialog/Body mantém o instance swap bodyContent); footer com fundo muted a 50%. Entrada 'Próxima versão' (43:230) na página Changelog."
   ]
 }

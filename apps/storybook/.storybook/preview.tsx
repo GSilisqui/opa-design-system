@@ -14,6 +14,8 @@ const CONTRAST_EXCEPTIONS = [
 
 const preview: Preview = {
   tags: ["autodocs"],
+  // `pnpm test:dark` (vitest run --mode dark) roda todas as stories (e o teste de a11y/contraste) no tema Dark.
+  initialGlobals: { theme: import.meta.env.MODE === "dark" ? "Dark" : "Light" },
   decorators: [withThemeByClassName({ themes: { Light: "", Dark: "dark" }, defaultTheme: "Light" })],
   parameters: {
     layout: "padded",

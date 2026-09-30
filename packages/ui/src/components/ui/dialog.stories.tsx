@@ -19,7 +19,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=11-357 · Sem X por padrão; `showCloseButton` para ativar. Footer: Neutral (cancelar) + Primary.",
+          "Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=11-357 · Header e footer separados por divisórias; o corpo fica entre os dois. Sem X por padrão; `showCloseButton` para ativar. Footer: Neutral (cancelar) + Primary.",
       },
     },
   },
@@ -57,7 +57,7 @@ export const ComFormulario: Story = {
         <Button variant="neutral">Novo contato</Button>
       </DialogTrigger>
       <DialogContent showCloseButton>
-        <DialogHeader className="pr-10">
+        <DialogHeader className="pr-12">
           <DialogTitle>Novo contato</DialogTitle>
           <DialogDescription>Preencha os dados principais.</DialogDescription>
         </DialogHeader>

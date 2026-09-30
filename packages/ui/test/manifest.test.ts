@@ -25,7 +25,7 @@ type Manifest = {
   version: number;
   figmaFile: { key: string; url: string };
   components: Record<string, ManifestComponent>;
-  icons: { items: { name: string; figma: FigmaIcon }[] };
+  icons: { items: { name: string; figma: FigmaIcon }[]; brands: { names: string[] } };
   tokens: unknown;
 };
 type FigmaIndex = {
@@ -81,7 +81,8 @@ describe("manifest/components.json", () => {
     const listed = components.flatMap(([, c]) => c.react.exports);
     for (const name of listed) expect(ui, `export "${name}" não existe em src/index.ts`).toHaveProperty(name);
     // Exports de runtime (inclui helpers como buttonVariants e iconNames; tipos não aparecem aqui).
-    expect(Object.keys(ui).filter((name) => !listed.includes(name))).toEqual([]);
+    // `cn` é utilitário para quem estende componentes, não um componente do Figma.
+    expect(Object.keys(ui).filter((name) => name !== "cn" && !listed.includes(name))).toEqual([]);
   });
 
   it("usa @opa/ui e caminhos de código que existem", () => {
@@ -145,6 +146,10 @@ describe("manifest/components.json", () => {
       expect(Object.keys(figma.variants).sort(), `${item.name}: variantes`).toEqual(["regular", "solid"]);
       expect(item.figma).toEqual(figma);
     }
+  });
+
+  it("logos: mesmos nomes do brandsMap do registro", () => {
+    expect([...(manifest?.icons.brands.names ?? [])].sort()).toEqual([...ui.brandIconNames].sort());
   });
 
   it("stories citadas existem", () => {

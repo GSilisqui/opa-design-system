@@ -1,5 +1,6 @@
 // Ícones do DS (Font Awesome 7 Pro). Import por ícone: só o que está listado entra no bundle do consumidor.
 // Para adicionar: importe o regular e o solid, inclua o nome em IconName e a chave (nome do FA) nos dois mapas.
+// Logos: importe de @fortawesome/free-brands-svg-icons, inclua em BrandIconName e no mapa brandsMap.
 import { faAngleDown as rAngleDown } from "@fortawesome/pro-regular-svg-icons/faAngleDown";
 import { faAngleUp as rAngleUp } from "@fortawesome/pro-regular-svg-icons/faAngleUp";
 import { faCheck as rCheck } from "@fortawesome/pro-regular-svg-icons/faCheck";
@@ -30,6 +31,14 @@ import { faPlus as sPlus } from "@fortawesome/pro-solid-svg-icons/faPlus";
 import { faTrash as sTrash } from "@fortawesome/pro-solid-svg-icons/faTrash";
 import { faTriangleExclamation as sTriangleExclamation } from "@fortawesome/pro-solid-svg-icons/faTriangleExclamation";
 import { faXmark as sXmark } from "@fortawesome/pro-solid-svg-icons/faXmark";
+import { faFacebook as bFacebook } from "@fortawesome/free-brands-svg-icons/faFacebook";
+import { faFacebookMessenger as bFacebookMessenger } from "@fortawesome/free-brands-svg-icons/faFacebookMessenger";
+import { faGoogle as bGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
+import { faInstagram as bInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
+import { faLinkedin as bLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
+import { faTelegram as bTelegram } from "@fortawesome/free-brands-svg-icons/faTelegram";
+import { faWhatsapp as bWhatsapp } from "@fortawesome/free-brands-svg-icons/faWhatsapp";
+import { faXTwitter as bXTwitter } from "@fortawesome/free-brands-svg-icons/faXTwitter";
 
 /** Forma mínima de uma definição de ícone do Font Awesome. */
 export type IconDefinition = {
@@ -56,6 +65,28 @@ export type IconName =
   | "trash"
   | "triangle-exclamation"
   | "xmark";
+
+// Logos de marcas (Font Awesome Free Brands). Separados de IconName: só existem em variant="brands".
+export type BrandIconName =
+  | "facebook"
+  | "facebook-messenger"
+  | "google"
+  | "instagram"
+  | "linkedin"
+  | "telegram"
+  | "whatsapp"
+  | "x-twitter";
+
+const brandsMap: Record<BrandIconName, IconDefinition> = {
+  facebook: bFacebook,
+  "facebook-messenger": bFacebookMessenger,
+  google: bGoogle,
+  instagram: bInstagram,
+  linkedin: bLinkedin,
+  telegram: bTelegram,
+  whatsapp: bWhatsapp,
+  "x-twitter": bXTwitter,
+};
 
 const regular: Record<IconName, IconDefinition> = {
   "angle-down": rAngleDown,
@@ -93,5 +124,6 @@ const solid: Record<IconName, IconDefinition> = {
   xmark: sXmark,
 };
 
-export const icons: Record<"regular" | "solid", Record<IconName, IconDefinition>> = { regular, solid };
+export const icons: Record<"regular" | "solid" | "brands", Record<string, IconDefinition>> = { regular, solid, brands: brandsMap };
 export const iconNames = Object.keys(regular) as IconName[];
+export const brandIconNames = Object.keys(brandsMap) as BrandIconName[];

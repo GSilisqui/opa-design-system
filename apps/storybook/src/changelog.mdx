@@ -1,5 +1,6 @@
 import { Markdown, Meta } from "@storybook/addon-docs/blocks";
 import eslintChangelog from "../../../packages/eslint-config/CHANGELOG.md?raw";
+import uiChangelog from "../../../packages/ui/CHANGELOG.md?raw";
 import tokensChangelog from "../../../packages/tokens/CHANGELOG.md?raw";
 
 <Meta title="Changelog" />
@@ -7,6 +8,8 @@ import tokensChangelog from "../../../packages/tokens/CHANGELOG.md?raw";
 # Changelog
 
 Versões publicadas: https://github.com/GSilisqui/opa-design-system/releases
+
+<Markdown>{uiChangelog}</Markdown>
 
 <Markdown>{tokensChangelog}</Markdown>
 

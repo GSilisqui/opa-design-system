@@ -14,6 +14,7 @@
         "import": "@opa/ui",
         "exports": [
           "Icon",
+          "brandIconNames",
           "iconNames"
         ],
         "source": "packages/ui/src/components/ui/icon.tsx"
@@ -234,7 +235,7 @@
         {
           "figma": "label",
           "react": "label",
-          "notes": "Obrigatório. No size default é label flutuante."
+          "notes": "Obrigatório. No size default é label flutuante. No size sm o label é o placeholder: com valor preenchido ele some e fica só o valor (no Figma, labelRow e separator ocultos nos estados com valor)."
         },
         {
           "figma": "value",
@@ -426,7 +427,7 @@
           "page": "Dialog",
           "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-355",
           "props": [],
-          "notes": "Slot de conteúdo (placeholder). No Figma, troque por um componente local via `bodyContent`; no código, é o conteúdo entre DialogHeader e DialogFooter."
+          "notes": "Slot de conteúdo (placeholder). No Figma, troque por um componente local via `bodyContent`; no código, é o conteúdo entre DialogHeader e DialogFooter (recebe px-6 py-4). Header e footer têm divisórias; sem corpo, só a do header aparece."
         }
       ],
       "storybook": {
@@ -567,7 +568,7 @@
             "default",
             "sm"
           ],
-          "notes": "default = 60px com label flutuante; sm = 36px com label inline."
+          "notes": "default = 60px com label flutuante; sm = 36px com label inline; com valor selecionado o label some (sr-only) e fica só o valor."
         },
         {
           "figma": "state",
@@ -654,9 +655,10 @@
     "figmaPage": "Ícones (os do código) · Ícones · Font Awesome e Ícones · brands (catálogo)",
     "usage": {
       "regular": "<Icon name=\"<name>\" />",
-      "solid": "<Icon name=\"<name>\" variant=\"solid\" />"
+      "solid": "<Icon name=\"<name>\" variant=\"solid\" />",
+      "brands": "<Icon name=\"whatsapp\" variant=\"brands\" />"
     },
-    "add": "Novo ícone no código: importe o regular e o solid no icon-registry.ts (IconName + os dois mapas) e adicione aqui com o nodeId/key do componente e das variantes (o ícone já existe no catálogo do Figma; pegue em figma-library-index.json ou pelo use_figma). Brands ainda não são desenhados pelo <Icon>.",
+    "add": "Novo ícone no código: importe o regular e o solid no icon-registry.ts (IconName + os dois mapas) e adicione aqui com o nodeId/key do componente e das variantes (o ícone já existe no catálogo do Figma; pegue em figma-library-index.json ou pelo use_figma). Logos: inclua em BrandIconName e no brandsMap do registro e liste em `brands.names`.",
     "items": [
       {
         "name": "angle-down",
@@ -958,7 +960,20 @@
         "react": "<Icon name=\"xmark\" />",
         "reactSolid": "<Icon name=\"xmark\" variant=\"solid\" />"
       }
-    ]
+    ],
+    "brands": {
+      "description": "Logos de marcas: `variant=\"brands\"` no <Icon> e no Figma (página Ícones · brands, componente com o nome do FA e a propriedade variant=brands). Só os do brandsMap do registro são desenhados.",
+      "names": [
+        "facebook",
+        "facebook-messenger",
+        "google",
+        "instagram",
+        "linkedin",
+        "telegram",
+        "whatsapp",
+        "x-twitter"
+      ]
+    }
   },
   "tokens": {
     "$description": "Como os tokens aparecem no Figma e no código. Fonte de verdade: packages/tokens/src/*.json (gerado em packages/tokens/generated/, nunca editado à mão).",

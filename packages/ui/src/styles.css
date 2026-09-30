@@ -3,6 +3,7 @@
 @import "tw-animate-css";
 
 @source "./";
+@source not "./**/*.map";
 
 @layer base {
   * {
