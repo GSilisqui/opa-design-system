@@ -132,7 +132,28 @@
       "Sidebar Panel Group Label": "100:35",
       "Sidebar Panel": "100:37",
       "Sidebar": "100:78",
-      "Badge": "103:6"
+      "Badge": "103:6",
+      "LastText": "117:3",
+      "ConversationItem": "117:7",
+      "DateChip": "117:94",
+      "ConversationHeader": "118:9",
+      "ChannelField": "118:30",
+      "TemplateNotice": "118:31",
+      "MessageSender": "118:34",
+      "MessageBubble": "122:100",
+      "MessageFooter": "120:22",
+      "QuoteBox": "120:39",
+      "CallCard": "120:96",
+      "Attachment": "121:83",
+      "MediaGrid": "121:106",
+      "LocationMap": "121:107",
+      "EventCard": "121:140",
+      "ButtonsContainer": "121:211",
+      "AudioPlayer": "120:200",
+      "ReactionChip": "120:102",
+      "TypingIndicator": "120:117",
+      "MessageActions": "122:101",
+      "ReactionsDetail": "122:149"
     },
     "modes": {
       "Primitives/Value": "4:0",
@@ -180,7 +201,9 @@
       "Table": "99:90",
       "Sidebar": "100:211",
       "Badge": "103:7",
-      "Chat · Atendimento": "113:2"
+      "Chat · Lista": "117:96",
+      "Chat · Conversa": "118:77",
+      "Chat · Mensagens": "122:359"
     }
   },
   "decisions": [
@@ -242,6 +265,6 @@
     "2026-09-30: Combobox ganhou os estados success e warning no Figma (28 variantes: size × multiple × state), clonados de error e recoloridos (borda, label, descrição e halo nas variáveis success/warning).",
     "2026-09-30 Fase 4: páginas Card, Avatar, Skeleton, Separator, Accordion, Scroll Area, Table e Sidebar criadas. SLOT no componente: card.addComponentProperty('content','SLOT','') + frame.componentPropertyReferences={slotContentId:key}. isExposedInstance só depois de o ícone estar dentro do componente. Ícones do índice não importam por chave (getNodeByIdAsync + defaultVariant). Tabela = Table Head/Cell/Header/Row; DataTable só como exemplo na doc. Sombra sutil do item ativo da Sidebar só existe no código.",
     "2026-09-30: Badge (pendência) aprovado pelo dono; Figma Chat 413:5242 (bolinha) e 987:16351 (contador). Número em primary-foreground (quase branco nos dois temas, como o branco fixo do Chat; dono aceitou contraste abaixo do AA). O dot do Sidebar Item no Figma segue sendo um quadro próprio; no código usa Badge dot.",
-    "2026-09-30: página Chat · Atendimento (113:2) criada só com documentação: capturas do arquivo Chat (PNG enviados por upload_assets para retângulos img:<slug>) + texto. Não copia nós entre arquivos. Índice no repositório em docs/superpowers/notes/chat-atendimento.md. list-sidemenu sem captura (nó oculto)."
+    "2026-09-30: componentes do Chat reconstruídos no DS (páginas Chat · Lista, Chat · Conversa, Chat · Mensagens; capturas em Chat · Referência). Só Figma, fora do manifesto e do índice (não existem no @opa/ui). ARMADILHA: fill ligado a variável com opacidade (paint.opacity) NÃO é herdado pelas instâncias (a variante renderiza certo, a instância fica sólida). Use opacidade da camada (node.opacity) em texto/ícone/retângulo, uma camada 'Sobreposição' absoluta (constraints STRETCH) para fundos e retângulos 'Linha' para bordas; ou variáveis que já tragam alpha. Reparado em Button (hover/active), Scroll Area, Table Head, Code Input, Badge dot (halo) e nas páginas do Chat. Ao gravar paint com opacidade: atribua o paint e depois releia e regrave (n.fills = n.fills.map(q => ({...q, opacity}))); atribuir {...paint, opacity} direto zera a opacidade."
   ]
 }

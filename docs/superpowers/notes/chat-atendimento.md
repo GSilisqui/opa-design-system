@@ -1,10 +1,42 @@
 # Chat · tela de atendimento: índice dos componentes
 
-Documentação **somente leitura** dos componentes da tela de atendimento, extraídos do arquivo Chat (`toKCLLnmQEIQ6ECoY19D8q`, nó `987:11695`; tela real no nó `3536:31032`).
+Componentes da tela de atendimento, extraídos do arquivo Chat (`toKCLLnmQEIQ6ECoY19D8q`, nó `987:11695`; tela real no nó `3536:31032`).
 
 - Estes componentes são específicos do produto de chat e **não entram no `@opa/ui`**. Só mudam se for extremamente necessário (decisão do dono, 2026-09-30).
-- No Figma do DS: página **Chat · Atendimento** (uma coluna por grupo, um quadro por componente, com captura, origem, composição, o que usar do DS e medidas).
-- Tokens do Chat como `bubblemessage/*` e `fixed-white` não existem no DS.
+- No Figma do DS: três páginas de **componentes reutilizáveis** (**Chat · Lista**, **Chat · Conversa** e **Chat · Mensagens**), construídos com as variáveis e os componentes do DS (Avatar, Badge, Tag, Button, Separator, Dropdown Item). A página **Chat · Referência (capturas)** guarda as capturas do arquivo Chat, nó a nó, como conferência.
+- Os tokens `bubblemessage/*` e `fixed-white` do Chat foram mapeados para tokens do DS: recebida = `background` com borda `border`; enviada = `primary` com texto `primary-foreground`; destaque = `highlight-subtle`; sobreposições = `foreground` a 5% (recebida) ou 20% (enviada).
+
+## Componentes no Figma
+
+| Página | Componente | Nó | Propriedades |
+|---|---|---|---|
+| Chat · Lista | LastText | `117:3` | text, showGroup, showDraft |
+| Chat · Lista | ConversationItem | `117:7` | name, time, showBadge, showDepartment, showTags, showPinned, showPriority, showChannel |
+| Chat · Lista | DateChip | `117:94` | label |
+| Chat · Conversa | ConversationHeader | `118:9` | title, actions (slot) |
+| Chat · Conversa | ChannelField | `118:30` | state filled / empty, label, value |
+| Chat · Conversa | TemplateNotice | `118:31` | title, description |
+| Chat · Conversa | MessageSender | `118:34` | instâncias editáveis |
+| Chat · Mensagens | MessageBubble | `122:100` | tone received / sent / highlight, content (slot), showFooter |
+| Chat · Mensagens | MessageFooter | `120:22` | tone, status, time, showStatus |
+| Chat · Mensagens | QuoteBox | `120:39` | tone, author, content, type |
+| Chat · Mensagens | CallCard | `120:96` | tone, kind voice / video, status answered / missed, title, detail |
+| Chat · Mensagens | Attachment | `121:83` | tone, kind preview / document / link, title, description |
+| Chat · Mensagens | MediaGrid | `121:106` | layout 1 a 5 |
+| Chat · Mensagens | LocationMap | `121:107` | |
+| Chat · Mensagens | EventCard | `121:140` | tone, name, date, presence |
+| Chat · Mensagens | ButtonsContainer | `121:211` | tone, layout single / double |
+| Chat · Mensagens | AudioPlayer | `120:200` | tone |
+| Chat · Mensagens | ReactionChip | `120:102` | count, emoji |
+| Chat · Mensagens | TypingIndicator | `120:117` | tone, showAvatar |
+| Chat · Mensagens | MessageActions | `122:101` | |
+| Chat · Mensagens | ReactionsDetail | `122:149` | |
+
+Já existem no DS e não foram recriados: navbar (Sidebar + SidebarItem), cabeçalho do sidemenu (Sidebar Panel), SidebarMenuButton (Sidebar Panel Item), SidebarGroupLabel (Sidebar Panel Group Label), badge e bolinha (Badge), etiquetas e chip de variável (Tag), User Avatar (Avatar), Hangup Button (Button destructive icon-only) e Action (Dropdown Item).
+
+Não entram no `@opa/ui`: são só do Figma. Se o produto precisar deles em código, vale a skill `add-component` com aprovação do dono.
+
+## Índice dos nós de origem (arquivo Chat)
 
 | Grupo | Componente | Nó no Chat | Usar do DS |
 |---|---|---|---|
