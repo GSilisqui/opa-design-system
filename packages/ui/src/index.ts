@@ -23,6 +23,16 @@ export {
   DialogTrigger,
 } from "./components/ui/dialog";
 export { cn } from "./lib/utils";
+export {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  useFormField,
+} from "./components/ui/form";
 export { Icon, type BrandIconName, type IconName } from "./components/ui/icon";
 export { brandIconNames, iconNames } from "./components/ui/icon-registry";
 export { Input } from "./components/ui/input";

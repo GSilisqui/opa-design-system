@@ -867,6 +867,45 @@
         }
       ],
       "figmaUsage": "O componente do Figma é o item (RadioGroupItem); o grupo (`RadioGroup`) é só o container de layout no código: empilhe itens + Label com auto layout (gap 12)."
+    },
+    "Form": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Form",
+          "FormControl",
+          "FormDescription",
+          "FormField",
+          "FormItem",
+          "FormLabel",
+          "FormMessage",
+          "useFormField"
+        ],
+        "source": "packages/ui/src/components/ui/form.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Sem componente próprio no Figma: é a composição Label + campo (Input, Textarea, Checkbox…) + descrição + mensagem de erro (texto 10px em destructive), como o InputField. O erro deixa o label e a borda em destructive.",
+      "storybook": {
+        "title": "Componentes/Form"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "Form",
+          "notes": "É o `FormProvider` do react-hook-form: `<Form {...form}>` com `useForm({ resolver: zodResolver(schema) })`."
+        },
+        {
+          "figma": null,
+          "react": "FormField",
+          "notes": "Liga o campo ao react-hook-form (`control`, `name`, `render`)."
+        },
+        {
+          "figma": null,
+          "react": "FormControl",
+          "notes": "Envolve o campo: injeta `id`, `aria-describedby` e `aria-invalid`."
+        }
+      ]
     }
   },
   "icons": {

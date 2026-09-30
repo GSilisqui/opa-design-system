@@ -52,3 +52,7 @@ Auditoria: Button neutral (hover/active) e Switch desligado usam `input`; Checkb
 - [x] Switch desligado com `input`: mantido.
 - [x] Checkbox/Radio com `muted-foreground` na borda: mantido.
 - [x] Dialog footer com `background`: mantido.
+
+## A11y (achado ao criar o Form, 2026-09-30)
+
+- [ ] **Descrição padrão de campo em `muted-foreground` a 10px reprova contraste (3,99:1 sobre `background`, precisa de 4,5:1).** O `FormDescription` já usa `foreground-secondary`. O `InputField`/`Combobox` sem status usam `muted-foreground` na descrição e nenhuma story cobre esse caso; avaliar trocar por `foreground-secondary` (e o Figma).
