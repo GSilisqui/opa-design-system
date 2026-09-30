@@ -1907,6 +1907,222 @@
           ]
         }
       ]
+    },
+    "Card": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Card",
+          "CardAction",
+          "CardContent",
+          "CardDescription",
+          "CardFooter",
+          "CardHeader",
+          "CardTitle"
+        ],
+        "source": "packages/ui/src/components/ui/card.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Quadro com borda e fundo `card`, raio xl, sem sombra; monte com frame auto layout usando os mesmos tokens.",
+      "storybook": {
+        "title": "Componentes/Card"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "Card",
+          "notes": "Contêiner: `bg-card`, borda `border`, raio 12px, padding vertical 16px e gap 12px."
+        },
+        {
+          "figma": null,
+          "react": "CardHeader",
+          "notes": "Título (`CardTitle`), descrição (`CardDescription`) e ação opcional (`CardAction`)."
+        },
+        {
+          "figma": null,
+          "react": "CardContent",
+          "notes": "Corpo, com 16px laterais."
+        },
+        {
+          "figma": null,
+          "react": "CardFooter",
+          "notes": "Rodapé; com `border-t` ganha 16px de respiro acima."
+        }
+      ]
+    },
+    "Avatar": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Avatar",
+          "AvatarFallback",
+          "AvatarGroup",
+          "AvatarGroupCount",
+          "AvatarImage",
+          "avatarVariants"
+        ],
+        "source": "packages/ui/src/components/ui/avatar.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Quadrado arredondado (não redondo) com os tamanhos dos botões e inputs.",
+      "storybook": {
+        "title": "Componentes/Avatar"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "size",
+          "values": [
+            "sm",
+            "default",
+            "lg",
+            "xl",
+            "2xl"
+          ],
+          "notes": "Tamanho e raio: sm 24/8, default 36/12, lg 48/16, xl 60/12, 2xl 96/24."
+        },
+        {
+          "figma": null,
+          "react": "AvatarImage",
+          "notes": "Foto; se falhar, aparece o `AvatarFallback` (iniciais sobre `secondary`)."
+        },
+        {
+          "figma": null,
+          "react": "AvatarGroup",
+          "notes": "Avatares sobrepostos; `AvatarGroupCount` mostra o restante (+N)."
+        }
+      ]
+    },
+    "Skeleton": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Skeleton"
+        ],
+        "source": "packages/ui/src/components/ui/skeleton.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Retângulo `accent` com o raio do item que vai aparecer.",
+      "storybook": {
+        "title": "Componentes/Skeleton"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "className",
+          "notes": "Forma e tamanho: `h-3 w-48`, `size-9 rounded-xl`…"
+        }
+      ]
+    },
+    "Separator": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Separator"
+        ],
+        "source": "packages/ui/src/components/ui/separator.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Linha de 1px em `border`.",
+      "storybook": {
+        "title": "Componentes/Separator"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "orientation",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "notes": "Direção da linha."
+        },
+        {
+          "figma": null,
+          "react": "decorative",
+          "notes": "Padrão true (sem papel para leitor de tela)."
+        }
+      ]
+    },
+    "Accordion": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Accordion",
+          "AccordionContent",
+          "AccordionItem",
+          "AccordionTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/accordion.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Itens separados por linha, título 14px medium com seta.",
+      "storybook": {
+        "title": "Componentes/Accordion"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "type",
+          "values": [
+            "single",
+            "multiple"
+          ],
+          "notes": "`single` abre um por vez (`collapsible` deixa fechar); `multiple` abre vários."
+        },
+        {
+          "figma": null,
+          "react": "AccordionItem",
+          "notes": "Item (`value` único)."
+        },
+        {
+          "figma": null,
+          "react": "AccordionTrigger",
+          "notes": "Título clicável com seta que gira."
+        },
+        {
+          "figma": null,
+          "react": "AccordionContent",
+          "notes": "Conteúdo em `foreground-secondary`."
+        }
+      ]
+    },
+    "ScrollArea": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "ScrollArea",
+          "ScrollBar"
+        ],
+        "source": "packages/ui/src/components/ui/scroll-area.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 4). Faixa de 14px com linha de demarcação, setas e polegar em `muted-foreground` a 50%.",
+      "storybook": {
+        "title": "Componentes/ScrollArea"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "orientation",
+          "values": [
+            "vertical",
+            "horizontal"
+          ],
+          "notes": "Direção da rolagem."
+        },
+        {
+          "figma": null,
+          "react": "step",
+          "notes": "Pixels rolados a cada clique nas setas (padrão 48)."
+        }
+      ]
     }
   },
   "icons": {

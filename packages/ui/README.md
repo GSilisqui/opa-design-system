@@ -63,6 +63,12 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `RadioGroup` / `RadioGroupItem` | RadioGroupItem `47:27` | Itens de 20px ou 16px (`sm`) |
 | `Switch` | Switch `47:72` | 36×20px ou 28×16px (`sm`) |
 | `Textarea` / `TextareaField` | Textarea `47:103` · TextareaField `62:24` | `Textarea` = caixa clara; `TextareaField` = padrão do InputField (default: caixa escura + label flutuante; sm: clara) |
+| `Card` | — (Figma na Fase 4) | Quadro `bg-card` com borda e raio 12; Header, Title, Description, Action, Content, Footer |
+| `Avatar` | — (Figma na Fase 4) | Quadrado arredondado; `size`: sm 24, default 36, lg 48, xl 60, 2xl 96; `AvatarGroup` |
+| `Skeleton` | — (Figma na Fase 4) | Bloco `accent` que pulsa |
+| `Separator` | — (Figma na Fase 4) | Linha de 1px, horizontal ou vertical |
+| `Accordion` | — (Figma na Fase 4) | Itens com seta; `single` ou `multiple` |
+| `ScrollArea` | — (Figma na Fase 4) | Faixa de 14px com setas; vertical ou horizontal |
 
 Documentação completa: Storybook (`pnpm --filter opa-storybook dev`).
 
