@@ -99,6 +99,14 @@ describe("DropdownMenu", () => {
     for (const cls of ["h-9", "rounded-lg", "px-3", "text-base"]) expect(item.className).toContain(cls);
   });
 
+  it("rótulo de grupo tem o mesmo respiro lateral dos itens (px-3) e py-2", async () => {
+    render(<Example />);
+    await userEvent.click(screen.getByRole("button", { name: "Ações" }));
+    const label = screen.getByText("Contato");
+    expect(label.className).toContain("px-3");
+    expect(label.className).toContain("py-2");
+  });
+
   it("submenu abre com a seta para a direita", async () => {
     render(<Example />);
     await userEvent.click(screen.getByRole("button", { name: "Ações" }));

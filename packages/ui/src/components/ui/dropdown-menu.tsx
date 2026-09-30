@@ -102,7 +102,7 @@ function DropdownMenuLabel({ className, inset, ...props }: React.ComponentProps<
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
       data-inset={inset}
-      className={cn("px-3 pt-1.5 pb-1 text-sm text-foreground-secondary data-[inset]:pl-9", className)}
+      className={cn("px-3 py-2 text-sm text-foreground-secondary data-[inset]:pl-9", className)}
       {...props}
     />
   );
