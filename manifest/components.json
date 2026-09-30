@@ -427,7 +427,7 @@
           "page": "Dialog",
           "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-355",
           "props": [],
-          "notes": "Slot de conteúdo (placeholder). No Figma, troque por um componente local via `bodyContent`; no código, é o conteúdo entre DialogHeader e DialogFooter."
+          "notes": "Slot de conteúdo (placeholder). No Figma, troque por um componente local via `bodyContent`; no código, é o conteúdo entre DialogHeader e DialogFooter (recebe px-6 py-4). Header e footer têm divisórias; sem corpo, só a do header aparece."
         }
       ],
       "storybook": {

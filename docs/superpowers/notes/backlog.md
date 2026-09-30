@@ -40,4 +40,4 @@ Auditado em 2026-09-30 no arquivo novo (`UW4As1KdSaPboQ3sNMAbCi`): Button, Input
 
 ## Antes da Fase 2
 
-- [ ] **Revisar o estilo do Dialog** para um visual mais refinado (pedido do dono, 2026-09-30). Atualizar Figma, manifesto e story junto.
+- [x] **Revisar o estilo do Dialog** (header e footer separados; código e Figma atualizados em 2026-09-30) para um visual mais refinado (pedido do dono, 2026-09-30). Atualizar Figma, manifesto e story junto.
