@@ -56,6 +56,9 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `Toaster` / `toast` | Toast `75:153` | Sonner: ícone só nos tipos, ação Outline pequena, canto inferior direito |
 | `Tooltip` | Tooltip `72:3` | Compacto, cor inversa, `text-sm`, sem seta |
 | `Pagination` | Pagination `80:97` | Composição do DS: resumo + "Página X de Y" + primeira/anterior/próxima/última |
+| `DropdownMenu` | — (Figma pendente) | Menu de ações: itens de 36px, atalho, destrutivo, marcar/opção, submenu |
+| `Sheet` | — (Figma pendente) | Painel lateral no estilo do Dialog v2 (`side`: right, left, top, bottom) |
+| `Breadcrumb` | — (Figma pendente) | Trilha com página atual em medium; colapso com `…` + DropdownMenu |
 | `Checkbox` | Checkbox `46:115` | `size`: `default` (20px), `sm` (16px); `checked="indeterminate"` |
 | `RadioGroup` / `RadioGroupItem` | RadioGroupItem `47:27` | Itens de 20px ou 16px (`sm`) |
 | `Switch` | Switch `47:72` | 36×20px ou 28×16px (`sm`) |

@@ -1607,6 +1607,119 @@
           "notes": "Só código: controlado. `labels` troca os textos."
         }
       ]
+    },
+    "DropdownMenu": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "DropdownMenu",
+          "DropdownMenuCheckboxItem",
+          "DropdownMenuContent",
+          "DropdownMenuGroup",
+          "DropdownMenuItem",
+          "DropdownMenuLabel",
+          "DropdownMenuPortal",
+          "DropdownMenuRadioGroup",
+          "DropdownMenuRadioItem",
+          "DropdownMenuSeparator",
+          "DropdownMenuShortcut",
+          "DropdownMenuSub",
+          "DropdownMenuSubContent",
+          "DropdownMenuSubTrigger",
+          "DropdownMenuTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/dropdown-menu.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "storybook": {
+        "title": "Componentes/DropdownMenu"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "DropdownMenuItem variant",
+          "values": [
+            "default",
+            "destructive"
+          ],
+          "notes": "destructive = texto vermelho."
+        }
+      ]
+    },
+    "Sheet": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Sheet",
+          "SheetClose",
+          "SheetContent",
+          "SheetDescription",
+          "SheetFooter",
+          "SheetHeader",
+          "SheetTitle",
+          "SheetTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/sheet.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "storybook": {
+        "title": "Componentes/Sheet"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "side",
+          "values": [
+            "right",
+            "left",
+            "top",
+            "bottom"
+          ],
+          "notes": "Padrão right; largura máxima 400px."
+        },
+        {
+          "figma": null,
+          "react": "showCloseButton",
+          "notes": "X no canto (padrão true)."
+        }
+      ]
+    },
+    "Breadcrumb": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Breadcrumb",
+          "BreadcrumbEllipsis",
+          "BreadcrumbItem",
+          "BreadcrumbLink",
+          "BreadcrumbList",
+          "BreadcrumbPage",
+          "BreadcrumbSeparator"
+        ],
+        "source": "packages/ui/src/components/ui/breadcrumb.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "storybook": {
+        "title": "Componentes/Breadcrumb"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "BreadcrumbPage",
+          "notes": "Página atual: sem link, `aria-current=\"page\"`."
+        },
+        {
+          "figma": null,
+          "react": "BreadcrumbEllipsis",
+          "notes": "Colapso de caminhos longos; envolva num DropdownMenuTrigger."
+        }
+      ]
     }
   },
   "icons": {
