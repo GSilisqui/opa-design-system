@@ -1,6 +1,6 @@
 {
   "name": "@gsilisqui/ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Componentes do OPA Design System (Shadcn/Radix). Importe como @opa/ui.",
   "type": "module",
   "sideEffects": [
