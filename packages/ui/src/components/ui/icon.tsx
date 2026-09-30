@@ -50,7 +50,8 @@ function Icon({ name, variant = "regular", size, label, className, ...props }: I
       role={label ? "img" : undefined}
       aria-label={label}
       aria-hidden={label ? undefined : true}
-      className={cn("inline-block h-[1em] w-[1em] shrink-0", size && iconSizes[size], className)}
+      // overflow-visible: alguns ícones do FA passam do viewBox de propósito; o CSS oficial do FA também não corta.
+      className={cn("inline-block h-[1em] w-[1em] shrink-0 overflow-visible", size && iconSizes[size], className)}
       {...props}
     >
       {paths.map((d, i) => (

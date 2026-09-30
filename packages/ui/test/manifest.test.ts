@@ -25,15 +25,17 @@ type Manifest = {
   version: number;
   figmaFile: { key: string; url: string };
   components: Record<string, ManifestComponent>;
-  icons: { items: { name: string; figma: Record<"regular" | "solid", { nodeId: string; key: string }> }[] };
+  icons: { items: { name: string; figma: FigmaIcon }[] };
   tokens: unknown;
 };
 type FigmaIndex = {
   fileKey: string;
   fileUrl: string;
   components: Record<string, { nodeId: string; key: string; page: string; properties: Record<string, { type: string; values?: string[] }> }>;
-  icons: Record<string, { nodeId: string; key: string }>;
+  icons: Record<string, FigmaIcon>;
 };
+/** No Figma, cada ícone é um componente com a propriedade variant (regular | solid), como o <Icon variant>. */
+type FigmaIcon = { nodeId: string; key: string; type: string; variants: Record<string, { nodeId: string; key: string }> };
 
 const readJson = <T>(path: string): T => JSON.parse(readFileSync(path, "utf8")) as T;
 
@@ -132,15 +134,16 @@ describe("manifest/components.json", () => {
     }
   });
 
-  it("ícones: mesmos nomes do icon-registry e chaves do Figma para regular e solid", () => {
+  it("ícones: mesmos nomes do icon-registry; no Figma, um componente por ícone com variant regular e solid", () => {
     const items = manifest?.icons.items ?? [];
     expect(items.map((i) => i.name).sort()).toEqual([...ui.iconNames].sort());
+    expect(Object.keys(index.icons).sort(), "índice do Figma × icon-registry").toEqual([...ui.iconNames].sort());
     for (const item of items) {
-      for (const variant of ["regular", "solid"] as const) {
-        const figma = index.icons[`${variant}/${item.name}`];
-        expect(figma, `${variant}/${item.name} não está no Figma`).toBeDefined();
-        expect(item.figma[variant]).toEqual({ nodeId: figma.nodeId, key: figma.key });
-      }
+      const figma = index.icons[item.name];
+      expect(figma, `${item.name} não está no Figma`).toBeDefined();
+      expect(figma.type).toBe("COMPONENT_SET");
+      expect(Object.keys(figma.variants).sort(), `${item.name}: variantes`).toEqual(["regular", "solid"]);
+      expect(item.figma).toEqual(figma);
     }
   });
 

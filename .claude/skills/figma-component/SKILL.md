@@ -50,8 +50,10 @@ const pad = (n, x, y) => { n.setBoundVariable("paddingLeft", V.Spacing[x]); n.se
   - disabled = `opacity` **0.4** no nó raiz da variante.
   - focus = effect style `focus/ring` (sem borda) ou borda `ring` + `focus/halo` (com borda); campos em erro/sucesso/alerta usam o halo do estado.
 - **Ícones:** propriedade BOOLEAN (mostrar) + **INSTANCE_SWAP** (`<slot>Name`) com `preferredValues` = chaves dos ícones
-  (`{ type: "COMPONENT", key }` de `regular/*` em `figma-library-index.json → icons`). Ícone novo: componentes vetoriais
-  `regular/<name>` e `solid/<name>` na página Ícones, cor ligada a `foreground` (a instância herda a cor do contexto).
+  (`{ type: "COMPONENT_SET", key }` dos ícones em `figma-library-index.json → icons`). Cada ícone é um componente `<name>`
+  com a propriedade `variant` (regular | solid, e brands para logos), cor ligada a `foreground` (a instância herda a cor do contexto).
+  O catálogo completo do Font Awesome 7 já está nas páginas Ícones · Font Awesome e Ícones · brands: não recrie ícones.
+  Cuidado ao trocar `preferredValues` em lote: só em propriedades de ícone (`*IconName`/`iconName`), nunca em slots como `bodyContent`.
 - **Grade de variantes:** `figma.combineAsVariants`, variantes em grade legível (linhas = variant, colunas = size × state).
   **A variante padrão é a do canto superior esquerdo** — posicione a combinação default do código (ex.: `primary/default/default`) lá.
 - Armadilhas do ledger: `createAutoLayout()` põe fill branco — `fills = []` nos frames internos; `resize()` volta o sizing para

@@ -42,6 +42,8 @@
       "Espaçamento e raio": "7:56",
       "Efeitos": "7:57",
       "Ícones": "7:58",
+      "Ícones · Font Awesome": "33:2",
+      "Ícones · brands": "33:3",
       "Button": "7:60",
       "Input": "7:61",
       "Tag": "7:62",
@@ -51,36 +53,21 @@
     },
     "components": {
       "icons": {
-        "regular/angle-down": "9:4",
-        "regular/angle-up": "9:7",
-        "regular/check": "9:10",
-        "regular/circle-check": "9:13",
-        "regular/circle-exclamation": "9:16",
-        "regular/circle-info": "9:19",
-        "regular/copy": "9:22",
-        "regular/ellipsis": "9:25",
-        "regular/face-smile": "9:28",
-        "regular/magnifying-glass": "9:31",
-        "regular/pen": "9:34",
-        "regular/plus": "9:37",
-        "regular/trash": "9:40",
-        "regular/triangle-exclamation": "9:43",
-        "regular/xmark": "9:46",
-        "solid/angle-down": "9:49",
-        "solid/angle-up": "9:52",
-        "solid/check": "9:55",
-        "solid/circle-check": "9:58",
-        "solid/circle-exclamation": "9:61",
-        "solid/circle-info": "9:64",
-        "solid/copy": "9:67",
-        "solid/ellipsis": "9:70",
-        "solid/face-smile": "9:73",
-        "solid/magnifying-glass": "9:76",
-        "solid/pen": "9:79",
-        "solid/plus": "9:82",
-        "solid/trash": "9:85",
-        "solid/triangle-exclamation": "9:88",
-        "solid/xmark": "9:91"
+        "angle-down": "36:3779",
+        "angle-up": "36:3780",
+        "check": "36:3781",
+        "circle-check": "36:3782",
+        "circle-exclamation": "36:3783",
+        "circle-info": "36:3784",
+        "copy": "36:3785",
+        "ellipsis": "36:3786",
+        "face-smile": "36:3787",
+        "magnifying-glass": "36:3789",
+        "pen": "36:3790",
+        "plus": "36:3875",
+        "trash": "36:3876",
+        "triangle-exclamation": "36:3877",
+        "xmark": "36:3878"
       },
       "Button": "10:1010",
       "InputField": "11:138",
@@ -90,7 +77,11 @@
       "_Dialog/Body": "11:355",
       "Combobox": "12:127",
       "Combobox Option": "12:136",
-      "Combobox Popover": "12:137"
+      "Combobox Popover": "12:137",
+      "iconCatalog": {
+        "Ícones · Font Awesome": "3781 sets (regular|solid)",
+        "Ícones · brands": "568 sets (brands) + brands em bluetooth, font-awesome, nfc-symbol, web-awesome"
+      }
     },
     "modes": {
       "Primitives/Value": "4:0",
@@ -160,6 +151,7 @@
   "notes": [
     "figma.createAutoLayout frames get a default white fill: always set fills=[] on inner layout frames",
     "resize() resets primaryAxisSizingMode to FIXED: set AUTO after resize for hug components",
-    "Default variant = top-left variant on canvas (not child order)"
+    "Default variant = top-left variant on canvas (not child order)",
+    "2026-09-30: ícones viraram um componente por ícone com variant (regular|solid|brands). Catálogo completo do FA 7.3.1 importado de SVGs em folhas via upload_assets (termos de busca no id dos grupos) e convertido com use_figma. A descrição lida pela API vem com HTML escapado: não regrave sem desescapar. combineAsVariants exige os nós na mesma página do parent."
   ]
 }
