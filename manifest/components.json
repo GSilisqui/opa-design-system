@@ -2573,6 +2573,90 @@
           "notes": "Número do contador (10px medium)."
         }
       ]
+    },
+    "CodeInput": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "CodeInput"
+        ],
+        "source": "packages/ui/src/components/ui/code-input.tsx"
+      },
+      "figma": {
+        "name": "CodeInput",
+        "nodeId": "110:221",
+        "key": "2d1ff284b8a49a67760e8afe1cbf83c083a6d8ff",
+        "page": "Code Input",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=110-221"
+      },
+      "storybook": {
+        "title": "Componentes/CodeInput"
+      },
+      "props": [
+        {
+          "figma": "state",
+          "react": null,
+          "values": [
+            "default",
+            "invalid",
+            "disabled"
+          ],
+          "notes": "Só Figma: `invalid` = prop `invalid`; `disabled` = prop `disabled` (opacity 40%)."
+        },
+        {
+          "figma": "title",
+          "react": "title"
+        },
+        {
+          "figma": "showFormat",
+          "react": "showFormat",
+          "notes": "Mostra Formatar (padrão: só em json)."
+        },
+        {
+          "figma": "showCopy",
+          "react": "showCopy"
+        },
+        {
+          "figma": "code",
+          "react": "value",
+          "notes": "Slot: o texto do campo (`value`/`onValueChange`)."
+        },
+        {
+          "figma": null,
+          "react": "onValueChange",
+          "notes": "Recebe o texto novo."
+        },
+        {
+          "figma": null,
+          "react": "language",
+          "values": [
+            "json",
+            "text"
+          ],
+          "notes": "`json` colore e habilita Formatar; `text` não."
+        },
+        {
+          "figma": null,
+          "react": "invalid",
+          "notes": "Borda `destructive` e `aria-invalid`."
+        },
+        {
+          "figma": null,
+          "react": "readOnly",
+          "notes": "Sem edição; Formatar desabilita."
+        },
+        {
+          "figma": null,
+          "react": "minLines",
+          "notes": "Linhas mínimas do gutter (padrão 8)."
+        },
+        {
+          "figma": null,
+          "react": "onFormatError",
+          "notes": "Chamado quando Formatar encontra JSON inválido."
+        }
+      ]
     }
   },
   "icons": {
@@ -2586,6 +2670,26 @@
     },
     "add": "Novo ícone no código: importe o regular e o solid no icon-registry.ts (IconName + os dois mapas) e adicione aqui com o nodeId/key do componente e das variantes (o ícone já existe no catálogo do Figma; pegue em figma-library-index.json ou pelo use_figma). Logos: inclua em BrandIconName e no brandsMap do registro e liste em `brands.names`.",
     "items": [
+      {
+        "name": "align-left",
+        "figma": {
+          "nodeId": "36:41",
+          "key": "016565262869172d253aecdf663578fce91c0992",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:7807",
+              "key": "275f63efd98e784e0904e12115e1139379631ac0"
+            },
+            "solid": {
+              "nodeId": "34:19121",
+              "key": "1050145bbd64ef4fca25aa6e4aa54b918b830106"
+            }
+          }
+        },
+        "react": "<Icon name=\"align-left\" />",
+        "reactSolid": "<Icon name=\"align-left\" variant=\"solid\" />"
+      },
       {
         "name": "angle-down",
         "figma": {

@@ -73,6 +73,7 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `DataTable` | exemplo na página Table | TanStack Table v8: ordenação, seleção, paginação, loading, `toolbar` |
 | `Sidebar` / `SidebarPanel` | Sidebar `100:78` · Sidebar Panel `100:37` · Sidebar Item `100:15` · Sidebar Panel Item `100:34` | Rail de ícones (56px, sempre recolhido) + painel contextual (248px) |
 | `Badge` | Badge `103:6` | Indicador de pendência: contador laranja (`warning`) ou só a bolinha (`dot`) |
+| `CodeInput` | CodeInput `110:221` | Editor de código leve: cabeçalho (Formatar, Copiar), números de linha, realce de JSON |
 
 Documentação completa: Storybook (`pnpm --filter opa-storybook dev`).
 

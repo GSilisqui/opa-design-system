@@ -105,3 +105,4 @@ export {
   type SidebarPanelItemProps,
 } from "./components/ui/sidebar";
 export { Badge, type BadgeProps } from "./components/ui/badge";
+export { CodeInput, type CodeInputLabels, type CodeInputLanguage, type CodeInputProps } from "./components/ui/code-input";
