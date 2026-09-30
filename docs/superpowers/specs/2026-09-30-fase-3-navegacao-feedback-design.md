@@ -11,4 +11,4 @@ Validado no companion visual em 2026-09-30. Referência visual: Component Librar
 
 ## Ainda sem desenho (validar antes de construir)
 
-Dropdown Menu, Alert, Sheet, Breadcrumb. O Alert pode reaproveitar o visual do Toast.
+Dropdown Menu, Sheet e Breadcrumb foram validados e construídos depois (estilos das propostas aprovadas). **Alert: adiado pelo dono** (o Toast cobre os casos por enquanto); se voltar, pode reaproveitar o visual do Toast.
