@@ -37,7 +37,7 @@ export const Estados: Story = {
   render: () => (
     <div className="grid max-w-[400px] gap-5">
       <Combobox label="Departamento" options={departamentos} />
-      <Combobox label="Departamento" options={departamentos} defaultValue="suporte" />
+      <Combobox label="Departamento" options={departamentos} defaultValue="suporte" description="Setor responsável pelo atendimento" />
       <Combobox label="Departamento" options={departamentos} required status="error" description="Escolha um departamento" />
       <Combobox label="Departamento" options={departamentos} disabled />
     </div>

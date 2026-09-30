@@ -55,4 +55,5 @@ Auditoria: Button neutral (hover/active) e Switch desligado usam `input`; Checkb
 
 ## A11y (achado ao criar o Form, 2026-09-30)
 
-- [ ] **Descrição padrão de campo em `muted-foreground` a 10px reprova contraste (3,99:1 sobre `background`, precisa de 4,5:1).** O `FormDescription` já usa `foreground-secondary`. O `InputField`/`Combobox` sem status usam `muted-foreground` na descrição e nenhuma story cobre esse caso; avaliar trocar por `foreground-secondary` (e o Figma).
+- [x] **Descrição padrão de campo em `muted-foreground` a 10px reprova contraste (3,99:1 sobre `background`, precisa de 4,5:1).** O `FormDescription` já usa `foreground-secondary`. O `InputField`/`Combobox` sem status usam `muted-foreground` na descrição e nenhuma story cobre esse caso; avaliar trocar por `foreground-secondary` (e o Figma).
+Resolvido em 2026-09-30: InputField, Combobox (single e múltiplo), DatePicker, DateRangePicker e TextareaField usam `foreground-secondary` na descrição sem status (código e Figma); stories cobrem o caso.

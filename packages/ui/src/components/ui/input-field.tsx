@@ -123,7 +123,7 @@ function InputField({
           id={descriptionId}
           data-slot="input-field-description"
           data-status={status}
-          className={cn("text-xs leading-3 text-muted-foreground", status && statusText[status])}
+          className={cn("text-xs leading-3 text-foreground-secondary", status && statusText[status])}
         >
           {description}
         </p>

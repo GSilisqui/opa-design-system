@@ -29,6 +29,7 @@ export const Estados: Story = {
   render: () => (
     <div className="grid max-w-[400px] gap-5">
       <InputField label="Vazio" />
+      <InputField label="Com descrição" description="Texto de ajuda" />
       <InputField label="Preenchido" defaultValue="Ana Souza" />
       <InputField label="E-mail" required status="error" defaultValue="ana@" description="Informe um e-mail válido" />
       <InputField label="CPF" status="success" defaultValue="123.456.789-00" description="CPF verificado" />

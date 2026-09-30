@@ -295,7 +295,7 @@ function ComboboxMultiple({
           id={descriptionId}
           data-slot="combobox-description"
           data-status={status}
-          className={cn("text-xs leading-3 text-muted-foreground", status && statusText[status])}
+          className={cn("text-xs leading-3 text-foreground-secondary", status && statusText[status])}
         >
           {description}
         </p>
