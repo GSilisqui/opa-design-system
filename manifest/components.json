@@ -2537,6 +2537,42 @@
           ]
         }
       ]
+    },
+    "Badge": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Badge"
+        ],
+        "source": "packages/ui/src/components/ui/badge.tsx"
+      },
+      "figma": {
+        "name": "Badge",
+        "nodeId": "103:6",
+        "key": "cc0b6b2c1b6132add7baaa0e9f2e275af53af94c",
+        "page": "Badge",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=103-6"
+      },
+      "storybook": {
+        "title": "Componentes/Badge"
+      },
+      "props": [
+        {
+          "figma": "dot",
+          "react": "dot",
+          "values": [
+            "false",
+            "true"
+          ],
+          "notes": "`true` = só a bolinha de 6px com halo de 2px."
+        },
+        {
+          "figma": "count",
+          "react": "children",
+          "notes": "Número do contador (10px medium)."
+        }
+      ]
     }
   },
   "icons": {

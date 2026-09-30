@@ -72,6 +72,7 @@ Requisitos: Tailwind CSS v4 e `"moduleResolution": "bundler"` no `tsconfig` (pad
 | `Table` | Table Head `99:30` · Table Cell `99:31` · Table Header `99:34` · Table Row `99:89` | Tabela do Shadcn: cabeçalho `muted`, linhas de 48px, selecionada `primary-subtle` |
 | `DataTable` | exemplo na página Table | TanStack Table v8: ordenação, seleção, paginação, loading, `toolbar` |
 | `Sidebar` / `SidebarPanel` | Sidebar `100:78` · Sidebar Panel `100:37` · Sidebar Item `100:15` · Sidebar Panel Item `100:34` | Rail de ícones (56px, sempre recolhido) + painel contextual (248px) |
+| `Badge` | Badge `103:6` | Indicador de pendência: contador laranja (`warning`) ou só a bolinha (`dot`) |
 
 Documentação completa: Storybook (`pnpm --filter opa-storybook dev`).
 

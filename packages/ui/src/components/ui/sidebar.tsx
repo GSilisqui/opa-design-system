@@ -6,6 +6,7 @@
 import * as React from "react";
 import { Slot } from "radix-ui";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 /* ─── Rail de ícones ─────────────────────────────────────────────────────── */
@@ -66,7 +67,7 @@ function SidebarItem({ label, active, notification, asChild, className, children
           {...props}
         >
           <Slot.Slottable>{children}</Slot.Slottable>
-          {notification ? <span aria-hidden="true" data-slot="sidebar-item-dot" className="absolute top-1.5 right-1.5 size-2 rounded-full bg-warning" /> : null}
+          {notification ? <Badge dot aria-hidden="true" data-slot="sidebar-item-dot" className="absolute top-1 right-1" /> : null}
         </Comp>
       </TooltipTrigger>
       <TooltipContent side="right">{label}</TooltipContent>
