@@ -590,16 +590,19 @@
             "open",
             "filled",
             "error",
-            "disabled"
+            "disabled",
+            "success",
+            "warning"
           ],
           "map": {
             "empty": "value null",
             "open": "popup aberto (interação; mostra Combobox Popover)",
             "filled": "value definido",
             "error": "status=\"error\"",
-            "disabled": "prop `disabled`"
-          },
-          "notes": "O código também aceita status=\"success\" | \"warning\" (ainda sem variante no Figma)."
+            "disabled": "prop `disabled`",
+            "success": "status=\"success\"",
+            "warning": "status=\"warning\""
+          }
         },
         {
           "figma": null,
@@ -1322,6 +1325,588 @@
           "notes": "Só código: mostra \"(opcional)\"."
         }
       ]
+    },
+    "Tooltip": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Tooltip",
+          "TooltipContent",
+          "TooltipProvider",
+          "TooltipTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/tooltip.tsx"
+      },
+      "figma": {
+        "name": "Tooltip",
+        "nodeId": "72:3",
+        "key": "b3dfdcf233b07b22055d89acd30d23de5f5ab8ec",
+        "page": "Tooltip",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=72-3"
+      },
+      "storybook": {
+        "title": "Componentes/Tooltip"
+      },
+      "props": [
+        {
+          "figma": "label",
+          "react": "children",
+          "notes": "Texto do balão (`<TooltipContent>`)."
+        },
+        {
+          "figma": null,
+          "react": "side",
+          "values": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "notes": "Só código: posição do balão (padrão top). Sem seta: o visual não muda."
+        },
+        {
+          "figma": null,
+          "react": "TooltipProvider",
+          "notes": "Só código: uma vez na raiz (atraso de abertura)."
+        }
+      ]
+    },
+    "Tabs": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Tabs",
+          "TabsContent",
+          "TabsList",
+          "TabsTrigger",
+          "tabsListVariants",
+          "tabsTriggerVariants"
+        ],
+        "source": "packages/ui/src/components/ui/tabs.tsx"
+      },
+      "figma": {
+        "name": "Tabs",
+        "nodeId": "73:232",
+        "key": "3090cefddbfc33539421fab305db60f73033f404",
+        "page": "Tabs",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=73-232"
+      },
+      "storybook": {
+        "title": "Componentes/Tabs"
+      },
+      "props": [
+        {
+          "figma": "variant",
+          "react": "variant",
+          "values": [
+            "segmented",
+            "underline"
+          ],
+          "notes": "`<TabsList variant>`: segmented = trilho cinza com aba ativa em card; underline = linha de 1px embaixo na cor `ring` (primary 400 no Light, 800 no Dark)."
+        },
+        {
+          "figma": "size",
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "`<TabsList size>`: default = abas de 36px; sm = 24px."
+        },
+        {
+          "figma": null,
+          "react": "value / onValueChange",
+          "notes": "Só código: na raiz `Tabs`."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Tab",
+          "nodeId": "73:163",
+          "key": "02e73da128494ca986ebc2ba0e68a847cbb0ce0f",
+          "page": "Tabs",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=73-163",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Texto da aba (`<TabsTrigger>`)."
+            },
+            {
+              "figma": "icon",
+              "react": "children",
+              "notes": "true → <Icon> antes do texto."
+            },
+            {
+              "figma": "iconName",
+              "react": "children",
+              "notes": "Qual ícone (instance swap)."
+            },
+            {
+              "figma": "variant",
+              "react": "variant",
+              "values": [
+                "segmented",
+                "underline"
+              ],
+              "notes": "No código a variante fica na `TabsList` (as abas herdam)."
+            },
+            {
+              "figma": "size",
+              "react": "size",
+              "values": [
+                "default",
+                "sm"
+              ],
+              "notes": "No código o tamanho fica na `TabsList`."
+            },
+            {
+              "figma": "layout",
+              "react": "layout",
+              "values": [
+                "default",
+                "icon-only"
+              ],
+              "notes": "`TabsTrigger layout`. Só ícone exige aria-label."
+            },
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "selected",
+                "disabled",
+                "focus"
+              ],
+              "map": {
+                "default": "aba inativa",
+                "hover": "visual: :hover",
+                "selected": "`data-state=active` (aba ativa)",
+                "disabled": "prop `disabled`",
+                "focus": "visual: :focus-visible (borda ring + focus-halo)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "Toast": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Toaster",
+          "toast"
+        ],
+        "source": "packages/ui/src/components/ui/sonner.tsx"
+      },
+      "figma": {
+        "name": "Toast",
+        "nodeId": "75:153",
+        "key": "af92f5e26dcb392591480ad1bccfe337b79b02e1",
+        "page": "Toast",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=75-153"
+      },
+      "storybook": {
+        "title": "Componentes/Toast"
+      },
+      "props": [
+        {
+          "figma": "title",
+          "react": "toast(título)",
+          "notes": "Primeiro argumento de toast()."
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "`toast(título, { description })`."
+        },
+        {
+          "figma": "action",
+          "react": "action",
+          "notes": "true → `{ action: { label, onClick } }` (Outline pequeno); `cancel` em Quiet pequeno (só código)."
+        },
+        {
+          "figma": "closeButton",
+          "react": "closeButton",
+          "notes": "Círculo no canto, visível ao passar o mouse (padrão do Toaster)."
+        },
+        {
+          "figma": "type",
+          "react": "toast.success() etc.",
+          "values": [
+            "default",
+            "success",
+            "error",
+            "warning",
+            "info"
+          ],
+          "map": {
+            "default": "toast()",
+            "success": "toast.success()",
+            "error": "toast.error()",
+            "warning": "toast.warning()",
+            "info": "toast.info()"
+          },
+          "notes": "Só o tipo default fica sem ícone. `toast.loading()` (spinner) só no código."
+        },
+        {
+          "figma": null,
+          "react": "Toaster",
+          "notes": "Só código: uma vez na raiz; canto inferior direito, 4s, pilha que abre no hover."
+        }
+      ]
+    },
+    "Pagination": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Pagination"
+        ],
+        "source": "packages/ui/src/components/ui/pagination.tsx"
+      },
+      "figma": {
+        "name": "Pagination",
+        "nodeId": "80:97",
+        "key": "c4551b6bc9329349e1a6cd676d586facd6c3f328",
+        "page": "Pagination",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=80-97"
+      },
+      "storybook": {
+        "title": "Componentes/Pagination"
+      },
+      "props": [
+        {
+          "figma": "summary",
+          "react": "total / pageSize",
+          "notes": "No Figma é o TEXTO \"Exibindo X – Y de Z\"; no código vem de `total` + `pageSize` (some sem eles)."
+        },
+        {
+          "figma": "pageText",
+          "react": "page / pageCount",
+          "notes": "No Figma é o TEXTO \"Página X de Y\"; no código vem de `page` + `pageCount`."
+        },
+        {
+          "figma": "position",
+          "react": null,
+          "values": [
+            "middle",
+            "first",
+            "last"
+          ],
+          "map": {
+            "middle": "page entre 1 e pageCount",
+            "first": "page = 1: primeira/anterior desabilitados",
+            "last": "page = pageCount: próxima/última desabilitados"
+          }
+        },
+        {
+          "figma": null,
+          "react": "onPageChange",
+          "notes": "Só código: controlado. `labels` troca os textos."
+        }
+      ]
+    },
+    "DropdownMenu": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "DropdownMenu",
+          "DropdownMenuCheckboxItem",
+          "DropdownMenuContent",
+          "DropdownMenuGroup",
+          "DropdownMenuItem",
+          "DropdownMenuLabel",
+          "DropdownMenuPortal",
+          "DropdownMenuRadioGroup",
+          "DropdownMenuRadioItem",
+          "DropdownMenuSeparator",
+          "DropdownMenuShortcut",
+          "DropdownMenuSub",
+          "DropdownMenuSubContent",
+          "DropdownMenuSubTrigger",
+          "DropdownMenuTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/dropdown-menu.tsx"
+      },
+      "figma": {
+        "name": "Dropdown Menu",
+        "nodeId": "82:62",
+        "key": "eb0383d702ebca1aa7b3eed581190e11d0873c8c",
+        "page": "Dropdown Menu",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=82-62"
+      },
+      "storybook": {
+        "title": "Componentes/DropdownMenu"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "DropdownMenuItem variant",
+          "values": [
+            "default",
+            "destructive"
+          ],
+          "notes": "destructive = texto vermelho."
+        },
+        {
+          "figma": null,
+          "react": "open / onOpenChange",
+          "notes": "Só código (raiz DropdownMenu). Abre por `<DropdownMenuTrigger asChild>`."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Dropdown Item",
+          "nodeId": "82:45",
+          "key": "122e7f1912a24a8c8de83b4d03ba64d94f699274",
+          "page": "Dropdown Menu",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=82-45",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Texto do item."
+            },
+            {
+              "figma": "icon",
+              "react": "children",
+              "notes": "true → <Icon> antes do texto."
+            },
+            {
+              "figma": "iconName",
+              "react": "children",
+              "notes": "Qual ícone (instance swap)."
+            },
+            {
+              "figma": "shortcut",
+              "react": "DropdownMenuShortcut",
+              "notes": "true → atalho à direita."
+            },
+            {
+              "figma": "shortcutText",
+              "react": "DropdownMenuShortcut",
+              "notes": "Texto do atalho."
+            },
+            {
+              "figma": "submenu",
+              "react": "DropdownMenuSubTrigger",
+              "notes": "true → seta de submenu à direita (item que abre o submenu)."
+            },
+            {
+              "figma": "variant",
+              "react": "variant",
+              "values": [
+                "default",
+                "destructive"
+              ]
+            },
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "disabled"
+              ],
+              "map": {
+                "default": "item normal",
+                "hover": "foco/hover (focus:bg-accent)",
+                "disabled": "prop disabled (opacity 40%)"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Dropdown Selectable Item",
+          "nodeId": "82:61",
+          "key": "5f62b0ef27dbf094abf17950f09477b9e42a3bd4",
+          "page": "Dropdown Menu",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=82-61",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Texto do item."
+            },
+            {
+              "figma": "kind",
+              "react": null,
+              "values": [
+                "checkbox",
+                "radio"
+              ],
+              "map": {
+                "checkbox": "DropdownMenuCheckboxItem (check)",
+                "radio": "DropdownMenuRadioItem (ponto)"
+              }
+            },
+            {
+              "figma": "checked",
+              "react": "checked",
+              "values": [
+                "false",
+                "true"
+              ],
+              "notes": "checkbox: checked; radio: value do grupo."
+            }
+          ]
+        }
+      ]
+    },
+    "Sheet": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Sheet",
+          "SheetClose",
+          "SheetContent",
+          "SheetDescription",
+          "SheetFooter",
+          "SheetHeader",
+          "SheetTitle",
+          "SheetTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/sheet.tsx"
+      },
+      "figma": {
+        "name": "Sheet",
+        "nodeId": "84:108",
+        "key": "73b5410a9a5923cd04a8dd4c193e248e6f3d942f",
+        "page": "Sheet",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=84-108"
+      },
+      "storybook": {
+        "title": "Componentes/Sheet"
+      },
+      "props": [
+        {
+          "figma": "title",
+          "react": "SheetTitle",
+          "notes": "Filho <SheetTitle> dentro de <SheetHeader>. Obrigatório (acessibilidade)."
+        },
+        {
+          "figma": "description",
+          "react": "SheetDescription",
+          "notes": "Filho <SheetDescription> dentro de <SheetHeader>."
+        },
+        {
+          "figma": "showCloseButton",
+          "react": "showCloseButton",
+          "notes": "X no canto (padrão true)."
+        },
+        {
+          "figma": "body",
+          "react": "children",
+          "notes": "SLOT: qualquer filho direto entre <SheetHeader> e <SheetFooter> (recebe p-3 e rola)."
+        },
+        {
+          "figma": "side",
+          "react": "side",
+          "values": [
+            "right",
+            "left",
+            "top",
+            "bottom"
+          ],
+          "notes": "Padrão right; largura máxima 400px (left/right)."
+        },
+        {
+          "figma": null,
+          "react": "open / onOpenChange",
+          "notes": "Só código (raiz Sheet). Abre por <SheetTrigger asChild>."
+        }
+      ]
+    },
+    "Breadcrumb": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Breadcrumb",
+          "BreadcrumbEllipsis",
+          "BreadcrumbItem",
+          "BreadcrumbLink",
+          "BreadcrumbList",
+          "BreadcrumbPage",
+          "BreadcrumbSeparator"
+        ],
+        "source": "packages/ui/src/components/ui/breadcrumb.tsx"
+      },
+      "figma": {
+        "name": "Breadcrumb",
+        "nodeId": "85:48",
+        "key": "e71cc7206c19b7bd1907cbedb27db7461afe4207",
+        "page": "Breadcrumb",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=85-48"
+      },
+      "storybook": {
+        "title": "Componentes/Breadcrumb"
+      },
+      "props": [
+        {
+          "figma": "collapsed",
+          "react": null,
+          "values": [
+            "false",
+            "true"
+          ],
+          "map": {
+            "false": "todos os níveis",
+            "true": "trecho do meio trocado por BreadcrumbEllipsis (+ DropdownMenu)"
+          }
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Breadcrumb Item",
+          "nodeId": "85:20",
+          "key": "3898368b1b9fa9a31bcb28d3684f216f41a93b13",
+          "page": "Breadcrumb",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=85-20",
+          "props": [
+            {
+              "figma": "label",
+              "react": "children",
+              "notes": "Texto do item."
+            },
+            {
+              "figma": "kind",
+              "react": null,
+              "values": [
+                "link",
+                "page",
+                "ellipsis"
+              ],
+              "map": {
+                "link": "BreadcrumbLink",
+                "page": "BreadcrumbPage (atual, sem link)",
+                "ellipsis": "BreadcrumbEllipsis"
+              }
+            },
+            {
+              "figma": "state",
+              "react": null,
+              "values": [
+                "default",
+                "hover",
+                "focus"
+              ],
+              "map": {
+                "default": "normal",
+                "hover": "visual: :hover",
+                "focus": "visual: :focus-visible (focus-ring)"
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   "icons": {
@@ -1416,6 +2001,46 @@
         "reactSolid": "<Icon name=\"angle-up\" variant=\"solid\" />"
       },
       {
+        "name": "angles-left",
+        "figma": {
+          "nodeId": "36:59",
+          "key": "19959c0baf25b7b327fb2adf707e54d2f08deb9c",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:7825",
+              "key": "f1ee837a469988579550dd889a021fc1717876f5"
+            },
+            "solid": {
+              "nodeId": "34:19139",
+              "key": "53e10c637558affc68511114a35aab36515934c3"
+            }
+          }
+        },
+        "react": "<Icon name=\"angles-left\" />",
+        "reactSolid": "<Icon name=\"angles-left\" variant=\"solid\" />"
+      },
+      {
+        "name": "angles-right",
+        "figma": {
+          "nodeId": "36:60",
+          "key": "589b11260130f9dfd8d8210faad9433ced85de54",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:7826",
+              "key": "ed5392b60f8bd0232a1c3c0d3da746186fba1cb1"
+            },
+            "solid": {
+              "nodeId": "34:19140",
+              "key": "d82a3814f4022f124b2f1ee57d937ea08b1f587d"
+            }
+          }
+        },
+        "react": "<Icon name=\"angles-right\" />",
+        "reactSolid": "<Icon name=\"angles-right\" variant=\"solid\" />"
+      },
+      {
         "name": "calendar",
         "figma": {
           "nodeId": "36:540",
@@ -1474,6 +2099,26 @@
         },
         "react": "<Icon name=\"circle-check\" />",
         "reactSolid": "<Icon name=\"circle-check\" variant=\"solid\" />"
+      },
+      {
+        "name": "circle-xmark",
+        "figma": {
+          "nodeId": "36:913",
+          "key": "3ddf6fea982927bd12577691dc64933044288de9",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:8679",
+              "key": "f14a739b0b0ee5141c1ab075df3356dee31a6b83"
+            },
+            "solid": {
+              "nodeId": "34:19993",
+              "key": "7377f3d898fd83890ba3c4730155ee30421e5a89"
+            }
+          }
+        },
+        "react": "<Icon name=\"circle-xmark\" />",
+        "reactSolid": "<Icon name=\"circle-xmark\" variant=\"solid\" />"
       },
       {
         "name": "circle-exclamation",
@@ -1674,6 +2319,26 @@
         },
         "react": "<Icon name=\"trash\" />",
         "reactSolid": "<Icon name=\"trash\" variant=\"solid\" />"
+      },
+      {
+        "name": "spinner",
+        "figma": {
+          "nodeId": "36:2994",
+          "key": "51b3217d5fbf02e9ba8a853e29ad369ac1a53624",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:10760",
+              "key": "53aea8f4a20e8dbbc665aaaad2a4d5034a283d51"
+            },
+            "solid": {
+              "nodeId": "34:22074",
+              "key": "3cfb7aa22653ead84f493a102db0fd5062798889"
+            }
+          }
+        },
+        "react": "<Icon name=\"spinner\" />",
+        "reactSolid": "<Icon name=\"spinner\" variant=\"solid\" />"
       },
       {
         "name": "triangle-exclamation",
