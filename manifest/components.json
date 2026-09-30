@@ -1322,6 +1322,124 @@
           "notes": "Só código: mostra \"(opcional)\"."
         }
       ]
+    },
+    "Tooltip": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Tooltip",
+          "TooltipContent",
+          "TooltipProvider",
+          "TooltipTrigger"
+        ],
+        "source": "packages/ui/src/components/ui/tooltip.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "storybook": {
+        "title": "Componentes/Tooltip"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "side",
+          "values": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "notes": "Posição do balão (padrão top). Sem seta."
+        },
+        {
+          "figma": null,
+          "react": "children",
+          "notes": "Texto curto; conteúdo interativo ou longo é Popover."
+        }
+      ]
+    },
+    "Tabs": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Tabs",
+          "TabsContent",
+          "TabsList",
+          "TabsTrigger",
+          "tabsListVariants",
+          "tabsTriggerVariants"
+        ],
+        "source": "packages/ui/src/components/ui/tabs.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "storybook": {
+        "title": "Componentes/Tabs"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "variant",
+          "values": [
+            "segmented",
+            "underline"
+          ],
+          "notes": "Na `TabsList`."
+        },
+        {
+          "figma": null,
+          "react": "size",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "notes": "Na `TabsList`: default = 36px; sm = 24px."
+        },
+        {
+          "figma": null,
+          "react": "layout",
+          "values": [
+            "default",
+            "icon-only"
+          ],
+          "notes": "Na `TabsTrigger`. Só ícone exige `aria-label`."
+        },
+        {
+          "figma": null,
+          "react": "value / onValueChange",
+          "notes": "Na raiz `Tabs`."
+        }
+      ]
+    },
+    "Toast": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Toaster",
+          "toast"
+        ],
+        "source": "packages/ui/src/components/ui/sonner.tsx"
+      },
+      "figma": null,
+      "figmaUsage": "Ainda sem componente no Figma (Fase 3, em andamento).",
+      "storybook": {
+        "title": "Componentes/Toast"
+      },
+      "props": [
+        {
+          "figma": null,
+          "react": "toast() / toast.success() / .error() / .warning() / .info() / .loading()",
+          "notes": "Chamado de qualquer lugar; `description`, `action` (Outline pequeno) e `cancel` (Quiet pequeno)."
+        },
+        {
+          "figma": null,
+          "react": "Toaster",
+          "notes": "Uma vez na raiz. Canto inferior direito, 4s, fechar no canto ao passar o mouse."
+        }
+      ]
     }
   },
   "icons": {
@@ -1474,6 +1592,26 @@
         },
         "react": "<Icon name=\"circle-check\" />",
         "reactSolid": "<Icon name=\"circle-check\" variant=\"solid\" />"
+      },
+      {
+        "name": "circle-xmark",
+        "figma": {
+          "nodeId": "36:913",
+          "key": "3ddf6fea982927bd12577691dc64933044288de9",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:8679",
+              "key": "f14a739b0b0ee5141c1ab075df3356dee31a6b83"
+            },
+            "solid": {
+              "nodeId": "34:19993",
+              "key": "7377f3d898fd83890ba3c4730155ee30421e5a89"
+            }
+          }
+        },
+        "react": "<Icon name=\"circle-xmark\" />",
+        "reactSolid": "<Icon name=\"circle-xmark\" variant=\"solid\" />"
       },
       {
         "name": "circle-exclamation",
@@ -1674,6 +1812,26 @@
         },
         "react": "<Icon name=\"trash\" />",
         "reactSolid": "<Icon name=\"trash\" variant=\"solid\" />"
+      },
+      {
+        "name": "spinner",
+        "figma": {
+          "nodeId": "36:2994",
+          "key": "51b3217d5fbf02e9ba8a853e29ad369ac1a53624",
+          "type": "COMPONENT_SET",
+          "variants": {
+            "regular": {
+              "nodeId": "34:10760",
+              "key": "53aea8f4a20e8dbbc665aaaad2a4d5034a283d51"
+            },
+            "solid": {
+              "nodeId": "34:22074",
+              "key": "3cfb7aa22653ead84f493a102db0fd5062798889"
+            }
+          }
+        },
+        "react": "<Icon name=\"spinner\" />",
+        "reactSolid": "<Icon name=\"spinner\" variant=\"solid\" />"
       },
       {
         "name": "triangle-exclamation",

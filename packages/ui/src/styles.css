@@ -5,6 +5,14 @@
 @source "./";
 @source not "./**/*.map";
 
+/* Botões do Sonner (Toast): ação = Outline pequeno; cancelar = Quiet pequeno. Os seletores repetem os atributos do CSS do Sonner (e somam um) para vencê-lo. */
+[data-sonner-toaster][data-sonner-theme] [data-sonner-toast][data-styled='true'] [data-button] {
+  @apply h-6 rounded-lg border border-border bg-card px-2 text-sm font-normal text-foreground hover:bg-shade-card;
+}
+[data-sonner-toaster][data-sonner-theme] [data-sonner-toast][data-styled='true'] [data-cancel] {
+  @apply h-6 rounded-lg border-0 bg-transparent px-2 text-sm font-normal text-foreground hover:bg-accent;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
