@@ -10,3 +10,5 @@ storybook-static/
 .shadcn/
 .next/
 next-env.d.ts
+
+.superpowers/

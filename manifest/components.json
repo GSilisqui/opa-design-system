@@ -419,17 +419,6 @@
         "page": "Dialog",
         "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-357"
       },
-      "figmaParts": [
-        {
-          "name": "_Dialog/Body",
-          "nodeId": "11:355",
-          "key": "adcfc2f6744bf743261d2606721035b9acf47efb",
-          "page": "Dialog",
-          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=11-355",
-          "props": [],
-          "notes": "Slot de conteúdo (placeholder). No Figma, troque por um componente local via `bodyContent`; no código, é o conteúdo entre DialogHeader e DialogFooter (recebe px-6 py-4). Header e footer têm divisórias; sem corpo, só a do header aparece."
-        }
-      ],
       "storybook": {
         "title": "Componentes/Dialog"
       },
@@ -445,14 +434,14 @@
           "notes": "Filho `<DialogDescription>` dentro de `<DialogHeader>`."
         },
         {
-          "figma": "body",
+          "figma": "showBody",
           "react": "children",
-          "notes": "true → conteúdo entre DialogHeader e DialogFooter."
+          "notes": "true → mostra o corpo (slot) entre DialogHeader e DialogFooter."
         },
         {
-          "figma": "bodyContent",
+          "figma": "body",
           "react": "children",
-          "notes": "INSTANCE_SWAP (padrão `_Dialog/Body`): o conteúdo do corpo."
+          "notes": "SLOT: solte aqui o formulário ou outro componente. Só texto? Use a `DialogDescription` do header, sem corpo separado. No código, o corpo é o filho direto entre header e footer (recebe p-3). Header e footer têm divisórias; sem corpo, só a do header aparece."
         },
         {
           "figma": "showCloseButton",

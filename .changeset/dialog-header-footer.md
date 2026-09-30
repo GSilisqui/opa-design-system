@@ -2,4 +2,4 @@
 "@gsilisqui/ui": minor
 ---
 
-Dialog: novo estilo com header e footer separados por divisórias; o corpo fica entre os dois com padding próprio e o footer ganha fundo `muted` rebaixado. `DialogContent` agora não tem padding (cada seção cuida do seu), então conteúdo customizado deve ficar dentro de `DialogHeader`, `DialogFooter` ou como filho direto (recebe `px-6 py-4`).
+Dialog: novo estilo com padding de 12px, header e corpo no `card` e footer no `background`, separados por divisórias. `DialogContent` não tem padding (cada seção cuida do seu); conteúdo customizado deve ficar em `DialogHeader`, `DialogFooter` ou como filho direto (recebe `p-3`). Texto solto vai na `DialogDescription`, não num corpo separado. O botão de cancelar do footer passa a ser `outline`. Button `outline` agora tem fundo `card` e hover/active por mistura com o foreground.

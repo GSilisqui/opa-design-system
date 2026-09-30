@@ -20,7 +20,7 @@ describe("Button", () => {
     ["destructive", "bg-destructive"],
     ["neutral", "hover:bg-input"],
     ["quiet", "hover:bg-accent"],
-    ["outline", "border-border"],
+    ["outline", "bg-card"],
     ["destructive-quiet", "hover:bg-destructive-subtle"],
     ["success-quiet", "text-success-subtle-foreground"],
   ] as const)("variante %s", (variant, expected) => {
