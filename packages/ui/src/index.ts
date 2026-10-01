@@ -105,3 +105,4 @@ export {
   type SidebarPanelItemProps,
 } from "./components/ui/sidebar";
 export { Badge, type BadgeProps } from "./components/ui/badge";
+export { Wizard, type WizardProps, type WizardStep, type WizardStepStatus } from "./components/ui/wizard";
