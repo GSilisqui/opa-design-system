@@ -89,7 +89,7 @@ de largura fixa + área principal).
 | `pending` (não selecionado) | borda `border-border`, número `text-muted-foreground` | `text-muted-foreground` | `bg-border` |
 | selecionado + `pending` ("atual") | borda `border-primary`, número `text-primary font-bold` | `text-foreground font-bold` | `bg-border` |
 | `complete` | `bg-primary`, ícone `check` em `text-primary-foreground` | `text-foreground` | `bg-primary` |
-| `error` | `bg-destructive-subtle`, borda `border-destructive`, ícone `exclamation` (glifo `!` dentro do círculo) | `text-destructive` | `bg-border` |
+| `error` | `bg-destructive-subtle`, borda `border-destructive`, ícone `circle-exclamation` (24px, sem borda própria, sobre o `bg-destructive-subtle`) | `text-destructive` | `bg-border` |
 
 O botão de cada etapa é um `TabsPrimitive.Trigger` estilizado do zero (altura automática, `text-left`, `whitespace-normal`),
 sem herdar nada do `tabs.tsx`. Descrição opcional do passo: `text-sm text-foreground-secondary` abaixo do título. Foco: `focus-visible:focus-ring`.
@@ -105,7 +105,8 @@ O mockup validado (claro e escuro, com os tokens reais) foi aprovado na conversa
 - `Dialog` do Radix: foco preso e Esc. O `title` do wizard é o `DialogTitle`; há `description` opcional (`DialogDescription`),
   e sem ela o conteúdo leva `aria-describedby={undefined}`. O título do passo no cabeçalho é um `h3` visual; o painel é rotulado pela etapa
   (Radix liga `aria-labelledby` ao trigger).
-- Coluna = `Tabs` com `orientation="vertical"`: setas, Home/End, `aria-selected`.
+- Coluna = `Tabs` com `orientation="vertical"` e **`activationMode="manual"`**: setas e Home/End só movem o foco; Enter/Espaço (ou clique)
+  ativam a etapa. Assim o foco que vai para o painel depois da troca não atrapalha a navegação por setas. `aria-selected` indica a etapa atual.
 - Cada etapa traz um texto só para leitor de tela com o status ("concluído", "com erro"); a cor não carrega a informação sozinha.
 - Painel do passo: `role="tabpanel"` rotulado pela etapa.
 
@@ -115,7 +116,8 @@ O mockup validado (claro e escuro, com os tokens reais) foi aprovado na conversa
 - Clique na etapa e setas chamam `onStepChange`; Voltar/Próximo andam um passo.
 - Próximo bloqueado em `error` e em `nextDisabled`; Voltar ausente no primeiro passo.
 - Último passo: `finishLabel`, `onFinish`, `loading` (botões e fechamento desabilitados).
-- Texto de status para leitor de tela; sem violações de a11y; modo não controlado com `defaultStep`.
+- Texto de status para leitor de tela; modo não controlado com `defaultStep`. (Axe não roda nos testes unitários do repo: a checagem de
+  a11y fica no Storybook, em Chromium.)
 - `step` com `id` inexistente cai no primeiro passo; `onOpenChange` é chamado pelo X e por Esc, e não com `loading`.
 - Foco vai para o painel ao trocar de passo, e não na montagem.
 
@@ -123,8 +125,8 @@ O mockup validado (claro e escuro, com os tokens reais) foi aprovado na conversa
 
 - `packages/ui/src/components/ui/wizard.tsx`, `wizard.test.tsx`, `wizard.stories.tsx` (Padrão, Importação, Com erro, Carregando).
 - Export em `packages/ui/src/index.ts`; entrada em `manifest/components.json`; changeset `minor`.
-- Ícone `exclamation` no `icon-registry.ts` com as variantes regular e solid, e listado em `manifest/components.json → icons`
-  (`check` e `xmark` já existem; o Figma já tem o catálogo FA7 completo).
+- Sem ícone novo: `check`, `xmark` e `circle-exclamation` já existem no `icon-registry.ts`. (Um `exclamation` novo exigiria
+  registro regular + solid, manifesto e o componente no índice do Figma, e o teste do manifesto cobra os três.)
 - Figma: página **Wizard** (skill `figma-component`) com o componente de etapa (`Status`: pending | complete | error;
   `Selected`: boolean, derivado de `step` no React) e o Wizard completo, com índice, ledger e manifesto atualizados.
 - Branch `feat/wizard`.
