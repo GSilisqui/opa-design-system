@@ -7,8 +7,10 @@ Data: 2026-10-01 · Dono: Gabriel Silisqui · Status: design aprovado em convers
 O produto precisa de um diálogo em passos para formulários longos e processos de importação. O Shadcn não tem
 Stepper nem Wizard, e o Radix não tem primitivo para isso. O dono aprovou criar o componente (regra 3 do CLAUDE.md).
 
-Para não inventar um primitivo, o `Wizard` é uma casca visual sobre o `Dialog` e o Radix **Tabs vertical**
-(`radix-ui`), que já entrega teclado, ARIA e `value`/`onValueChange`. A navegação livre entre passos, decidida
+Para não inventar um primitivo, o `Wizard` é uma casca visual sobre o Dialog e o Radix **Tabs vertical**
+(`Tabs as TabsPrimitive` direto de `radix-ui`, **não** o `tabs.tsx` do DS, cujos estilos de aba horizontal não servem para a coluna),
+que já entrega teclado, ARIA e `value`/`onValueChange`. O container usa `DialogPortal`, `DialogOverlay` e `DialogPrimitive.Content`
+direto (não o `DialogContent`, que força padding nos filhos, X próprio e `max-w` de 448px). A navegação livre entre passos, decidida
 pelo dono, é o comportamento natural das Tabs.
 
 Referências visuais consultadas: [blocks.so Dialog Multi-Step Wizard](https://blocks.so/dialogs/dialog-11) e
@@ -53,49 +55,56 @@ Referências visuais consultadas: [blocks.so Dialog Multi-Step Wizard](https://b
 />
 ```
 
-- `WizardStepStatus = "pending" | "current" | "complete" | "error"`. O consumidor informa só `complete` e `error`
-  (ausente = `pending`); **`current` é derivado de `step`**, para não haver duas fontes da verdade. Se o passo atual
-  também tiver `error`, vale `error` (mantendo o destaque de selecionado).
+- `step` e `defaultStep` são o **`id` (string)** do passo. Se o `id` não existir em `steps`, vale o primeiro passo.
+- `WizardStepStatus = "pending" | "complete" | "error"` (ausente = `pending`). O passo atual **não é um status**: é derivado de
+  `step` (estado "selecionado"), para não haver duas fontes da verdade. Selecionado + `pending` tem o visual "atual"; selecionado +
+  `complete`/`error` mantém as cores do status e acrescenta o negrito.
 - Props: `open`, `onOpenChange`, `title`, `steps`, `step`, `defaultStep`, `onStepChange`, `onFinish`, `finishLabel`,
   `nextLabel`, `backLabel`, `nextDisabled`, `loading`, `showCloseButton` (padrão `true`), `closeLabel`.
 - Textos em português como padrão (`Voltar`, `Próximo`, `Concluir`, `Fechar`), sobrescrevíveis.
 
 ## Comportamento
 
-- **Próximo** fica `disabled` se o passo atual está em `error` ou `nextDisabled` é verdadeiro.
+- **Próximo** (e o botão de finalizar, no último passo) fica `disabled` se o passo atual está em `error` ou `nextDisabled` é verdadeiro.
 - **Voltar** não é renderizado no primeiro passo.
 - No último passo, o botão primário vira `finishLabel`, chama `onFinish` e aceita `loading`.
-- Com `loading`: Voltar, coluna de etapas e fechar ficam desabilitados; Esc e clique fora não fecham.
-- Ao trocar de passo (botões ou coluna), o foco vai para o painel do passo.
+- Com `loading`: Voltar, coluna de etapas e o X ficam desabilitados; Esc e clique fora não fecham
+  (`onEscapeKeyDown` e `onInteractOutside` com `preventDefault`, no `DialogPrimitive.Content` próprio do Wizard).
+- Ao trocar de passo (botões ou coluna, **não** na montagem), o foco vai para o painel do passo: o painel tem `tabIndex={-1}` e o
+  Wizard chama `focus()` por `ref` num efeito após a troca. O painel fica dentro do `ScrollArea`.
 - O conteúdo de cada passo é montado só quando o passo está ativo (o consumidor guarda o estado do formulário fora do passo).
 
 ## Visual (tokens semânticos, sem valor solto)
 
-Casca herdada do `DialogContent`, com `className` para: `w-4/5 h-4/5 max-w-none sm:max-w-none rounded-2xl`. Como o dialog é `fixed`,
-`w-4/5`/`h-4/5` resolvem contra a janela, sem valor arbitrário. Grade interna de duas colunas (coluna de etapas
+Casca montada com `DialogPrimitive.Content` e as mesmas classes de animação/centralização do `DialogContent`, mas com
+`w-4/5 h-4/5 rounded-2xl p-0` e sem limite de `max-w`. Como o conteúdo é `fixed`, `w-4/5`/`h-4/5` resolvem contra a janela,
+sem valor arbitrário. `rounded-2xl` é a escala padrão do Tailwind, como o `rounded-xl` do Dialog. Grade interna de duas colunas (coluna de etapas
 de largura fixa + área principal).
 
 **Coluna de etapas:** `bg-background`, `border-r border-border`, título do wizard em `text-lg`. Cada etapa é um botão
 (`TabsTrigger`) com círculo de 24px (`size-6`) e linha de conexão de 2px até a próxima.
 
-| Status | Círculo | Texto | Linha até a próxima |
+| Status / estado | Círculo | Texto | Linha até a próxima |
 |---|---|---|---|
-| `pending` | borda `border-border`, número `text-muted-foreground` | `text-muted-foreground` | `bg-border` |
-| `current` | borda `border-primary`, número `text-primary font-bold` | `text-foreground font-bold` | `bg-border` |
+| `pending` (não selecionado) | borda `border-border`, número `text-muted-foreground` | `text-muted-foreground` | `bg-border` |
+| selecionado + `pending` ("atual") | borda `border-primary`, número `text-primary font-bold` | `text-foreground font-bold` | `bg-border` |
 | `complete` | `bg-primary`, ícone `check` em `text-primary-foreground` | `text-foreground` | `bg-primary` |
-| `error` | `bg-destructive-subtle`, borda `border-destructive`, ícone `exclamation` | `text-destructive` | `bg-border` |
+| `error` | `bg-destructive-subtle`, borda `border-destructive`, ícone `exclamation` (glifo `!` dentro do círculo) | `text-destructive` | `bg-border` |
 
-Descrição opcional do passo: `text-sm text-foreground-secondary` abaixo do título. Foco: `focus-visible:focus-ring`.
+O botão de cada etapa é um `TabsPrimitive.Trigger` estilizado do zero (altura automática, `text-left`, `whitespace-normal`),
+sem herdar nada do `tabs.tsx`. Descrição opcional do passo: `text-sm text-foreground-secondary` abaixo do título. Foco: `focus-visible:focus-ring`.
 
-**Área principal:** cabeçalho com o título do passo (`text-lg font-bold`) e botão X (`Button quiet icon-only`, como no
-`DialogContent`), separado por `border-b border-border`. Corpo com `ScrollArea` e `p-4`. Rodapé como o do `DialogFooter`
+**Área principal:** cabeçalho com o título do passo (`text-lg font-bold`) e botão X próprio (`Button quiet icon-only`, `aria-label={closeLabel}`,
+`disabled` com `loading`; aparece com `showCloseButton`), separado por `border-b border-border`. Corpo com `ScrollArea` e `p-4`. Rodapé como o do `DialogFooter`
 (`bg-background`, `border-t`), conteúdo alinhado à direita, `gap-3`.
 
-Mockup validado (claro e escuro) em `.superpowers/brainstorm/*/wizard-visual-v1.html`.
+O mockup validado (claro e escuro, com os tokens reais) foi aprovado na conversa de 2026-10-01; não é versionado.
 
 ## Acessibilidade
 
-- `Dialog` do Radix: foco preso, Esc, `DialogTitle`/`DialogDescription`.
+- `Dialog` do Radix: foco preso e Esc. O `title` do wizard é o `DialogTitle`; há `description` opcional (`DialogDescription`),
+  e sem ela o conteúdo leva `aria-describedby={undefined}`. O título do passo no cabeçalho é um `h3` visual; o painel é rotulado pela etapa
+  (Radix liga `aria-labelledby` ao trigger).
 - Coluna = `Tabs` com `orientation="vertical"`: setas, Home/End, `aria-selected`.
 - Cada etapa traz um texto só para leitor de tela com o status ("concluído", "com erro"); a cor não carrega a informação sozinha.
 - Painel do passo: `role="tabpanel"` rotulado pela etapa.
@@ -107,13 +116,17 @@ Mockup validado (claro e escuro) em `.superpowers/brainstorm/*/wizard-visual-v1.
 - Próximo bloqueado em `error` e em `nextDisabled`; Voltar ausente no primeiro passo.
 - Último passo: `finishLabel`, `onFinish`, `loading` (botões e fechamento desabilitados).
 - Texto de status para leitor de tela; sem violações de a11y; modo não controlado com `defaultStep`.
+- `step` com `id` inexistente cai no primeiro passo; `onOpenChange` é chamado pelo X e por Esc, e não com `loading`.
+- Foco vai para o painel ao trocar de passo, e não na montagem.
 
 ## Entregáveis
 
 - `packages/ui/src/components/ui/wizard.tsx`, `wizard.test.tsx`, `wizard.stories.tsx` (Padrão, Importação, Com erro, Carregando).
 - Export em `packages/ui/src/index.ts`; entrada em `manifest/components.json`; changeset `minor`.
-- Ícone `exclamation` no `icon-registry.ts` (`check` e `xmark` já existem).
-- Figma: página **Wizard** (skill `figma-component`), com índice, ledger e manifesto atualizados.
+- Ícone `exclamation` no `icon-registry.ts` com as variantes regular e solid, e listado em `manifest/components.json → icons`
+  (`check` e `xmark` já existem; o Figma já tem o catálogo FA7 completo).
+- Figma: página **Wizard** (skill `figma-component`) com o componente de etapa (`Status`: pending | complete | error;
+  `Selected`: boolean, derivado de `step` no React) e o Wizard completo, com índice, ledger e manifesto atualizados.
 - Branch `feat/wizard`.
 
 ## Fora de escopo
