@@ -2573,6 +2573,26 @@
           "notes": "Número do contador (10px medium)."
         }
       ]
+    },
+    "Wizard": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": ["Wizard"],
+        "source": "packages/ui/src/components/ui/wizard.tsx"
+      },
+      "figma": null,
+      "storybook": { "title": "Componentes/Wizard" },
+      "props": [
+        { "figma": null, "react": "title", "notes": "Título do wizard (DialogTitle, na coluna de etapas)." },
+        { "figma": null, "react": "steps", "notes": "Lista de { id, title, description?, status?, content }. `status`: pending (padrão) | complete | error. O passo atual não é status: vem de `step`." },
+        { "figma": null, "react": "step / defaultStep / onStepChange", "notes": "`id` (string) do passo atual. Controlado por `step` + `onStepChange`; `defaultStep` no modo não controlado. Id inexistente cai no primeiro passo." },
+        { "figma": null, "react": "nextDisabled", "notes": "Bloqueia só o Próximo do passo atual. Passo com status `error` já bloqueia sozinho." },
+        { "figma": null, "react": "onFinish / finishLabel", "notes": "Botão do último passo (padrão `Concluir`)." },
+        { "figma": null, "react": "loading", "notes": "Botão final com spinner; trava navegação, X, Esc e clique fora." },
+        { "figma": null, "react": "open / onOpenChange", "notes": "Só código. O Wizard é sempre controlado por `open` (sem trigger próprio)." },
+        { "figma": null, "react": "showCloseButton", "notes": "X no cabeçalho do painel; padrão true." }
+      ]
     }
   },
   "icons": {
