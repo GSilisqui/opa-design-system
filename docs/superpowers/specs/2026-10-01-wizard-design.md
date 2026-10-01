@@ -89,7 +89,7 @@ de largura fixa + área principal).
 | `pending` (não selecionado) | borda `border-border`, número `text-muted-foreground` | `text-muted-foreground` | `bg-border` |
 | selecionado + `pending` ("atual") | borda `border-primary`, número `text-primary font-bold` | `text-foreground font-bold` | `bg-border` |
 | `complete` | `bg-primary`, ícone `check` em `text-primary-foreground` | `text-foreground` | `bg-primary` |
-| `error` | `bg-destructive-subtle`, borda `border-destructive`, ícone `circle-exclamation` (24px, sem borda própria, sobre o `bg-destructive-subtle`) | `text-destructive` | `bg-border` |
+| `error` | `bg-destructive-subtle`, sem borda; o ícone `circle-exclamation` (24px) faz o contorno | `text-destructive` | `bg-border` |
 
 O botão de cada etapa é um `TabsPrimitive.Trigger` estilizado do zero (altura automática, `text-left`, `whitespace-normal`),
 sem herdar nada do `tabs.tsx`. Descrição opcional do passo: `text-sm text-foreground-secondary` abaixo do título. Foco: `focus-visible:focus-ring`.
@@ -113,7 +113,7 @@ O mockup validado (claro e escuro, com os tokens reais) foi aprovado na conversa
 ## Testes (Vitest + Testing Library + axe)
 
 - Renderiza título, etapas e o conteúdo apenas do passo atual.
-- Clique na etapa e setas chamam `onStepChange`; Voltar/Próximo andam um passo.
+- Clique na etapa chama `onStepChange`; setas só movem o foco e Enter ativa; Voltar/Próximo andam um passo.
 - Próximo bloqueado em `error` e em `nextDisabled`; Voltar ausente no primeiro passo.
 - Último passo: `finishLabel`, `onFinish`, `loading` (botões e fechamento desabilitados).
 - Texto de status para leitor de tela; modo não controlado com `defaultStep`. (Axe não roda nos testes unitários do repo: a checagem de
