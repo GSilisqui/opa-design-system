@@ -2573,6 +2573,149 @@
           "notes": "Número do contador (10px medium)."
         }
       ]
+    },
+    "Wizard": {
+      "status": "beta",
+      "react": {
+        "import": "@opa/ui",
+        "exports": [
+          "Wizard"
+        ],
+        "source": "packages/ui/src/components/ui/wizard.tsx"
+      },
+      "figma": {
+        "name": "Wizard",
+        "nodeId": "198:131",
+        "key": "cc2b0652e9592ccf6fdbef5addbbb65a5ce28a6a",
+        "page": "Wizard",
+        "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=198-131"
+      },
+      "storybook": {
+        "title": "Componentes/Wizard"
+      },
+      "props": [
+        {
+          "figma": "title",
+          "react": "title",
+          "notes": "Título do wizard (DialogTitle, na coluna de etapas)."
+        },
+        {
+          "figma": "description",
+          "react": "description",
+          "notes": "Descrição opcional do dialog (DialogDescription)."
+        },
+        {
+          "figma": "showDescription",
+          "react": null,
+          "notes": "true quando `description` é informada."
+        },
+        {
+          "figma": "stepTitle",
+          "react": "steps[].title",
+          "notes": "Título do passo atual, derivado de `step`."
+        },
+        {
+          "figma": "showCloseButton",
+          "react": "showCloseButton",
+          "notes": "X no cabeçalho do painel; padrão true. Bloqueado com `loading`."
+        },
+        {
+          "figma": "showBack",
+          "react": null,
+          "notes": "Automático no código: Voltar não aparece no primeiro passo."
+        },
+        {
+          "figma": "body",
+          "react": "steps[].content",
+          "notes": "SLOT: conteúdo do passo atual (só ele é montado)."
+        },
+        {
+          "figma": null,
+          "react": "steps",
+          "notes": "Lista de { id, title, description?, status?, content }. `status`: pending (padrão) | complete | error."
+        },
+        {
+          "figma": null,
+          "react": "step / defaultStep / onStepChange",
+          "notes": "`id` (string) do passo atual. Controlado por `step` + `onStepChange`; `defaultStep` no modo não controlado. Id inexistente cai no primeiro passo."
+        },
+        {
+          "figma": null,
+          "react": "nextDisabled",
+          "notes": "Bloqueia só o Próximo do passo atual. Passo com status `error` já bloqueia sozinho (no Figma: Button `state=disabled`)."
+        },
+        {
+          "figma": null,
+          "react": "onFinish / finishLabel",
+          "notes": "Botão do último passo (padrão `Concluir`)."
+        },
+        {
+          "figma": null,
+          "react": "loading",
+          "notes": "Botão final com spinner; trava navegação, X, Esc e clique fora."
+        },
+        {
+          "figma": null,
+          "react": "open / onOpenChange",
+          "notes": "Só código. O Wizard é sempre controlado por `open` (sem trigger próprio)."
+        }
+      ],
+      "figmaParts": [
+        {
+          "name": "Wizard Step",
+          "nodeId": "197:135",
+          "key": "3bf2a06cc0758027ae9342dc0830dd46ce572df1",
+          "page": "Wizard",
+          "url": "https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi?node-id=197-135",
+          "props": [
+            {
+              "figma": "title",
+              "react": "steps[].title"
+            },
+            {
+              "figma": "description",
+              "react": "steps[].description"
+            },
+            {
+              "figma": "showDescription",
+              "react": null,
+              "notes": "true quando a etapa tem `description`."
+            },
+            {
+              "figma": "number",
+              "react": null,
+              "notes": "Posição da etapa (1, 2, 3…); no código é o índice + 1."
+            },
+            {
+              "figma": "connector",
+              "react": null,
+              "notes": "Linha até a próxima etapa; a última etapa não tem."
+            },
+            {
+              "figma": "status",
+              "react": "steps[].status",
+              "values": [
+                "pending",
+                "complete",
+                "error"
+              ],
+              "notes": "pending = ausente. O passo atual não é status."
+            },
+            {
+              "figma": "selected",
+              "react": null,
+              "values": [
+                "false",
+                "true"
+              ],
+              "map": {
+                "false": "(nada)",
+                "true": "derivado de step === steps[].id (negrito; pending vira o visual 'atual')"
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   "icons": {
