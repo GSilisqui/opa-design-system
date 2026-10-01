@@ -12,7 +12,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Dialog em passos para formulários longos e importações. Etapas na vertical à esquerda (círculo numerado + linha), navegação livre por clique ou teclado, passo atual controlado por `step`/`onStepChange`. `status` por etapa (`complete`, `error`); o atual vem de `step`. Próximo fica bloqueado quando o passo atual está com `error`. Ocupa 80% da janela. Sem layout mobile por enquanto. Figma: ainda não construído.",
+          "Dialog em passos para formulários longos e importações. Etapas na vertical à esquerda (círculo numerado + linha), navegação livre por clique ou teclado, passo atual controlado por `step`/`onStepChange`. `status` por etapa (`complete`, `error`); o atual vem de `step`. Próximo fica bloqueado quando o passo atual está com `error`. Ocupa 80% da janela. Sem layout mobile por enquanto. Figma: https://www.figma.com/design/UW4As1KdSaPboQ3sNMAbCi/?node-id=198-131",
       },
     },
   },

@@ -62,7 +62,8 @@
       "Pagination": "80:7",
       "Dropdown Menu": "82:2",
       "Sheet": "84:2",
-      "Breadcrumb": "85:2"
+      "Breadcrumb": "85:2",
+      "Wizard": "197:84"
     },
     "components": {
       "icons": {
@@ -132,7 +133,9 @@
       "Sidebar Panel Group Label": "100:35",
       "Sidebar Panel": "100:37",
       "Sidebar": "100:78",
-      "Badge": "103:6"
+      "Badge": "103:6",
+      "Wizard Step": "197:135",
+      "Wizard": "198:131"
     },
     "modes": {
       "Primitives/Value": "4:0",
@@ -179,7 +182,9 @@
       "Scroll Area": "98:63",
       "Table": "99:90",
       "Sidebar": "100:211",
-      "Badge": "103:7"
+      "Badge": "103:7",
+      "Wizard": "198:198",
+      "Wizard example": "198:232"
     }
   },
   "decisions": [
@@ -240,6 +245,7 @@
     "2026-09-30: Fase 3 no Figma, parte 2: Dropdown Menu (Dropdown Item 6 variantes, Dropdown Selectable Item 4, Dropdown Menu exemplo), Sheet (4 lados, corpo como SLOT criado na propriedade do set e ligado a cada variante com slotContentId) e Breadcrumb (Breadcrumb Item 7, Breadcrumb 2). Alert ficou de fora: aguardando decisão do dono (há o Toast).",
     "2026-09-30: Combobox ganhou os estados success e warning no Figma (28 variantes: size × multiple × state), clonados de error e recoloridos (borda, label, descrição e halo nas variáveis success/warning).",
     "2026-09-30 Fase 4: páginas Card, Avatar, Skeleton, Separator, Accordion, Scroll Area, Table e Sidebar criadas. SLOT no componente: card.addComponentProperty('content','SLOT','') + frame.componentPropertyReferences={slotContentId:key}. isExposedInstance só depois de o ícone estar dentro do componente. Ícones do índice não importam por chave (getNodeByIdAsync + defaultVariant). Tabela = Table Head/Cell/Header/Row; DataTable só como exemplo na doc. Sombra sutil do item ativo da Sidebar só existe no código.",
-    "2026-09-30: Badge (pendência) aprovado pelo dono; Figma Chat 413:5242 (bolinha) e 987:16351 (contador). Número em primary-foreground (quase branco nos dois temas, como o branco fixo do Chat; dono aceitou contraste abaixo do AA). O dot do Sidebar Item no Figma segue sendo um quadro próprio; no código usa Badge dot."
+    "2026-09-30: Badge (pendência) aprovado pelo dono; Figma Chat 413:5242 (bolinha) e 987:16351 (contador). Número em primary-foreground (quase branco nos dois temas, como o branco fixo do Chat; dono aceitou contraste abaixo do AA). O dot do Sidebar Item no Figma segue sendo um quadro próprio; no código usa Badge dot.",
+    "2026-10-01: Wizard (dialog em passos, etapas na vertical): página Wizard logo depois de Dialog; Wizard Step (6 variantes: status pending|complete|error × selected false|true, com title/description/showDescription/number/connector) e Wizard (1152×720 = 80% de 1440×900; sidebar 224px com instâncias de Wizard Step, cabeçalho com título do passo + X, body em SLOT, rodapé com Voltar outline + Próximo primary juntos à direita). Estado 'atual' = selected, não status. Erro usa o ícone circle-exclamation de 24px sobre destructive-subtle (sem ícone novo). Cabeçalho reproduz o -mt-1.5/-mr-2 do X com padding (1_5 em cima, 2 à direita) em vez de margem negativa. closeButton clonado do Dialog vem com layoutPositioning ABSOLUTE: voltar para AUTO. Exemplo 198:232 com passo Revisar em erro e Próximo state=disabled. figma.createSlot() não existe: SLOT é frame + addComponentProperty('body','SLOT','') + componentPropertyReferences.slotContentId."
   ]
 }
